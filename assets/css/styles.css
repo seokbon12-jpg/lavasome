@@ -15,6 +15,14 @@
   --font-kr-head: "Gowun Batang", "Noto Serif KR", var(--font-display), serif;
   --font-kr-body: "Noto Serif KR", "Gowun Batang", var(--font-display), serif;
 
+  /* 큰 영문 타이틀 전용 — 라벨·수치용(--font-display)과 분리한다.
+     Garamond Premier Pro 로 넘어가면 둘 다 같은 패밀리를 쓰되
+     이쪽은 display 옵티컬, 저쪽은 text 옵티컬로 잡으면 된다.
+     임시 대체본을 Cormorant Garamond 로 둔 이유: EB Garamond 은 wght 축이
+     400~800 이라 400보다 얇아지지 않는다. Cormorant 는 300부터 있다. */
+  --font-title: "Cormorant Garamond", "garamond-premier-pro", var(--font-display);
+  --w-title: 300;
+
   /* ── 컬러 ──────────────────────────────────────────────────
      뉴트럴은 순수 회색이 아니라 아주 옅은 웜 그레이. 완전 무채색으로 가면
      차가운 임상 화이트가 되어 브랜드 무드에서 벗어난다. */
@@ -74,9 +82,15 @@ em, i { font-style: normal; }
 
 /* 영문은 항상 디스플레이 세리프로 */
 .eyebrow, .card__benefit em, .figure__l em, .layer__tag em,
-.ing h3 em, .sense dt em, .hero__title, .closing__title,
+.ing h3 em, .sense dt em,
 .wordmark, .nav-shop, .section__num, .figure__n, .card__figure,
 .ing__n { font-family: var(--font-display); }
+
+/* 큰 영문 타이틀 — 얇은 웨이트로 */
+.hero__title, .closing__title {
+  font-family: var(--font-title);
+  font-weight: var(--w-title);
+}
 
 .sr-only {
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
@@ -192,7 +206,7 @@ em, i { font-style: normal; }
 .hero__title {
   margin: 18px 0 22px;
   font-size: clamp(52px, 8.6vw, 122px);
-  line-height: .96; letter-spacing: -.025em;
+  line-height: .98; letter-spacing: -.012em;
 }
 .hero__sub {
   max-width: 30ch; margin-bottom: 38px;
@@ -412,7 +426,7 @@ em, i { font-style: normal; }
 }
 .section--closing .section__num { margin-bottom: 32px; }
 .closing__title {
-  font-size: clamp(46px, 7.4vw, 104px); line-height: 1; letter-spacing: -.025em;
+  font-size: clamp(46px, 7.4vw, 104px); line-height: 1.02; letter-spacing: -.012em;
 }
 .closing__sub {
   margin: 26px auto 42px; max-width: 34ch;

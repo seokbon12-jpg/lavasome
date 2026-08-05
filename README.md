@@ -29,11 +29,20 @@ UI는 뉴트럴로 유지합니다.
 
 | 용도 | 지금 (임시) | 확정 |
 |---|---|---|
-| 영문 타이틀 | EB Garamond | Garamond Premier Pro |
+| 영문 큰 타이틀 | Cormorant Garamond Light 300 | Garamond Premier Pro (Light / display 옵티컬) |
+| 영문 라벨·수치 | EB Garamond 400 | Garamond Premier Pro (text 옵티컬) |
 | 한글 헤드라인 | Gowun Batang | 미정 |
 | 한글 본문 | Noto Serif KR | 미정 |
 
 **교체 방법 — 두 군데만 고치면 끝입니다.**
+
+타이틀 웨이트는 `--w-title: 300` 으로 잡혀 있습니다. 큰 타이틀만 `--font-title`,
+라벨·수치는 `--font-display` 로 분리해뒀는데, 확정 서체로 넘어가면 둘 다 같은
+패밀리를 쓰되 옵티컬 사이즈만 다르게 지정하면 됩니다.
+
+> 임시 대체본을 EB Garamond 이 아니라 Cormorant Garamond 로 둔 이유:
+> EB Garamond 은 wght 축이 400~800 이라 Regular보다 얇아지지 않습니다.
+> Cormorant Garamond 는 300부터 있어서 얇은 타이틀을 실제로 보여줄 수 있습니다.
 
 1. `index.html` 의 주석 처리된 킷 링크를 살립니다.
    ```html
