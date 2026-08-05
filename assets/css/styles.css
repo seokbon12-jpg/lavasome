@@ -15,14 +15,13 @@
   --font-kr-head: "Gowun Batang", "Noto Serif KR", var(--font-display), serif;
   --font-kr-body: "Noto Serif KR", "Gowun Batang", var(--font-display), serif;
 
-  /* 큰 영문 타이틀 — Classico URW (Optima 계열 휴머니스트 산세).
-     ⚠️ Adobe Fonts CSS 이름을 확정 못 해 두 표기를 함께 걸어뒀다.
-        킷 페이지의 실제 font-family 값을 확인하고 안 맞는 쪽을 지울 것.
-     Classico 에는 Light 가 없어 웨이트는 400 이 하한이다.
-     Tenor Sans 는 킷이 안 뜰 때 쓰는 프리뷰 대체본(같은 휴머니스트 산세 계열). */
-  --font-title: "classico-urw", "urw-classico", "Tenor Sans",
-                "Optima", "Palatino Linotype", var(--font-display);
-  --w-title: 400;
+  /* 큰 영문 타이틀 전용 — 라벨·수치용(--font-display)과 분리한다.
+     Garamond Premier Pro 로 넘어가면 둘 다 같은 패밀리를 쓰되
+     이쪽은 display 옵티컬, 저쪽은 text 옵티컬로 잡으면 된다.
+     프리뷰 대체본이 EB Garamond 이 아니라 Cormorant Garamond 인 이유:
+     EB Garamond 은 wght 축이 400~800 이라 400보다 얇아지지 않는다. */
+  --font-title: "garamond-premier-pro", "Cormorant Garamond", var(--font-display);
+  --w-title: 300;
 
   /* 작은 영문 라벨·카테고리·넘버링 — 타자기 모노.
      확정본은 킷의 nitti-typewriter-normal. Courier Prime 은 킷이 안 뜰 때
