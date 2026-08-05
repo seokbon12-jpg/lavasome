@@ -222,8 +222,13 @@ em, i { font-style: normal; }
 }
 .hero__inner {
   position: relative; z-index: 2;
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 48px; align-items: center; width: 100%;
+  /* 좌우 여백을 줄여 글자는 왼쪽으로, 콜라주는 오른쪽으로 밀어낸다.
+     .shell 의 1240px / 40px 대신 히어로에서만 넓게 쓴다. */
+  max-width: min(1660px, 96vw);
+  padding-inline: 30px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 580px);
+  gap: 40px; align-items: center; width: 100%;
 }
 .hero__title {
   margin: 20px 0 22px;
@@ -238,13 +243,11 @@ em, i { font-style: normal; }
   color: var(--ink-70);
 }
 
-/* 우측 사진 콜라주 */
+/* 우측 사진 콜라주 — 흰 패널 없이 사진 세 장만 겹친다.
+   위치·크기는 레퍼런스 비율에서 그대로 옮겼다. */
 .hero__collage {
-  position: relative; aspect-ratio: 1 / 1; min-height: 460px;
-}
-.hero__panel {
-  position: absolute; right: 0; top: 2%; width: 54%; height: 80%;
-  background: #FFFFFF; z-index: 1; will-change: transform;
+  position: relative; aspect-ratio: 1018 / 1192;
+  width: 100%; justify-self: end;
 }
 .hero__shot {
   position: absolute; overflow: hidden; margin: 0;
@@ -252,9 +255,10 @@ em, i { font-style: normal; }
   will-change: transform;
 }
 .hero__shot img { width: 100%; height: 100%; object-fit: cover; }
-.hero__shot--a { left: 6%;  top: 8%;  width: 30%; aspect-ratio: 372 / 600;  z-index: 3; }
-.hero__shot--b { left: 32%; top: 0;   width: 44%; aspect-ratio: 784 / 1451; z-index: 2; }
-.hero__shot--c { left: 2%;  top: 58%; width: 46%; aspect-ratio: 815 / 477;  z-index: 4; }
+/* b(현무암)가 뒤, a(모델)와 c(용암석)가 그 위로 물린다 */
+.hero__shot--b { left: 39.8%; top: 7.8%;  width: 55.8%; aspect-ratio: 784 / 1451; z-index: 2; }
+.hero__shot--a { left: 26.2%; top: 11.2%; width: 26.5%; aspect-ratio: 372 / 600;  z-index: 3; }
+.hero__shot--c { left: 14.0%; top: 61.3%; width: 57.7%; aspect-ratio: 815 / 477;  z-index: 4; }
 
 /* ── S2 제품 카드 ─────────────────────────────────────────── */
 /* 제품 6종 → 3열 2행으로 딱 떨어지게. 4열이면 빈 칸 2개가
@@ -526,11 +530,8 @@ em, i { font-style: normal; }
   .hero { min-height: auto; padding: 104px 0 72px; }
   .hero__inner { grid-template-columns: 1fr; gap: 40px; }
   .hero__sub { max-width: 24ch; }
-  .hero__collage { min-height: 0; aspect-ratio: 4 / 3.4; }
-  .hero__panel { width: 58%; height: 70%; }
-  .hero__shot--a { left: 2%; top: 10%; width: 34%; }
-  .hero__shot--b { left: 34%; top: 0; width: 44%; }
-  .hero__shot--c { left: 4%; top: 60%; width: 46%; }
+  .hero__inner { max-width: 100%; padding-inline: 18px; }
+  .hero__collage { aspect-ratio: 1018 / 1192; }
   .cta-row .btn { flex: 1 1 auto; }
 
   .cards, .ings, .layers { grid-template-columns: 1fr; }
