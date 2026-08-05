@@ -124,5 +124,7 @@ assets/js/shader-bg.js     셰이더 + 마운트 로직
 ## 접근성 / 반응형
 
 - 데스크톱 1440 · 모바일 375 확인, 가로 오버플로 없음
-- skip link, 키보드 포커스 링, 가로 스크롤러 방향키 조작
+- skip link, 키보드 포커스 링
+- 리뷰 띠는 좌→우 자동 흐름(마퀴). 마우스오버·포커스 시 정지, 화면 밖·탭 숨김 시 멈춤,
+  `prefers-reduced-motion` 이면 흐름을 끄고 직접 스크롤로 전환. 속도는 `main.js` 의 `speed`(px/초)
 - `prefers-reduced-motion` 에서 리빌·360° 회전 정지

@@ -52,11 +52,5 @@
 .has-shader-bg .ing__n { color: #EAF9FF; }
 .has-shader-bg .ing p:last-child { color: rgba(234, 249, 255, .72); }
 
-/* ── 제형 매크로 자리표시도 물빛으로 ─────────────────────────── */
-.has-shader-bg .macro {
-  background: linear-gradient(140deg,
-    rgba(234, 249, 255, .30), rgba(90, 210, 244, .22) 60%, rgba(27, 108, 168, .30));
-}
-
 /* 모션 최소화 설정에서는 shader-bg.js 가 첫 프레임만 그리고 멈춘다.
    정지 화면이라도 대비는 그대로여야 하므로 위 규칙은 유지한다. */

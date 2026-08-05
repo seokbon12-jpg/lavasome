@@ -148,53 +148,94 @@
     if (img.complete && img.naturalWidth === 0) img.remove();
   });
 
-  /* ── S7 가로 드래그 스크롤러 ─────────────────────────────── */
+  /* ── S7 리뷰 스크롤러 — 좌→우 자동 흐름(마퀴) ────────────────
+     타일을 여러 벌 복제해 이어 붙이고 translateX 를 계속 밀어 끊김 없이
+     흐르게 한다. 마우스를 올리거나 포커스가 들어오면 멈춘다(읽을 수 있게).
+     탭이 가려지거나 섹션이 화면 밖이면 루프를 멈춘다.
+     prefers-reduced-motion 이면 복제하지 않고 직접 스크롤(CSS)로 둔다. */
   var sc = document.querySelector('[data-scroller]');
+  var track = sc && sc.querySelector('.scroller__track');
   if (sc) {
-    var down = false, startX = 0, startLeft = 0, moved = 0;
-
-    sc.addEventListener('pointerdown', function (e) {
-      if (e.pointerType === 'touch') return;   // 터치는 네이티브 스크롤에 맡김
-      down = true; moved = 0;
-      startX = e.clientX;
-      startLeft = sc.scrollLeft;
-      sc.setPointerCapture(e.pointerId);
-    });
-
-    sc.addEventListener('pointermove', function (e) {
-      if (!down) return;
-      var dx = e.clientX - startX;
-      if (Math.abs(dx) > 4) sc.classList.add('is-dragging');
-      moved = Math.abs(dx);
-      sc.scrollLeft = startLeft - dx;
-    });
-
-    var release = function (e) {
-      if (!down) return;
-      down = false;
-      sc.classList.remove('is-dragging');
-      if (e.pointerId != null && sc.hasPointerCapture(e.pointerId)) {
-        sc.releasePointerCapture(e.pointerId);
-      }
-    };
-    sc.addEventListener('pointerup', release);
-    sc.addEventListener('pointercancel', release);
-
-    // 드래그 직후의 클릭은 삼킨다
-    sc.addEventListener('click', function (e) {
-      if (moved > 6) { e.preventDefault(); e.stopPropagation(); }
-    }, true);
-
-    // 키보드로도 넘길 수 있게
-    sc.setAttribute('tabindex', '0');
     sc.setAttribute('role', 'region');
-    sc.setAttribute('aria-label', '후기와 이야기 · 좌우 스크롤');
-    sc.addEventListener('keydown', function (e) {
-      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
-      e.preventDefault();
-      sc.scrollBy({ left: e.key === 'ArrowRight' ? 320 : -320,
-                    behavior: reduced ? 'auto' : 'smooth' });
+    sc.setAttribute('aria-label', '후기와 이야기');
+  }
+  if (track && !reduced) {
+    var originals = [].slice.call(track.children);
+
+    // 스크린리더에는 감춘 복제본을 이어 붙인다.
+    function appendSet() {
+      originals.forEach(function (li) {
+        var clone = li.cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        [].forEach.call(clone.querySelectorAll('a, button, [tabindex]'), function (el) {
+          el.tabIndex = -1;
+        });
+        track.appendChild(clone);
+      });
+    }
+    appendSet();  // 최소 2벌
+
+    // 한 벌의 반복 폭 = 첫 원본과 첫 복제본 사이 거리(간격 포함).
+    var setWidth = 0;
+    function measure() {
+      var first = track.children[0];
+      var firstClone = track.children[originals.length];
+      setWidth = firstClone ? (firstClone.offsetLeft - first.offsetLeft) : 0;
+    }
+    measure();
+
+    // 넓은 화면에서 한 벌로 못 채우면 벌을 더 붙인다(빈 틈 방지).
+    var guard = 8;
+    while (setWidth > 0 && track.scrollWidth < window.innerWidth + setWidth * 2 && guard-- > 0) {
+      appendSet();
+    }
+
+    var pos = -setWidth;        // 좌→우: -setWidth → 0 으로 밀린다
+    var speed = 28;             // px/초 — "천천히"
+    var last = 0, raf = 0, paused = false, onScreen = true;
+
+    function frame(now) {
+      raf = 0;
+      if (paused || !onScreen || document.hidden || setWidth <= 0) return;
+      if (!last) last = now;
+      var dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      pos += speed * dt;
+      if (pos >= 0) pos -= setWidth;
+      track.style.transform = 'translate3d(' + pos.toFixed(2) + 'px,0,0)';
+      raf = requestAnimationFrame(frame);
+    }
+    function run() {
+      if (paused || !onScreen || document.hidden) return;
+      if (!raf) { last = 0; raf = requestAnimationFrame(frame); }
+    }
+    function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+
+    // 읽을 수 있게 — 마우스오버·포커스 시 정지
+    sc.addEventListener('mouseenter', function () { paused = true; stop(); });
+    sc.addEventListener('mouseleave', function () { paused = false; run(); });
+    sc.addEventListener('focusin', function () { paused = true; stop(); });
+    sc.addEventListener('focusout', function () { paused = false; run(); });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop(); else run();
     });
+    if ('IntersectionObserver' in window) {
+      onScreen = false;
+      new IntersectionObserver(function (es) {
+        onScreen = es[0].isIntersecting;
+        onScreen ? run() : stop();
+      }, { rootMargin: '80px' }).observe(sc);
+    }
+    addEventListener('resize', function () {
+      var prev = setWidth;
+      measure();
+      if (prev > 0 && setWidth > 0) pos = pos / prev * setWidth;  // 진행 비율 유지
+      if (pos >= 0) pos -= setWidth;
+    }, { passive: true });
+
+    track.style.transform = 'translate3d(' + pos.toFixed(2) + 'px,0,0)';
+    run();
   }
 
   /* ── 푸터 연도 ───────────────────────────────────────────── */

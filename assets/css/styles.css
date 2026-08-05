@@ -413,26 +413,29 @@ em, i { font-style: normal; }
   font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 12px;
 }
 .ing p:last-child { color: var(--ink-70); font-size: 14.5px; }
-.macros { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px; }
-.macro {
-  aspect-ratio: 16 / 10; border-radius: 3px;
-  background: linear-gradient(140deg, #F6F5F2, #DCD9D2 68%, #C6C2B9);
-}
 
-/* ── S7 스토리 스크롤러 ───────────────────────────────────── */
+/* ── S7 스토리 스크롤러 — 좌→우 자동 흐름(마퀴) ─────────────
+   shader-bg.js 처럼 격리되진 않았지만, 움직임은 전부 main.js 의
+   마퀴 로직이 만든다. CSS 는 레이아웃만 잡는다. */
 .section--stories { background: var(--paper-2); padding-bottom: 108px; }
 .section--stories .section__num { margin-bottom: 26px; }
 .scroller {
-  margin-top: 60px; overflow-x: auto; overflow-y: hidden;
-  cursor: grab; scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
+  margin-top: 60px; overflow: hidden;
 }
-.scroller::-webkit-scrollbar { display: none; }
-.scroller.is-dragging { cursor: grabbing; }
-.scroller.is-dragging a, .scroller.is-dragging button { pointer-events: none; }
 .scroller__track {
   display: flex; gap: 28px; width: max-content;
-  padding-inline: max(var(--pad), calc((100vw - var(--shell)) / 2 + var(--pad)));
+  position: relative;               /* 자식 offsetLeft 측정 기준 */
+  padding-inline: var(--pad);
+  will-change: transform;
+}
+/* 모션 최소화 설정에서는 자동 흐름을 끄고 직접 스크롤하게 둔다 */
+@media (prefers-reduced-motion: reduce) {
+  .scroller {
+    overflow-x: auto; overflow-y: hidden;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .scroller::-webkit-scrollbar { display: none; }
+  .scroller__track { will-change: auto; }
 }
 .tile {
   position: relative; width: 300px; flex: none;
@@ -463,7 +466,6 @@ em, i { font-style: normal; }
 .tile__ext { top: 20px; right: 20px; width: 30px; height: 30px; background: none; }
 .tile__play svg { width: 20px; height: 20px; }
 .tile__ext svg { width: 17px; height: 17px; }
-.scroller__hint { margin-top: 26px; font-size: 13px; color: var(--ink-45); }
 
 /* ── S8 클로징 ────────────────────────────────────────────── */
 .section--closing {
@@ -540,7 +542,6 @@ em, i { font-style: normal; }
   .mech__figures { gap: 28px 20px; }
   .spin__stage { aspect-ratio: 4 / 3; }
   .spin__obj { width: 30%; }
-  .macros { grid-template-columns: 1fr; }
   .tile, .tile--round, .tile--tall, .tile--press { width: 74vw; max-width: 300px; }
   .site-footer__inner { grid-template-columns: 1fr; }
   .section--closing { padding: 96px 0 104px; }
