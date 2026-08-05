@@ -22,7 +22,7 @@
 
 **타이포 (상세페이지 그대로)**
 - 한글 헤드라인: 명조/세리프 (따뜻한 디스플레이 명조)
-- 영문 디스플레이/타이틀: **Garamond (확정)** — Adobe Fonts 킷 `zhv7ywn` (예: "Multi-Active Brightening Formula", "VitaC Plus Ampoule")
+- 영문 디스플레이/타이틀: **Garamond Premier Pro (확정)** — Adobe Fonts 킷 `zhv7ywn` (예: "Multi-Active Brightening Formula", "VitaC Plus Ampoule")
   - ※ v2의 "하이컨트라스트 세리프"에서 변경. Garamond은 구양식(old-style) 세리프로 대비가 중간 수준이라, 디도(Didot·Bodoni)류의 날카로운 하이컨트라스트가 아니라 **차분하고 고전적인 에디토리얼** 톤으로 간다. "따뜻한 연구 아카이브" 무드와는 오히려 더 맞음.
   - 대비가 낮아진 만큼 타이틀은 **크기·여백·자간**으로 위계를 잡는다 (굵기 대비에 의존 금지).
 - 영문 라벨/카테고리: 자간 넓은 스몰캡스 또는 모노, **앰버색**, 작게 (예: "Jeju Origin, Built for Stability")
@@ -72,9 +72,10 @@
 - 폰트
   - 영문 타이틀/디스플레이: **Garamond — Adobe Fonts(Typekit) 킷 `zhv7ywn`** 〔확정〕
     `<link rel="stylesheet" href="https://use.typekit.net/zhv7ywn.css">`
-    - CSS `font-family` 값은 킷에 담긴 실제 패밀리명을 그대로 쓴다 (예: `garamond-premier-pro` / `adobe-garamond-pro`). **이름이 한 글자만 틀려도 조용히 폴백**되므로 반드시 킷에서 확인한 값으로.
+    - 패밀리: **Garamond Premier Pro** → CSS `font-family: "garamond-premier-pro", ...` 〔확정〕
+    - Garamond Premier Pro는 **옵티컬 사이즈**(caption / regular / subhead / display)를 가진다. 큰 타이틀에는 display·subhead 옵티컬을 쓰고 본문 옵티컬을 확대해서 쓰지 않는다 — 확대하면 획이 두꺼워지고 자간이 벌어져 둔해진다. 킷에 어떤 옵티컬·웨이트를 담았는지 확인 후 필요한 것만 추가(로딩 무게 관리).
     - ⚠️ Typekit 킷은 **도메인 잠금**이다. 킷 설정에 `localhost`(로컬 개발)와 실제 라이브 도메인이 **둘 다** 등록돼 있어야 한다. 안 그러면 문서가 경고한 "로컬↔라이브 깨짐"이 그대로 발생.
-    - 폴백 스택: `"<킷 패밀리명>", "EB Garamond", "Adobe Garamond Pro", Garamond, "Times New Roman", serif`
+    - 폴백 스택: `"garamond-premier-pro", "EB Garamond", "Adobe Garamond Pro", Garamond, "Times New Roman", serif`
   - 한글 명조 [서체명] / 라벨 자간넓은 [서체명] (미정 — 라이브 도메인 등록 후 최종)
 - 접근성: alt, 키보드 포커스, prefers-reduced-motion
 
@@ -184,7 +185,8 @@
 - [ ] 모바일 sticky 헤더·가로 스크롤러 처리
 - [ ] 폰트 라이선스 주체(스튜디오 vs 클라이언트) 계약 명시
 - [ ] Typekit 킷 `zhv7ywn`에 `localhost` + 라이브 도메인 둘 다 등록 (안 하면 폰트 미표시)
-- [ ] 킷의 실제 Garamond 패밀리명 확인 후 CSS에 반영 (오타 시 조용히 폴백)
+- [x] 킷의 Garamond 패밀리명 확정: Garamond Premier Pro (`garamond-premier-pro`)
+- [ ] 킷에 담긴 옵티컬 사이즈(display/subhead)·웨이트 확인 후 필요한 것만 포함
 
 ---
 
