@@ -25,13 +25,13 @@
   if (reduced || !('IntersectionObserver' in window)) {
     reveals.forEach(function (el) { el.classList.add('is-in'); });
   } else {
+    // 양방향: 들어오면 떠오르고, 벗어나면 다시 가라앉는다.
+    // (한 번만 보이게 하려면 unobserve 로 바꾸면 된다)
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        e.target.classList.add('is-in');
-        io.unobserve(e.target);
+        e.target.classList.toggle('is-in', e.isIntersecting);
       });
-    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
     reveals.forEach(function (el) { io.observe(el); });
   }
 
