@@ -244,7 +244,7 @@ em, i { font-style: normal; }
   position: relative; aspect-ratio: 1 / 1; min-height: 460px;
 }
 .hero__panel {
-  position: absolute; right: 0; top: 2%; width: 62%; height: 74%;
+  position: absolute; right: 0; top: 2%; width: 54%; height: 80%;
   background: #FFFFFF; z-index: 1; will-change: transform;
 }
 .hero__shot {
@@ -253,9 +253,9 @@ em, i { font-style: normal; }
   will-change: transform;
 }
 .hero__shot img { width: 100%; height: 100%; object-fit: cover; }
-.hero__shot--a { left: 6%;  top: 8%;  width: 30%; aspect-ratio: 3 / 4;   z-index: 3; }
-.hero__shot--b { left: 32%; top: 0;   width: 44%; aspect-ratio: 3 / 4.6; z-index: 2; }
-.hero__shot--c { left: 2%;  top: 58%; width: 46%; aspect-ratio: 4 / 3;   z-index: 4; }
+.hero__shot--a { left: 6%;  top: 8%;  width: 30%; aspect-ratio: 372 / 600;  z-index: 3; }
+.hero__shot--b { left: 32%; top: 0;   width: 44%; aspect-ratio: 784 / 1451; z-index: 2; }
+.hero__shot--c { left: 2%;  top: 58%; width: 46%; aspect-ratio: 815 / 477;  z-index: 4; }
 
 /* ── S2 제품 카드 ─────────────────────────────────────────── */
 /* 제품 6종 → 3열 2행으로 딱 떨어지게. 4열이면 빈 칸 2개가
