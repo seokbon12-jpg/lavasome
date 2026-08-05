@@ -1,0 +1,463 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAVASOME — Formulation First</title>
+<meta name="description" content="성분이 제대로 작동하도록 조건부터 설계하는 스킨케어. 제주 유래 자산을 기능적으로 해석하는 LAVASOME.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!--
+  폰트 교체 지점 (임시 → 확정)
+  확정 서체는 Adobe Fonts 킷 zhv7ywn 의 Garamond Premier Pro.
+  킷 도메인이 열리면 아래 한 줄을 살리고, assets/css/styles.css 의
+  --font-display 첫 항목만 "garamond-premier-pro" 로 두면 교체 끝.
+  <link rel="stylesheet" href="https://use.typekit.net/zhv7ywn.css">
+-->
+
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+<header class="site-header" data-header>
+  <div class="shell site-header__inner">
+    <a class="wordmark" href="#top" aria-label="LAVASOME 홈">
+      LAVASOME
+      <span class="wordmark__dot" aria-hidden="true"></span>
+    </a>
+    <nav aria-label="주요">
+      <a class="nav-shop" href="#formulas">SHOP</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+  <!-- ══ S1 — Hero ══ -->
+  <section class="hero" id="top">
+    <div class="hero__bg" aria-hidden="true">
+      <!-- 교체: 상세 1p 앰버 앰플 풀블리드 컷 -->
+      <div class="hero__ampoule" data-placeholder="앰버 앰플 풀블리드 컷"></div>
+    </div>
+
+    <div class="shell hero__inner">
+      <p class="eyebrow reveal">Jeju Origin, Built for Stability</p>
+      <h1 class="hero__title reveal" data-delay="1">Formulation First</h1>
+      <p class="hero__sub reveal" data-delay="2">
+        성분이 제대로 작동하도록 조건부터 설계하는 스킨케어
+      </p>
+      <div class="cta-row reveal" data-delay="3">
+        <a class="btn btn--solid" href="#formulas">제품 보기</a>
+        <a class="btn btn--pill" href="#jeju">브랜드 이야기</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ S2 — Our Formulas ══ -->
+  <section class="section" id="formulas">
+    <div class="shell">
+      <div class="section__head">
+        <span class="section__num">01</span>
+        <div>
+          <h2 class="section__title reveal">
+            조건이 다르면<br>같은 성분도 다르게 작동한다.
+          </h2>
+        </div>
+        <p class="section__lead reveal" data-delay="1">
+          라바섬의 제품은 성분표가 아니라 설계도에서 시작합니다.
+          농도가 유지되는 조건, 피부가 견디는 조건을 먼저 맞춥니다.
+        </p>
+      </div>
+
+      <!-- 기능성 표시 주의: 미백·주름개선 라벨은 식약처 기능성 심사 근거가 확인된
+           제품에만 노출할 것. 근거 미확인 시 해당 라벨만 제거. -->
+      <ul class="cards" role="list">
+        <li class="card card--amber reveal">
+          <span class="card__tag">Best</span>
+          <span class="card__code">LV—01</span>
+          <div class="card__shot" data-placeholder="Vita-C Plus 앰플컷"></div>
+          <h3 class="card__name">Vita-C Plus Ampoule</h3>
+          <p class="card__benefit">미백 <em>Brightening</em></p>
+          <p class="card__desc">순수 비타민C를 무수 처방으로 안정화한 고농도 앰플.</p>
+          <p class="card__figure"><b>13.5</b><span>%</span> <i>·</i> <b>135,000</b><span>ppm</span></p>
+          <a class="card__link" href="#mechanism">보러가기</a>
+        </li>
+
+        <li class="card card--green reveal" data-delay="1">
+          <span class="card__code">LV—02</span>
+          <div class="card__shot" data-placeholder="Calming 50 제품컷"></div>
+          <h3 class="card__name">Calming 50</h3>
+          <p class="card__benefit">항산화 <em>Antioxidant</em></p>
+          <p class="card__desc">자극 요인을 덜어내는 데 초점을 맞춘 진정 라인.</p>
+          <p class="card__figure"><b>50</b><span>%</span></p>
+          <a class="card__link" href="#ingredients">보러가기</a>
+        </li>
+
+        <li class="card card--rose reveal" data-delay="2">
+          <span class="card__code">LV—03</span>
+          <div class="card__shot" data-placeholder="PDRN 1K 제품컷"></div>
+          <h3 class="card__name">PDRN 1K</h3>
+          <p class="card__benefit">탄력 <em>Firming</em></p>
+          <p class="card__desc">밀도와 탄력의 조건을 다루는 집중 케어.</p>
+          <p class="card__figure"><b>1,000</b><span>ppm</span></p>
+          <a class="card__link" href="#ingredients">보러가기</a>
+        </li>
+
+        <li class="card card--silver reveal" data-delay="3">
+          <span class="card__code">LV—04</span>
+          <div class="card__shot" data-placeholder="글루타치온 20K 제품컷"></div>
+          <h3 class="card__name">글루타치온 20K</h3>
+          <p class="card__benefit">광채 <em>Radiance</em></p>
+          <p class="card__desc">맑기의 기준을 올리는 고함량 설계.</p>
+          <p class="card__figure"><b>20,000</b><span>ppm</span></p>
+          <a class="card__link" href="#ingredients">보러가기</a>
+        </li>
+
+        <li class="card card--blue reveal">
+          <span class="card__code">LV—05</span>
+          <div class="card__shot" data-placeholder="HA90 제품컷"></div>
+          <h3 class="card__name">HA90</h3>
+          <p class="card__benefit">각질관리 <em>Exfoliation</em></p>
+          <p class="card__desc">수분 보유력을 유지하며 결을 정리합니다.</p>
+          <p class="card__figure"><b>90</b><span>%</span></p>
+          <a class="card__link" href="#ingredients">보러가기</a>
+        </li>
+
+        <li class="card card--sand reveal" data-delay="1">
+          <span class="card__code">LV—06</span>
+          <div class="card__shot" data-placeholder="선스크린 제품컷"></div>
+          <h3 class="card__name">선스크린</h3>
+          <p class="card__benefit">일상 보호 <em>Daily Shield</em></p>
+          <p class="card__desc">매일 쓰기 위한 가벼운 마무리.</p>
+          <p class="card__figure"><b>SPF</b><span>50+ / PA++++</span></p>
+          <a class="card__link" href="#ingredients">보러가기</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ══ S3 — Formulation First (메커니즘) ══ -->
+  <section class="section section--mech" id="mechanism">
+    <div class="shell">
+      <div class="section__head">
+        <span class="section__num">02</span>
+        <div>
+          <h2 class="section__title reveal">
+            농도를 올리는 일보다<br>농도를 지키는 일이 어렵습니다.
+          </h2>
+        </div>
+        <p class="section__lead reveal" data-delay="1">
+          순수 비타민C는 물과 만나는 순간부터 무너집니다.
+          라바섬은 물을 빼는 쪽을 택했습니다.
+        </p>
+      </div>
+
+      <div class="mech">
+        <!-- 스크롤 연동 360° 회전. 실제 시퀀스/GLB 확보 시
+             data-frames="assets/img/spin/{i}.webp" data-frame-count="36" 만 넣으면
+             main.js 가 자동으로 이미지 시퀀스 모드로 전환됩니다. -->
+        <figure class="spin" data-spin role="img"
+                aria-label="Vita-C Plus 앰플 제형을 360도로 살펴보는 이미지">
+          <div class="spin__stage">
+            <svg class="spin__obj" viewBox="0 0 120 300" aria-hidden="true">
+              <defs>
+                <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#3a2f1c"/>
+                  <stop offset=".35" stop-color="#c99b3f"/>
+                  <stop offset=".6" stop-color="#f0d79a"/>
+                  <stop offset="1" stop-color="#5a4620"/>
+                </linearGradient>
+              </defs>
+              <rect x="46" y="6" width="28" height="46" rx="4" fill="url(#glass)" opacity=".85"/>
+              <rect x="30" y="52" width="60" height="26" rx="3" fill="#241d12"/>
+              <path d="M30 78h60v176a26 26 0 0 1-26 26H56a26 26 0 0 1-26-26z" fill="url(#glass)"/>
+              <ellipse cx="60" cy="252" rx="30" ry="10" fill="#f0d79a" opacity=".25"/>
+              <rect class="spin__gloss" x="40" y="92" width="9" height="150" rx="5" fill="#fff" opacity=".38"/>
+            </svg>
+          </div>
+          <figcaption class="spin__cap">Vita-C Plus Ampoule · 2중 레이어 구조</figcaption>
+        </figure>
+
+        <div class="mech__figures">
+          <div class="figure reveal">
+            <b class="figure__n">13.5<span>%</span></b>
+            <p class="figure__l">순수 비타민C <em>Pure Ascorbic Acid</em></p>
+          </div>
+          <div class="figure reveal" data-delay="1">
+            <b class="figure__n">135,000<span>ppm</span></b>
+            <p class="figure__l">함량 <em>Concentration</em></p>
+          </div>
+          <div class="figure reveal" data-delay="2">
+            <b class="figure__n">pH 3.5</b>
+            <p class="figure__l">흡수 조건 <em>Absorption</em></p>
+          </div>
+          <div class="figure reveal" data-delay="3">
+            <b class="figure__n">2중</b>
+            <p class="figure__l">레이어 구조 <em>Dual Layer</em></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="layers">
+        <div class="layer reveal">
+          <span class="layer__tag">외층 <em>Outer</em></span>
+          <p>수분을 차단하는 무수 베이스가 순수 비타민C를 감쌉니다. 개봉 전까지 산화가 시작되지 않도록 설계했습니다.</p>
+        </div>
+        <div class="layer reveal" data-delay="1">
+          <span class="layer__tag">내층 <em>Inner</em></span>
+          <p>피부에 닿는 순간 유효 성분이 풀리도록 조건을 맞췄습니다. 농도가 아니라 도달이 목적입니다.</p>
+        </div>
+      </div>
+
+      <!-- 포지셔닝 차트: 자극도 × 농도 -->
+      <div class="chart reveal">
+        <p class="chart__title">포지셔닝 <em>자극도 × 농도</em></p>
+        <div class="chart__plot">
+          <span class="chart__axis chart__axis--y">농도 →</span>
+          <span class="chart__axis chart__axis--x">자극도 →</span>
+          <span class="chart__pt chart__pt--a"><i></i>비타민C 유도체<br><small>저농도 · 저자극</small></span>
+          <span class="chart__pt chart__pt--b"><i></i>일반 고농도<br><small>고농도 · 고자극</small></span>
+          <span class="chart__pt chart__pt--c is-us"><i></i>LAVASOME<br><small>고농도 · 저자극</small></span>
+        </div>
+      </div>
+
+      <div class="table-wrap reveal">
+        <table class="ctable">
+          <caption class="sr-only">비타민C 처방 방식 비교</caption>
+          <thead>
+            <tr><th scope="col">구분</th><th scope="col">유도체 처방</th><th scope="col">일반 무수 처방</th><th scope="col">LAVASOME</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">순수 비타민C 함량</th><td>낮음</td><td>중간</td><td class="is-us">13.5% · 135,000ppm</td></tr>
+            <tr><th scope="row">산화 안정성</th><td>높음</td><td>중간</td><td class="is-us">무수 + 2중 레이어</td></tr>
+            <tr><th scope="row">체감 자극</th><td>낮음</td><td>높음</td><td class="is-us">낮게 설계</td></tr>
+            <tr><th scope="row">전환 과정</th><td>필요</td><td>불필요</td><td class="is-us">불필요</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="mech__foot reveal">
+        <b>20년</b> R&amp;D <i>·</i> <b>1억 원</b> 개발
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ S4 — Jeju-Origin Functional Base ══ -->
+  <section class="section section--dark" id="jeju">
+    <div class="shell">
+      <div class="section__head">
+        <span class="section__num">03</span>
+        <div>
+          <p class="eyebrow reveal">Jeju Origin, Built for Stability</p>
+          <h2 class="section__title reveal" data-delay="1">
+            제주 자연에서 온<br>기능성 베이스
+          </h2>
+        </div>
+        <p class="section__lead reveal" data-delay="2">
+          제주를 이미지로 쓰지 않습니다. 처방이 안정적으로 작동하는 조건을
+          제주의 물과 식물에서 찾았습니다.
+        </p>
+      </div>
+
+      <div class="jeju">
+        <article class="jeju__item reveal">
+          <div class="jeju__img" data-placeholder="제주 용암해수 · 바다"></div>
+          <h3>제주 용암해수 미네랄</h3>
+          <p>현무암층을 통과하며 걸러진 물. 미네랄 균형이 일정해 처방의 기준값을 잡기 좋습니다.</p>
+        </article>
+        <article class="jeju__item reveal" data-delay="1">
+          <div class="jeju__img" data-placeholder="백년초 군락"></div>
+          <h3>백년초 추출물</h3>
+          <p>건조와 자외선을 견디며 자란 식물. 견디는 힘을 처방 쪽으로 옮겼습니다.</p>
+        </article>
+        <article class="jeju__item reveal" data-delay="2">
+          <div class="jeju__img" data-placeholder="현무암 담벼락 / JTP"></div>
+          <h3>JTP 제주생물종다양성연구소 협력</h3>
+          <p>원료의 채취와 검증을 지역 연구 기관과 함께 진행합니다.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ S5 — Gentle Efficacy ══ -->
+  <section class="section section--statement" id="gentle">
+    <div class="shell">
+      <span class="section__num">04</span>
+      <h2 class="statement reveal">
+        피부에 가장 부드럽게<br>스며드는 제주.
+      </h2>
+      <p class="statement__sub reveal" data-delay="1">
+        강함이 아니라 균형입니다. 고농도를 견디게 만드는 것은 농도가 아니라 조건입니다.
+      </p>
+
+      <dl class="senses">
+        <div class="sense reveal">
+          <dt>흡수감 <em>Texture</em></dt>
+          <dd>얇게 퍼지고 빠르게 정리됩니다. 겉도는 잔여감을 남기지 않습니다.</dd>
+        </div>
+        <div class="sense reveal" data-delay="1">
+          <dt>향 <em>Scent</em></dt>
+          <dd>인위적인 향을 더하지 않았습니다. 원료 본래의 옅은 향만 남습니다.</dd>
+        </div>
+        <div class="sense reveal" data-delay="2">
+          <dt>색감 <em>Tone</em></dt>
+          <dd>앰버빛은 착색이 아니라 무수 처방의 결과입니다.</dd>
+        </div>
+      </dl>
+
+      <p class="recommend reveal">
+        <span class="eyebrow">Recommended for</span>
+        고농도 제품에서 자극을 느껴본 분 · 결과는 원하지만 순한 사용감을 포기하고 싶지 않은 분 ·
+        성분의 근거를 확인하고 쓰는 분
+      </p>
+    </div>
+  </section>
+
+  <!-- ══ S6 — Ingredient & Formula Cards ══ -->
+  <section class="section" id="ingredients">
+    <div class="shell">
+      <div class="section__head">
+        <span class="section__num">05</span>
+        <div>
+          <p class="eyebrow reveal">Multi-Active Brightening Formula</p>
+          <h2 class="section__title reveal" data-delay="1">
+            여섯 가지가<br>하나의 조건 위에서 움직입니다.
+          </h2>
+        </div>
+        <p class="section__lead reveal" data-delay="2">
+          각각이 따로 작동하지 않도록, 서로의 조건을 방해하지 않는 조합만 남겼습니다.
+        </p>
+      </div>
+
+      <ul class="ings" role="list">
+        <li class="ing reveal"><span class="ing__i">01</span><h3>순수 비타민C <em>Ascorbic Acid</em></h3><p class="ing__n">13.5%</p><p>전환 과정 없이 그대로 작동하는 형태로 담았습니다.</p></li>
+        <li class="ing reveal" data-delay="1"><span class="ing__i">02</span><h3>제주 용암해수 <em>Lava Seawater</em></h3><p class="ing__n">미네랄</p><p>처방의 기준을 잡는 물. 미네랄 균형이 일정합니다.</p></li>
+        <li class="ing reveal" data-delay="2"><span class="ing__i">03</span><h3>백년초 <em>Opuntia</em></h3><p class="ing__n">제주 유래</p><p>건조한 환경을 견디며 축적한 다당체를 씁니다.</p></li>
+        <li class="ing reveal"><span class="ing__i">04</span><h3>펩타이드 <em>Peptide</em></h3><p class="ing__n">복합</p><p>탄력의 조건을 보조하는 복합 펩타이드.</p></li>
+        <li class="ing reveal" data-delay="1"><span class="ing__i">05</span><h3>글루타치온 <em>Glutathione</em></h3><p class="ing__n">고함량</p><p>맑기의 기준을 올리는 항산화 축.</p></li>
+        <li class="ing reveal" data-delay="2"><span class="ing__i">06</span><h3>베타글루칸 <em>Beta-Glucan</em></h3><p class="ing__n">진정</p><p>고농도를 견디게 하는 완충 역할.</p></li>
+      </ul>
+
+      <div class="macros" aria-hidden="true">
+        <div class="macro" data-placeholder="제형 매크로 · 페트리"></div>
+        <div class="macro" data-placeholder="제형 매크로 · 방울"></div>
+        <div class="macro" data-placeholder="제형 매크로 · 버블"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ S7 — Brand Proof ══ -->
+  <section class="section section--greige" id="proof">
+    <div class="shell">
+      <div class="section__head">
+        <span class="section__num">06</span>
+        <div>
+          <h2 class="section__title reveal">확인된 것만 적습니다.</h2>
+        </div>
+        <p class="section__lead reveal" data-delay="1">
+          수치는 제품 사양과 조사 결과에서 가져왔습니다. 임상으로 표기하지 않습니다.
+        </p>
+      </div>
+
+      <div class="proof">
+        <!-- ⚠️ 만족도 조사 — "임상 입증"으로 승격 금지.
+             긍정 응답률 수치는 원자료 확인 후 data-value 자리에 기입할 것. -->
+        <div class="proof__survey reveal">
+          <span class="eyebrow">인체적용시험 만족도 조사</span>
+          <p class="proof__n" data-placeholder="긍정 응답률 %">— <span>%</span></p>
+          <p class="proof__meta">
+            3점 이상 긍정 응답률 기준 · 참여 20명<br>
+            조사 기간 2025.02.25 – 2025.03.12
+          </p>
+          <p class="proof__note">만족도 조사 결과이며, 효능·효과를 입증하는 임상시험 결과가 아닙니다.</p>
+        </div>
+
+        <ul class="proof__list" role="list">
+          <li class="reveal"><span class="eyebrow">Award</span><b>서울어워드 2025 우수상품</b><span class="proof__sub">확인서 2025.07.28</span></li>
+          <li class="reveal" data-delay="1"><span class="eyebrow">Retail</span><b>인천공항 T1 · T2 면세 입점</b></li>
+          <li class="reveal" data-delay="2"><span class="eyebrow">Global</span><b>골든디스크어워즈 대만</b><span class="proof__sub">2026.01.10</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ S8 — Reviews & Stories ══ -->
+  <section class="section section--stories" id="stories">
+    <div class="shell">
+      <span class="section__num">07</span>
+      <h2 class="section__title section__title--wide reveal">
+        써 본 사람들,<br>그리고 만든 사람들의 이야기.
+      </h2>
+    </div>
+
+    <!-- ⚠️ 아래 타일은 전부 자리표시입니다. 실제 리뷰(닉네임·출처 확인된 것)와
+         프레스 인용(매체명·이미지사용권 확인)으로 교체 전 배포 금지.
+         만족도 조사 응답을 여기 넣을 경우 "만족도 조사 응답"으로 표기할 것. -->
+    <div class="scroller" data-scroller>
+      <ul class="scroller__track" role="list">
+        <li class="tile tile--round"><div class="tile__img" data-placeholder="UGC 인물"></div><p class="tile__q" data-placeholder="실사용자 리뷰 원문">리뷰 원문 자리</p><span class="tile__by" data-placeholder="닉네임 · 출처">닉네임 · 출처</span></li>
+        <li class="tile tile--tall"><div class="tile__img" data-placeholder="사용 컷 세로"></div><p class="tile__q" data-placeholder="실사용자 리뷰 원문">리뷰 원문 자리</p><span class="tile__by" data-placeholder="닉네임 · 출처">닉네임 · 출처</span></li>
+        <li class="tile tile--video">
+          <div class="tile__img" data-placeholder="후기 영상 썸네일"></div>
+          <button class="tile__play" type="button" aria-label="후기 영상 재생">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>
+          </button>
+          <p class="tile__q">영상 후기 자리</p>
+        </li>
+        <li class="tile tile--press">
+          <a class="tile__ext" href="#stories" aria-label="기사 원문 열기">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 3h7v7M21 3l-9 9M19 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+          </a>
+          <p class="tile__q" data-placeholder="프레스 인용문">프레스 인용 자리</p>
+          <span class="tile__by" data-placeholder="매체명 · 이미지사용권 확인">매체명</span>
+        </li>
+        <li class="tile tile--round"><div class="tile__img" data-placeholder="UGC 인물"></div><p class="tile__q" data-placeholder="실사용자 리뷰 원문">리뷰 원문 자리</p><span class="tile__by" data-placeholder="닉네임 · 출처">닉네임 · 출처</span></li>
+        <li class="tile tile--tall"><div class="tile__img" data-placeholder="사용 컷 세로"></div><p class="tile__q" data-placeholder="실사용자 리뷰 원문">리뷰 원문 자리</p><span class="tile__by" data-placeholder="닉네임 · 출처">닉네임 · 출처</span></li>
+      </ul>
+    </div>
+    <p class="scroller__hint shell">좌우로 드래그해 더 보기</p>
+  </section>
+
+  <!-- ══ S9 — Brand Closing ══ -->
+  <section class="section section--closing" id="closing">
+    <div class="shell">
+      <span class="section__num">08</span>
+      <h2 class="closing__title reveal">Formulation First</h2>
+      <p class="closing__sub reveal" data-delay="1">
+        조건을 먼저 설계합니다. 그다음이 성분입니다.
+      </p>
+      <div class="cta-row cta-row--center reveal" data-delay="2">
+        <a class="btn btn--solid" href="#formulas">제품 보기</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell site-footer__inner">
+    <div class="site-footer__brand">
+      <p class="wordmark wordmark--footer">LAVASOME<span class="wordmark__dot" aria-hidden="true"></span></p>
+      <p class="site-footer__line">제주 유래 자산을 기능적으로 해석하는 설계 기반 스킨케어.</p>
+    </div>
+    <nav class="site-footer__nav" aria-label="푸터">
+      <div>
+        <h3>PRODUCTS</h3>
+        <a href="#formulas">전체 보기</a>
+        <a href="#mechanism">Formulation First</a>
+        <a href="#ingredients">성분</a>
+      </div>
+      <div>
+        <h3>BRAND</h3>
+        <a href="#jeju">Jeju Origin</a>
+        <a href="#gentle">Gentle Efficacy</a>
+        <a href="#proof">Proof</a>
+      </div>
+    </nav>
+  </div>
+  <div class="shell site-footer__legal">
+    <p>본 페이지의 만족도 조사 결과는 효능·효과를 입증하는 임상시험 결과가 아닙니다. 화장품법상 표시·광고 범위 내에서 표기합니다.</p>
+    <p>© <span data-year>2026</span> LAVASOME</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
