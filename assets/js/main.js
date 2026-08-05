@@ -98,7 +98,43 @@
     addEventListener('resize', onScroll, { passive: true });
   }
 
-  /* ── S8 가로 드래그 스크롤러 ─────────────────────────────── */
+  /* ── S1 히어로 시차(패럴랙스) ────────────────────────────
+     배경과 사진 세 장이 서로 다른 비율로 움직여 층이 갈린다.
+     data-parallax 값: 양수면 스크롤을 느리게 따라오고(뒤로 물러남),
+     음수면 페이지보다 빨리 올라간다(앞으로 다가옴). */
+  var hero = document.querySelector('.hero');
+  if (hero && !reduced) {
+    var layers = [].slice.call(hero.querySelectorAll('[data-parallax]')).map(function (el) {
+      return { el: el, rate: parseFloat(el.getAttribute('data-parallax')) || 0 };
+    });
+
+    var pTicking = false;
+    var paint = function () {
+      pTicking = false;
+      var y = window.scrollY;
+      // 히어로가 화면을 벗어나면 계산을 멈춘다
+      if (y > hero.offsetHeight) return;
+      layers.forEach(function (l) {
+        l.el.style.transform = 'translate3d(0,' + (y * l.rate).toFixed(2) + 'px,0)';
+      });
+    };
+    var onP = function () {
+      if (pTicking) return;
+      pTicking = true;
+      requestAnimationFrame(paint);
+    };
+    paint();
+    addEventListener('scroll', onP, { passive: true });
+    addEventListener('resize', onP, { passive: true });
+  }
+
+  /* 사진이 아직 없으면 깨진 이미지 대신 자리표시 배경만 남긴다 */
+  [].forEach.call(document.querySelectorAll('.hero img'), function (img) {
+    img.addEventListener('error', function () { img.remove(); });
+    if (img.complete && img.naturalWidth === 0) img.remove();
+  });
+
+  /* ── S7 가로 드래그 스크롤러 ─────────────────────────────── */
   var sc = document.querySelector('[data-scroller]');
   if (sc) {
     var down = false, startX = 0, startLeft = 0, moved = 0;

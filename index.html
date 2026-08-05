@@ -30,22 +30,44 @@
 
 <main id="main" tabindex="-1">
 
-  <!-- ══ S1 — Hero ══ -->
+  <!-- ══ S1 — Hero ══
+       사진 4장을 깃허브에 올린 뒤 아래 경로에 맞춰 넣으면 된다.
+         assets/img/hero/hero-bg.jpg   배경 — 제주 해안 (가로 2400px 이상 권장)
+         assets/img/hero/hero-01.jpg   모델컷 (세로 3:4)
+         assets/img/hero/hero-02.jpg   현무암 (세로 3:4.6)
+         assets/img/hero/hero-03.jpg   용암석 클로즈업 (가로 4:3)
+       파일이 없으면 main.js 가 <img> 를 걷어내고 자리표시 그라디언트만 남긴다.
+       data-parallax = 스크롤 대비 이동 비율. 값이 다를수록 층이 갈린다. -->
   <section class="hero" id="top">
-    <div class="hero__bg" aria-hidden="true">
-      <!-- 교체: 상세 1p 앰플 풀블리드 컷 -->
-      <div class="hero__ampoule" data-placeholder="앰플 풀블리드 컷"></div>
+    <div class="hero__bg" data-parallax="0.28" aria-hidden="true">
+      <img src="assets/img/hero/hero-bg.jpg" alt="">
     </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
 
     <div class="shell hero__inner">
-      <p class="eyebrow reveal">Jeju Origin, Built for Stability</p>
-      <h1 class="hero__title reveal" data-delay="1">Formulation First</h1>
-      <p class="hero__sub reveal" data-delay="2">
-        성분이 제대로 작동하도록 조건부터 설계하는 스킨케어
-      </p>
-      <div class="cta-row reveal" data-delay="3">
-        <a class="btn btn--solid" href="#formulas">제품 보기</a>
-        <a class="btn btn--pill" href="#jeju">브랜드 이야기</a>
+      <div class="hero__copy">
+        <p class="eyebrow reveal">Jeju Origin, Built for Stability</p>
+        <h1 class="hero__title reveal" data-delay="1">Formulation First</h1>
+        <p class="hero__sub reveal" data-delay="2">
+          성분이 제대로 작동하도록 조건부터 설계하는 스킨케어
+        </p>
+        <div class="cta-row reveal" data-delay="3">
+          <a class="btn btn--solid" href="#formulas">제품 보기</a>
+          <a class="btn btn--pill" href="#jeju">브랜드 이야기</a>
+        </div>
+      </div>
+
+      <div class="hero__collage">
+        <div class="hero__panel" data-parallax="0.06" aria-hidden="true"></div>
+        <figure class="hero__shot hero__shot--a" data-parallax="-0.10">
+          <img src="assets/img/hero/hero-01.jpg" alt="라바섬을 사용하는 모델">
+        </figure>
+        <figure class="hero__shot hero__shot--b" data-parallax="0.12">
+          <img src="assets/img/hero/hero-02.jpg" alt="제주 현무암">
+        </figure>
+        <figure class="hero__shot hero__shot--c" data-parallax="-0.18">
+          <img src="assets/img/hero/hero-03.jpg" alt="제주 용암석 표면">
+        </figure>
       </div>
     </div>
   </section>
