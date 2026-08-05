@@ -24,15 +24,22 @@ UI는 뉴트럴로 유지합니다.
 
 ## 폰트 — 지금은 임시
 
-확정 서체는 **Garamond Premier Pro** (Adobe Fonts 킷 `zhv7ywn`)인데,
-현재 개발 환경에서 `use.typekit.net`이 막혀 있어 **임시로 Google Fonts를 쓰고 있습니다.**
+Adobe Fonts 킷 `zhv7ywn` 링크는 `index.html` 에 **이미 물려 있습니다.**
+다만 이 개발 환경은 `use.typekit.net` 이 막혀 있어 프리뷰에서는 폴백이 뜹니다.
+대표 로컬·라이브에서는 킷 서체가 그대로 적용됩니다.
 
-| 용도 | 지금 (임시) | 확정 |
-|---|---|---|
-| 영문 큰 타이틀 | Cormorant Garamond Light 300 | Garamond Premier Pro (Light / display 옵티컬) |
-| 영문 라벨·수치 | EB Garamond 400 | Garamond Premier Pro (text 옵티컬) |
-| 한글 헤드라인 | Gowun Batang | 미정 |
-| 한글 본문 | Noto Serif KR | 미정 |
+| 용도 | 토큰 | 확정 (킷) | 프리뷰 폴백 |
+|---|---|---|---|
+| 영문 큰 타이틀 | `--font-title` | garamond-premier-pro 300 | Cormorant Garamond 300 |
+| 영문 작은 라벨·넘버링 | `--font-label` | **nitti-typewriter-normal 400** | Courier Prime 400 |
+| 영문 수치·워드마크 | `--font-display` | garamond-premier-pro | EB Garamond |
+| 한글 헤드라인 | `--font-kr-head` | 미정 | Gowun Batang |
+| 한글 본문 | `--font-kr-body` | 미정 | Noto Serif KR |
+
+`--font-label` 이 걸리는 곳: 히어로 eyebrow, 섹션 넘버(01·02), SHOP, Best 태그,
+벤핏 영문(Brightening 등), 성분 영문명, 감각 라벨, 푸터 메뉴 제목.
+수치(13.5% / 135,000ppm)와 워드마크는 가라몬드로 남겨뒀습니다 — 모노로 바꾸면
+수치의 무게감이 죽습니다. 원하시면 옮기겠습니다.
 
 **교체 방법 — 두 군데만 고치면 끝입니다.**
 
@@ -44,17 +51,8 @@ UI는 뉴트럴로 유지합니다.
 > EB Garamond 은 wght 축이 400~800 이라 Regular보다 얇아지지 않습니다.
 > Cormorant Garamond 는 300부터 있어서 얇은 타이틀을 실제로 보여줄 수 있습니다.
 
-1. `index.html` 의 주석 처리된 킷 링크를 살립니다.
-   ```html
-   <link rel="stylesheet" href="https://use.typekit.net/zhv7ywn.css">
-   ```
-2. `assets/css/styles.css` 의 `--font-display` 첫 항목을 앞으로 옮깁니다.
-   ```css
-   --font-display: "garamond-premier-pro", "EB Garamond", …;
-   ```
-
-한글 명조를 구하시면 `--font-kr-head` / `--font-kr-body` 도 같은 방식으로 바꾸면 됩니다.
-서체 이름만 갈아끼우면 되도록 전부 CSS 변수로 빼놨습니다.
+킷 서체 이름이 이미 각 토큰 맨 앞에 있어서 **추가 작업은 없습니다.**
+한글 명조를 구하시면 `--font-kr-head` / `--font-kr-body` 맨 앞에 이름만 넣으면 됩니다.
 
 ⚠️ Typekit 킷은 **도메인 잠금**입니다. 킷 설정에 `localhost` 와 라이브 도메인이
 둘 다 등록돼 있어야 합니다.

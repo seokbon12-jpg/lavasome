@@ -10,7 +10,7 @@
      킷 도메인이 열리면 --font-display 첫 항목만 "garamond-premier-pro" 로
      바꾸면 교체 끝. 지금은 EB Garamond 로 임시 대체 중.
      한글 명조도 확정 서체 수급 전까지 Gowun Batang / Noto Serif KR 임시. */
-  --font-display: "EB Garamond", "garamond-premier-pro", "Adobe Garamond Pro",
+  --font-display: "garamond-premier-pro", "EB Garamond", "Adobe Garamond Pro",
                   Garamond, "Times New Roman", serif;
   --font-kr-head: "Gowun Batang", "Noto Serif KR", var(--font-display), serif;
   --font-kr-body: "Noto Serif KR", "Gowun Batang", var(--font-display), serif;
@@ -20,8 +20,14 @@
      이쪽은 display 옵티컬, 저쪽은 text 옵티컬로 잡으면 된다.
      임시 대체본을 Cormorant Garamond 로 둔 이유: EB Garamond 은 wght 축이
      400~800 이라 400보다 얇아지지 않는다. Cormorant 는 300부터 있다. */
-  --font-title: "Cormorant Garamond", "garamond-premier-pro", var(--font-display);
+  --font-title: "garamond-premier-pro", "Cormorant Garamond", var(--font-display);
   --w-title: 300;
+
+  /* 작은 영문 라벨·카테고리·넘버링 — 타자기 모노.
+     확정본은 킷의 nitti-typewriter-normal. Courier Prime 은 킷이 안 뜰 때
+     쓰는 대체본이다(둘 다 타자기 계열이지만 폭·굵기는 다르다). */
+  --font-label: "nitti-typewriter-normal", "Courier Prime", ui-monospace,
+                "SFMono-Regular", Menlo, monospace;
 
   /* ── 컬러 ──────────────────────────────────────────────────
      뉴트럴은 순수 회색이 아니라 아주 옅은 웜 그레이. 완전 무채색으로 가면
@@ -81,10 +87,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 em, i { font-style: normal; }
 
 /* 영문은 항상 디스플레이 세리프로 */
-.eyebrow, .card__benefit em, .figure__l em, .layer__tag em,
-.ing h3 em, .sense dt em,
-.wordmark, .nav-shop, .section__num, .figure__n, .card__figure,
-.ing__n { font-family: var(--font-display); }
+.wordmark, .figure__n, .card__figure, .ing__n {
+  font-family: var(--font-display);
+}
+
+/* 작은 영문 라벨 — 타자기 모노. 모노는 자체 자간이 넓으므로
+   세리프 때 쓰던 .24em 트래킹을 그대로 두면 흩어져 보인다. */
+.eyebrow, .section__num, .nav-shop, .card__tag, .ing__i,
+.card__benefit em, .figure__l em, .layer__tag em,
+.ing h3 em, .sense dt em, .site-footer__nav h3 {
+  font-family: var(--font-label);
+  font-weight: 400;
+}
 
 /* 큰 영문 타이틀 — 얇은 웨이트로 */
 .hero__title, .closing__title {
@@ -138,7 +152,7 @@ em, i { font-style: normal; }
   background: var(--accent);
 }
 .nav-shop {
-  font-size: 13px; letter-spacing: .22em;
+  font-size: 12px; letter-spacing: .12em;
   padding: 8px 2px; border-bottom: 1px solid var(--line);
   transition: border-color .3s var(--ease);
 }
@@ -146,8 +160,8 @@ em, i { font-style: normal; }
 
 /* ── 공통 파츠 ─────────────────────────────────────────────── */
 .eyebrow {
-  font-size: 12px; letter-spacing: .24em; text-transform: uppercase;
-  color: var(--accent); font-weight: 500;
+  font-size: 11.5px; letter-spacing: .13em; text-transform: uppercase;
+  color: var(--accent);
 }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -167,7 +181,7 @@ em, i { font-style: normal; }
 
 .section { padding: 132px 0; }
 .section__num {
-  display: block; font-size: 12px; letter-spacing: .2em;
+  display: block; font-size: 11.5px; letter-spacing: .12em;
   color: var(--accent); margin-bottom: 26px;
 }
 .section__head {
@@ -231,7 +245,8 @@ em, i { font-style: normal; }
 .card__tag {
   position: absolute; top: 0; left: 0;
   background: var(--ink); color: var(--paper);
-  font-size: 11px; letter-spacing: .12em; padding: 4px 10px;
+  font-size: 10.5px; letter-spacing: .1em; padding: 4px 10px;
+  text-transform: uppercase;
 }
 .card__shot {
   aspect-ratio: 3 / 4; margin: 8px 0 20px; border-radius: 3px;
@@ -249,7 +264,7 @@ em, i { font-style: normal; }
   margin: 8px 0 12px; font-size: 14px; color: var(--ink-70);
 }
 .card__benefit em {
-  font-size: 12px; letter-spacing: .16em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
   color: var(--accent); margin-left: 6px;
 }
 .card__desc { font-size: 14px; color: var(--ink-70); line-height: 1.7; }
@@ -299,7 +314,7 @@ em, i { font-style: normal; }
   margin-top: 12px; font-size: 15px; color: var(--ink-70);
 }
 .figure__l em {
-  display: block; font-size: 12px; letter-spacing: .18em;
+  display: block; font-size: 11px; letter-spacing: .1em;
   text-transform: uppercase; color: var(--accent); margin-top: 3px;
 }
 
@@ -311,7 +326,7 @@ em, i { font-style: normal; }
   font-family: var(--font-kr-head); font-size: 19px;
 }
 .layer__tag em {
-  font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
   color: var(--accent); margin-left: 8px;
 }
 .layer p { color: var(--ink-70); font-size: 15px; }
@@ -342,7 +357,7 @@ em, i { font-style: normal; }
 }
 .sense dt { font-family: var(--font-kr-head); font-size: 19px; margin-bottom: 12px; }
 .sense dt em {
-  font-size: 12px; letter-spacing: .18em; text-transform: uppercase;
+  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
   color: var(--accent); margin-left: 8px;
 }
 .sense dd { margin: 0; color: var(--ink-70); font-size: 15px; }
@@ -357,10 +372,10 @@ em, i { font-style: normal; }
   background: var(--line); border: 1px solid var(--line);
 }
 .ing { background: var(--paper); padding: 34px 30px 38px; }
-.ing__i { font-size: 12px; letter-spacing: .2em; color: var(--accent); }
+.ing__i { font-size: 11.5px; letter-spacing: .12em; color: var(--accent); }
 .ing h3 { font-family: var(--font-kr-head); font-size: 20px; margin: 16px 0 10px; }
 .ing h3 em {
-  display: block; font-size: 12px; letter-spacing: .18em;
+  display: block; font-size: 11px; letter-spacing: .1em;
   text-transform: uppercase; color: var(--accent); margin-top: 4px;
 }
 .ing__n {
@@ -443,7 +458,7 @@ em, i { font-style: normal; }
 .site-footer__line { color: rgba(250, 250, 248, .6); font-size: 15px; max-width: 34ch; }
 .site-footer__nav { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 .site-footer__nav h3 {
-  font-family: var(--font-display); font-size: 12px; letter-spacing: .2em;
+  font-size: 11.5px; letter-spacing: .12em;
   color: #A9A192; margin-bottom: 16px;
 }
 .site-footer__nav a {
