@@ -33,6 +33,20 @@
       });
     }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
     reveals.forEach(function (el) { io.observe(el); });
+
+    // 앵커로 한 번에 멀리 점프하면(푸터의 #ingredients 등) 옵저버가
+    // 그 프레임을 건너뛰어 해당 섹션이 빈 채로 남는 경우가 있다.
+    // 점프 직후에는 위치를 직접 재서 맞춰 준다.
+    var syncReveals = function () {
+      var vh = window.innerHeight;
+      reveals.forEach(function (el) {
+        var r = el.getBoundingClientRect();
+        el.classList.toggle('is-in', r.top < vh * 0.9 && r.bottom > 0);
+      });
+    };
+    addEventListener('hashchange', syncReveals);
+    addEventListener('load', syncReveals);
+    if (location.hash) setTimeout(syncReveals, 60);
   }
 
   /* ── S3 제형 360° (스크롤 연동) ──────────────────────────
