@@ -1,17 +1,20 @@
 # LAVASOME — 메인페이지
 
-정적 사이트 (HTML/CSS/JS, 외부 라이브러리 없음). 스펙 원본은 [`docs/handoff.md`](docs/handoff.md).
+정적 사이트 (HTML/CSS/JS). 외부 라이브러리는 스크럽용 GSAP 하나뿐이고,
+CDN 없이 `assets/vendor/` 에 넣어 씁니다. 스펙 원본은 [`docs/handoff.md`](docs/handoff.md).
 
 ```
 index.html
-assets/css/styles.css
-assets/js/main.js
+assets/css/   styles.css · shader-bg.css · box-scrub.css
+assets/js/    main.js · shader-bg.js · box-scrub.js
+assets/vendor/gsap.min.js · ScrollTrigger.min.js
+assets/img/   hero/ · box/
 ```
 
 로컬에서 보기: `python3 -m http.server 8000` 후 `http://localhost:8000`
 
-8섹션 구현: Hero · Our Formulas · Formulation First(메커니즘) · Jeju-Origin ·
-Gentle Efficacy · Ingredient Cards · Reviews & Stories · Brand Closing.
+8섹션 구현: Hero · Our Formulas · **박스 오프닝(스크럽)** · Formulation First(메커니즘) ·
+Jeju-Origin · Gentle Efficacy · Ingredient Cards · Reviews & Stories · Brand Closing.
 
 톤은 저채도 화이트–그레이. 노란빛은 실제 제형 사진에서만 나오게 두고,
 UI는 뉴트럴로 유지합니다.
@@ -30,7 +33,7 @@ Adobe Fonts 킷 `zhv7ywn` 링크는 `index.html` 에 **이미 물려 있습니�
 
 | 용도 | 토큰 | 확정 (킷) | 프리뷰 폴백 |
 |---|---|---|---|
-| 영문 큰 타이틀 | `--font-title` | **classico-urw 400** | Tenor Sans 400 |
+| 영문 큰 타이틀 | `--font-title` | garamond-premier-pro 300 | Cormorant Garamond 300 |
 | 영문 작은 라벨·넘버링 | `--font-label` | **nitti-typewriter-normal 400** | Courier Prime 400 |
 | 영문 수치·워드마크 | `--font-display` | garamond-premier-pro | EB Garamond |
 | 한글 헤드라인 | `--font-kr-head` | 미정 | Gowun Batang |
@@ -47,9 +50,8 @@ Adobe Fonts 킷 `zhv7ywn` 링크는 `index.html` 에 **이미 물려 있습니�
 라벨·수치는 `--font-display` 로 분리해뒀는데, 확정 서체로 넘어가면 둘 다 같은
 패밀리를 쓰되 옵티컬 사이즈만 다르게 지정하면 됩니다.
 
-> ⚠️ Classico URW 의 Adobe Fonts CSS 이름을 확인하지 못해 `classico-urw` 와
-> `urw-classico` 두 표기를 함께 걸어뒀습니다. 킷 페이지에서 실제 값을 확인하고
-> 안 맞는 쪽을 지우세요. Classico 에는 Light 가 없어 웨이트는 400 이 하한입니다.
+> 프리뷰 대체본이 EB Garamond 이 아니라 Cormorant Garamond 인 이유:
+> EB Garamond 은 wght 축이 400~800 이라 Regular 보다 얇아지지 않습니다.
 
 킷 서체 이름이 이미 각 토큰 맨 앞에 있어서 **추가 작업은 없습니다.**
 한글 명조를 구하시면 `--font-kr-head` / `--font-kr-body` 맨 앞에 이름만 넣으면 됩니다.
@@ -67,12 +69,12 @@ HTML에서 `data-placeholder` 속성으로 전부 표시해뒀습니다.
   제형 매크로, 제주 소재, UGC — 는 아직 톤만 맞춘 그라디언트 블록입니다.
 - **S7 리뷰 전부** — 실제 리뷰가 없어서 문구를 지어내지 않았습니다. 타일 구조만 잡아뒀습니다.
   자사몰·와디즈에서 **닉네임·출처가 확인되는 리뷰만** 넣으세요.
-- **S3 360° 시퀀스** — 지금은 SVG 오브제를 스크롤에 맞춰 돌리는 대체 구현입니다.
+- **섹션 02 의 360° 시퀀스** — 지금은 SVG 오브제를 스크롤에 맞춰 돌리는 대체 구현입니다.
   실제 시퀀스를 받으면 `.spin` 에 두 속성만 추가하면 자동 전환됩니다.
   ```html
   <figure class="spin" data-spin data-frames="assets/img/spin/{i}.webp" data-frame-count="36">
   ```
-- **카피** — S1·S9 외에는 상세페이지 원문을 받지 못해 스펙 요약을 근거로 초안을 썼습니다.
+- **카피** — 히어로·클로징 외에는 상세페이지 원문을 받지 못해 스펙 요약을 근거로 초안을 썼습니다.
   상세페이지 원문으로 교체하세요.
 
 ## 표기 관련
