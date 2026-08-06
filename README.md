@@ -121,6 +121,35 @@ assets/js/shader-bg.js     셰이더 + 마운트 로직
 - `prefers-reduced-motion` 이면 첫 프레임 한 장만 그리고 정지합니다
 - devicePixelRatio 는 2 로 상한
 
+## 박스 오프닝 스크롤 스크럽 (섹션 02 위)
+
+원본 영상 `assets/video/box-opening.mp4` (2404×3444 · 5.04s · 24fps)에서
+ffmpeg로 프레임을 뽑아 WebP 시퀀스로 넣고, GSAP ScrollTrigger로 섹션을
+pin 한 뒤 스크롤 진행도를 프레임 인덱스에 매핑합니다.
+
+```
+assets/img/box/desktop/001..121.webp   660px · 1.8 MB
+assets/img/box/mobile/001..041.webp    430px · 288 KB  (1/3로 솎음)
+assets/css/box-scrub.css
+assets/js/box-scrub.js
+assets/vendor/gsap.min.js · ScrollTrigger.min.js   (Apache 2.0, LICENSE 동봉)
+```
+
+- **배경색** — 영상 모서리에서 샘플링한 `#F2F1ED`를 `--film` 토큰으로 두고,
+  스크럽 섹션과 섹션 02(`.section--mech`)에 같이 적용해 이음매를 없앴습니다.
+  (섹션 02는 원래 `#F3F2EF`라 미세하게 달랐습니다.)
+- **프레임 재추출** — 원본에 여백이 많아 콘텐츠 bbox(1860×2528)로 크롭했습니다.
+  크롭을 바꾸면 `box-scrub.css`의 `aspect-ratio: 660 / 898`도 같이 고쳐야 합니다.
+- **모바일** — 프레임을 41장으로 줄이고 해상도도 430px로 낮춥니다.
+- **prefers-reduced-motion** — ScrollTrigger를 아예 만들지 않고 마지막 프레임만
+  정적으로 표시합니다(섹션 높이도 `auto`).
+- **스크럽 길이** — `box-scrub.js`의 `end: '+=220%'`(모바일 160%). 늘리면 더 천천히 열립니다.
+
+### 되돌리기
+
+`index.html`에서 `box-scrub.css` 링크, `box-scrub.js`·GSAP 스크립트, 그리고
+`<section class="boxopen" data-box-scrub>` 블록을 지우면 됩니다.
+
 ## 접근성 / 반응형
 
 - 데스크톱 1440 · 모바일 375 확인, 가로 오버플로 없음

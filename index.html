@@ -17,6 +17,7 @@
 <!-- ▼ 셰이더 배경 (되돌리려면 이 줄과 아래 script, 그리고 성분 섹션의
      data-shader-bg 속성만 지우면 원래 흰 배경으로 복귀) -->
 <link rel="stylesheet" href="assets/css/shader-bg.css">
+<link rel="stylesheet" href="assets/css/box-scrub.css">
 
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
@@ -150,6 +151,17 @@
         </li>
       </ul>
     </div>
+  </section>
+
+  <!-- ══ 박스 오프닝 — 스크롤 스크럽 ══
+       프레임: assets/img/box/{desktop|mobile}/NNN.webp (ffmpeg → WebP)
+       원본 영상: hf_20260805_211203_*.mp4 (2404×3444 · 5.04s · 24fps)
+       섹션을 pin 하고 스크롤 진행도를 프레임에 매핑한다. 자세한 건 box-scrub.js -->
+  <section class="boxopen" data-box-scrub aria-label="Vita-C Plus 앰플 패키지가 열리는 장면">
+    <div class="boxopen__stage">
+      <canvas class="boxopen__canvas"></canvas>
+    </div>
+    <p class="boxopen__label">Scroll to open</p>
   </section>
 
   <!-- ══ S3 — Formulation First (메커니즘) ══ -->
@@ -403,5 +415,8 @@
   </div>
 </footer>
 
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/shader-bg.js"></script>
+<script src="assets/js/box-scrub.js"></script>

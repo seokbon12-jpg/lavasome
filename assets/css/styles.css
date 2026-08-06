@@ -35,6 +35,7 @@
   --paper:    #FAFAF8;  /* 기본 배경 — 거의 흰색 */
   --paper-2:  #F3F2EF;  /* 교차 섹션 */
   --panel:    #EAE8E3;  /* 패널·밴드 */
+  --film:     #F2F1ED;  /* 박스 오프닝 영상의 배경색(모서리 샘플링) */
   --line:     rgba(26, 25, 23, .13);
 
   --ink:      #1A1917;
@@ -315,7 +316,8 @@ em, i { font-style: normal; }
 .card__link:hover { border-bottom-color: var(--ink); }
 
 /* ── S3 메커니즘 ──────────────────────────────────────────── */
-.section--mech { background: var(--paper-2); }
+/* 위의 오프닝 영상과 이어지도록 영상 배경색을 그대로 쓴다 */
+.section--mech { background: var(--film); }
 .mech {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 60px; align-items: center; margin-bottom: 96px;
