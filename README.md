@@ -86,8 +86,9 @@ HTML에서 `data-placeholder` 속성으로 전부 표시해뒀습니다.
 
 ## 셰이더 배경 (성분 섹션) — 되돌리기 쉽게 격리해 뒀습니다
 
-성분 섹션(`#ingredients`) 배경에 WebGL "Smoke" 플로우 셰이더가 깔립니다.
-21st.dev Shader Builder 레시피 값 그대로이고, 커서 반응은 꺼져 있습니다.
+성분 섹션(`#ingredients`) 배경에 WebGL "Smoke" 플로우 셰이더가 깔리고,
+그 위에 헤드라인 블록과 성분 카드가 **liquid glass** 판으로 떠 있습니다.
+셰이더는 21st.dev Shader Builder 레시피 값 그대로이고, 커서 반응은 꺼져 있습니다.
 
 **전부 이 두 파일 안에만 있습니다.**
 
@@ -95,6 +96,21 @@ HTML에서 `data-placeholder` 속성으로 전부 표시해뒀습니다.
 assets/css/shader-bg.css   .has-shader-bg 안으로만 스코프됨
 assets/js/shader-bg.js     셰이더 + 마운트 로직
 ```
+
+유리 굴절용 SVG 필터(`#glass-distortion`)는 성분 섹션 안에 인라인으로 두었습니다.
+섹션을 지우면 필터도 같이 사라집니다.
+
+### 유리판 구성 (레이어 4장)
+
+1. 셰이더 캔버스 — `filter: saturate/brightness` 로 수영장 물빛까지 끌어올림
+2. 물빛 베일 — 명도 폭을 눌러 흰 글자가 버티게
+3. 카드 `::before` — `backdrop-filter: blur()` + `filter: url(#glass-distortion)` 로 굴절
+4. 카드 `::after` + `inset` 그림자 두 줄 — 유리 모서리 하이라이트
+
+**대비는 렌더 픽셀로 측정해 맞췄습니다.** 흰 글자 기준 헤드판 5.1~5.4:1,
+카드 4.8~7.0:1 로 전부 WCAG AA(본문 4.5:1)를 넘깁니다. 유리 농도
+(`rgba(5,34,47,.58)`)를 낮추면 물결이 더 비치지만 **대비가 바로 무너집니다** —
+조정하실 때 이 값이 마지노선입니다.
 
 ### 끄는 법 — 셋 중 아무거나
 
