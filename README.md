@@ -142,11 +142,12 @@ assets/js/shader-bg.js     셰이더 + 마운트 로직
 
 물결 밝기는 두 곳에서 정해집니다.
 
-- `.shader-bg__canvas` 의 `filter: saturate(1.22) brightness(1.16)` — 물빛 자체
-- `.has-shader-bg::before` 베일 알파(`.38 / .22 / .38`) — 낮출수록 물결이 진해짐
+- `.shader-bg__canvas` 의 `filter: saturate(1.12) brightness(.94)` — 물빛 자체
+- `.has-shader-bg::before` 베일 — 방사형(중앙 `.30` → 가장자리 `.70`)과
+  세로 그라디언트(`.70 / .60 / .74`)가 겹칩니다. 낮출수록 물결이 밝아집니다.
 
 색·속도는 `shader-bg.js` 상단 상수에 모여 있습니다.
-유리 농도를 만지실 때는 위의 대비 마지노선을 함께 확인하세요.
+물을 밝히면 흰 글자 대비가 먼저 떨어지니 함께 확인하세요.
 
 ### 동작 조건
 
@@ -208,8 +209,8 @@ assets/vendor/gsap.min.js · ScrollTrigger.min.js   (Apache 2.0, LICENSE 동봉)
 남는 2장(`chalet-spare-beads.jpg` 짙은 비드, `chalet-spare-centella.jpg` 병풀)은
 현재 성분 6종에 해당이 없어 뺐습니다. 원본은 `assets/img/chalet/original/`.
 
-⚠️ 원본이 약 330px입니다. 시안 A(96px)는 넉넉하지만 **시안 B(220px)는 레티나에서
-무릅니다.** B로 가시면 더 큰 원본이 필요합니다.
+⚠️ **원본이 약 330px이라 적용된 220px 표본은 레티나에서 무릅니다.**
+같은 컷을 660px 이상으로 다시 주시면 교체하겠습니다.
 
 ## 접근성 / 반응형
 
