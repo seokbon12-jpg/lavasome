@@ -49,68 +49,8 @@
     if (location.hash) setTimeout(syncReveals, 60);
   }
 
-  /* ── S3 제형 360° (스크롤 연동) ──────────────────────────
-     지금은 SVG 오브제를 회전시키는 대체 구현.
-     실제 360° 시퀀스를 받으면 .spin 에 아래 두 속성만 추가하면
-     이미지 시퀀스 모드로 자동 전환된다.
-       data-frames="assets/img/spin/{i}.webp"   ({i} = 1..N)
-       data-frame-count="36"
-  ------------------------------------------------------------ */
-  var spin = document.querySelector('[data-spin]');
-  if (spin && !reduced) {
-    var tpl = spin.getAttribute('data-frames');
-    var count = parseInt(spin.getAttribute('data-frame-count'), 10);
-    var frames = null;
-    var imgEl = null;
-
-    if (tpl && count > 0) {
-      frames = [];
-      for (var i = 1; i <= count; i++) {
-        var src = tpl.replace('{i}', i);
-        var im = new Image();
-        im.src = src;
-        frames.push(src);
-      }
-      imgEl = document.createElement('img');
-      imgEl.className = 'spin__obj';
-      imgEl.alt = '';
-      imgEl.src = frames[0];
-      var stage = spin.querySelector('.spin__stage');
-      stage.innerHTML = '';
-      stage.appendChild(imgEl);
-    }
-
-    var obj = spin.querySelector('.spin__obj');
-    var ticking = false;
-
-    var draw = function () {
-      ticking = false;
-      var r = spin.getBoundingClientRect();
-      var vh = window.innerHeight;
-      // 오브제가 뷰포트를 통과하는 동안 0 → 1
-      var p = (vh - r.top) / (vh + r.height);
-      p = Math.min(1, Math.max(0, p));
-
-      if (frames) {
-        var idx = Math.min(frames.length - 1, Math.round(p * (frames.length - 1)));
-        if (imgEl.getAttribute('src') !== frames[idx]) imgEl.src = frames[idx];
-      } else if (obj) {
-        obj.style.setProperty('--spin', (p * 360).toFixed(1) + 'deg');
-        var gloss = obj.querySelector('.spin__gloss');
-        if (gloss) gloss.style.opacity = (0.12 + Math.abs(Math.cos(p * Math.PI * 2)) * 0.34).toFixed(2);
-      }
-    };
-
-    var onScroll = function () {
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(draw);
-    };
-
-    draw();
-    addEventListener('scroll', onScroll, { passive: true });
-    addEventListener('resize', onScroll, { passive: true });
-  }
+  /* S3 의 SVG 제형 오브제(data-spin)는 시안 A 적용과 함께 실제 제품컷으로
+     대체됐다. 회전 스크립트도 같이 걷어냈다. */
 
   /* ── S1 히어로 시차(패럴랙스) ────────────────────────────
      배경과 사진 세 장이 서로 다른 비율로 움직여 층이 갈린다.

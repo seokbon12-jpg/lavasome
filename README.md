@@ -83,11 +83,9 @@ HTML에서 `data-placeholder` 속성으로 전부 표시해뒀습니다.
   비율이 1182×1475 와 다르면 `.jeju__img` 의 `aspect-ratio` 도 같이 고쳐야 합니다.
 - **S7 리뷰 전부** — 실제 리뷰가 없어서 문구를 지어내지 않았습니다. 타일 구조만 잡아뒀습니다.
   자사몰·와디즈에서 **닉네임·출처가 확인되는 리뷰만** 넣으세요.
-- **섹션 02 의 360° 시퀀스** — 지금은 SVG 오브제를 스크롤에 맞춰 돌리는 대체 구현입니다.
-  실제 시퀀스를 받으면 `.spin` 에 두 속성만 추가하면 자동 전환됩니다.
-  ```html
-  <figure class="spin" data-spin data-frames="assets/img/spin/{i}.webp" data-frame-count="36">
-  ```
+- **섹션 02 의 제품컷** — 시안 A 적용과 함께 SVG 오브제(`.spin` / `data-spin`)를 걷어내고
+  실제 Vita-C Plus 제품 사진(`assets/img/products/vita-c-plus.jpg`)으로 바꿨습니다.
+  전용 컷을 새로 찍으면 `.mech__shot img` 의 `src` 만 갈아끼우면 됩니다(원본 3:4).
 - **카피** — 히어로·클로징 외에는 상세페이지 원문을 받지 못해 스펙 요약을 근거로 초안을 썼습니다.
   상세페이지 원문으로 교체하세요.
 

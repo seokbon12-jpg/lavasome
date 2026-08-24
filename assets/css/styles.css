@@ -328,25 +328,29 @@ em, i { font-style: normal; }
 /* ── S3 메커니즘 ──────────────────────────────────────────── */
 /* 위의 오프닝 영상과 이어지도록 영상 배경색을 그대로 쓴다 */
 .section--mech { background: var(--film); }
+/* 시안 A의 02 — 좁은 제품컷 단 + 넓은 텍스트 단. 헤드가 그리드 안으로
+   들어오므로 이 섹션에는 .section__head 를 쓰지 않는다. */
 .mech {
+  display: grid; grid-template-columns: minmax(0, 440px) minmax(0, 1fr);
+  gap: 80px; align-items: center; margin-bottom: 96px;
+}
+.mech__shot { margin: 0; }
+/* 제품컷 원본 3:4. 이미지 배경(#F6F0E5)과 컨테이너를 맞춰 이음새를 없앤다 */
+.mech__shot img {
+  width: 100%; aspect-ratio: 3 / 4; object-fit: cover;
+  display: block; border-radius: 3px; background: #F6F0E5;
+}
+.mech__shot figcaption {
+  margin-top: 16px; text-align: center;
+  font-size: 13px; color: var(--ink-45); letter-spacing: .04em;
+}
+.mech__body .section__num { margin-bottom: 18px; }
+.mech__body .section__title { margin-bottom: 22px; }
+.mech__body .section__lead { max-width: 46ch; }
+.mech__figures {
   display: grid; grid-template-columns: 1fr 1fr;
-  gap: 60px; align-items: center; margin-bottom: 96px;
+  gap: 36px 32px; margin-top: 46px;
 }
-.spin__stage {
-  display: grid; place-items: center;
-  aspect-ratio: 1; perspective: 1100px;
-}
-.spin__obj {
-  width: 42%; height: auto;
-  transform: rotateY(var(--spin, 0deg));
-  transform-style: preserve-3d;
-}
-.spin__gloss { transition: opacity .2s linear; }
-.spin__cap {
-  text-align: center; font-size: 13px; color: var(--ink-45);
-  letter-spacing: .04em;
-}
-.mech__figures { display: grid; grid-template-columns: 1fr 1fr; gap: 40px 32px; }
 .figure__n {
   display: block; font-size: clamp(38px, 4.6vw, 60px);
   font-weight: 500; line-height: 1; color: var(--ink);
@@ -397,10 +401,13 @@ em, i { font-style: normal; }
 .statement__sub {
   max-width: 44ch; margin: 30px auto 0; color: var(--ink-70);
 }
+/* 시안 A의 격자 어휘를 그대로 — 제품 그리드·레이어와 같은 헤어라인 셀 */
 .senses {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 40px; margin: 88px 0 64px; text-align: left;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--line); border: 1px solid var(--line);
+  margin: 88px 0 64px; text-align: left;
 }
+.sense { background: var(--paper); padding: 34px 30px 38px; }
 .sense dt { font-family: var(--font-kr-head); font-size: 19px; margin-bottom: 12px; }
 .sense dt em {
   font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
@@ -534,7 +541,8 @@ em, i { font-style: normal; }
 @media (max-width: 1080px) {
   .cards { grid-template-columns: repeat(2, 1fr); }
   .ings, .jeju { grid-template-columns: repeat(2, 1fr); }
-  .senses { grid-template-columns: 1fr; gap: 28px; }
+  .senses { grid-template-columns: 1fr; }
+  .mech { grid-template-columns: minmax(0, 360px) minmax(0, 1fr); gap: 48px; }
 }
 
 @media (max-width: 760px) {
@@ -551,12 +559,11 @@ em, i { font-style: normal; }
   .hero__collage { aspect-ratio: 1018 / 1192; }
   .cta-row .btn { flex: 1 1 auto; }
 
-  .cards, .ings, .layers { grid-template-columns: 1fr; }
+  .cards, .ings, .layers, .senses { grid-template-columns: 1fr; }
   .jeju { grid-template-columns: 1fr; gap: 36px; }
   .mech { grid-template-columns: 1fr; gap: 40px; margin-bottom: 60px; }
-  .mech__figures { gap: 28px 20px; }
-  .spin__stage { aspect-ratio: 4 / 3; }
-  .spin__obj { width: 30%; }
+  .mech__shot { max-width: 340px; margin-inline: auto; }
+  .mech__figures { gap: 28px 20px; margin-top: 36px; }
   .tile, .tile--round, .tile--tall, .tile--press { width: 74vw; max-width: 300px; }
   .site-footer__inner { grid-template-columns: 1fr; }
   .section--closing { padding: 96px 0 104px; }
@@ -566,6 +573,5 @@ em, i { font-style: normal; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal { opacity: 1; translate: none; transition: none; }
-  .spin__obj { transform: none !important; }
   * { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }

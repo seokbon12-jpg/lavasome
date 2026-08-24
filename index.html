@@ -176,64 +176,47 @@
     <p class="boxopen__label">Scroll to open</p>
   </section>
 
-  <!-- ══ S3 — Formulation First (메커니즘) ══ -->
+  <!-- ══ S3 — Formulation First (메커니즘) ══
+       시안 A의 02 레이아웃: 제품컷을 왼쪽 단에 세우고 헤드와 근거 수치를
+       오른쪽 단에 붙인다. 위 스크럽 캔버스에서 색이 이어지도록 배경은
+       영상 배경색(--film) 그대로 둔다. -->
   <section class="section section--mech" id="mechanism">
     <div class="shell">
-      <div class="section__head">
-        <span class="section__num">02</span>
-        <div>
+      <div class="mech">
+        <figure class="mech__shot reveal">
+          <img src="assets/img/products/vita-c-plus.jpg"
+               alt="라바섬 Vita-C Plus Ampoule 제품 이미지"
+               loading="lazy" decoding="async">
+          <figcaption>Vita-C Plus Ampoule · 무수 처방 2중 레이어</figcaption>
+        </figure>
+
+        <div class="mech__body">
+          <span class="section__num">02</span>
           <h2 class="section__title reveal">
             농도를 올리는 일보다<br>농도를 지키는 일이 어렵습니다.
           </h2>
-        </div>
-        <p class="section__lead reveal" data-delay="1">
-          순수 비타민C는 물과 만나는 순간부터 무너집니다.
-          라바섬은 물을 빼는 쪽을 택했습니다.
-        </p>
-      </div>
+          <p class="section__lead reveal" data-delay="1">
+            순수 비타민C는 물과 만나는 순간부터 무너집니다.
+            라바섬은 물을 빼는 쪽을 택했습니다.
+          </p>
 
-      <div class="mech">
-        <!-- 스크롤 연동 360° 회전. 실제 시퀀스/GLB 확보 시
-             data-frames="assets/img/spin/{i}.webp" data-frame-count="36" 만 넣으면
-             main.js 가 자동으로 이미지 시퀀스 모드로 전환됩니다. -->
-        <figure class="spin" data-spin role="img"
-                aria-label="Vita-C Plus 앰플 제형을 360도로 살펴보는 이미지">
-          <div class="spin__stage">
-            <svg class="spin__obj" viewBox="0 0 120 300" aria-hidden="true">
-              <defs>
-                <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0">
-                  <stop offset="0" stop-color="#9a968d"/>
-                  <stop offset=".35" stop-color="#d9d6cf"/>
-                  <stop offset=".6" stop-color="#f4f3ef"/>
-                  <stop offset="1" stop-color="#a29d93"/>
-                </linearGradient>
-              </defs>
-              <rect x="46" y="6" width="28" height="46" rx="4" fill="url(#glass)" opacity=".85"/>
-              <rect x="30" y="52" width="60" height="26" rx="3" fill="#4a463f"/>
-              <path d="M30 78h60v176a26 26 0 0 1-26 26H56a26 26 0 0 1-26-26z" fill="url(#glass)"/>
-              <ellipse cx="60" cy="252" rx="30" ry="10" fill="#ffffff" opacity=".3"/>
-              <rect class="spin__gloss" x="40" y="92" width="9" height="150" rx="5" fill="#fff" opacity=".38"/>
-            </svg>
-          </div>
-          <figcaption class="spin__cap">Vita-C Plus Ampoule · 2중 레이어 구조</figcaption>
-        </figure>
-
-        <div class="mech__figures">
-          <div class="figure reveal">
-            <b class="figure__n">13.5<span>%</span></b>
-            <p class="figure__l">순수 비타민C <em>Pure Ascorbic Acid</em></p>
-          </div>
-          <div class="figure reveal" data-delay="1">
-            <b class="figure__n">135,000<span>ppm</span></b>
-            <p class="figure__l">함량 <em>Concentration</em></p>
-          </div>
-          <div class="figure reveal" data-delay="2">
-            <b class="figure__n">pH 3.5</b>
-            <p class="figure__l">흡수 조건 <em>Absorption</em></p>
-          </div>
-          <div class="figure reveal" data-delay="3">
-            <b class="figure__n">2중</b>
-            <p class="figure__l">레이어 구조 <em>Dual Layer</em></p>
+          <div class="mech__figures">
+            <div class="figure reveal">
+              <b class="figure__n">13.5<span>%</span></b>
+              <p class="figure__l">순수 비타민C <em>Pure Ascorbic Acid</em></p>
+            </div>
+            <div class="figure reveal" data-delay="1">
+              <b class="figure__n">135,000<span>ppm</span></b>
+              <p class="figure__l">함량 <em>Concentration</em></p>
+            </div>
+            <div class="figure reveal" data-delay="2">
+              <b class="figure__n">pH 3.5</b>
+              <p class="figure__l">흡수 조건 <em>Absorption</em></p>
+            </div>
+            <div class="figure reveal" data-delay="3">
+              <b class="figure__n">2중</b>
+              <p class="figure__l">레이어 구조 <em>Dual Layer</em></p>
+            </div>
           </div>
         </div>
       </div>
