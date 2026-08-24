@@ -1,0 +1,209 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LAVASOME — 성분 섹션 시안 A / B</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Courier+Prime:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/zhv7ywn.css">
+
+<link rel="stylesheet" href="../assets/css/styles.css">
+<link rel="stylesheet" href="../assets/css/shader-bg.css">
+<link rel="stylesheet" href="proposals.css">
+
+<!-- 유리 굴절 필터 (본 페이지와 동일) -->
+<svg class="glass-defs" aria-hidden="true" focusable="false">
+  <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%"
+          filterUnits="objectBoundingBox">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012"
+                  numOctaves="2" seed="17" result="turbulence"/>
+    <feGaussianBlur in="turbulence" stdDeviation="2" result="softMap"/>
+    <feDisplacementMap in="SourceGraphic" in2="softMap" scale="34"
+                       xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
+
+<header class="pr-head">
+  <p class="pr-head__kicker">LAVASOME · 성분 섹션 시안</p>
+  <h1 class="pr-head__title">샬레 사진을 쓰는 두 가지 방향</h1>
+  <p class="pr-head__note">
+    같은 내용·같은 사진으로 만든 두 안입니다. 아래로 내리면서 비교하세요.
+  </p>
+</header>
+
+<!-- ══════════════════ 시안 A ══════════════════ -->
+<div class="pr-label">
+  <span class="pr-label__tag">시안 A</span>
+  <div>
+    <h2>유리 카드 안에 샬레</h2>
+    <p>지금 구조를 유지한 채 카드마다 샬레를 원형으로 얹습니다.
+       정보 위계가 그대로라 안전하고, 여섯 칸이 균일하게 읽힙니다.</p>
+  </div>
+</div>
+
+<section class="section prop prop--a" data-shader-bg>
+  <div class="shell">
+    <div class="section__head">
+      <span class="section__num">05</span>
+      <div>
+        <p class="eyebrow">Multi-Active Brightening Formula</p>
+        <h2 class="section__title">
+          여섯 가지가<br>하나의 조건 위에서 움직입니다.
+        </h2>
+      </div>
+      <p class="section__lead">
+        각각이 따로 작동하지 않도록, 서로의 조건을 방해하지 않는 조합만 남겼습니다.
+      </p>
+    </div>
+
+    <ul class="ings" role="list">
+      <li class="ing ing--shot">
+        <div class="ing__dish"><img src="../assets/img/chalet/chalet-vitc.jpg" alt="샬레에 담긴 비타민C 앰플액"></div>
+        <div class="ing__body">
+          <span class="ing__i">01</span>
+          <h3>순수 비타민C <em>Ascorbic Acid</em></h3>
+          <p class="ing__n">13.5%</p>
+          <p>전환 과정 없이 그대로 작동하는 형태로 담았습니다.</p>
+        </div>
+      </li>
+      <li class="ing ing--shot">
+        <div class="ing__dish"><img src="../assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암석과 물"></div>
+        <div class="ing__body">
+          <span class="ing__i">02</span>
+          <h3>제주 용암해수 <em>Lava Seawater</em></h3>
+          <p class="ing__n">미네랄</p>
+          <p>처방의 기준을 잡는 물. 미네랄 균형이 일정합니다.</p>
+        </div>
+      </li>
+      <li class="ing ing--shot">
+        <div class="ing__dish"><img src="../assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초 열매"></div>
+        <div class="ing__body">
+          <span class="ing__i">03</span>
+          <h3>백년초 <em>Opuntia</em></h3>
+          <p class="ing__n">제주 유래</p>
+          <p>건조한 환경을 견디며 축적한 다당체를 씁니다.</p>
+        </div>
+      </li>
+      <li class="ing ing--shot">
+        <div class="ing__dish"><img src="../assets/img/chalet/chalet-peptide.jpg" alt="샬레에 담긴 기포가 인 젤"></div>
+        <div class="ing__body">
+          <span class="ing__i">04</span>
+          <h3>펩타이드 <em>Peptide</em></h3>
+          <p class="ing__n">복합</p>
+          <p>탄력의 조건을 보조하는 복합 펩타이드.</p>
+        </div>
+      </li>
+      <li class="ing ing--shot">
+        <div class="ing__dish"><img src="../assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 맑은 젤"></div>
+        <div class="ing__body">
+          <span class="ing__i">05</span>
+          <h3>글루타치온 <em>Glutathione</em></h3>
+          <p class="ing__n">고함량</p>
+          <p>맑기의 기준을 올리는 항산화 축.</p>
+        </div>
+      </li>
+      <li class="ing ing--shot">
+        <div class="ing__dish"><img src="../assets/img/chalet/chalet-betaglucan.jpg" alt="샬레에 담긴 곡물"></div>
+        <div class="ing__body">
+          <span class="ing__i">06</span>
+          <h3>베타글루칸 <em>Beta-Glucan</em></h3>
+          <p class="ing__n">진정</p>
+          <p>고농도를 견디게 하는 완충 역할.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════ 시안 B ══════════════════ -->
+<div class="pr-label">
+  <span class="pr-label__tag">시안 B</span>
+  <div>
+    <h2>표본이 물속에 떠 있는 구성</h2>
+    <p>카드를 걷어내고 샬레를 크게 씁니다. 물을 깊게 내려 표본이 발광하듯 떠 보이고,
+       설명은 그 아래 직접 놓입니다. 사진이 주인공이 되는 대신 글이 짧아야 합니다.</p>
+  </div>
+</div>
+
+<section class="section prop prop--b" data-shader-bg>
+  <div class="shell">
+    <div class="section__head">
+      <span class="section__num">05</span>
+      <div>
+        <p class="eyebrow">Multi-Active Brightening Formula</p>
+        <h2 class="section__title">
+          여섯 가지가<br>하나의 조건 위에서 움직입니다.
+        </h2>
+      </div>
+      <p class="section__lead">
+        각각이 따로 작동하지 않도록, 서로의 조건을 방해하지 않는 조합만 남겼습니다.
+      </p>
+    </div>
+
+    <ul class="specimens" role="list">
+      <li class="spec">
+        <figure class="spec__dish"><img src="../assets/img/chalet/chalet-vitc.jpg" alt="샬레에 담긴 비타민C 앰플액"></figure>
+        <span class="spec__i">01</span>
+        <h3>순수 비타민C</h3>
+        <p class="spec__en">Ascorbic Acid</p>
+        <p class="spec__n">13.5%</p>
+        <p class="spec__d">전환 과정 없이 그대로 작동하는 형태로.</p>
+      </li>
+      <li class="spec">
+        <figure class="spec__dish"><img src="../assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암석과 물"></figure>
+        <span class="spec__i">02</span>
+        <h3>제주 용암해수</h3>
+        <p class="spec__en">Lava Seawater</p>
+        <p class="spec__n">미네랄</p>
+        <p class="spec__d">처방의 기준을 잡는 물.</p>
+      </li>
+      <li class="spec">
+        <figure class="spec__dish"><img src="../assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초 열매"></figure>
+        <span class="spec__i">03</span>
+        <h3>백년초</h3>
+        <p class="spec__en">Opuntia</p>
+        <p class="spec__n">제주 유래</p>
+        <p class="spec__d">건조를 견디며 축적한 다당체.</p>
+      </li>
+      <li class="spec">
+        <figure class="spec__dish"><img src="../assets/img/chalet/chalet-peptide.jpg" alt="샬레에 담긴 기포가 인 젤"></figure>
+        <span class="spec__i">04</span>
+        <h3>펩타이드</h3>
+        <p class="spec__en">Peptide</p>
+        <p class="spec__n">복합</p>
+        <p class="spec__d">탄력의 조건을 보조합니다.</p>
+      </li>
+      <li class="spec">
+        <figure class="spec__dish"><img src="../assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 맑은 젤"></figure>
+        <span class="spec__i">05</span>
+        <h3>글루타치온</h3>
+        <p class="spec__en">Glutathione</p>
+        <p class="spec__n">고함량</p>
+        <p class="spec__d">맑기의 기준을 올리는 항산화 축.</p>
+      </li>
+      <li class="spec">
+        <figure class="spec__dish"><img src="../assets/img/chalet/chalet-betaglucan.jpg" alt="샬레에 담긴 곡물"></figure>
+        <span class="spec__i">06</span>
+        <h3>베타글루칸</h3>
+        <p class="spec__en">Beta-Glucan</p>
+        <p class="spec__n">진정</p>
+        <p class="spec__d">고농도를 견디게 하는 완충.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<footer class="pr-foot">
+  <h2>정하실 것</h2>
+  <ul>
+    <li><b>사진 매핑</b> — 용암해수·백년초·베타글루칸은 사진이 명확합니다.
+      비타민C(노란 액)는 추정이고, <b>펩타이드·글루타치온은 임의로 배정</b>했습니다.
+      맞는 짝을 알려주시면 바꿔 넣겠습니다.</li>
+    <li><b>남는 사진 2장</b> — 짙은 비드와 병풀은 현재 성분 6종에 해당이 없어 뺐습니다.
+      (`chalet-spare-*.jpg` 로 보관)</li>
+    <li><b>해상도</b> — 원본이 약 330px입니다. 시안 A(96px)는 넉넉하지만
+      <b>시안 B는 220px로 써서 레티나에서 무릅니다.</b> B로 가시면 원본을 더 큰 크기로 주세요.</li>
+  </ul>
+</footer>
+
+<script src="../assets/js/shader-bg.js"></script>

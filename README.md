@@ -182,6 +182,33 @@ assets/vendor/gsap.min.js · ScrollTrigger.min.js   (Apache 2.0, LICENSE 동봉)
 `index.html`에서 `box-scrub.css` 링크, `box-scrub.js`·GSAP 스크립트, 그리고
 `<section class="boxopen" data-box-scrub>` 블록을 지우면 됩니다.
 
+## 성분 섹션 시안 (샬레 사진)
+
+`proposals/ingredients.html` — 같은 내용·같은 사진으로 만든 두 안을 위아래로 비교합니다.
+로컬에서 `http://localhost:8000/proposals/ingredients.html`.
+
+- **시안 A** 유리 카드 안에 샬레를 96px 원형으로. 지금 구조 유지, 여섯 칸이 균일.
+- **시안 B** 카드를 걷어내고 샬레를 220px로. 물을 깊게 내려 표본이 발광하듯 뜨는 구성.
+
+본 페이지(`index.html`)는 **아직 안 바꿨습니다.** 고르신 뒤 반영합니다.
+
+### 사진 매핑 — 확인 필요
+
+| 성분 | 사진 | 확신도 |
+|---|---|---|
+| 제주 용암해수 | `chalet-seawater.jpg` (용암석) | 확실 |
+| 백년초 | `chalet-opuntia.jpg` (열매) | 확실 |
+| 베타글루칸 | `chalet-betaglucan.jpg` (곡물) | 확실 |
+| 순수 비타민C | `chalet-vitc.jpg` (노란 액) | 추정 |
+| 펩타이드 | `chalet-peptide.jpg` (기포 젤) | **임의 배정** |
+| 글루타치온 | `chalet-glutathione.jpg` (맑은 젤) | **임의 배정** |
+
+남는 2장(`chalet-spare-beads.jpg` 짙은 비드, `chalet-spare-centella.jpg` 병풀)은
+현재 성분 6종에 해당이 없어 뺐습니다. 원본은 `assets/img/chalet/original/`.
+
+⚠️ 원본이 약 330px입니다. 시안 A(96px)는 넉넉하지만 **시안 B(220px)는 레티나에서
+무릅니다.** B로 가시면 더 큰 원본이 필요합니다.
+
 ## 접근성 / 반응형
 
 - 데스크톱 1440 · 모바일 375 확인, 가로 오버플로 없음
