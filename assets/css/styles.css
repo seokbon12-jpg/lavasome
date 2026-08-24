@@ -280,8 +280,18 @@ em, i { font-style: normal; }
   font-size: 10.5px; letter-spacing: .1em; padding: 4px 10px;
   text-transform: uppercase;
 }
+/* 제품컷 — 원본 3:4. 기존 플레이스홀더의 비율·여백·라운드를 그대로 둔다.
+   이미지 배경이 #F6F0E5 라 컨테이너도 같은 값으로 맞춰 이음새를 없앤다. */
 .card__shot {
   aspect-ratio: 3 / 4; margin: 8px 0 20px; border-radius: 3px;
+  background: #F6F0E5;
+  overflow: hidden;
+}
+.card__shot img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+/* 이미지가 아직 없을 때만 보이는 자리표시 */
+.card__shot:not(:has(img)) {
   background: var(--accent-c, var(--p-1));
   opacity: .55;
 }

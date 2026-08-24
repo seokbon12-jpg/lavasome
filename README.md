@@ -65,8 +65,12 @@ Adobe Fonts 킷 `zhv7ywn` 링크는 `index.html` 에 **이미 물려 있습니�
 
 HTML에서 `data-placeholder` 속성으로 전부 표시해뒀습니다.
 
-- **히어로 4장**(`assets/img/hero/`)과 **제주 섹션 3장**(`assets/img/jeju/`)은 들어왔습니다.
-  아직 자리표시인 것: 제품 카드 6종 제품컷, 리뷰 타일 이미지.
+- **히어로 4장**(`hero/`) · **제주 3장**(`jeju/`) · **샬레 6장**(`chalet/`) ·
+  **제품컷 6종**(`products/`) 모두 들어왔습니다. 남은 자리표시는 **리뷰 타일 이미지**뿐입니다.
+
+  제품컷은 UUID 파일명으로 올라와 라벨을 읽어 매칭했습니다. 요청하신
+  `public/images/products/` 대신 기존 규칙에 맞춰 `assets/img/products/` 에 뒀습니다
+  (프로젝트에 `public/` 이 없습니다). PNG 5.4 MB → JPEG 0.2 MB.
 
   제주 3장은 파일명 순서와 배치 순서가 달라 **내용 기준으로 매핑**했습니다.
   | 원본 | 배치 |
@@ -205,6 +209,9 @@ assets/vendor/gsap.min.js · ScrollTrigger.min.js   (Apache 2.0, LICENSE 동봉)
 | 순수 비타민C | `chalet-vitc.jpg` (노란 액) | 추정 |
 | 펩타이드 | `chalet-peptide.jpg` (기포 젤) | **임의 배정** |
 | 글루타치온 | `chalet-glutathione.jpg` (맑은 젤) | **임의 배정** |
+
+> 제품 라인업의 `글루타치온 20K` 는 `바쿠치올 5K` 로 교체됐지만,
+> **글루타치온은 성분(05)으로는 그대로 남아 있습니다.** 의도된 상태입니다.
 
 남는 2장(`chalet-spare-beads.jpg` 짙은 비드, `chalet-spare-centella.jpg` 병풀)은
 현재 성분 6종에 해당이 없어 뺐습니다. 원본은 `assets/img/chalet/original/`.
