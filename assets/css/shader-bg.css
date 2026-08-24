@@ -27,7 +27,7 @@
   display: block; width: 100%; height: 100%;
   pointer-events: none;
   /* 수영장 물빛처럼 — 채도와 명도를 올려 청록을 살린다 */
-  filter: saturate(1.22) brightness(1.16) contrast(1.04);
+  filter: saturate(1.12) brightness(.94) contrast(1.04);
 }
 
 /* ── 물빛 베일 ────────────────────────────────────────────────────
@@ -38,9 +38,10 @@
   content: ""; position: absolute; inset: 0; z-index: 1;
   pointer-events: none;
   background:
-    linear-gradient(180deg, rgba(8, 52, 68, .38) 0%,
-                            rgba(10, 66, 86, .22) 46%,
-                            rgba(6, 46, 62, .38) 100%);
+    radial-gradient(62% 46% at 50% 34%, rgba(4, 30, 44, .30) 0%, rgba(3, 22, 33, .70) 100%),
+    linear-gradient(180deg, rgba(3, 24, 35, .70) 0%,
+                            rgba(4, 32, 46, .60) 46%,
+                            rgba(3, 22, 33, .74) 100%);
 }
 .has-shader-bg > .shell { position: relative; z-index: 2; }
 
@@ -60,101 +61,67 @@
   text-shadow: 0 1px 10px rgba(4, 34, 46, .45);
 }
 
-/* ── 헤드라인 블록도 같은 유리판 위에 ────────────────────────────
-   열린 물 위에서는 16px lead 가 대비를 못 버틴다(측정 2.6:1).
-   레퍼런스처럼 텍스트를 유리 박스에 올려 해결한다.
-   pseudo 는 absolute 라 grid 아이템으로 잡히지 않는다. */
-.has-shader-bg .section__head {
-  position: relative;
-  isolation: isolate;
-  border-radius: 26px;
-  overflow: hidden;
-  padding: 46px 48px 50px;
-  margin-bottom: 56px;
-  background: rgba(5, 34, 47, .54);
-  box-shadow:
-    0 6px 6px rgba(0, 0, 0, .16),
-    0 0 20px rgba(0, 0, 0, .08),
-    inset 2px 2px 1px 0 rgba(255, 255, 255, .30),
-    inset -1px -1px 1px 1px rgba(255, 255, 255, .22);
-}
-.has-shader-bg .section__head::before {
-  content: ""; position: absolute; inset: 0; z-index: 0;
-  backdrop-filter: blur(5px) saturate(1.3);
-  -webkit-backdrop-filter: blur(5px) saturate(1.3);
-  filter: url(#glass-distortion);
-}
-.has-shader-bg .section__head::after {
-  content: ""; position: absolute; inset: 0; z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(150deg,
-    rgba(255, 255, 255, .17) 0%,
-    rgba(255, 255, 255, .06) 45%,
-    rgba(255, 255, 255, .11) 100%);
-}
-.has-shader-bg .section__head > * { position: relative; z-index: 2; }
+/* 헤드는 유리판 없이 물 위에 직접 — 배경이 충분히 어둡다.
+   행간도 조여 블록이 뭉쳐 읽히게 한다. */
+.has-shader-bg .section__head { margin-bottom: 74px; }
+.has-shader-bg .section__title { line-height: 1.26; }
+.has-shader-bg .section__lead { line-height: 1.62; }
 
-/* ── 성분 카드 = liquid glass ─────────────────────────────────────
-   1px 격자 대신 각자 떠 있는 유리판으로 바꾼다.
-   ::before 가 뒤 배경을 blur + 굴절시키고, box-shadow 의 inset 두 줄이
-   유리 모서리의 하이라이트를 만든다. */
-.has-shader-bg .ings {
-  background: none;
-  border: 0;
-  gap: 18px;
+/* ── 성분 = 물속에 떠 있는 표본 ───────────────────────────────────
+   카드를 걷어내고 샬레를 크게 쓴다. 물을 깊게 내려 대비를 확보하고,
+   접시 뒤에 광륜을 깔아 표본이 떠 보이게 한다.
+   행간은 요소마다 따로 잡는다 — body 의 1.75 를 그대로 쓰면
+   짧은 한 줄짜리들이 서로 멀어져 흩어져 보인다. */
+.specimens {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 72px 44px; text-align: center;
 }
-.has-shader-bg .ing {
-  position: relative;
-  isolation: isolate;
-  border-radius: 24px;
-  overflow: hidden;
-  background: rgba(5, 34, 47, .58);
+.spec { display: flex; flex-direction: column; align-items: center; }
+.spec__dish {
+  position: relative; margin: 0 0 22px;
+  width: 220px; height: 220px; border-radius: 50%; overflow: hidden;
   box-shadow:
-    0 6px 6px rgba(0, 0, 0, .16),
-    0 0 20px rgba(0, 0, 0, .08),
-    inset 2px 2px 1px 0 rgba(255, 255, 255, .34),
-    inset -1px -1px 1px 1px rgba(255, 255, 255, .26);
-  transition: background-color .6s var(--ease), transform .6s var(--ease);
+    0 18px 44px rgba(0, 20, 30, .42),
+    inset 0 0 0 1px rgba(255, 255, 255, .34);
 }
-/* 굴절 레이어 — 카드 뒤 물결을 일렁이게 만든다 */
-.has-shader-bg .ing::before {
-  content: ""; position: absolute; inset: 0; z-index: 0;
-  backdrop-filter: blur(4px) saturate(1.3);
-  -webkit-backdrop-filter: blur(4px) saturate(1.3);
-  filter: url(#glass-distortion);
+.spec__dish img { width: 100%; height: 100%; object-fit: cover; }
+/* 표본이 떠 보이도록 뒤에 깔리는 광륜 */
+.spec__dish::before {
+  content: ""; position: absolute; inset: -26%; z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(150, 226, 250, .40) 0%, transparent 68%);
 }
-/* 유리 윗면의 옅은 흰 막 */
-.has-shader-bg .ing::after {
-  content: ""; position: absolute; inset: 0; z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(150deg,
-    rgba(255, 255, 255, .20) 0%,
-    rgba(255, 255, 255, .07) 42%,
-    rgba(255, 255, 255, .13) 100%);
+.spec__i {
+  font-family: var(--font-label); font-size: 11.5px; letter-spacing: .12em;
+  line-height: 1; color: #9FE3F8;
 }
-.has-shader-bg .ing > * { position: relative; z-index: 2; }
-.has-shader-bg .ing:hover { background: rgba(5, 34, 47, .50); }
-
-.has-shader-bg .ing h3 { color: #FFFFFF; }
-.has-shader-bg .ing__i,
-.has-shader-bg .ing h3 em { color: #CFF3FF; }
-.has-shader-bg .ing__n { color: #FFFFFF; }
-.has-shader-bg .ing p:last-child { color: rgba(255, 255, 255, .90); }
+.spec h3 {
+  font-family: var(--font-kr-head); font-size: 22px; line-height: 1.3;
+  color: #FFFFFF; margin: 10px 0 3px;
+}
+.spec__en {
+  font-family: var(--font-label); font-size: 11px; letter-spacing: .1em;
+  line-height: 1.3; text-transform: uppercase; color: #9FE3F8;
+}
+.spec__n {
+  font-family: var(--font-display); font-size: 26px; font-weight: 500;
+  line-height: 1.1; color: #FFFFFF; margin: 13px 0 8px;
+}
+.spec__d {
+  font-size: 14.5px; line-height: 1.6; color: rgba(255, 255, 255, .90);
+  max-width: 24ch;
+}
 
 /* backdrop-filter 미지원(구형 파이어폭스 등)에서는 굴절 레이어가 비어
    보이므로 카드 본체를 조금 더 불투명하게 받쳐 준다. */
-@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
-  .has-shader-bg .ing { background: rgba(5, 34, 47, .68); }
-}
-
 @media (max-width: 760px) {
-  .has-shader-bg .section__head { padding: 30px 24px 34px; border-radius: 20px; }
-  .has-shader-bg .ings { gap: 14px; }
-  .has-shader-bg .ing { border-radius: 20px; }
+  .has-shader-bg .section__head { margin-bottom: 48px; }
+  .specimens { grid-template-columns: 1fr; gap: 50px; }
+  .spec__dish { width: 190px; height: 190px; }
 }
 
 /* 모션 최소화 설정에서는 shader-bg.js 가 첫 프레임만 그리고 멈춘다.
    정지 화면이라도 대비는 그대로여야 하므로 위 규칙은 유지한다. */
-@media (prefers-reduced-motion: reduce) {
-  .has-shader-bg .ing { transition: none; }
+@media (max-width: 1080px) {
+  .specimens { grid-template-columns: repeat(2, 1fr); gap: 58px 36px; }
 }
