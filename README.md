@@ -128,9 +128,13 @@ assets/js/shader-bg.js     셰이더 + 마운트 로직
 
 ### 세기 조절
 
-물결이 너무 세거나 약하면 `shader-bg.css` 의 `.has-shader-bg::before` 스크림
-알파값(`.62 / .48 / .66`)만 조정하면 됩니다. 낮출수록 물결이 선명해지고,
-올릴수록 차분해집니다. 색·속도는 `shader-bg.js` 상단 상수에 모여 있습니다.
+물결 밝기는 두 곳에서 정해집니다.
+
+- `.shader-bg__canvas` 의 `filter: saturate(1.22) brightness(1.16)` — 물빛 자체
+- `.has-shader-bg::before` 베일 알파(`.38 / .22 / .38`) — 낮출수록 물결이 진해짐
+
+색·속도는 `shader-bg.js` 상단 상수에 모여 있습니다.
+유리 농도를 만지실 때는 위의 대비 마지노선을 함께 확인하세요.
 
 ### 동작 조건
 
