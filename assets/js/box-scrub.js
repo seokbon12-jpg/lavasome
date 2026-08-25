@@ -2,8 +2,8 @@
    박스 오프닝 — 스크롤 스크럽 (GSAP ScrollTrigger)
 
    프레임: ffmpeg 로 뽑은 WebP 시퀀스
-     assets/img/box/desktop/001..121.webp   (620px)
-     assets/img/box/mobile/001..041.webp    (400px, 1/3 로 솎음)
+     assets/img/box/desktop/001..121.webp   (1320x1796)
+     assets/img/box/mobile/001..041.webp    (880x1197, 1/3 로 솎음)
 
    · 섹션을 pin 하고 스크롤 진행도(0→1)를 프레임 인덱스에 매핑
    · 모바일은 프레임 수를 줄여 로드
