@@ -1,0 +1,59 @@
+# 클라이언트 공유용 링크 — https://seokbon12-jpg.github.io/lavasome/
+#
+# 기본 브랜치에 푸시할 때마다 정적 페이지를 다시 배포한다.
+# 리포지터리에는 원본 사진(assets/img/**/original, ~57MB)과 원본 영상,
+# 내부 검토용 문서가 같이 들어 있어서 그대로 올리지 않는다.
+# 아래 _site 단계에서 실제 페이지가 쓰는 파일만 추려서 배포한다.
+name: Deploy page
+
+on:
+  push:
+    branches: [claude/impeccable-install-xi5w1c]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 배포는 한 번에 하나만. 진행 중인 배포를 끊지는 않는다.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Collect the files the page actually serves
+        run: |
+          mkdir -p _site
+          cp index.html _site/
+          # Jekyll 처리를 끈다 — 정적 파일을 그대로 내보내기 위해서다
+          touch _site/.nojekyll
+          mkdir -p _site/assets
+          cp -r assets/css assets/js assets/vendor _site/assets/
+          # 사진은 웹용만. original/ 은 원본 보관본이라 배포에서 제외한다
+          for d in hero jeju products chalet; do
+            mkdir -p "_site/assets/img/$d"
+            find "assets/img/$d" -maxdepth 1 -type f -exec cp {} "_site/assets/img/$d/" \;
+          done
+          mkdir -p _site/assets/img/box
+          cp -r assets/img/box/desktop assets/img/box/mobile _site/assets/img/box/
+          echo "배포 용량: $(du -sh _site | cut -f1)"
+
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
