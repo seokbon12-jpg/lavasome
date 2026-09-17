@@ -68,7 +68,7 @@ img{display:block;max-width:100%}
 
 /* 01 HERO */
 .A .hero{padding:120px 0 110px;text-align:center}
-.A .hero .eyebrow{color:#7C7466}
+.A .hero .eyebrow{color:#6A6355}
 .A .hero h1{
   font-family:var(--en);font-weight:300;font-size:clamp(52px,8.4vw,116px);
   line-height:1;letter-spacing:-.018em;margin:26px 0 30px;
@@ -97,7 +97,7 @@ img{display:block;max-width:100%}
 /* 04 METHOD */
 .A .method{display:grid;grid-template-columns:repeat(3,1fr);gap:56px}
 .A .method .n{font-family:var(--en);font-size:56px;font-weight:300;line-height:1;color:rgba(26,25,23,.22)}
-.A .method h3{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#7C7466;margin:20px 0 12px;font-weight:400}
+.A .method h3{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6A6355;margin:20px 0 12px;font-weight:400}
 .A .method p{font-family:var(--kr-head);font-size:18px;line-height:1.65;margin:0}
 
 /* 05 ARCHIVE */
@@ -113,9 +113,9 @@ img{display:block;max-width:100%}
 .A .arc figure{margin:0;width:88px;height:88px;border-radius:50%;overflow:hidden;background:#EAE8E3}
 .A .arc figure img{width:100%;height:100%;object-fit:cover}
 .A .arc .nm{font-family:var(--kr-head);font-size:20px}
-.A .arc .en2{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7C7466;margin-top:4px}
+.A .arc .en2{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#6A6355;margin-top:4px}
 .A .arc .d{font-size:14.5px;line-height:1.7;color:rgba(26,25,23,.72)}
-.A .arc .go{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#7C7466;white-space:nowrap}
+.A .arc .go{font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:#6A6355;white-space:nowrap}
 
 /* 06 PRODUCT + CLOSING */
 .A .prod{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:rgba(26,25,23,.13);border:1px solid rgba(26,25,23,.13)}
@@ -124,7 +124,7 @@ img{display:block;max-width:100%}
 .A .prod .shot{aspect-ratio:3/4;background:#F6F0E5;overflow:hidden;border-radius:2px;margin-bottom:16px}
 .A .prod img{width:100%;height:100%;object-fit:cover}
 .A .prod b{display:block;font-family:var(--kr-head);font-size:16px;font-weight:400}
-.A .prod span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#7C7466;margin-top:6px}
+.A .prod span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#6A6355;margin-top:6px}
 .A .close{text-align:center;padding:130px 0 150px;border-top:1px solid rgba(26,25,23,.13)}
 .A .close h2{font-family:var(--en);font-weight:300;font-size:clamp(34px,5vw,64px);line-height:1.1;margin:0}
 .A .close p{font-family:var(--kr-head);font-size:19px;line-height:1.7;color:rgba(26,25,23,.7);margin:22px 0 0}
@@ -217,6 +217,108 @@ img{display:block;max-width:100%}
 .B .close h2{font-family:var(--en);font-weight:300;font-size:clamp(36px,5.6vw,72px);line-height:1.08;margin:0}
 .B .close p{font-family:var(--kr-head);font-size:19px;line-height:1.7;color:rgba(242,244,243,.66);margin:24px 0 0}
 
+
+/* ═══════════════════════════════════════════════════
+   시안 C — A + B 통합 (중복 제거본)
+   밝은 문서 지면을 기본으로 하고, 연구·클로징만 어두운 풀블리드로
+   전환해 리듬을 만든다. 메인 페이지와 겹치던 제품 그리드와 원료
+   아카이브는 걷어내거나 스트립으로 줄였다.
+   ═══════════════════════════════════════════════════ */
+.C{background:#FAFAF8;color:#1A1917}
+.C .sec{padding:130px 0}
+.C .dark{background:#0D1416;color:#F2F4F3}
+.C .dark .eyebrow{color:#7FCADF}
+.C .eyebrow{color:#6A6355}
+.C h2{font-family:var(--kr-head);font-size:clamp(28px,3.6vw,46px);line-height:1.3;
+  margin:16px 0 0;font-weight:400;text-wrap:balance}
+.C h2 em{display:block;font-style:normal;font-family:var(--en);font-weight:300;
+  font-size:.5em;color:#7C7466;margin-top:12px}
+.C .dark h2 em{color:#7FCADF}
+.C .lead{font-size:16.5px;line-height:1.9;color:rgba(26,25,23,.72);max-width:54ch;margin:28px 0 0}
+.C .dark .lead{color:rgba(242,244,243,.7)}
+
+/* 01 HERO — 어두운 풀블리드 (B) */
+.C .hero{position:relative;min-height:80vh;display:grid;place-items:center;overflow:hidden;text-align:center}
+.C .hero__bg{position:absolute;inset:0}
+.C .hero__bg img{width:100%;height:100%;object-fit:cover;opacity:.7}
+.C .hero__bg::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(85% 75% at 50% 48%,rgba(13,20,22,.26) 0%,rgba(13,20,22,.84) 100%)}
+.C .hero__in{position:relative;padding:130px 40px}
+.C .hero h1{font-family:var(--en);font-weight:300;font-size:clamp(42px,6.4vw,92px);
+  line-height:1.04;letter-spacing:-.018em;margin:24px 0 26px}
+.C .hero .kr{font-family:var(--kr-head);font-size:clamp(17px,2vw,22px);line-height:1.65;
+  margin:0 auto;max-width:26ch}
+
+/* 02 철학 — 밝은 지면 (A) */
+.C .phil{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;margin-top:56px}
+.C .phil p{font-size:16.5px;line-height:1.95;color:rgba(26,25,23,.72);margin:0}
+
+/* 03 RESEARCH — 어두운 풀블리드. 이 페이지의 중심 (B + seed 방식 숫자 밴드) */
+.C .figs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:rgba(242,244,243,.16);border-block:1px solid rgba(242,244,243,.16);
+  margin:64px 0}
+.C .figs div{background:#0D1416;padding:34px 30px}
+.C .figs b{display:block;font-family:var(--en);font-size:46px;font-weight:300;
+  line-height:1;color:#F2F4F3}
+.C .figs b i{font-style:normal;font-size:.42em;color:#7FCADF;margin-left:4px}
+.C .figs .todo{color:rgba(127,202,223,.55)}
+.C .figs p{margin:14px 0 0;font-size:14.5px;color:rgba(242,244,243,.66)}
+.C .figs p em{display:block;font-style:normal;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:#7FCADF;margin-top:4px}
+.C .proc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:20px}
+.C .proc figure{margin:0;position:relative;border-radius:3px;overflow:hidden;
+  background:#16211F;aspect-ratio:4/3}
+.C .proc img{width:100%;height:100%;object-fit:cover}
+.C .proc .ph{position:absolute;inset:0;display:grid;place-items:center;
+  border:1px solid rgba(127,202,223,.22);font-family:var(--mono);font-size:11px;
+  letter-spacing:.1em;color:rgba(127,202,223,.7);text-align:center;padding:20px;line-height:1.9}
+.C .proc figcaption{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;
+  background:linear-gradient(0deg,rgba(6,12,13,.92),transparent);font-size:13px}
+.C .proc figcaption b{display:block;font-family:var(--kr-head);font-size:15px;font-weight:400;margin-bottom:3px}
+
+/* 04 설계 원칙 — 밝은 지면, 인덱스 (A) */
+.C .method{margin-top:56px;border-top:1px solid rgba(26,25,23,.13)}
+.C .method .row{display:grid;grid-template-columns:96px minmax(0,.62fr) minmax(0,1fr);
+  gap:34px;align-items:baseline;padding:34px 0;border-bottom:1px solid rgba(26,25,23,.13)}
+.C .method .n{font-family:var(--en);font-size:38px;font-weight:300;line-height:1;color:rgba(26,25,23,.25)}
+.C .method h3{font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:#6A6355;margin:0;font-weight:400}
+.C .method p{font-family:var(--kr-head);font-size:18.5px;line-height:1.6;margin:0}
+
+/* 05 원료 — 스트립으로 축소. 메인 성분 섹션과 겹치지 않게 이름만. */
+.C .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:26px;margin-top:52px}
+.C .strip a{text-decoration:none;color:inherit;text-align:center}
+.C .strip figure{margin:0 auto 14px;width:100%;max-width:120px;aspect-ratio:1;
+  border-radius:50%;overflow:hidden;background:#EAE8E3}
+.C .strip img{width:100%;height:100%;object-fit:cover}
+.C .strip .nm{font-family:var(--kr-head);font-size:15.5px;line-height:1.35}
+.C .strip .en2{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;
+  text-transform:uppercase;color:#6A6355;margin-top:5px}
+.C .more{margin-top:52px;text-align:center}
+.C .more a{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:#1A1917;
+  text-decoration:none;border-bottom:1px solid rgba(26,25,23,.3);padding-bottom:4px}
+
+/* 06 클로징 — 어두운. 제품은 그리드가 아니라 링크 하나. */
+.C .close{text-align:center;padding:140px 0 160px}
+.C .close h2{font-family:var(--en);font-weight:300;font-size:clamp(34px,5.4vw,70px);
+  line-height:1.08;margin:0}
+.C .close p{font-family:var(--kr-head);font-size:19px;line-height:1.7;
+  color:rgba(242,244,243,.7);margin:22px 0 40px}
+.C .btn{display:inline-block;padding:16px 38px;background:#FAFAF8;color:#0D1416;
+  font-size:15px;text-decoration:none;border-radius:3px}
+
+@media (max-width:1080px){
+  .C .strip{grid-template-columns:repeat(3,1fr);gap:34px 26px}
+  .C .figs,.C .proc{grid-template-columns:1fr 1fr}
+}
+@media (max-width:760px){
+  .C .sec{padding:80px 0}
+  .C .phil{grid-template-columns:1fr;gap:26px}
+  .C .figs,.C .proc{grid-template-columns:1fr}
+  .C .strip{grid-template-columns:repeat(2,1fr)}
+  .C .method .row{grid-template-columns:1fr;gap:10px}
+}
+
 /* ── 반응형 ── */
 @media (max-width:1080px){
   .A .prod,.B .prod{grid-template-columns:repeat(3,1fr)}
@@ -251,6 +353,7 @@ img{display:block;max-width:100%}
 <nav class="switch" role="tablist" aria-label="디자인 시안 선택">
   <button role="tab" id="tab-a" aria-controls="deck-a" aria-selected="true">시안 A — RESEARCH DOCUMENT</button>
   <button role="tab" id="tab-b" aria-controls="deck-b" aria-selected="false">시안 B — DEEP FIELD</button>
+  <button role="tab" id="tab-c" aria-controls="deck-c" aria-selected="false">시안 C — A+B 통합 · 중복 제거</button>
 </nav>
 
 <!-- ══════════════════ 시안 A ══════════════════ -->
@@ -487,6 +590,104 @@ img{display:block;max-width:100%}
   <div class="shell">
     <h2>Rooted in Jeju.<br>Designed for Skin.</h2>
     <p>제주에서 발견하고,<br>피부를 위해 설계합니다.</p>
+  </div>
+</section>
+</div>
+
+
+<!-- ══════════════════ 시안 C — A+B 통합 / 중복 제거 ══════════════════ -->
+<div class="deck C" id="deck-c" role="tabpanel" aria-labelledby="tab-c">
+<div class="sheet__tag">시안 C · A+B 통합 — 밝은 문서 지면 위에 연구·클로징만 어두운 풀블리드. 메인과 겹치던 제품 그리드·원료 아카이브를 걷어냈다.</div>
+
+<!-- 01 HERO — 메인의 Formulation First 를 반복하지 않는다 -->
+<section class="hero dark">
+  <div class="hero__bg"><img src="../assets/img/hero/hero-bg.jpg" alt=""></div>
+  <div class="hero__in">
+    <p class="eyebrow">Jeju-Origin Research</p>
+    <h1>Nature,<br>Proven by Science</h1>
+    <p class="kr">자연은 가능성을 제공하고,<br>과학은 그 가능성이 작동할 조건을 설계합니다</p>
+  </div>
+</section>
+
+<!-- 02 철학 -->
+<section class="sec">
+  <div class="shell">
+    <p class="eyebrow">Why Conditions</p>
+    <h2>좋은 성분을 고르는 일에서<br>멈추지 않습니다</h2>
+    <div class="phil">
+      <p>같은 성분도 조건이 다르면 다르게 작동합니다. 농도가 유지되는 조건, 피부가 견디는 조건, 성분끼리 서로를 방해하지 않는 조건 — 라바섬은 그 조건을 먼저 맞춥니다.</p>
+      <p>함량, pH, 안정화, 성분 간의 균형과 사용 환경까지 설계에 포함합니다. 성분표가 아니라 설계도에서 시작한다는 뜻입니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 03 RESEARCH — 페이지의 중심 -->
+<section class="sec dark">
+  <div class="shell">
+    <p class="eyebrow">Jeju-Origin Research</p>
+    <h2>제주는 라바섬의 배경이 아니라,<br>포뮬러의 출발점입니다<em>Researching Jeju-derived ingredients to build balanced formulations.</em></h2>
+
+    <!-- ⚠️ 숫자는 전부 자리표시. 검증된 실제 값으로 채우기 전 공개 금지. -->
+    <div class="figs">
+      <div><b class="todo">00<i>종</i></b><p>검토한 제주 자생 원료<em>Ingredients Screened</em></p></div>
+      <div><b class="todo">00<i>건</i></b><p>공동 연구 과제<em>Joint Research</em></p></div>
+      <div><b class="todo">0000<i>–</i></b><p>연구 협력 시작<em>Since</em></p></div>
+    </div>
+
+    <div class="proc">
+      <figure>
+        <img src="../assets/img/jeju/jeju-01-seawater.jpg" alt="페트리 접시에 담긴 제주 용암해수와 현무암">
+        <figcaption><b>채취</b>현무암층을 통과한 물과 자생 식물</figcaption>
+      </figure>
+      <figure>
+        <div class="ph">분석 · 안정성 시험<br>— 실제 촬영 필요 —</div>
+        <figcaption><b>분석</b>성분 정량과 안정성 확인</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/jeju/jeju-03-lab.jpg" alt="제주 유래 원료를 담은 실험 기구 선반">
+        <figcaption><b>처방 적용</b>조건이 맞는 원료만 포뮬러로</figcaption>
+      </figure>
+    </div>
+    <p class="lead">공동 연구 기관의 공식 명칭과 연구 범위는 확인 후 기재합니다.</p>
+  </div>
+</section>
+
+<!-- 04 설계 원칙 -->
+<section class="sec">
+  <div class="shell">
+    <p class="eyebrow">Our Formulation Principles</p>
+    <h2>균형 위에 설계합니다<em>Built on Balance</em></h2>
+    <div class="method">
+      <div class="row"><div class="n">01</div><h3>Active</h3><p>필요한 기능을 위한 핵심 성분</p></div>
+      <div class="row"><div class="n">02</div><h3>Condition</h3><p>성분이 안정적으로 작동하기 위한 pH와 환경</p></div>
+      <div class="row"><div class="n">03</div><h3>Balance</h3><p>피부 부담과 기능 사이의 균형</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 원료 — 스트립. 상세는 메인 성분 섹션으로 넘긴다. -->
+<section class="sec">
+  <div class="shell">
+    <p class="eyebrow">From Jeju, Into the Formula</p>
+    <h2>제주에서 발견해<br>포뮬러로 옮깁니다</h2>
+    <div class="strip">
+      <a href="#"><figure><img src="../assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암해수"></figure><div class="nm">제주 용암해수</div><div class="en2">Mineral Base</div></a>
+      <a href="#"><figure><img src="../assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초"></figure><div class="nm">백년초</div><div class="en2">Botanical Calm</div></a>
+      <a href="#"><figure><img src="../assets/img/chalet/chalet-spare-centella.jpg" alt="샬레에 담긴 병풀 추출물"></figure><div class="nm">병풀</div><div class="en2">Calming Support</div></a>
+      <a href="#"><figure><img src="../assets/img/chalet/chalet-peptide.jpg" alt="샬레에 담긴 펩타이드 젤"></figure><div class="nm">펩타이드</div><div class="en2">Elasticity</div></a>
+      <a href="#"><figure><img src="../assets/img/chalet/chalet-vitc.jpg" alt="샬레에 담긴 비타민C 앰플액"></figure><div class="nm">비타민C</div><div class="en2">Tone Care</div></a>
+      <a href="#"><figure><img src="../assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 글루타티온 용액"></figure><div class="nm">글루타티온</div><div class="en2">Radiance</div></a>
+    </div>
+    <p class="more"><a href="#">각 원료가 어떻게 쓰이는지 보기 →</a></p>
+  </div>
+</section>
+
+<!-- 06 클로징 -->
+<section class="close dark">
+  <div class="shell">
+    <h2>Rooted in Jeju.<br>Designed for Skin.</h2>
+    <p>제주에서 발견하고,<br>피부를 위해 설계합니다.</p>
+    <a class="btn" href="#">제품 보기</a>
   </div>
 </section>
 </div>
