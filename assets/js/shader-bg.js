@@ -99,10 +99,12 @@
     '    u.y);',
     '}',
     '',
+    /* 옥타브 3 — 원 레시피는 5였다. 뒤쪽 두 옥타브가 잔물결을 만들어
+       배경이 자글거렸다. 3으로 줄이면 큰 흐름만 남아 단순해진다. */
     'float fbm(vec2 p) {',
     '  float v = 0.0;',
     '  float a = 0.5;',
-    '  for (int i = 0; i < 5; i++) {',
+    '  for (int i = 0; i < 3; i++) {',
     '    v += a * noise(p);',
     '    p = p * 2.03 + vec2(17.0, 9.2);',
     '    a *= 0.5;',
@@ -174,12 +176,14 @@
     '  return toRGB * yiq;',
     '}',
     '',
+    /* 도메인 워프 2단. 접는 횟수가 많을수록 대리석처럼 뒤엉킨다.
+       두 번째 접힘 계수를 3.0 → 1.6 으로 낮춰 결을 펴 뒀다. */
     'vec3 shade(vec2 uv, vec2 p, float t) {',
     '  float warp = 2.0 + u_intensity * 4.0;',
     '  vec2 q = vec2(fbm(p + t * 0.08), fbm(p + vec2(5.2, 1.3) - t * 0.06));',
     '  vec2 r = vec2(fbm(p + warp * q + vec2(1.7, 9.2)),',
     '                fbm(p + warp * q + vec2(8.3, 2.8)));',
-    '  return palette(fbm(p + 3.0 * r + u_seed));',
+    '  return palette(fbm(p + 1.6 * r + u_seed));',
     '}',
     '',
     'void main() {',
@@ -264,10 +268,17 @@
     '}'
   ].join('\n');
 
-  /* 레시피 — 21st.dev 값 그대로.
-     colours(low→high) #031C26 · #1B6CA8 · #5AD2F4 · #EAF9FF
-     speed 46 / zoom 61 / intensity 60 / warp 0 / contrast 69
-     brightness 50 / saturation 50 / hue 0 / vignette 0 / grain 0 / cursor off */
+  /* 레시피 — 21st.dev 기반, "심플하게" 요청에 맞춰 조정.
+     colours(low→high) #031C26 · #1B6CA8 · #5AD2F4 · #EAF9FF (원본 유지)
+
+     원본 대비 바뀐 값 ▸ 되돌리려면 괄호 안 값으로.
+       fbm 옥타브    3    (5)     잔물결 제거
+       접힘 계수     1.6  (3.0)   결 펴기
+       intensity     0.34 (0.60)  뒤엉킴 완화
+       scale         1.30 (1.72)  무늬를 크게 — 덩어리 수가 줄어든다
+       contrast      1.10 (1.22)  경계 부드럽게
+       TIME_SCALE    0.72 (0.97)  느리게
+     색·색 개수·비네팅·그레인은 손대지 않았다. */
   var COLORS = new Float32Array([
     0.012, 0.110, 0.149,
     0.106, 0.424, 0.659,
@@ -275,9 +286,9 @@
     0.918, 0.976, 1.000,
     0, 0, 0,  0, 0, 0,  0, 0, 0,  0, 0, 0
   ]);
-  var TIME_SCALE = 0.97;
-  var SHAPE     = [1.72, 0.60, 0.50, 0.00];
-  var SURFACE   = [2.40, 1.22, 0.00, 1.00];
+  var TIME_SCALE = 0.72;
+  var SHAPE     = [1.30, 0.34, 0.50, 0.00];
+  var SURFACE   = [2.40, 1.10, 0.00, 1.00];
   var FINISH    = [0.00, 0.00, 0.000, 0.00];
   var TRANSFORM = [635.0, 0.00, 0.00, 0.0];
   var SPACE     = [0.00, 0.00, 0.00, 0.00];
