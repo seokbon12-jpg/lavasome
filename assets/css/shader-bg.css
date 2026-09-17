@@ -74,15 +74,36 @@
    짧은 한 줄짜리들이 서로 멀어져 흩어져 보인다. */
 .specimens {
   display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 72px 44px; text-align: center;
+  gap: 56px 44px; text-align: center;
+  align-items: start;
 }
 .spec { display: flex; flex-direction: column; align-items: center; }
+
+/* 열마다 깊이를 달리 준다 — 같은 높이에 늘어서면 카탈로그처럼 읽힌다.
+   6개가 3열이므로 3n+1/+2/+3 이 각각 1·2·3열이 된다. */
+.spec:nth-child(3n + 2) { margin-top: 68px; }
+.spec:nth-child(3n + 3) { margin-top: 30px; }
+
 .spec__dish {
   position: relative; margin: 0 0 22px;
   width: 220px; height: 220px; border-radius: 50%; overflow: hidden;
   box-shadow:
     0 18px 44px rgba(0, 20, 30, .42),
     inset 0 0 0 1px rgba(255, 255, 255, .34);
+  /* 아주 느린 상하 부유. 열마다 주기와 위상을 어긋나게 해서
+     여섯 개가 한 몸처럼 같이 움직이지 않게 한다. */
+  animation: spec-drift 9s ease-in-out infinite;
+  will-change: transform;
+}
+.spec:nth-child(3n + 2) .spec__dish { animation-duration: 11s; animation-delay: -3.5s; }
+.spec:nth-child(3n + 3) .spec__dish { animation-duration: 10s; animation-delay: -6.5s; }
+/* 접시 크기도 미세하게 어긋나게 — 완전히 같으면 깊이감이 죽는다 */
+.spec:nth-child(3n + 2) .spec__dish { width: 204px; height: 204px; }
+.spec:nth-child(3n + 3) .spec__dish { width: 212px; height: 212px; }
+
+@keyframes spec-drift {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-11px); }
 }
 .spec__dish img { width: 100%; height: 100%; object-fit: cover; }
 /* 표본이 떠 보이도록 뒤에 깔리는 광륜 */
@@ -112,16 +133,29 @@
   max-width: 24ch;
 }
 
-/* backdrop-filter 미지원(구형 파이어폭스 등)에서는 굴절 레이어가 비어
-   보이므로 카드 본체를 조금 더 불투명하게 받쳐 준다. */
+/* ── 반응형 ───────────────────────────────────────────────────────
+   ⚠️ 넓은 쪽부터 좁은 쪽 순서로 둘 것. 예전에는 760 블록이 1080 블록보다
+   앞에 있어서, 두 조건이 모두 맞는 모바일에서 나중에 온 1080 의 2열이
+   이겨 1열이 적용되지 않았다. */
+
+/* 2열에서는 3n 규칙이 열과 어긋나므로 홀짝(2n)으로 다시 잡는다 */
+@media (max-width: 1080px) {
+  .specimens { grid-template-columns: repeat(2, 1fr); gap: 48px 36px; }
+  .spec:nth-child(n)  { margin-top: 0; }
+  .spec:nth-child(2n) { margin-top: 56px; }
+  .spec:nth-child(n) .spec__dish { width: 212px; height: 212px; }
+}
+
+/* 1열에서는 어긋난 배치가 들쭉날쭉한 여백으로만 보이므로 되돌린다 */
 @media (max-width: 760px) {
   .has-shader-bg .section__head { margin-bottom: 48px; }
   .specimens { grid-template-columns: 1fr; gap: 50px; }
-  .spec__dish { width: 190px; height: 190px; }
+  .spec:nth-child(n) { margin-top: 0; }
+  .spec:nth-child(n) .spec__dish { width: 190px; height: 190px; }
 }
 
-/* 모션 최소화 설정에서는 shader-bg.js 가 첫 프레임만 그리고 멈춘다.
-   정지 화면이라도 대비는 그대로여야 하므로 위 규칙은 유지한다. */
-@media (max-width: 1080px) {
-  .specimens { grid-template-columns: repeat(2, 1fr); gap: 58px 36px; }
+/* 부유 애니메이션만 끈다. 어긋난 배치와 대비는 정지 화면에서도 유효하다.
+   (셰이더 자체는 shader-bg.js 가 첫 프레임만 그리고 멈춘다.) */
+@media (prefers-reduced-motion: reduce) {
+  .spec__dish { animation: none; }
 }
