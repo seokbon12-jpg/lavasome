@@ -33,13 +33,13 @@ jobs:
       - name: Collect the files the page actually serves
         run: |
           mkdir -p _site
-          cp index.html _site/
+          cp index.html brand.html _site/
           # Jekyll 처리를 끈다 — 정적 파일을 그대로 내보내기 위해서다
           touch _site/.nojekyll
           mkdir -p _site/assets
           cp -r assets/css assets/js assets/vendor _site/assets/
           # 사진은 웹용만. original/ 은 원본 보관본이라 배포에서 제외한다
-          for d in hero jeju products chalet; do
+          for d in hero jeju products chalet brand; do
             mkdir -p "_site/assets/img/$d"
             find "assets/img/$d" -maxdepth 1 -type f -exec cp {} "_site/assets/img/$d/" \;
           done

@@ -1,0 +1,215 @@
+/* ═══════════════════════════════════════════════════════════
+   LAVASOME — 브랜드 소개 페이지 (brand.html)
+   styles.css 의 토큰·헤더·푸터를 그대로 쓰고, 이 파일은 이 페이지에만
+   있는 블록을 얹는다.
+
+   시안 C 를 옮기되 어두운 지면은 걷어냈다. 검정 배경이 과하다는 판단이라,
+   명암 전환 대신 --paper / --film / --panel 세 단계의 종이 톤으로만
+   리듬을 만든다.
+   ═══════════════════════════════════════════════════════════ */
+
+/* 대비 안전색 — 브랜드 액센트 #7C7466 은 종이 위 작은 글자에서
+   4.42:1 로 AA(4.5:1) 에 미달한다. 같은 색조의 어두운 값. */
+:root { --accent-t: #6A6355; }
+
+.brand .section--film  { background: var(--film); }
+.brand .section--panel { background: var(--panel); }
+
+/* ── 챕터 헤드 — 번호 / 짧은 라벨 / 긴 헤드라인 ───────────────── */
+.chap { display: grid; grid-template-columns: 96px 1fr; gap: 0 34px; align-items: start; }
+.chap__n {
+  font-family: var(--font-display); font-size: 34px; font-weight: 300;
+  line-height: 1; color: rgba(26, 25, 23, .26);
+}
+.chap__l {
+  font-family: var(--font-label); font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent-t);
+}
+.chap h2 {
+  font-family: var(--font-kr-head); font-size: clamp(28px, 3.6vw, 46px);
+  line-height: 1.3; margin-top: 14px; text-wrap: balance;
+}
+/* 질문형 리드 — 주장 대신 질문을 단다 */
+.qlead {
+  font-family: var(--font-kr-head); font-size: 19px; line-height: 1.7;
+  color: var(--ink-70); margin-top: 26px; max-width: 46ch;
+}
+
+/* ── 01 히어로 — 사진 없이 조판만. 메인의 사진 히어로와 성격을 나눈다 ── */
+.bhero { padding: 132px 0 110px; text-align: center; }
+.bhero h1 {
+  font-family: var(--font-title); font-weight: var(--w-title);
+  font-size: clamp(46px, 7.4vw, 104px); line-height: 1.02;
+  letter-spacing: -.018em; margin: 26px 0 28px;
+}
+.bhero__kr {
+  font-family: var(--font-kr-head); font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.6; margin-inline: auto; max-width: 26ch;
+}
+.bhero__strip {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--line); margin-top: 92px;
+}
+.bhero__strip figure { background: var(--paper); aspect-ratio: 4 / 3; overflow: hidden; }
+.bhero__strip img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ── 02 철학 ───────────────────────────────────────────────── */
+.phil { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; margin-top: 56px; }
+.phil p { font-size: 16.5px; line-height: 1.95; color: var(--ink-70); }
+
+/* ── 03 연구 — 숫자 밴드 + 과정 3컷 ───────────────────────────── */
+.figs {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
+  background: var(--line); border-block: 1px solid var(--line);
+  margin: 64px 0 20px;
+}
+.figs > div { background: var(--film); padding: 34px 30px; }
+.figs b {
+  display: block; font-family: var(--font-display); font-size: 46px;
+  font-weight: 300; line-height: 1; color: var(--ink);
+}
+.figs b i { font-size: .42em; color: var(--accent-t); margin-left: 5px; }
+/* 값이 아직 없을 때의 대시 */
+.figs .cu[data-count="0"] { color: var(--ink-45); }
+.figs p { margin-top: 14px; font-size: 14.5px; color: var(--ink-70); }
+.figs p em {
+  display: block; margin-top: 4px; font-family: var(--font-label);
+  font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent-t);
+}
+
+.proc { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.proc figure {
+  position: relative; border-radius: 3px; overflow: hidden;
+  background: var(--panel); aspect-ratio: 4 / 3;
+}
+.proc img { width: 100%; height: 100%; object-fit: cover; }
+.proc figcaption {
+  position: absolute; inset: auto 0 0 0; padding: 16px 18px; font-size: 13px;
+  color: #FFFFFF;
+  background: linear-gradient(0deg, rgba(14, 13, 11, .88), transparent);
+}
+.proc figcaption b {
+  display: block; font-family: var(--font-kr-head); font-size: 15px;
+  font-weight: 400; margin-bottom: 3px;
+}
+
+/* 준비 중 — 자리표시가 아니라 설계된 상태로 노출한다 */
+.soon {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  justify-content: flex-end; padding: 20px;
+  background: var(--panel); border: 1px solid var(--line);
+}
+.soon__badge {
+  align-self: flex-start; margin-bottom: auto;
+  font-family: var(--font-label); font-size: 9.5px; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--paper); background: var(--accent-d);
+  padding: 4px 9px; border-radius: 2px;
+}
+.soon b { font-family: var(--font-kr-head); font-size: 15px; font-weight: 400; }
+.soon span { font-size: 12.5px; color: var(--ink-70); margin-top: 4px; }
+
+/* ── 인용 — 실명 + 소속 ────────────────────────────────────── */
+.quote {
+  display: grid; grid-template-columns: 72px 1fr; gap: 28px;
+  max-width: 860px; margin-inline: auto; align-items: start;
+}
+.quote__av {
+  width: 72px; height: 72px; border-radius: 50%; background: var(--panel);
+  display: grid; place-items: center; text-align: center; line-height: 1.7;
+  font-family: var(--font-label); font-size: 9px; letter-spacing: .08em;
+  color: var(--ink-45);
+}
+.quote blockquote {
+  margin: 0; font-family: var(--font-kr-head);
+  font-size: clamp(20px, 2.5vw, 30px); line-height: 1.55; text-wrap: balance;
+}
+.quote__who { margin-top: 22px; font-size: 14px; color: var(--ink-70); }
+.quote__who b {
+  display: block; font-family: var(--font-kr-head); font-size: 16px;
+  font-weight: 400; color: var(--ink);
+}
+.quote__who em {
+  font-family: var(--font-label); font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent-t);
+}
+
+/* ── 04 설계 원칙 ──────────────────────────────────────────── */
+.method { margin-top: 56px; border-top: 1px solid var(--line); }
+.method__row {
+  display: grid; grid-template-columns: 96px minmax(0, .62fr) minmax(0, 1fr);
+  gap: 34px; align-items: baseline; padding: 34px 0;
+  border-bottom: 1px solid var(--line);
+}
+.method__n {
+  font-family: var(--font-display); font-size: 38px; font-weight: 300;
+  line-height: 1; color: rgba(26, 25, 23, .26);
+}
+.method h3 {
+  font-family: var(--font-label); font-size: 12px; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--accent-t); font-weight: 400;
+}
+.method p { font-family: var(--font-kr-head); font-size: 18.5px; line-height: 1.6; }
+
+/* ── 05 원료 스트립 — 상세는 메인 성분 섹션으로 넘긴다 ────────── */
+.strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 26px; margin-top: 52px; }
+.strip a { text-align: center; display: block; }
+.strip figure {
+  margin: 0 auto 14px; width: 100%; max-width: 120px; aspect-ratio: 1;
+  border-radius: 50%; overflow: hidden; background: var(--panel);
+  transition: transform .45s var(--ease);
+}
+.strip a:hover figure { transform: translateY(-5px); }
+.strip img { width: 100%; height: 100%; object-fit: cover; }
+.strip__nm { font-family: var(--font-kr-head); font-size: 15.5px; line-height: 1.35; }
+.strip__en {
+  font-family: var(--font-label); font-size: 9.5px; letter-spacing: .09em;
+  text-transform: uppercase; color: var(--accent-t); margin-top: 5px;
+}
+.more { margin-top: 52px; text-align: center; }
+.more a {
+  font-family: var(--font-label); font-size: 12px; letter-spacing: .12em;
+  border-bottom: 1px solid var(--line); padding-bottom: 4px;
+  transition: border-color .3s var(--ease);
+}
+.more a:hover { border-bottom-color: var(--ink); }
+
+/* ── 근거 ──────────────────────────────────────────────────── */
+.meth__row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 36px; }
+.meth__row b {
+  display: block; font-family: var(--font-display); font-size: 32px;
+  font-weight: 300; line-height: 1;
+}
+.meth__row p {
+  margin-top: 10px; font-family: var(--font-label); font-size: 10.5px;
+  letter-spacing: .1em; text-transform: uppercase; color: var(--accent-t);
+}
+.meth__note { margin-top: 40px; font-size: 14px; line-height: 1.8; color: var(--ink-70); max-width: 62ch; }
+
+/* ── 클로징 ────────────────────────────────────────────────── */
+.bclose { text-align: center; padding: 130px 0 150px; }
+.bclose h2 {
+  font-family: var(--font-title); font-weight: var(--w-title);
+  font-size: clamp(34px, 5.4vw, 70px); line-height: 1.08;
+}
+.bclose p {
+  font-family: var(--font-kr-head); font-size: 19px; line-height: 1.7;
+  color: var(--ink-70); margin: 22px 0 38px;
+}
+
+/* ── 반응형 ────────────────────────────────────────────────── */
+@media (max-width: 1080px) {
+  .strip { grid-template-columns: repeat(3, 1fr); gap: 34px 26px; }
+  .figs, .proc { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 760px) {
+  .chap { grid-template-columns: 1fr; gap: 8px; }
+  .phil { grid-template-columns: 1fr; gap: 26px; }
+  .figs, .proc { grid-template-columns: 1fr; }
+  .strip { grid-template-columns: repeat(2, 1fr); }
+  .method__row { grid-template-columns: 1fr; gap: 10px; }
+  .meth__row { grid-template-columns: 1fr; gap: 26px; }
+  .quote { grid-template-columns: 1fr; gap: 20px; }
+  .bhero { padding: 96px 0 80px; }
+  .bhero__strip { margin-top: 56px; }
+}

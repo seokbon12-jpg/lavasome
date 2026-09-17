@@ -94,7 +94,7 @@ em, i { font-style: normal; }
 
 /* 작은 영문 라벨 — 타자기 모노. 모노는 자체 자간이 넓으므로
    세리프 때 쓰던 .24em 트래킹을 그대로 두면 흩어져 보인다. */
-.eyebrow, .section__num, .nav-shop, .card__tag, .ing__i,
+.eyebrow, .section__num, .site-nav a, .card__tag, .ing__i,
 .card__benefit em, .specline dd em, .layer__tag em,
 .ing h3 em, .sense dt em, .site-footer__nav h3 {
   font-family: var(--font-label);
@@ -155,12 +155,17 @@ em, i { font-style: normal; }
   width: 5px; height: 5px; border-radius: 50%;
   background: var(--accent);
 }
-.nav-shop {
+/* 헤더 내비 — 브랜드 / SHOP */
+.site-nav { display: flex; align-items: center; gap: 26px; }
+.site-nav a, .nav-shop {
+  font-family: var(--font-label); font-weight: 400;
   font-size: 12px; letter-spacing: .12em;
-  padding: 8px 2px; border-bottom: 1px solid var(--line);
+  padding: 8px 2px; border-bottom: 1px solid transparent;
   transition: border-color .3s var(--ease);
 }
-.nav-shop:hover { border-bottom-color: var(--ink); }
+.site-nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+.site-nav a:hover, .nav-shop:hover { border-bottom-color: var(--ink); }
+@media (max-width: 760px) { .site-nav { gap: 18px; } }
 
 /* ── 공통 파츠 ─────────────────────────────────────────────── */
 .eyebrow {
