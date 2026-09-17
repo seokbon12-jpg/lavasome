@@ -319,6 +319,69 @@ img{display:block;max-width:100%}
   .C .method .row{grid-template-columns:1fr;gap:10px}
 }
 
+
+/* ── stateofaidesign.com 에서 가져온 패턴 ───────────────────────
+   · 챕터 3단 위계(번호 / 짧은 라벨 / 긴 헤드라인)
+   · 스크롤 진입 시 0부터 올라가는 카운트업
+   · 실명 + 소속이 붙은 대형 인용
+   · 없는 콘텐츠를 숨기지 않고 "준비 중" 상태로 설계해 노출
+   · 맨 끝의 근거(Methodology) 섹션                              */
+
+/* 챕터 헤드 */
+.C .chap{display:grid;grid-template-columns:96px 1fr;gap:0 34px;align-items:start}
+.C .chap .cn{font-family:var(--en);font-size:34px;font-weight:300;line-height:1;color:rgba(26,25,23,.28)}
+.C .dark .chap .cn{color:rgba(127,202,223,.5)}
+.C .chap .cl{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#6A6355}
+.C .dark .chap .cl{color:#7FCADF}
+.C .chap h2{margin-top:14px}
+/* 질문형 리드 — 주장 대신 질문을 단다 */
+.C .qlead{font-family:var(--kr-head);font-size:19px;line-height:1.7;
+  color:rgba(26,25,23,.62);margin:26px 0 0;max-width:46ch}
+.C .dark .qlead{color:rgba(242,244,243,.62)}
+
+/* 카운트업 숫자 밴드 */
+.C .figs b .cu{font-variant-numeric:tabular-nums}
+/* 값이 아직 없으면 대시로 둔다 — 없는 숫자를 지어내지 않는다 */
+.C .figs b .cu[data-count="0"]{color:rgba(127,202,223,.45)}
+
+/* 실명 인용 */
+.C .quote{display:grid;grid-template-columns:72px 1fr;gap:28px;align-items:start;
+  max-width:860px;margin:0 auto;padding:96px 0}
+.C .quote .av{width:72px;height:72px;border-radius:50%;background:#EAE8E3;
+  display:grid;place-items:center;font-family:var(--mono);font-size:9px;
+  letter-spacing:.08em;color:rgba(26,25,23,.42);text-align:center;line-height:1.7}
+.C .quote blockquote{margin:0;font-family:var(--kr-head);
+  font-size:clamp(20px,2.5vw,30px);line-height:1.55;text-wrap:balance}
+.C .quote .who{margin-top:22px;font-size:14px;color:rgba(26,25,23,.6)}
+.C .quote .who b{display:block;font-weight:400;color:#1A1917;font-family:var(--kr-head);font-size:16px}
+.C .quote .who em{font-style:normal;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:#6A6355}
+
+/* 준비 중 카드 — 자리표시가 아니라 설계된 상태 */
+.C .soon{position:absolute;inset:0;display:flex;flex-direction:column;
+  justify-content:flex-end;padding:20px;background:#16211F;
+  border:1px solid rgba(127,202,223,.2)}
+.C .soon .badge{align-self:flex-start;font-family:var(--mono);font-size:9.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:#0D1416;background:#7FCADF;
+  padding:4px 9px;border-radius:2px;margin-bottom:auto}
+.C .soon b{font-family:var(--kr-head);font-size:15px;font-weight:400;color:#F2F4F3}
+.C .soon span{font-size:12.5px;color:rgba(242,244,243,.55);margin-top:4px}
+
+/* 근거 섹션 */
+.C .meth{border-top:1px solid rgba(26,25,23,.13);padding-top:48px;margin-top:20px}
+.C .meth .mrow{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:36px}
+.C .meth .mrow div b{display:block;font-family:var(--en);font-size:32px;font-weight:300;
+  line-height:1;color:#1A1917}
+.C .meth .mrow div p{margin:10px 0 0;font-family:var(--mono);font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:#6A6355}
+.C .meth .note{margin:40px 0 0;font-size:14px;line-height:1.8;color:rgba(26,25,23,.62);max-width:62ch}
+
+@media (max-width:760px){
+  .C .chap{grid-template-columns:1fr;gap:8px}
+  .C .quote{grid-template-columns:1fr;gap:20px;padding:64px 0}
+  .C .meth .mrow{grid-template-columns:1fr;gap:26px}
+}
+
 /* ── 반응형 ── */
 @media (max-width:1080px){
   .A .prod,.B .prod{grid-template-columns:repeat(3,1fr)}
@@ -545,8 +608,15 @@ img{display:block;max-width:100%}
 <!-- 04 METHOD -->
 <section class="sec">
   <div class="shell">
-    <p class="eyebrow">Our Formulation Principles</p>
-    <h2>균형 위에 설계합니다<em>Built on Balance</em></h2>
+    <div class="chap">
+      <div><div class="cn">02</div></div>
+      <div>
+        <div class="cl">Our Formulation Principles</div>
+        <h2>균형 위에 설계합니다</h2>
+        <p class="qlead">좋은 성분을 넣는 것과, 그 성분이 끝까지 작동하게
+           만드는 것 사이에는 무엇이 있을까요?</p>
+      </div>
+    </div>
     <div class="method">
       <div class="row"><div class="n">01</div><h3>Active</h3><p>필요한 기능을 위한 핵심 성분</p></div>
       <div class="row"><div class="n">02</div><h3>Condition</h3><p>성분이 안정적으로 작동하기 위한 pH와 환경</p></div>
@@ -624,14 +694,26 @@ img{display:block;max-width:100%}
 <!-- 03 RESEARCH — 페이지의 중심 -->
 <section class="sec dark">
   <div class="shell">
-    <p class="eyebrow">Jeju-Origin Research</p>
-    <h2>제주는 라바섬의 배경이 아니라,<br>포뮬러의 출발점입니다<em>Researching Jeju-derived ingredients to build balanced formulations.</em></h2>
+    <div class="chap">
+      <div><div class="cn">01</div></div>
+      <div>
+        <div class="cl">Jeju-Origin Research</div>
+        <h2>제주는 라바섬의 배경이 아니라,<br>포뮬러의 출발점입니다</h2>
+        <!-- 주장 대신 질문. stateofaidesign 의 케이스 서브타이틀 방식. -->
+        <p class="qlead">제주에서 자란 원료가 실제 처방 안에서 작동하려면,
+           무엇을 확인해야 할까요?</p>
+      </div>
+    </div>
 
-    <!-- ⚠️ 숫자는 전부 자리표시. 검증된 실제 값으로 채우기 전 공개 금지. -->
+    <!-- ⚠️ 숫자는 값이 들어오기 전까지 대시로 둔다. data-count 에 실제 값을
+         넣으면 스크롤 진입 시 0부터 올라간다. -->
     <div class="figs">
-      <div><b class="todo">00<i>종</i></b><p>검토한 제주 자생 원료<em>Ingredients Screened</em></p></div>
-      <div><b class="todo">00<i>건</i></b><p>공동 연구 과제<em>Joint Research</em></p></div>
-      <div><b class="todo">0000<i>–</i></b><p>연구 협력 시작<em>Since</em></p></div>
+      <div><b><span class="cu" data-count="0" data-suffix="">—</span><i>종</i></b>
+        <p>검토한 제주 자생 원료<em>Ingredients Screened</em></p></div>
+      <div><b><span class="cu" data-count="0" data-suffix="">—</span><i>건</i></b>
+        <p>공동 연구 과제<em>Joint Research</em></p></div>
+      <div><b><span class="cu" data-count="0" data-suffix="">—</span><i></i></b>
+        <p>연구 협력 시작<em>Since</em></p></div>
     </div>
 
     <div class="proc">
@@ -640,23 +722,46 @@ img{display:block;max-width:100%}
         <figcaption><b>채취</b>현무암층을 통과한 물과 자생 식물</figcaption>
       </figure>
       <figure>
-        <div class="ph">분석 · 안정성 시험<br>— 실제 촬영 필요 —</div>
-        <figcaption><b>분석</b>성분 정량과 안정성 확인</figcaption>
+        <div class="soon">
+          <span class="badge">준비 중</span>
+          <b>분석 · 안정성 시험</b>
+          <span>성분 정량과 안정성 확인 과정</span>
+        </div>
       </figure>
       <figure>
         <img src="../assets/img/jeju/jeju-03-lab.jpg" alt="제주 유래 원료를 담은 실험 기구 선반">
         <figcaption><b>처방 적용</b>조건이 맞는 원료만 포뮬러로</figcaption>
       </figure>
     </div>
-    <p class="lead">공동 연구 기관의 공식 명칭과 연구 범위는 확인 후 기재합니다.</p>
+  </div>
+</section>
+
+<!-- 실명 인용 — 구조만 잡아둔다. 실존 인물을 지어내지 않는다. -->
+<section class="sec">
+  <div class="shell">
+    <div class="quote">
+      <div class="av">사진<br>준비 중</div>
+      <div>
+        <blockquote>&ldquo;제주 원료를 쓰는 일과, 그 원료가 처방 안에서
+          끝까지 버티게 만드는 일은 다른 문제였습니다.&rdquo;</blockquote>
+        <p class="who"><b>연구 담당자 성함</b><em>직함 · 소속 — 확인 후 기재</em></p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- 04 설계 원칙 -->
 <section class="sec">
   <div class="shell">
-    <p class="eyebrow">Our Formulation Principles</p>
-    <h2>균형 위에 설계합니다<em>Built on Balance</em></h2>
+    <div class="chap">
+      <div><div class="cn">02</div></div>
+      <div>
+        <div class="cl">Our Formulation Principles</div>
+        <h2>균형 위에 설계합니다</h2>
+        <p class="qlead">좋은 성분을 넣는 것과, 그 성분이 끝까지 작동하게
+           만드는 것 사이에는 무엇이 있을까요?</p>
+      </div>
+    </div>
     <div class="method">
       <div class="row"><div class="n">01</div><h3>Active</h3><p>필요한 기능을 위한 핵심 성분</p></div>
       <div class="row"><div class="n">02</div><h3>Condition</h3><p>성분이 안정적으로 작동하기 위한 pH와 환경</p></div>
@@ -668,8 +773,13 @@ img{display:block;max-width:100%}
 <!-- 05 원료 — 스트립. 상세는 메인 성분 섹션으로 넘긴다. -->
 <section class="sec">
   <div class="shell">
-    <p class="eyebrow">From Jeju, Into the Formula</p>
-    <h2>제주에서 발견해<br>포뮬러로 옮깁니다</h2>
+    <div class="chap">
+      <div><div class="cn">03</div></div>
+      <div>
+        <div class="cl">From Jeju, Into the Formula</div>
+        <h2>제주에서 발견해<br>포뮬러로 옮깁니다</h2>
+      </div>
+    </div>
     <div class="strip">
       <a href="#"><figure><img src="../assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암해수"></figure><div class="nm">제주 용암해수</div><div class="en2">Mineral Base</div></a>
       <a href="#"><figure><img src="../assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초"></figure><div class="nm">백년초</div><div class="en2">Botanical Calm</div></a>
@@ -679,6 +789,25 @@ img{display:block;max-width:100%}
       <a href="#"><figure><img src="../assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 글루타티온 용액"></figure><div class="nm">글루타티온</div><div class="en2">Radiance</div></a>
     </div>
     <p class="more"><a href="#">각 원료가 어떻게 쓰이는지 보기 →</a></p>
+  </div>
+</section>
+
+<!-- 근거 — stateofaidesign 의 Methodology 섹션 방식.
+     무엇에 근거한 페이지인지 맨 끝에서 밝힌다. -->
+<section class="sec">
+  <div class="shell">
+    <div class="meth">
+      <p class="eyebrow">Evidence</p>
+      <h2>이 페이지의 근거</h2>
+      <div class="mrow">
+        <div><b>—</b><p>공동 연구 기관</p></div>
+        <div><b>—</b><p>원료 시험 항목</p></div>
+        <div><b>—</b><p>기능성 심사 완료 제품</p></div>
+      </div>
+      <p class="note">공동 연구 기관의 공식 명칭과 연구 범위, 원료 시험 항목,
+        기능성화장품 심사·보고 필증 확인 결과를 이 자리에 기재합니다.
+        미백·주름개선 등 기능성 표시는 심사 근거가 확인된 제품에만 노출합니다.</p>
+    </div>
   </div>
 </section>
 
@@ -705,6 +834,30 @@ img{display:block;max-width:100%}
       window.scrollTo(0,0);
     });
   });
+
+  /* 카운트업 — data-count 에 실제 값이 들어오면 스크롤 진입 시 0부터 올라간다.
+     값이 0(미정)이면 대시를 그대로 둔다. stateofaidesign 의 숫자 밴드 방식. */
+  var nums=[].slice.call(document.querySelectorAll('.cu'));
+  if (nums.length && 'IntersectionObserver' in window &&
+      !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        io.unobserve(e.target);
+        var to=parseInt(e.target.getAttribute('data-count'),10)||0;
+        if(!to) return;                       // 값 미정이면 손대지 않는다
+        var suf=e.target.getAttribute('data-suffix')||'', t0=null;
+        (function step(ts){
+          if(!t0) t0=ts;
+          var k=Math.min(1,(ts-t0)/1100);
+          k=1-Math.pow(1-k,3);                // ease-out
+          e.target.textContent=Math.round(to*k).toLocaleString()+suf;
+          if(k<1) requestAnimationFrame(step);
+        })(performance.now());
+      });
+    },{threshold:.4});
+    nums.forEach(function(n){io.observe(n)});
+  }
 })();
 </script>
 </body>
