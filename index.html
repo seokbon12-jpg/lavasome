@@ -23,9 +23,8 @@
 
 <header class="site-header" data-header>
   <div class="shell site-header__inner">
-    <a class="wordmark" href="#top" aria-label="LAVASOME 홈">
-      LAVASOME
-      <span class="wordmark__dot" aria-hidden="true"></span>
+    <a class="wordmark" href="#top">
+      <img src="assets/img/brand/lavasome-logo.png" alt="LAVASOME" width="340" height="67">
     </a>
     <nav aria-label="주요">
       <a class="nav-shop" href="#formulas">SHOP</a>
@@ -195,45 +194,49 @@
         </p>
       </div>
 
-      <!-- 스펙 시트 — 제품컷이 3행을 관통하고, 오른쪽 2열에 근거 수치 4개와
-           외층/내층이 같은 헤어라인 격자 안에서 이어진다.
-             1행  [제품컷] [13.5%]   [135,000ppm]
-             2행  [  ↑   ] [pH 3.5]  [2중]
-             3행  [  ↑   ] [외층]    [내층]          -->
+      <!-- 제품컷을 크게 두고 2중 레이어 설명만 옆에 세운다.
+           근거 수치는 블록에서 꺼내 아래 스펙 라인 한 줄로 내렸다 —
+           실제 중요도에 비해 과하게 강조돼 보였다. -->
       <div class="mech">
-        <figure class="mech__shot">
+        <figure class="mech__shot reveal">
           <img src="assets/img/products/vita-c-plus.jpg"
                alt="라바섬 Vita-C Plus Ampoule 제품 이미지"
                loading="lazy" decoding="async">
-          <figcaption>Vita-C Plus Ampoule <em>무수 처방 2중 레이어</em></figcaption>
         </figure>
 
-        <div class="figure reveal">
-          <b class="figure__n">13.5<span>%</span></b>
-          <p class="figure__l">순수 비타민C <em>Pure Ascorbic Acid</em></p>
-        </div>
-        <div class="figure reveal" data-delay="1">
-          <b class="figure__n">135,000<span>ppm</span></b>
-          <p class="figure__l">함량 <em>Concentration</em></p>
-        </div>
-        <div class="figure reveal" data-delay="2">
-          <b class="figure__n">pH 3.5</b>
-          <p class="figure__l">흡수 조건 <em>Absorption</em></p>
-        </div>
-        <div class="figure reveal" data-delay="3">
-          <b class="figure__n">2중</b>
-          <p class="figure__l">레이어 구조 <em>Dual Layer</em></p>
-        </div>
-
-        <div class="layer reveal">
-          <span class="layer__tag">외층 <em>Outer</em></span>
-          <p>수분을 차단하는 무수 베이스가 순수 비타민C를 감쌉니다. 개봉 전까지 산화가 시작되지 않도록 설계했습니다.</p>
-        </div>
-        <div class="layer reveal" data-delay="1">
-          <span class="layer__tag">내층 <em>Inner</em></span>
-          <p>피부에 닿는 순간 유효 성분이 풀리도록 조건을 맞췄습니다. 농도가 아니라 도달이 목적입니다.</p>
+        <div class="mech__layers">
+          <div class="layer reveal">
+            <span class="layer__tag">외층 <em>Outer</em></span>
+            <p>수분을 차단하는 무수 베이스가 순수 비타민C를 감쌉니다.
+               개봉 전까지 산화가 시작되지 않도록 설계했습니다.</p>
+          </div>
+          <div class="layer reveal" data-delay="1">
+            <span class="layer__tag">내층 <em>Inner</em></span>
+            <p>피부에 닿는 순간 유효 성분이 풀리도록 조건을 맞췄습니다.
+               농도가 아니라 도달이 목적입니다.</p>
+          </div>
         </div>
       </div>
+
+      <!-- 스펙 라인 — 각주에 가깝게. 헤어라인 한 줄 위에 조용히 놓인다. -->
+      <dl class="specline reveal">
+        <div>
+          <dt>13.5<span>%</span></dt>
+          <dd>순수 비타민C <em>Pure Ascorbic Acid</em></dd>
+        </div>
+        <div>
+          <dt>135,000<span>ppm</span></dt>
+          <dd>함량 <em>Concentration</em></dd>
+        </div>
+        <div>
+          <dt>pH 3.5</dt>
+          <dd>흡수 조건 <em>Absorption</em></dd>
+        </div>
+        <div>
+          <dt>2중</dt>
+          <dd>레이어 구조 <em>Dual Layer</em></dd>
+        </div>
+      </dl>
 
     </div>
   </section>

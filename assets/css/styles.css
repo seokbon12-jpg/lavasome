@@ -95,7 +95,7 @@ em, i { font-style: normal; }
 /* 작은 영문 라벨 — 타자기 모노. 모노는 자체 자간이 넓으므로
    세리프 때 쓰던 .24em 트래킹을 그대로 두면 흩어져 보인다. */
 .eyebrow, .section__num, .nav-shop, .card__tag, .ing__i,
-.card__benefit em, .figure__l em, .layer__tag em,
+.card__benefit em, .specline dd em, .layer__tag em,
 .ing h3 em, .sense dt em, .site-footer__nav h3 {
   font-family: var(--font-label);
   font-weight: 400;
@@ -148,6 +148,9 @@ em, i { font-style: normal; }
   display: inline-flex; align-items: center; gap: 5px;
   font-size: 19px; letter-spacing: .16em;
 }
+/* 헤더는 확정 로고 PNG(원형 마크 + 워드마크, 원본 비율 5.07:1).
+   푸터는 아직 조판 워드마크를 쓴다 — 어두운 배경이라 흰색 반전본이 필요하다. */
+.wordmark img { display: block; height: 25px; width: auto; }
 .wordmark__dot {
   width: 5px; height: 5px; border-radius: 50%;
   background: var(--accent);
@@ -328,63 +331,58 @@ em, i { font-style: normal; }
 /* ── S3 메커니즘 ──────────────────────────────────────────── */
 /* 위의 오프닝 영상과 이어지도록 영상 배경색을 그대로 쓴다 */
 .section--mech { background: var(--film); }
-/* 스펙 시트 — 제품 그리드·레이어와 같은 헤어라인 격자 어휘.
-   제품컷이 왼쪽 열에서 3행을 관통하고, 오른쪽 2열에 근거 수치 4개와
-   외층/내층 6칸이 채워진다. 수치가 허공에 뜨지 않고 표처럼 읽힌다. */
+/* 제품컷을 크게 두고 2중 레이어 설명만 옆에 세운다. 테두리도 칸도 없이
+   여백으로만 나눈다 — 수치를 아래 스펙 라인으로 내렸기 때문에 이 블록은
+   제품 자체를 보여주는 일만 한다. */
 .mech {
   display: grid;
-  grid-template-columns: minmax(0, 380px) minmax(0, 1fr) minmax(0, 1fr);
-  gap: 1px; background: var(--line); border: 1px solid var(--line);
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 72px; align-items: center;
 }
-/* 제품컷 — 3행 전체를 차지해 병이 크게 읽힌다.
-   이미지 배경(#F6F0E5)과 칸 배경을 맞춰 이음새를 없앤다. */
-.mech__shot {
-  grid-column: 1; grid-row: 1 / span 3;
-  margin: 0; background: #F6F0E5;
-  display: flex; flex-direction: column; min-height: 0;
-}
+.mech__shot { margin: 0; background: #F6F0E5; border-radius: 3px; overflow: hidden; }
 .mech__shot img {
-  flex: 1; width: 100%; min-height: 0;
-  object-fit: cover; object-position: 50% 66%;  /* 병이 칸 중앙에 오도록 */
-  display: block;
+  /* 정사각 — 4:5 로 두면 오른쪽 레이어 설명이 짧아 빈 공간이 과했다 */
+  display: block; width: 100%; aspect-ratio: 1 / 1;
+  object-fit: cover; object-position: 50% 64%;
 }
-.mech__shot figcaption {
-  padding: 16px 20px 18px; text-align: center;
-  font-size: 13px; color: var(--ink-45); letter-spacing: .04em;
-  background: var(--paper);
+.mech__layers { display: grid; gap: 40px; }
+/* 두 레이어 사이만 헤어라인 하나. 상자로 가두지 않는다. */
+.mech__layers .layer + .layer {
+  border-top: 1px solid var(--line); padding-top: 40px;
 }
-.mech__shot figcaption em {
-  display: block; margin-top: 4px; font-style: normal;
-  font-family: var(--font-label); font-size: 10.5px; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--accent);
-}
-.figure { background: var(--paper); padding: 34px 30px 36px; }
-.figure__n {
-  display: block; font-size: clamp(38px, 4.6vw, 60px);
-  font-weight: 500; line-height: 1; color: var(--ink);
-  letter-spacing: -.02em; font-variant-numeric: tabular-nums;
-}
-.figure__n span { font-size: .46em; margin-left: 3px; color: var(--accent); }
-.figure__l {
-  margin-top: 12px; font-size: 15px; color: var(--ink-70);
-}
-.figure__l em {
-  display: block; font-size: 11px; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--accent); margin-top: 3px;
-}
-
-/* 외층·내층 — 위 수치와 같은 격자의 3행. 톤을 한 단 낮춰 성격을 구분한다. */
-.layer { background: var(--paper-2); padding: 34px 30px 36px; }
 .layer__tag {
   display: block; margin-bottom: 14px;
-  font-family: var(--font-kr-head); font-size: 19px;
+  font-family: var(--font-kr-head); font-size: 20px;
 }
 .layer__tag em {
   font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--accent); margin-left: 8px;
+  color: var(--accent); margin-left: 10px;
 }
-.layer p { color: var(--ink-70); font-size: 15px; }
+.layer p { color: var(--ink-70); font-size: 15.5px; line-height: 1.75; }
 
+/* ── 스펙 라인 ─────────────────────────────────────────────────
+   근거 수치 네 개. 이전에는 52px 짜리 칸 네 개였는데 실제 중요도보다
+   과하게 강조돼 보여서, 헤어라인 한 줄 위의 각주로 내렸다. */
+.specline {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px; margin: 96px 0 0;
+  padding-top: 28px; border-top: 1px solid var(--line);
+}
+.specline dt {
+  font-family: var(--font-display);
+  font-size: 21px; font-weight: 500; line-height: 1.2;
+  color: var(--ink); letter-spacing: -.01em;
+  font-variant-numeric: tabular-nums;
+}
+.specline dt span { font-size: .62em; margin-left: 2px; color: var(--accent); }
+.specline dd {
+  margin: 7px 0 0; font-size: 13.5px; color: var(--ink-70);
+}
+.specline dd em {
+  display: block; margin-top: 3px; font-style: normal;
+  font-family: var(--font-label); font-size: 10.5px; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--accent);
+}
 /* ── S4 제주 (밝은 섹션) ──────────────────────────────────── */
 .section--bright { background: #FFFFFF; }
 .jeju { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
@@ -549,9 +547,8 @@ em, i { font-style: normal; }
   .cards { grid-template-columns: repeat(2, 1fr); }
   .ings, .jeju { grid-template-columns: repeat(2, 1fr); }
   .senses { grid-template-columns: 1fr; }
-  /* 제품컷 + 1열 — 수치 4개와 외층/내층이 6행으로 쌓인다 */
-  .mech { grid-template-columns: minmax(0, 300px) minmax(0, 1fr); }
-  .mech__shot { grid-row: 1 / span 6; }
+  .mech { gap: 48px; }
+  .specline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 32px; }
 }
 
 @media (max-width: 760px) {
@@ -570,10 +567,11 @@ em, i { font-style: normal; }
 
   .cards, .ings, .senses { grid-template-columns: 1fr; }
   .jeju { grid-template-columns: 1fr; gap: 36px; }
-  /* 좁은 화면에서는 제품컷을 맨 위로 올리고 나머지를 한 줄씩 쌓는다 */
-  .mech { grid-template-columns: 1fr; }
-  .mech__shot { grid-column: 1; grid-row: auto; }
-  .mech__shot img { aspect-ratio: 4 / 5; flex: none; }
+  /* 제품컷을 맨 위로 올리고 레이어 설명을 아래로 */
+  .mech { grid-template-columns: 1fr; gap: 40px; }
+  .mech__layers { gap: 30px; }
+  .mech__layers .layer + .layer { padding-top: 30px; }
+  .specline { margin-top: 64px; }
   .tile, .tile--round, .tile--tall, .tile--press { width: 74vw; max-width: 300px; }
   .site-footer__inner { grid-template-columns: 1fr; }
   .section--closing { padding: 96px 0 104px; }
