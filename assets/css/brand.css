@@ -110,16 +110,14 @@
 .soon span { font-size: 12.5px; color: var(--ink-70); margin-top: 4px; }
 
 /* ── 인용 — 실명 + 소속 ────────────────────────────────────── */
+/* 연구자도 같은 컷아웃 처리. 원형 아바타로 줄이면 역광 실루엣이
+   뭉개져서 알아볼 수 없다. */
 .quote {
-  display: grid; grid-template-columns: 72px 1fr; gap: 28px;
-  max-width: 860px; margin-inline: auto; align-items: start;
+  display: grid; grid-template-columns: 210px 1fr; gap: 52px;
+  max-width: 940px; margin-inline: auto; align-items: end;
 }
-.quote__av {
-  width: 72px; height: 72px; border-radius: 50%; background: var(--panel);
-  display: grid; place-items: center; text-align: center; line-height: 1.7;
-  font-family: var(--font-label); font-size: 9px; letter-spacing: .08em;
-  color: var(--ink-45);
-}
+.quote__shot { margin: 0; }
+.quote__shot img { width: 100%; height: auto; }
 .quote blockquote {
   margin: 0; font-family: var(--font-kr-head);
   font-size: clamp(20px, 2.5vw, 30px); line-height: 1.55; text-wrap: balance;
@@ -138,24 +136,14 @@
    연구 담당자 인용(.quote)보다 비중이 크다. 초상을 세로로 크게 쓰고
    메시지 여러 문단 + 서명으로 받는다.
    사진이 준비되면 .founder__ph 를 <img> 로 바꾸면 된다. */
+/* 누끼 PNG 라 박스에 가두지 않는다. 지면 위에 그대로 서고, 텍스트와
+   바닥선을 맞춘다. 프레임·라운드·배경을 걸면 컷아웃의 의미가 사라진다. */
 .founder {
-  display: grid; grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
-  gap: 72px; align-items: center; margin-top: 56px;
+  display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: 76px; align-items: end; margin-top: 56px;
 }
-.founder__shot {
-  aspect-ratio: 4 / 5; border-radius: 3px; overflow: hidden;
-  background: var(--panel);
-}
-.founder__shot img { width: 100%; height: 100%; object-fit: cover; }
-/* 사진 자리 — 비어 보이지 않게 설계된 상태로 둔다 */
-.founder__ph {
-  width: 100%; height: 100%; display: flex; flex-direction: column;
-  justify-content: flex-end; padding: 22px;
-  border: 1px solid var(--line);
-}
-.founder__ph .soon__badge { margin-bottom: auto; }
-.founder__ph b { font-family: var(--font-kr-head); font-size: 15px; font-weight: 400; }
-.founder__ph span { font-size: 12.5px; color: var(--ink-70); margin-top: 4px; }
+.founder__shot { margin: 0; }
+.founder__shot img { width: 100%; height: auto; }
 
 .founder__msg p {
   font-size: 16.5px; line-height: 1.95; color: var(--ink-70); margin-bottom: 20px;
@@ -193,6 +181,19 @@
   text-transform: uppercase; color: var(--accent-t); font-weight: 400;
 }
 .method p { font-family: var(--font-kr-head); font-size: 18.5px; line-height: 1.6; }
+
+/* ── 선언 — 설계 원칙 세 항목을 받는 한 문장 ──────────────────
+   메인 04 섹션에 있던 브랜드 철학을 옮겨온 자리다. 제품 페이지에서는
+   구매 정보 사이에 끼어 있었는데, 원칙 뒤에 놓으니 결론으로 읽힌다. */
+.bstate { text-align: center; padding: 120px 0 130px; }
+.bstate h2 {
+  font-family: var(--font-kr-head);
+  font-size: clamp(32px, 5vw, 62px); line-height: 1.28; text-wrap: balance;
+}
+.bstate p {
+  max-width: 44ch; margin: 30px auto 0;
+  font-size: 17px; line-height: 1.85; color: var(--ink-70);
+}
 
 /* ── 05 원료 스트립 — 상세는 메인 성분 섹션으로 넘긴다 ────────── */
 .strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 26px; margin-top: 52px; }

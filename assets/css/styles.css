@@ -206,6 +206,14 @@ em, i { font-style: normal; }
 }
 .section__title--wide { max-width: 15ch; }
 .section__lead { color: var(--ink-70); font-size: 16px; }
+/* 브랜드 페이지로 넘기는 인라인 링크 */
+.lead-link {
+  display: inline-block; margin-top: 14px;
+  font-family: var(--font-label); font-size: 12px; letter-spacing: .1em;
+  color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 3px;
+  transition: border-color .3s var(--ease);
+}
+.lead-link:hover { border-bottom-color: var(--ink); }
 
 /* ── S1 Hero — 배경 사진 + 우측 콜라주, 스크롤 시차 ──────────
    .hero__bg 와 각 .hero__shot 이 서로 다른 속도로 움직인다.
