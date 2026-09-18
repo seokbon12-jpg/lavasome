@@ -1,54 +1,187 @@
 /* ═══════════════════════════════════════════════════════════════════
-   박스 오프닝 스크롤 스크럽 — 섹션 02 바로 위
-   프레임 시퀀스(WebP)를 캔버스에 그리고, GSAP ScrollTrigger 로
-   섹션을 pin 한 뒤 스크롤 진행도를 프레임 인덱스에 매핑한다.
+   박스가 열리는 장면 (02)
 
-   배경색 #F2F1ED 는 영상 자체의 배경을 모서리에서 샘플링한 값이다.
-   섹션 02(.section--mech)도 같은 값으로 맞춰 이음매가 보이지 않게 했다.
+   왼쪽에 용기(캔버스), 오른쪽에 카피. 섹션을 pin 해 두고 스크롤
+   진행도가 프레임과 오른쪽 블록의 등장을 함께 몬다. 박스가 다 열리기
+   전에 카피가 전부 켜지도록 등장 시점은 마크업의 data-at 에 적었다.
+
+   오른쪽 단은 한 화면 안에 다 들어가야 한다. 그래서 글자 크기를
+   화면 높이(vh)에 묶고 나머지 치수를 전부 em 으로 잡았다 — 세로가
+   짧은 노트북에서도 블록 전체가 같은 비율로 줄어든다.
+
+   좁거나(<=1080px) 아주 낮은(<=640px) 화면에서는 2단을 포기하고
+   [용기 한 화면] → [카피] 로 쌓는다. JS 가 .is-stacked 를 붙인다.
    ═══════════════════════════════════════════════════════════════════ */
 
 .boxopen {
   position: relative;
   background: var(--film);
-  height: 100vh;
+  min-height: 100vh;
   display: grid;
-  place-items: center;
+  align-content: center;
   overflow: hidden;
 }
 
+.boxopen__inner {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: var(--pad);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: clamp(40px, 4.6vw, 84px);
+  align-items: center;
+}
+
+/* ── 왼쪽 — 용기 ──────────────────────────────────────────── */
+.boxopen__side { position: relative; }
 .boxopen__stage {
-  /* 영상에서 여백을 잘라낸 뒤의 콘텐츠 비율 660×898 */
-  height: min(80vh, 800px);
+  height: min(72vh, 680px);
   aspect-ratio: 660 / 898;
   position: relative;
 }
-.boxopen__canvas {
-  display: block; width: 100%; height: 100%;
-}
-
-/* 프레임을 아직 못 받았을 때의 자리 — 배경과 같은 색이라 눈에 띄지 않는다 */
-.boxopen__stage::after {
-  content: ""; position: absolute; inset: 0; z-index: -1;
-  background: var(--film);
-}
+.boxopen__canvas { display: block; width: 100%; height: 100%; }
 
 .boxopen__label {
-  position: absolute; left: 50%; bottom: 42px; translate: -50% 0;
-  font-family: var(--font-label); font-size: 11.5px;
-  letter-spacing: .13em; text-transform: uppercase;
+  margin-top: 18px;
+  text-align: center;
+  font-family: var(--font-label);
+  font-size: 11px; letter-spacing: .13em; text-transform: uppercase;
   color: var(--ink-45);
   transition: opacity .5s var(--ease);
 }
 .boxopen.is-done .boxopen__label { opacity: 0; }
 
-@media (max-width: 760px) {
-  .boxopen__stage { height: min(66vh, 560px); }
-  .boxopen__label { bottom: 24px; }
+/* ── 오른쪽 — 카피 ────────────────────────────────────────
+   아래 치수는 전부 이 font-size 의 배수다. 여기만 바꾸면 블록
+   전체가 같이 줄고 늘어난다. */
+.boxopen__copy {
+  font-size: clamp(12.8px, 1.6vh, 15.5px);
+  max-width: 40em;
 }
 
-/* 모션 최소화 — pin·스크럽 없이 마지막 프레임만 정적으로 보여준다.
-   box-scrub.js 가 ScrollTrigger 를 아예 만들지 않는다. */
+.bcopy__meta {
+  display: flex; align-items: center; gap: 1em;
+  margin-bottom: 1.5em;
+}
+.bcopy__meta .section__num { margin-bottom: 0; font-size: .78em; }
+.bcopy__meta .eyebrow { font-size: .78em; }
+
+.bcopy__title {
+  font-family: var(--font-kr-head);
+  font-size: 2.3em;
+  line-height: 1.34;
+  letter-spacing: -.02em;
+}
+.bcopy__lead {
+  margin-top: 1.25em;
+  max-width: 30em;
+  color: var(--ink-70);
+  font-size: 1.02em;
+  line-height: 1.8;
+}
+
+/* 2중 구조 — 헤어라인 두 줄 사이에 조용히 */
+.blayers { margin-top: 2.3em; border-top: 1px solid var(--line); }
+.blayer {
+  display: grid;
+  grid-template-columns: 7.4em minmax(0, 1fr);
+  gap: 1.4em;
+  padding: 1.35em 0;
+  border-bottom: 1px solid var(--line);
+}
+.blayer__tag { font-family: var(--font-kr-head); font-size: 1em; line-height: 1.4; }
+.blayer__tag em {
+  display: block; margin-top: .45em;
+  font-family: var(--font-label);
+  font-size: .72em; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--accent-t);
+}
+.blayer p { color: var(--ink-70); font-size: .95em; line-height: 1.72; }
+
+/* 근거 수치 — 각주에 가깝게 한 줄 */
+.bspec {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.2em; margin-top: 1.9em;
+}
+.bspec dt {
+  font-family: var(--font-display); font-weight: 500;
+  font-size: 1.32em; line-height: 1.2; letter-spacing: -.01em;
+}
+.bspec dt span { font-size: .58em; margin-left: .12em; color: var(--accent-t); }
+.bspec dd { margin-top: .5em; font-size: .8em; line-height: 1.4; color: var(--ink-45); }
+
+/* 사용감 — 같은 장면 안의 두 번째 장 */
+.bsense {
+  margin-top: 2.4em; padding-top: 1.8em;
+  border-top: 1px solid var(--line);
+}
+.bsense__meta { margin-bottom: .9em; }
+.bsense__meta .eyebrow { font-size: .78em; }
+.bsense h3 {
+  font-family: var(--font-kr-head);
+  font-size: 1.36em; line-height: 1.4; letter-spacing: -.02em;
+}
+.bsense dl { margin-top: 1.1em; display: grid; gap: .7em; }
+.bsense dl > div {
+  display: grid; grid-template-columns: 7.4em minmax(0, 1fr);
+  gap: 1.4em; align-items: baseline;
+}
+.bsense dt { font-family: var(--font-kr-head); font-size: .95em; }
+.bsense dt em {
+  font-family: var(--font-label);
+  font-size: .76em; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--accent-t); margin-left: .4em;
+}
+.bsense dd { color: var(--ink-70); font-size: .93em; line-height: 1.6; }
+
+/* ── 스크롤에 맞춘 등장 ───────────────────────────────────
+   JS(ScrollTrigger)가 켜졌을 때만 숨긴다. 스크립트가 없거나
+   막히면 아래 규칙이 안 걸려서 그냥 전부 보인다. */
+.boxopen.is-scrub [data-step] {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .8s var(--ease), transform .8s var(--ease);
+  will-change: opacity, transform;
+}
+.boxopen.is-scrub [data-step].is-on { opacity: 1; transform: none; }
+
+/* ── 좁거나 낮은 화면 — 용기 한 화면, 그 아래 카피 ─────────── */
+@media (max-width: 1080px), (max-height: 640px) {
+  .boxopen { display: block; min-height: 0; }
+  .boxopen__inner {
+    display: block;
+    padding-inline: 0;
+    max-width: none;
+  }
+  .boxopen__side {
+    height: 100vh;
+    display: grid; align-content: center; justify-items: center;
+  }
+  .boxopen__stage { height: min(66vh, 560px); }
+  .boxopen__copy {
+    font-size: 15px;
+    /* 쌓인 배치에서 shell 폭을 다 쓰면 설명 한 줄이 너무 길어진다 */
+    width: 100%; max-width: 780px;
+    margin-inline: auto;
+    padding: 0 var(--pad) 118px;
+  }
+  .bcopy__title { font-size: clamp(24px, 3.6vw, 32px); }
+  /* 쌓인 배치에서는 스크롤 스텝을 쓰지 않는다 */
+  .boxopen.is-stacked [data-step] { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 760px) {
+  .boxopen__copy { padding-bottom: 92px; }
+  /* 390px 에서 "농도를 지키는 일이 어렵습니다" 가 오른쪽 끝에 닿았다 */
+  .bcopy__title { font-size: clamp(22px, 5.9vw, 28px); }
+  .blayer, .bsense dl > div { grid-template-columns: minmax(0, 1fr); gap: .5em; }
+  .bspec { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.6em 1.2em; }
+  .boxopen__label { margin-top: 14px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .boxopen { height: auto; padding: 96px 0; }
+  .boxopen { min-height: 0; }
+  .boxopen [data-step] { opacity: 1 !important; transform: none !important; transition: none; }
   .boxopen__label { display: none; }
 }

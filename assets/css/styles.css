@@ -45,6 +45,9 @@
   /* 액센트 — 저채도 토프. 라벨·단위에만 쓴다 */
   --accent:   #7C7466;
   --accent-d: #4A443A;
+  /* 작은 라벨용. #7C7466 은 종이 위 11~12px 에서 4.42:1 로 AA 미달이라
+     라벨·단위에는 이쪽(5.69:1)을 쓴다. */
+  --accent-t: #6A6355;
 
   --dark:     #1F1E1B;  /* 푸터 */
 
@@ -95,8 +98,8 @@ em, i { font-style: normal; }
 /* 작은 영문 라벨 — 타자기 모노. 모노는 자체 자간이 넓으므로
    세리프 때 쓰던 .24em 트래킹을 그대로 두면 흩어져 보인다. */
 .eyebrow, .section__num, .site-nav a, .card__tag, .ing__i,
-.card__benefit em, .specline dd em, .layer__tag em,
-.ing h3 em, .sense dt em, .site-footer__nav h3 {
+.card__benefit em, .blayer__tag em, .bsense dt em,
+.ing h3 em, .site-footer__nav h3 {
   font-family: var(--font-label);
   font-weight: 400;
 }
@@ -170,7 +173,7 @@ em, i { font-style: normal; }
 /* ── 공통 파츠 ─────────────────────────────────────────────── */
 .eyebrow {
   font-size: 11.5px; letter-spacing: .13em; text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent-t);
 }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
@@ -192,7 +195,7 @@ em, i { font-style: normal; }
 .section { padding: 132px 0; }
 .section__num {
   display: block; font-size: 11.5px; letter-spacing: .12em;
-  color: var(--accent); margin-bottom: 26px;
+  color: var(--accent-t); margin-bottom: 26px;
 }
 .section__head {
   display: grid; grid-template-columns: 1fr 380px;
@@ -323,7 +326,7 @@ em, i { font-style: normal; }
 }
 .card__benefit em {
   font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--accent); margin-left: 6px;
+  color: var(--accent-t); margin-left: 6px;
 }
 .card__desc { font-size: 14px; color: var(--ink-70); line-height: 1.7; }
 .card__figure {
@@ -331,7 +334,7 @@ em, i { font-style: normal; }
   font-size: 15px; letter-spacing: .02em;
 }
 .card__figure b { font-size: 26px; font-weight: 500; }
-.card__figure span { font-size: 13px; letter-spacing: .08em; color: var(--accent); }
+.card__figure span { font-size: 13px; letter-spacing: .08em; color: var(--accent-t); }
 .card__figure i { color: var(--ink-45); margin: 0 4px; }
 .card__link {
   margin-top: auto; align-self: start;
@@ -341,62 +344,7 @@ em, i { font-style: normal; }
 }
 .card__link:hover { border-bottom-color: var(--ink); }
 
-/* ── S3 메커니즘 ──────────────────────────────────────────── */
-/* 위의 오프닝 영상과 이어지도록 영상 배경색을 그대로 쓴다 */
-.section--mech { background: var(--film); }
-/* 제품컷을 크게 두고 2중 레이어 설명만 옆에 세운다. 테두리도 칸도 없이
-   여백으로만 나눈다 — 수치를 아래 스펙 라인으로 내렸기 때문에 이 블록은
-   제품 자체를 보여주는 일만 한다. */
-.mech {
-  display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-  gap: 72px; align-items: center;
-}
-.mech__shot { margin: 0; background: #F6F0E5; border-radius: 3px; overflow: hidden; }
-.mech__shot img {
-  /* 정사각 — 4:5 로 두면 오른쪽 레이어 설명이 짧아 빈 공간이 과했다 */
-  display: block; width: 100%; aspect-ratio: 1 / 1;
-  object-fit: cover; object-position: 50% 64%;
-}
-.mech__layers { display: grid; gap: 40px; }
-/* 두 레이어 사이만 헤어라인 하나. 상자로 가두지 않는다. */
-.mech__layers .layer + .layer {
-  border-top: 1px solid var(--line); padding-top: 40px;
-}
-.layer__tag {
-  display: block; margin-bottom: 14px;
-  font-family: var(--font-kr-head); font-size: 20px;
-}
-.layer__tag em {
-  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--accent); margin-left: 10px;
-}
-.layer p { color: var(--ink-70); font-size: 15.5px; line-height: 1.75; }
-
-/* ── 스펙 라인 ─────────────────────────────────────────────────
-   근거 수치 네 개. 이전에는 52px 짜리 칸 네 개였는데 실제 중요도보다
-   과하게 강조돼 보여서, 헤어라인 한 줄 위의 각주로 내렸다. */
-.specline {
-  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 32px; margin: 96px 0 0;
-  padding-top: 28px; border-top: 1px solid var(--line);
-}
-.specline dt {
-  font-family: var(--font-display);
-  font-size: 21px; font-weight: 500; line-height: 1.2;
-  color: var(--ink); letter-spacing: -.01em;
-  font-variant-numeric: tabular-nums;
-}
-.specline dt span { font-size: .62em; margin-left: 2px; color: var(--accent); }
-.specline dd {
-  margin: 7px 0 0; font-size: 13.5px; color: var(--ink-70);
-}
-.specline dd em {
-  display: block; margin-top: 3px; font-style: normal;
-  font-family: var(--font-label); font-size: 10.5px; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--accent);
-}
-/* ── S4 제주 (밝은 섹션) ──────────────────────────────────── */
+/* ── S4 제주 (밝은 섹션, 03) ──────────────────────────────────── */
 .section--bright { background: #FFFFFF; }
 .jeju { display: grid; grid-template-columns: repeat(3, 1fr); gap: 44px; }
 /* 사진 원본 비율 1182×1475 에 맞춘다 — 안 맞추면 object-fit 이 잘라낸다 */
@@ -409,45 +357,25 @@ em, i { font-style: normal; }
 .jeju__item h3 { font-family: var(--font-kr-head); font-size: 21px; margin-bottom: 12px; }
 .jeju__item p { color: var(--ink-70); font-size: 15px; }
 
-/* ── S5 선언 ──────────────────────────────────────────────── */
-.section--statement { text-align: center; }
-.section--statement .section__num { margin-bottom: 34px; }
-.statement {
-  font-family: var(--font-kr-head);
-  font-size: clamp(34px, 5.4vw, 68px); line-height: 1.28; text-wrap: balance;
-}
-.statement__sub {
-  max-width: 44ch; margin: 30px auto 0; color: var(--ink-70);
-}
-/* 시안 A의 격자 어휘를 그대로 — 제품 그리드·레이어와 같은 헤어라인 셀 */
-.senses {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
-  background: var(--line); border: 1px solid var(--line);
-  margin: 88px 0 64px; text-align: left;
-}
-.sense { background: var(--paper); padding: 34px 30px 38px; }
-.sense dt { font-family: var(--font-kr-head); font-size: 19px; margin-bottom: 12px; }
-.sense dt em {
-  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--accent); margin-left: 8px;
-}
-.sense dd { margin: 0; color: var(--ink-70); font-size: 15px; }
+/* ── 추천 대상 한 줄 ──────────────────────────────────────────
+   원래 S5(사용감) 끝에 있던 줄. S5 가 박스 장면 오른쪽 단으로
+   들어가면서 01 제품 그리드 아래로 내려왔다. */
 .recommend {
-  max-width: 62ch; margin-inline: auto; color: var(--ink-70); font-size: 15px;
+  max-width: 62ch; margin: 88px 0 0; color: var(--ink-70); font-size: 15px;
 }
 .recommend .eyebrow { display: block; margin-bottom: 14px; }
 
-/* ── S6 성분 ──────────────────────────────────────────────── */
+/* ── S5 성분 ──────────────────────────────────────────────── */
 .ings {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px;
   background: var(--line); border: 1px solid var(--line);
 }
 .ing { background: var(--paper); padding: 34px 30px 38px; }
-.ing__i { font-size: 11.5px; letter-spacing: .12em; color: var(--accent); }
+.ing__i { font-size: 11.5px; letter-spacing: .12em; color: var(--accent-t); }
 .ing h3 { font-family: var(--font-kr-head); font-size: 20px; margin: 16px 0 10px; }
 .ing h3 em {
   display: block; font-size: 11px; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--accent); margin-top: 4px;
+  text-transform: uppercase; color: var(--accent-t); margin-top: 4px;
 }
 .ing__n {
   font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 12px;
@@ -559,9 +487,6 @@ em, i { font-style: normal; }
 @media (max-width: 1080px) {
   .cards { grid-template-columns: repeat(2, 1fr); }
   .ings, .jeju { grid-template-columns: repeat(2, 1fr); }
-  .senses { grid-template-columns: 1fr; }
-  .mech { gap: 48px; }
-  .specline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 30px 32px; }
 }
 
 @media (max-width: 760px) {
@@ -578,13 +503,9 @@ em, i { font-style: normal; }
   .hero__collage { aspect-ratio: 1018 / 1192; }
   .cta-row .btn { flex: 1 1 auto; }
 
-  .cards, .ings, .senses { grid-template-columns: 1fr; }
+  .cards, .ings { grid-template-columns: 1fr; }
   .jeju { grid-template-columns: 1fr; gap: 36px; }
   /* 제품컷을 맨 위로 올리고 레이어 설명을 아래로 */
-  .mech { grid-template-columns: 1fr; gap: 40px; }
-  .mech__layers { gap: 30px; }
-  .mech__layers .layer + .layer { padding-top: 30px; }
-  .specline { margin-top: 64px; }
   .tile, .tile--round, .tile--tall, .tile--press { width: 74vw; max-width: 300px; }
   .site-footer__inner { grid-template-columns: 1fr; }
   .section--closing { padding: 96px 0 104px; }

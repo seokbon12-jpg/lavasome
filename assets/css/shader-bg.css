@@ -27,7 +27,7 @@
   display: block; width: 100%; height: 100%;
   pointer-events: none;
   /* 수영장 물빛처럼 — 채도와 명도를 올려 청록을 살린다 */
-  filter: saturate(1.12) brightness(.94) contrast(1.04);
+  filter: saturate(1.2) brightness(.99) contrast(1.09);
 }
 
 /* ── 물빛 베일 ────────────────────────────────────────────────────
@@ -38,10 +38,23 @@
   content: ""; position: absolute; inset: 0; z-index: 1;
   pointer-events: none;
   background:
-    radial-gradient(62% 46% at 50% 34%, rgba(4, 30, 44, .30) 0%, rgba(3, 22, 33, .70) 100%),
-    linear-gradient(180deg, rgba(3, 24, 35, .70) 0%,
-                            rgba(4, 32, 46, .60) 46%,
-                            rgba(3, 22, 33, .74) 100%);
+    /* 가장자리만 눌러 가운데가 깊어 보이게 — 평평하게 덮지 않는다 */
+    radial-gradient(118% 88% at 50% 38%,
+                    rgba(2, 16, 25, 0) 34%, rgba(2, 14, 22, .56) 100%),
+    /* 글자가 앉는 위쪽은 눌러 두고, 아래쪽 물은 조금 연다 */
+    linear-gradient(180deg, rgba(3, 24, 35, .72) 0%,
+                            rgba(4, 32, 46, .62) 40%,
+                            rgba(3, 26, 38, .52) 72%,
+                            rgba(2, 20, 30, .66) 100%);
+}
+/* 수면에 닿는 빛 한 줄. 위쪽에서 아주 옅게 번지기만 한다 —
+   물이 평면이 아니라 깊이를 가진 것처럼 보이게 하는 유일한 장치다. */
+.has-shader-bg::after {
+  content: ""; position: absolute; inset: 0; z-index: 1;
+  pointer-events: none; mix-blend-mode: screen; opacity: .28;
+  background:
+    radial-gradient(64% 34% at 34% -6%, rgba(150, 226, 250, .34) 0%, transparent 70%),
+    radial-gradient(48% 26% at 78% 4%, rgba(120, 208, 240, .22) 0%, transparent 72%);
 }
 .has-shader-bg > .shell { position: relative; z-index: 2; }
 
@@ -75,33 +88,56 @@
 /* 성분 인덱스 — 3×2 격자로 늘어놓으니 카탈로그처럼 읽혔다.
    한 줄에 하나씩, 헤어라인으로만 나눈 인덱스로 바꿔 물이 여백으로
    충분히 드러나게 한다.
-     [번호] [샬레] [국문명 / 영문명] [설명] [수치]              */
-.specimens { display: block; }
+     [샬레] [국문명 / 영문명] [설명] [기준값]
+
+   01~06 번호는 뺐다. 여섯 개를 세는 일은 이 섹션이 하는 말이 아니라
+   순서에 없는 무게를 줬다. 대신 열 이름을 얹어 표처럼 읽히게 했다.
+   ⚠️ .specimens__head 와 .spec 의 열 정의는 같이 움직여야 한다. */
+.specimens__head,
 .spec {
   display: grid;
   /* 이름 열을 좁게 — 넓게 두면 이름 끝과 설명 사이가 벌어져 설명이 뜬다 */
   grid-template-columns:
-    28px 96px minmax(0, 0.52fr) minmax(0, 1.4fr) max-content;
+    104px minmax(0, 0.52fr) minmax(0, 1.4fr) max-content;
+  column-gap: 30px;
+}
+.specimens { display: block; }
+
+.specimens__head {
+  padding-bottom: 14px;
+  font-family: var(--font-label); font-size: 11px; letter-spacing: .12em;
+  /* 물이 가장 밝아지는 순간을 기준으로 잰 값이다. .72 는 3.67:1 로
+     AA 미달이었다 (측정: 1440×900 렌더 픽셀). */
+  text-transform: uppercase; color: rgba(226, 248, 255, .92);
+}
+.specimens__head span:nth-child(1) { grid-column: 2; }
+.specimens__head span:nth-child(2) { grid-column: 3; }
+.specimens__head span:nth-child(3) { grid-column: 4; text-align: right; }
+.specimens__head em { opacity: .72; margin-left: .5em; }
+
+.spec {
   grid-template-rows: auto auto;
   align-items: center;
-  column-gap: 30px;
-  padding: 28px 0;
+  padding: 26px 14px;
+  margin-inline: -14px;
   border-top: 1px solid rgba(255, 255, 255, .16);
+  transition: background-color .45s var(--ease);
 }
 .spec:last-child { border-bottom: 1px solid rgba(255, 255, 255, .16); }
 
-.spec__i {
-  grid-column: 1; grid-row: 1 / 3;
-  font-family: var(--font-label); font-size: 11.5px; letter-spacing: .12em;
-  line-height: 1; color: #9FE3F8;
+@media (hover: hover) {
+  .spec:hover { background: rgba(255, 255, 255, .045); }
+  .spec:hover .spec__dish { transform: scale(1.04); }
 }
+
 .spec__dish {
-  grid-column: 2; grid-row: 1 / 3;
+  grid-column: 1; grid-row: 1 / 3;
   position: relative; margin: 0;
-  width: 96px; height: 96px; border-radius: 50%; overflow: hidden;
+  width: 104px; height: 104px; border-radius: 50%; overflow: hidden;
   box-shadow:
-    0 10px 26px rgba(0, 20, 30, .40),
-    inset 0 0 0 1px rgba(255, 255, 255, .30);
+    0 12px 30px rgba(0, 20, 30, .42),
+    inset 0 0 0 1px rgba(255, 255, 255, .32);
+  transition: transform .6s var(--ease);
 }
 .spec__dish img { width: 100%; height: 100%; object-fit: cover; }
 /* 표본이 물 위에 떠 보이도록 뒤에 깔리는 광륜 */
@@ -111,22 +147,23 @@
   background: radial-gradient(circle, rgba(150, 226, 250, .34) 0%, transparent 68%);
 }
 .spec h3 {
-  grid-column: 3; grid-row: 1; align-self: end;
+  grid-column: 2; grid-row: 1; align-self: end;
   font-family: var(--font-kr-head); font-size: 22px; line-height: 1.3;
   color: #FFFFFF; margin: 0 0 3px;
 }
 .spec__en {
-  grid-column: 3; grid-row: 2; align-self: start;
+  grid-column: 2; grid-row: 2; align-self: start;
   font-family: var(--font-label); font-size: 11px; letter-spacing: .1em;
-  line-height: 1.3; text-transform: uppercase; color: #9FE3F8;
+  /* #9FE3F8 은 밝은 물 위에서 3.77:1 로 AA 미달이라 한 단계 올렸다 */
+  line-height: 1.3; text-transform: uppercase; color: #E4F7FF;
 }
 .spec__d {
-  grid-column: 4; grid-row: 1 / 3;
-  font-size: 14.5px; line-height: 1.7; color: rgba(255, 255, 255, .84);
+  grid-column: 3; grid-row: 1 / 3;
+  font-size: 14.5px; line-height: 1.7; color: rgba(255, 255, 255, .95);
   margin: 0;
 }
 .spec__n {
-  grid-column: 5; grid-row: 1 / 3; text-align: right;
+  grid-column: 4; grid-row: 1 / 3; text-align: right;
   font-family: var(--font-display); font-size: 24px; font-weight: 500;
   line-height: 1.1; color: #FFFFFF; margin: 0;
   font-variant-numeric: tabular-nums;
@@ -139,23 +176,27 @@
 
 /* 설명문을 넣을 자리가 모자라면 이름 아래로 접는다 */
 @media (max-width: 1080px) {
-  .spec { grid-template-columns: 24px 84px minmax(0, 1fr) max-content; column-gap: 26px; }
-  .spec__d { grid-column: 3; grid-row: 3; margin-top: 8px; }
-  .spec__n { grid-column: 4; grid-row: 1 / 3; }
-  .spec__dish { width: 84px; height: 84px; }
+  .specimens__head,
+  .spec { grid-template-columns: 88px minmax(0, 1fr) max-content; column-gap: 26px; }
+  .specimens__head span:nth-child(1) { grid-column: 2; }
+  .specimens__head span:nth-child(2) { display: none; }
+  .specimens__head span:nth-child(3) { grid-column: 3; }
+  .spec__d { grid-column: 2; grid-row: 3; margin-top: 8px; }
+  .spec__n { grid-column: 3; grid-row: 1 / 3; }
+  .spec__dish { width: 88px; height: 88px; }
 }
 
 /* 좁은 화면 — 샬레와 번호만 윗줄에 두고 나머지를 그 아래로 */
 @media (max-width: 760px) {
   .has-shader-bg .section__head { margin-bottom: 48px; }
+  .specimens__head { display: none; }
   .spec {
     grid-template-columns: 72px minmax(0, 1fr) max-content;
-    column-gap: 20px; padding: 26px 0;
+    column-gap: 20px; padding: 24px 0; margin-inline: 0;
   }
   .spec__dish { grid-column: 1; grid-row: 1 / 3; width: 72px; height: 72px; }
-  .spec__i    { grid-column: 2; grid-row: 1; margin-bottom: 6px; }
-  .spec h3    { grid-column: 2; grid-row: 2; align-self: start; }
-  .spec__en   { grid-column: 2; grid-row: 3; }
+  .spec h3    { grid-column: 2; grid-row: 1; align-self: end; }
+  .spec__en   { grid-column: 2; grid-row: 2; align-self: start; }
   .spec__n    { grid-column: 3; grid-row: 1 / 3; font-size: 20px; }
-  .spec__d    { grid-column: 1 / -1; grid-row: 4; margin-top: 12px; }
+  .spec__d    { grid-column: 1 / -1; grid-row: 3; margin-top: 12px; }
 }

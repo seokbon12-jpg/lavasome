@@ -18,11 +18,38 @@
 
   var canvas = host.querySelector('.boxopen__canvas');
   var stage = host.querySelector('.boxopen__stage');
+  var side = host.querySelector('.boxopen__side');
   if (!canvas || !stage) return;
 
   var ctx = canvas.getContext('2d', { alpha: false });
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var isMobile = window.matchMedia('(max-width: 760px)').matches;
+
+  /* 2단(용기 왼쪽 · 카피 오른쪽)을 쓸 수 있는 화면인지.
+     ⚠️ box-scrub.css 의 쌓기 미디어쿼리와 같은 조건이어야 한다.
+     둘이 어긋나면 쌓인 배치인데 카피가 숨은 채로 남는다. */
+  var stackQuery = window.matchMedia('(max-width: 1080px), (max-height: 640px)');
+  var stacked = stackQuery.matches;
+  host.classList.toggle('is-stacked', stacked);
+
+  /* 스크롤 진행도에 맞춰 켜지는 오른쪽 블록들.
+     등장 시점은 마크업의 data-at(0~1). 전부 0.7 이전이라 박스가
+     다 열릴 때는 이미 모두 켜져 있다. */
+  var steps = [];
+  Array.prototype.forEach.call(host.querySelectorAll('[data-step]'),
+    function (el) {
+      steps.push({ el: el, at: parseFloat(el.dataset.at || '0'), on: false });
+    });
+
+  function syncSteps(p) {
+    if (stacked) return;                    // 쌓인 배치는 CSS 가 전부 보여준다
+    for (var i = 0; i < steps.length; i++) {
+      var s = steps[i], want = p >= s.at;
+      if (want === s.on) continue;          // 바뀔 때만 건드린다
+      s.on = want;
+      s.el.classList.toggle('is-on', want);
+    }
+  }
 
   var BG = '#F2F1ED';                       // 영상 배경색
   var DESKTOP = { dir: 'desktop', count: 121 };
@@ -133,26 +160,54 @@
       return;
     }
     gsap.registerPlugin(ScrollTrigger);
+    host.classList.add('is-scrub');   // 이게 붙어야 오른쪽 블록이 숨는다
 
-    var state = { f: 0 };
-    gsap.to(state, {
-      f: total - 1,
-      ease: 'none',
-      onUpdate: function () { show(Math.round(state.f)); },
-      scrollTrigger: {
-        trigger: host,
-        start: 'top top',
-        end: '+=' + (isMobile ? 160 : 220) + '%',
-        pin: true,
-        pinSpacing: true,
-        scrub: 0.35,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: function (self) {
-          host.classList.toggle('is-done', self.progress > 0.06);
+    var tween = null;
+
+    function build() {
+      // 2단일 때는 카피가 다 등장할 시간이 필요해서 더 길게 끈다.
+      var travel = stacked ? (isMobile ? 160 : 200) : 300;
+      var state = { f: 0 };
+      tween = gsap.to(state, {
+        f: total - 1,
+        ease: 'none',
+        onUpdate: function () { show(Math.round(state.f)); },
+        scrollTrigger: {
+          trigger: stacked ? side : host,
+          start: 'top top',
+          end: '+=' + travel + '%',
+          pin: true,
+          pinSpacing: true,
+          scrub: 0.35,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: function (self) {
+            host.classList.toggle('is-done', self.progress > 0.06);
+            syncSteps(self.progress);
+          }
         }
-      }
-    });
+      });
+    }
+    build();
+
+    /* 창을 늘였다 줄였다 하며 2단↔쌓기를 넘나들면 pin 대상과 길이가
+       달라진다. 그냥 두면 쌓인 배치인데 카피가 숨은 채로 남는다. */
+    function onModeChange() {
+      var now = stackQuery.matches;
+      if (now === stacked) return;
+      stacked = now;
+      host.classList.toggle('is-stacked', stacked);
+      steps.forEach(function (s) { s.on = false; s.el.classList.remove('is-on'); });
+      if (tween && tween.scrollTrigger) tween.scrollTrigger.kill(true);
+      if (tween) tween.kill();
+      build();
+      ScrollTrigger.refresh();
+    }
+    if (stackQuery.addEventListener) {
+      stackQuery.addEventListener('change', onModeChange);
+    } else if (stackQuery.addListener) {
+      stackQuery.addListener(onModeChange);          // 구형 사파리
+    }
 
     addEventListener('resize', function () {
       if (resize()) paint(current < 0 ? 0 : current);

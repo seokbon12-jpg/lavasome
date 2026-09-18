@@ -264,15 +264,13 @@
   .strip { grid-template-columns: repeat(2, 1fr); }
   .method__row { grid-template-columns: 1fr; gap: 10px; }
   .meth__row { grid-template-columns: 1fr; gap: 26px; }
-  .quote { grid-template-columns: 1fr; gap: 20px; }
-  /* 1열로 쌓이면 인물이 텍스트 위로 가므로 바닥 맞춤이 의미가 없다.
-     섹션 패딩을 되돌리고 보정도 푼다. */
-  .brand .section--figure { padding-bottom: 84px; }
-  .founder__msg, .quote__body { padding-bottom: 0; }
-  .founder { grid-template-columns: 1fr; gap: 34px; }
-  .founder__shot { max-width: 280px; }
-  .quote { grid-template-columns: 1fr; }
-  .quote__shot { max-width: 200px; }
+  /* 1열로 쌓을 때도 인물 아랫단은 섹션 아랫선에 붙인다.
+     글을 먼저 읽히고 인물을 맨 아래로 내려 순서를 바꾼다. */
+  .founder, .quote { grid-template-columns: 1fr; gap: 34px; }
+  .founder__msg, .quote__body { padding-bottom: 0; order: 1; }
+  .founder__shot, .quote__shot { order: 2; }
+  .founder__shot { max-width: 260px; }
+  .quote__shot { max-width: 190px; }
   .bhero { padding: 96px 0 80px; }
   .bhero__strip { margin-top: 56px; }
 }

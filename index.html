@@ -162,83 +162,89 @@
           <a class="card__link" href="#ingredients">보러가기</a>
         </li>
       </ul>
+
+      <!-- 원래 04 섹션(사용감) 끝에 있던 추천 대상 줄. 04 가 박스 장면
+           오른쪽으로 들어가면서 한 화면에 들어갈 분량을 넘겨, 제품을
+           고르는 자리인 여기로 내렸다. -->
+      <p class="recommend reveal">
+        <span class="eyebrow">Recommended for</span>
+        고농도 제품에서 자극을 느껴본 분 · 결과는 원하지만 순한 사용감을 포기하고 싶지 않은 분 ·
+        성분의 근거를 확인하고 쓰는 분
+      </p>
     </div>
   </section>
 
-  <!-- ══ 박스 오프닝 — 스크롤 스크럽 ══
+  <!-- ══ S3 — 박스가 열리는 장면 (02 · 스크롤 스크럽) ══
        프레임: assets/img/box/{desktop|mobile}/NNN.webp (ffmpeg → WebP)
        원본 영상: hf_20260805_211203_*.mp4 (2404×3444 · 5.04s · 24fps)
-       섹션을 pin 하고 스크롤 진행도를 프레임에 매핑한다. 자세한 건 box-scrub.js -->
-  <section class="boxopen" data-box-scrub aria-label="Vita-C Plus 앰플 패키지가 열리는 장면">
-    <div class="boxopen__stage">
-      <canvas class="boxopen__canvas"></canvas>
-    </div>
-    <p class="boxopen__label">Scroll to open</p>
-  </section>
 
-  <!-- ══ S3 — Formulation First (메커니즘) ══
-       시안 A의 02 레이아웃: 제품컷을 왼쪽 단에 세우고 헤드와 근거 수치를
-       오른쪽 단에 붙인다. 위 스크럽 캔버스에서 색이 이어지도록 배경은
-       영상 배경색(--film) 그대로 둔다. -->
-  <section class="section section--mech" id="mechanism">
-    <div class="shell">
-      <div class="section__head">
-        <span class="section__num">02</span>
-        <div>
-          <h2 class="section__title reveal">
-            농도를 올리는 일보다<br>농도를 지키는 일이 어렵습니다
-          </h2>
+       용기를 왼쪽에 세우고 오른쪽 단에 02(2중 레이어)와 04(사용감)를
+       합쳐 올린다. 스크롤 진행도가 프레임과 오른쪽 블록의 등장을 함께
+       몬다 — 각 블록의 등장 시점은 data-at(진행도 0~1)에 적어 두었고,
+       박스가 다 열리기 전(0.70)에 전부 켜진다. 자세한 건 box-scrub.js -->
+  <section class="boxopen" data-box-scrub id="mechanism"
+           aria-labelledby="mech-title">
+    <div class="boxopen__inner">
+
+      <div class="boxopen__side">
+        <div class="boxopen__stage">
+          <canvas class="boxopen__canvas"
+                  aria-label="Vita-C Plus 앰플 패키지가 열리는 장면" role="img"></canvas>
         </div>
-        <p class="section__lead reveal" data-delay="1">
+        <p class="boxopen__label">Scroll to open</p>
+      </div>
+
+      <div class="boxopen__copy">
+        <p class="bcopy__meta" data-step data-at=".03">
+          <span class="section__num">02</span>
+          <span class="eyebrow">Dual Layer Formulation</span>
+        </p>
+
+        <h2 class="bcopy__title" id="mech-title" data-step data-at=".06">
+          농도를 올리는 일보다<br>농도를 지키는 일이 어렵습니다
+        </h2>
+
+        <p class="bcopy__lead" data-step data-at=".18">
           순수 비타민C는 물과 만나는 순간부터 무너집니다.
           라바섬은 물을 빼는 쪽을 택했습니다.
         </p>
-      </div>
 
-      <!-- 제품컷을 크게 두고 2중 레이어 설명만 옆에 세운다.
-           근거 수치는 블록에서 꺼내 아래 스펙 라인 한 줄로 내렸다 —
-           실제 중요도에 비해 과하게 강조돼 보였다. -->
-      <div class="mech">
-        <figure class="mech__shot reveal">
-          <img src="assets/img/products/vita-c-plus.jpg"
-               alt="라바섬 Vita-C Plus Ampoule 제품 이미지"
-               loading="lazy" decoding="async">
-        </figure>
-
-        <div class="mech__layers">
-          <div class="layer reveal">
-            <span class="layer__tag">외층 <em>Outer</em></span>
+        <div class="blayers">
+          <div class="blayer" data-step data-at=".30">
+            <span class="blayer__tag">외층 <em>Outer</em></span>
             <p>수분을 차단하는 무수 베이스가 순수 비타민C를 감쌉니다.
-               개봉 전까지 산화가 시작되지 않도록 설계했습니다.</p>
+               개봉 전까지 산화가 시작되지 않습니다.</p>
           </div>
-          <div class="layer reveal" data-delay="1">
-            <span class="layer__tag">내층 <em>Inner</em></span>
-            <p>피부에 닿는 순간 유효 성분이 풀리도록 조건을 맞췄습니다.
+          <div class="blayer" data-step data-at=".42">
+            <span class="blayer__tag">내층 <em>Inner</em></span>
+            <p>피부에 닿는 순간 유효 성분이 풀립니다.
                농도가 아니라 도달이 목적입니다.</p>
           </div>
         </div>
+
+        <!-- 근거 수치는 각주에 가깝게 한 줄로 -->
+        <dl class="bspec" data-step data-at=".54">
+          <div><dt>13.5<span>%</span></dt><dd>순수 비타민C</dd></div>
+          <div><dt>135,000<span>ppm</span></dt><dd>함량</dd></div>
+          <div><dt>pH 3.5</dt><dd>흡수 조건</dd></div>
+          <div><dt>2중</dt><dd>레이어 구조</dd></div>
+        </dl>
+
+        <!-- 옛 04(사용감). 같은 장면 안에서 마지막에 켜진다. 한 장면에
+             두 개의 번호를 달면 02 → 04 → 03 으로 읽혀서, 번호는 빼고
+             라벨만 남겼다. 뒤 섹션 번호는 그만큼 하나씩 당겼다. -->
+        <div class="bsense" data-step data-at=".68">
+          <p class="bsense__meta">
+            <span class="eyebrow">Gentle Efficacy</span>
+          </p>
+          <h3>고농도인데 사용감은 순합니다</h3>
+          <dl>
+            <div><dt>흡수감 <em>Texture</em></dt><dd>얇게 퍼지고 빠르게 정리됩니다</dd></div>
+            <div><dt>향 <em>Scent</em></dt><dd>인위적인 향을 더하지 않았습니다</dd></div>
+            <div><dt>색감 <em>Tone</em></dt><dd>앰버빛은 무수 처방의 결과입니다</dd></div>
+          </dl>
+        </div>
       </div>
-
-      <!-- 스펙 라인 — 각주에 가깝게. 헤어라인 한 줄 위에 조용히 놓인다. -->
-      <dl class="specline reveal">
-        <div>
-          <dt>13.5<span>%</span></dt>
-          <dd>순수 비타민C <em>Pure Ascorbic Acid</em></dd>
-        </div>
-        <div>
-          <dt>135,000<span>ppm</span></dt>
-          <dd>함량 <em>Concentration</em></dd>
-        </div>
-        <div>
-          <dt>pH 3.5</dt>
-          <dd>흡수 조건 <em>Absorption</em></dd>
-        </div>
-        <div>
-          <dt>2중</dt>
-          <dd>레이어 구조 <em>Dual Layer</em></dd>
-        </div>
-      </dl>
-
     </div>
   </section>
 
@@ -286,44 +292,11 @@
     </div>
   </section>
 
-  <!-- ══ S5 — Gentle Efficacy ══ -->
-  <section class="section section--statement" id="gentle">
-    <div class="shell">
-      <span class="section__num">04</span>
-      <!-- 원래 여기 있던 "피부에 가장 부드럽게 스며드는 제주 / 강함이 아니라
-           균형입니다" 는 브랜드 철학이라 brand.html 의 설계 원칙 뒤로 옮겼다.
-           이 섹션은 사용감과 추천 대상, 즉 제품을 고를 때 필요한 내용만 남긴다. -->
-      <h2 class="statement reveal">
-        고농도인데<br>사용감은 순합니다
-      </h2>
-      <p class="statement__sub reveal" data-delay="1">
-        쓰는 동안의 감각까지 처방에 포함했습니다. 얇게 퍼지고 빠르게 정리됩니다.
-      </p>
+  <!-- 옛 S5(Gentle Efficacy)는 박스 장면 오른쪽 단으로 들어갔다.
+       추천 대상 한 줄은 01 제품 그리드 아래로, 철학 문장은 앞서
+       brand.html 로 옮겼다. -->
 
-      <dl class="senses">
-        <div class="sense reveal">
-          <dt>흡수감 <em>Texture</em></dt>
-          <dd>얇게 퍼지고 빠르게 정리됩니다. 겉도는 잔여감을 남기지 않습니다.</dd>
-        </div>
-        <div class="sense reveal" data-delay="1">
-          <dt>향 <em>Scent</em></dt>
-          <dd>인위적인 향을 더하지 않았습니다. 원료 본래의 옅은 향만 남습니다.</dd>
-        </div>
-        <div class="sense reveal" data-delay="2">
-          <dt>색감 <em>Tone</em></dt>
-          <dd>앰버빛은 착색이 아니라 무수 처방의 결과입니다.</dd>
-        </div>
-      </dl>
-
-      <p class="recommend reveal">
-        <span class="eyebrow">Recommended for</span>
-        고농도 제품에서 자극을 느껴본 분 · 결과는 원하지만 순한 사용감을 포기하고 싶지 않은 분 ·
-        성분의 근거를 확인하고 쓰는 분
-      </p>
-    </div>
-  </section>
-
-  <!-- ══ S6 — Ingredient & Formula Cards ══ -->
+  <!-- ══ S5 — Ingredient & Formula Cards ══ -->
   <section class="section" id="ingredients" data-shader-bg>
     <!-- liquid glass 굴절 필터. 카드 뒤 backdrop 을 일렁이게 만든다.
          이 섹션 안에 두었으므로 섹션을 지우면 필터도 같이 사라진다. -->
@@ -339,7 +312,7 @@
     </svg>
     <div class="shell">
       <div class="section__head">
-        <span class="section__num">05</span>
+        <span class="section__num">04</span>
         <div>
           <p class="eyebrow reveal">Multi-Active Brightening Formula</p>
           <h2 class="section__title reveal" data-delay="1">
@@ -351,10 +324,17 @@
         </p>
       </div>
 
+      <!-- 인덱스 머리 — 표처럼 읽히게 열 이름만 얹는다. 스크린리더는
+           아래 목록을 그대로 읽으면 되므로 장식으로 감춘다. -->
+      <div class="specimens__head reveal" aria-hidden="true">
+        <span>표본 <em>Specimen</em></span>
+        <span>역할 <em>Role</em></span>
+        <span>기준 <em>Reference</em></span>
+      </div>
+
       <ul class="specimens" role="list">
         <li class="spec reveal">
           <figure class="spec__dish"><img src="assets/img/chalet/chalet-vitc.jpg" alt="샬레에 담긴 비타민C 앰플액" loading="lazy"></figure>
-          <span class="spec__i">01</span>
           <h3>순수 비타민C</h3>
           <p class="spec__en">Ascorbic Acid</p>
           <p class="spec__n">13.5%</p>
@@ -362,7 +342,6 @@
         </li>
         <li class="spec reveal" data-delay="1">
           <figure class="spec__dish"><img src="assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암석과 물" loading="lazy"></figure>
-          <span class="spec__i">02</span>
           <h3>제주 용암해수</h3>
           <p class="spec__en">Lava Seawater</p>
           <p class="spec__n">미네랄</p>
@@ -370,7 +349,6 @@
         </li>
         <li class="spec reveal" data-delay="2">
           <figure class="spec__dish"><img src="assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초 열매" loading="lazy"></figure>
-          <span class="spec__i">03</span>
           <h3>백년초</h3>
           <p class="spec__en">Opuntia</p>
           <p class="spec__n">제주 유래</p>
@@ -378,7 +356,6 @@
         </li>
         <li class="spec reveal">
           <figure class="spec__dish"><img src="assets/img/chalet/chalet-peptide.jpg" alt="샬레에 담긴 기포가 인 젤" loading="lazy"></figure>
-          <span class="spec__i">04</span>
           <h3>펩타이드</h3>
           <p class="spec__en">Peptide</p>
           <p class="spec__n">복합</p>
@@ -386,7 +363,6 @@
         </li>
         <li class="spec reveal" data-delay="1">
           <figure class="spec__dish"><img src="assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 맑은 젤" loading="lazy"></figure>
-          <span class="spec__i">05</span>
           <h3>글루타치온</h3>
           <p class="spec__en">Glutathione</p>
           <p class="spec__n">고함량</p>
@@ -394,7 +370,6 @@
         </li>
         <li class="spec reveal" data-delay="2">
           <figure class="spec__dish"><img src="assets/img/chalet/chalet-betaglucan.jpg" alt="샬레에 담긴 곡물" loading="lazy"></figure>
-          <span class="spec__i">06</span>
           <h3>베타글루칸</h3>
           <p class="spec__en">Beta-Glucan</p>
           <p class="spec__n">진정</p>
@@ -404,10 +379,10 @@
     </div>
   </section>
 
-  <!-- ══ S7 — Reviews & Stories ══ -->
+  <!-- ══ S6 — Reviews & Stories ══ -->
   <section class="section section--stories" id="stories">
     <div class="shell">
-      <span class="section__num">06</span>
+      <span class="section__num">05</span>
       <h2 class="section__title section__title--wide reveal">
         써 본 사람들,<br>그리고 만든 사람들의 이야기
       </h2>
@@ -440,10 +415,10 @@
     </div>
   </section>
 
-  <!-- ══ S8 — Brand Closing ══ -->
+  <!-- ══ S7 — Brand Closing ══ -->
   <section class="section section--closing" id="closing">
     <div class="shell">
-      <span class="section__num">07</span>
+      <span class="section__num">06</span>
       <h2 class="closing__title reveal">Formulation First</h2>
       <p class="closing__sub reveal" data-delay="1">
         조건을 먼저 설계합니다. 그다음이 성분입니다.
