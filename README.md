@@ -24,6 +24,8 @@ assets/img/       hero/ · box/ · products/ · jeju/ · chalet/ · brand/ · ho
      (data-parallax, main.js). prefers-reduced-motion 이면 정지.
   ② 제품 캠페인 캐러셀 — 히어로 바로 아래. 슬라이드 한 장 = 사진 한 장.
      제품이 세트 안에 들어간 장면을 통째로 깔고 카피는 왼쪽 빈 자리에.
+     폰 폭에서는 왼쪽 빈 자리가 잘려 나가므로 [사진] → [카피] 로 쌓고,
+     object-position 을 오른쪽으로 밀어 제품이 화면에 남게 한다.
   ③ 제품 리스트 캐러셀 — 한 화면에 3개, 좌우 이동
   ④ Brand Story / Jeju & Ingredients / Skin Science + 주요 성분 6종
   ⑤ 한정 이벤트 & 프로모션
