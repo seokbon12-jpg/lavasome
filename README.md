@@ -4,27 +4,43 @@
 CDN 없이 `assets/vendor/` 에 넣어 씁니다. 스펙 원본은 [`docs/handoff.md`](docs/handoff.md).
 
 ```
-index.html    홈
-brand.html    Brand Story
-news.html     브랜드 소식 (대표 인사말)
-assets/css/   styles.css · shader-bg.css · box-scrub.css · brand.css
-assets/js/    main.js · shader-bg.js · box-scrub.js
-assets/vendor/gsap.min.js · ScrollTrigger.min.js
-assets/img/   hero/ · box/ · products/ · jeju/ · chalet/ · brand/
+index.html        홈
+brand.html        Brand Story
+news.html         브랜드 소식 (대표 인사말)
+formulation.html  Skin Science (처방 설계)
+event.html        Event & Promotion
+assets/css/       styles.css · home.css · brand.css · shader-bg.css · box-scrub.css
+assets/js/        main.js · slider.js · shader-bg.js · box-scrub.js
+assets/vendor/    gsap.min.js · ScrollTrigger.min.js
+assets/img/       hero/ · box/ · products/ · jeju/ · chalet/ · brand/ · home/
 ```
 
 로컬에서 보기: `python3 -m http.server 8000` 후 `http://localhost:8000`
 
-**홈(index.html)** — Hero · 01 Our Formulas · 02 박스 오프닝(스크럽 + 2중 레이어 +
-사용감) · 03 Jeju Origin · 04 원료 Preview · 05 Reviews & Stories · 06 Brand Closing.
+**홈(index.html)** — 클라이언트 피드백 문서(라바섬 상세페이지 수정 방향)의
+4개 영역 구성입니다. 글보다 그림이 먼저 오고, 홈에서 설명을 끝내지 않습니다.
+
+  ① 메인 비주얼 슬라이더 — 제주 브랜드컷 + 제품 캠페인 3장, 좌우 이동
+  ② 제품 캐러셀 — 한 화면에 3개, 좌우 이동
+  ③ Brand Story / Jeju & Ingredients / Skin Science + 주요 성분 6종
+  ④ 한정 이벤트 & 프로모션
+
+**헤더** — 로고 / 브랜드 · 제품 · 고객지원(하위 메뉴) / KR·EN · 마이페이지 ·
+장바구니. 두 안 중 로고 왼쪽(Option 1)을 택했습니다.
+
+**푸터** — 모든 페이지 동일. 상단 웨이브 + 사업자 정보 + 약관 + FOLLOW US +
+고객센터. 웨이브는 곡선 아래만 채우므로 바로 위 섹션 색을 클래스로 지정합니다
+(`.footwave--cream` / `.footwave--panel`).
 
 **Brand Story(brand.html)** — 슬로건 히어로 · 브랜드 소개 · 01 Jeju Origin ·
 02 Ingredients(상세 7종) · 03 Formulation Principles · 04 Brand Journey · 클로징.
-구성과 문구는 클라이언트 피드백 문서(LAVASOME_Brand_Story_Feedback)와 리플렛 지면을
-그대로 따릅니다.
 
-원료는 홈에서 Preview(이름만), Brand Story 에서 상세(주요 특징 · 기대 효과)로
-역할을 나눕니다. 물 배경은 두 곳 모두에 깔립니다.
+**Skin Science(formulation.html)** — 홈 구성이 바뀌면서 갈 곳이 필요해진
+처방 설계 콘텐츠를 받습니다. 박스가 열리는 스크롤 장면 + 2중 레이어 +
+사용감, 제주 기능성 베이스 3종.
+
+원료는 홈에서 아이콘 6종으로 훑고, Brand Story 에서 상세 표(7종)로 봅니다.
+⚠️ 두 목록의 구성이 다릅니다 — 어느 쪽을 기준으로 맞출지 확인이 필요합니다.
 
 톤은 저채도 화이트–그레이. 노란빛은 실제 제형 사진에서만 나오게 두고,
 UI는 뉴트럴로 유지합니다.

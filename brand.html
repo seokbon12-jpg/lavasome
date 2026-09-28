@@ -20,11 +20,40 @@
     <a class="wordmark" href="index.html">
       <img src="assets/img/brand/lavasome-logo.png" alt="LAVASOME" width="340" height="67">
     </a>
-    <nav class="site-nav" aria-label="주요">
-      <a href="brand.html" aria-current="page">BRAND</a>
-      <a href="news.html">NEWS</a>
-      <a href="index.html#formulas">SHOP</a>
+    <nav class="gnb" aria-label="주요">
+      <div class="gnb__item">
+        <a href="brand.html" aria-current="page">브랜드</a>
+        <div class="gnb__sub">
+          <a href="brand.html">브랜드 스토리</a>
+          <a href="news.html">브랜드 소식</a>
+        </div>
+      </div>
+      <div class="gnb__item">
+        <a href="index.html#products">제품</a>
+        <div class="gnb__sub">
+          <a href="index.html#products">전체 제품</a>
+          <a href="formulation.html">스킨 사이언스</a>
+        </div>
+      </div>
+      <div class="gnb__item">
+        <a href="#customer">고객지원</a>
+        <div class="gnb__sub">
+          <span class="gnb__soon">FAQ<em>준비 중</em></span>
+          <span class="gnb__soon">공지사항<em>준비 중</em></span>
+        </div>
+      </div>
     </nav>
+    <div class="util">
+      <p class="util__lang">
+        <a href="index.html" aria-current="true">KR</a><span aria-hidden="true">|</span><span class="util__soon" title="준비 중">EN</span>
+      </p>
+      <span class="util__ico" title="마이페이지 — 카페24 연동 예정" aria-label="마이페이지 (준비 중)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4 0-7 2.2-7 5v1h14v-1c0-2.8-3-5-7-5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="util__ico" title="장바구니 — 카페24 연동 예정" aria-label="장바구니 (준비 중)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Zm3 0V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </span>
+    </div>
   </div>
 </header>
 
@@ -311,35 +340,64 @@
       <h2 class="reveal">Beauty from Jeju,<br>Value for All.</h2>
       <p class="reveal" data-delay="1">제주의 자연에서 시작한 아름다움이<br>피부를 넘어 더 좋은 가치로 이어집니다.</p>
       <div class="cta-row cta-row--center reveal" data-delay="2">
-        <a class="btn btn--solid" href="index.html#formulas">제품 보기</a>
+        <a class="btn btn--solid" href="index.html#products">제품 보기</a>
       </div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
-  <div class="shell site-footer__inner">
-    <div class="site-footer__brand">
-      <p class="wordmark wordmark--footer">LAVASOME<span class="wordmark__dot" aria-hidden="true"></span></p>
-      <p class="site-footer__line">제주 유래 자산을 기능적으로 해석하는 설계 기반 스킨케어.</p>
-    </div>
-    <nav class="site-footer__nav" aria-label="푸터">
-      <div>
-        <h3>PRODUCTS</h3>
-        <a href="index.html#formulas">전체 보기</a>
-        <a href="index.html#mechanism">Formulation First</a>
-        <a href="index.html#ingredients">성분</a>
-      </div>
-      <div>
-        <h3>BRAND</h3>
-        <a href="brand.html">브랜드 소개</a>
-        <a href="brand.html#ingredients">원료 상세</a>
-        <a href="brand.html#journey">Brand Journey</a>
-        <a href="news.html">브랜드 소식</a>
-      </div>
-    </nav>
+  <div class="footwave footwave--panel" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" focusable="false">
+      <path d="M0,58 C240,110 420,6 720,36 C1020,66 1210,108 1440,64 L1440,120 L0,120 Z" fill="currentColor"/>
+    </svg>
   </div>
-  <div class="shell site-footer__legal">
+  <div class="shell foot">
+    <div class="foot__brand">
+      <img class="foot__logo" src="assets/img/brand/lavasome-logo-white.png" alt="LAVASOME" width="340" height="67">
+      <p class="foot__line">제주의 자연에서 시작된 과학적 스킨케어</p>
+      <dl class="biz">
+        <div><dt>상호</dt><dd>주식회사 라바섬</dd></div>
+        <div><dt>대표</dt><dd>임희경</dd></div>
+        <div><dt>사업자등록번호</dt><dd>356-81-02119</dd></div>
+        <div><dt>통신판매업 신고</dt><dd>제 2021-서울성북-0827호</dd></div>
+        <div><dt>주소</dt><dd>서울특별시 성북구 한천로 553 (석관동) 4층</dd></div>
+        <div><dt>전화</dt><dd><a href="tel:15446743">1544-6743</a></dd></div>
+        <div><dt>개인정보보호책임자</dt><dd>선영원 <a href="mailto:lavasome_korea@naver.com">(lavasome_korea@naver.com)</a></dd></div>
+      </dl>
+    </div>
+    <div class="foot__mid">
+      <nav class="foot__policy" aria-label="약관">
+        <span class="foot__soon">이용약관</span>
+        <span class="foot__soon">이용안내</span>
+        <span class="foot__soon"><b>개인정보처리방침</b></span>
+      </nav>
+      <div class="foot__sns">
+        <h3>Follow us</h3>
+        <div class="foot__ico">
+          <span title="인스타그램 — 주소 확인 후 연결" aria-label="인스타그램 (준비 중)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+          </span>
+          <span title="카카오채널 — 주소 확인 후 연결" aria-label="카카오채널 (준비 중)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4C7 4 3 7.1 3 10.9c0 2.4 1.7 4.6 4.2 5.8L6.4 20l3.5-2.1c.7.1 1.4.2 2.1.2 5 0 9-3.1 9-6.9S17 4 12 4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </span>
+          <span title="유튜브 — 주소 확인 후 연결" aria-label="유튜브 (준비 중)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 9.6v4.8l4-2.4-4-2.4Z" fill="currentColor"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="foot__cs" id="customer">
+      <h3>고객센터</h3>
+      <p class="foot__tel"><a href="tel:15446743">1544-6743</a></p>
+      <ul role="list">
+        <li>평일 09:00 &ndash; 18:00</li>
+        <li>점심시간 12:00 &ndash; 13:00</li>
+        <li>토 / 일 / 공휴일 휴무</li>
+      </ul>
+    </div>
+  </div>
+  <div class="shell foot__legal">
     <p>화장품법상 표시·광고 범위 내에서 표기합니다.</p>
     <p>© <span data-year>2026</span> LAVASOME</p>
   </div>
