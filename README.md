@@ -1,20 +1,30 @@
-# LAVASOME — 메인페이지
+# LAVASOME
 
 정적 사이트 (HTML/CSS/JS). 외부 라이브러리는 스크럽용 GSAP 하나뿐이고,
 CDN 없이 `assets/vendor/` 에 넣어 씁니다. 스펙 원본은 [`docs/handoff.md`](docs/handoff.md).
 
 ```
-index.html
-assets/css/   styles.css · shader-bg.css · box-scrub.css
+index.html    홈
+brand.html    Brand Story
+news.html     브랜드 소식 (대표 인사말)
+assets/css/   styles.css · shader-bg.css · box-scrub.css · brand.css
 assets/js/    main.js · shader-bg.js · box-scrub.js
 assets/vendor/gsap.min.js · ScrollTrigger.min.js
-assets/img/   hero/ · box/
+assets/img/   hero/ · box/ · products/ · jeju/ · chalet/ · brand/
 ```
 
 로컬에서 보기: `python3 -m http.server 8000` 후 `http://localhost:8000`
 
-8섹션 구현: Hero · Our Formulas · **박스 오프닝(스크럽)** · Formulation First(메커니즘) ·
-Jeju-Origin · Gentle Efficacy · Ingredient Cards · Reviews & Stories · Brand Closing.
+**홈(index.html)** — Hero · 01 Our Formulas · 02 박스 오프닝(스크럽 + 2중 레이어 +
+사용감) · 03 Jeju Origin · 04 원료 Preview · 05 Reviews & Stories · 06 Brand Closing.
+
+**Brand Story(brand.html)** — 슬로건 히어로 · 브랜드 소개 · 01 Jeju Origin ·
+02 Ingredients(상세 7종) · 03 Formulation Principles · 04 Brand Journey · 클로징.
+구성과 문구는 클라이언트 피드백 문서(LAVASOME_Brand_Story_Feedback)와 리플렛 지면을
+그대로 따릅니다.
+
+원료는 홈에서 Preview(이름만), Brand Story 에서 상세(주요 특징 · 기대 효과)로
+역할을 나눕니다. 물 배경은 두 곳 모두에 깔립니다.
 
 톤은 저채도 화이트–그레이. 노란빛은 실제 제형 사진에서만 나오게 두고,
 UI는 뉴트럴로 유지합니다.
@@ -111,9 +121,6 @@ HTML에서 `data-placeholder` 속성으로 전부 표시해뒀습니다.
 assets/css/shader-bg.css   .has-shader-bg 안으로만 스코프됨
 assets/js/shader-bg.js     셰이더 + 마운트 로직
 ```
-
-유리 굴절용 SVG 필터(`#glass-distortion`)는 성분 섹션 안에 인라인으로 두었습니다.
-섹션을 지우면 필터도 같이 사라집니다.
 
 ### 구성
 

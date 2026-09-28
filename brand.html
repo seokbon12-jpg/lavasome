@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>브랜드 소개 — LAVASOME</title>
-<meta name="description" content="자연은 가능성을 제공하고, 과학은 그 가능성이 작동할 조건을 설계합니다. 제주 유래 원료를 연구해 균형 위에 처방을 설계하는 라바섬의 방식.">
+<title>Brand Story — LAVASOME</title>
+<meta name="description" content="제주 자연이 주는 쉼, 피부가 다시 숨쉬는 시간. 라바섬은 제주가 품은 자연의 가치를 발견하고 피부 과학과 정교한 포뮬러로 완성합니다.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="https://use.typekit.net/zhv7ywn.css">
 
 <link rel="stylesheet" href="assets/css/styles.css">
+<!-- 성분 섹션의 물 배경. 메인과 같은 셰이더를 쓴다 -->
+<link rel="stylesheet" href="assets/css/shader-bg.css">
 <link rel="stylesheet" href="assets/css/brand.css">
 
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -20,6 +22,7 @@
     </a>
     <nav class="site-nav" aria-label="주요">
       <a href="brand.html" aria-current="page">BRAND</a>
+      <a href="news.html">NEWS</a>
       <a href="index.html#formulas">SHOP</a>
     </nav>
   </div>
@@ -27,228 +30,286 @@
 
 <main id="main" class="brand" tabindex="-1">
 
-  <!-- ══ 01 히어로 ══
-       메인은 사진 히어로, 여기는 조판만으로 성격을 나눈다. -->
+  <!-- ══ 히어로 — 브랜드 슬로건 ══
+       리플렛의 슬로건과 서명 문구를 그대로 쓴다. 대표이사 인사말로
+       시작하던 구성을 걷어내고 브랜드 자체에서 시작하도록 바꿨다.
+       (피드백 02 · 대표이사 인사말은 news.html 로 이동) -->
   <section class="bhero">
-    <div class="shell">
-      <p class="eyebrow reveal">Jeju-Origin Research</p>
-      <h1 class="reveal" data-delay="1">Formulation First</h1>
-      <p class="bhero__kr reveal" data-delay="2">
-        무엇을 넣을지 정하기 전에,<br>그것이 작동할 조건을 먼저 설계합니다
-      </p>
-      <div class="bhero__strip reveal" data-delay="3">
-        <figure><img src="assets/img/jeju/jeju-01-seawater.jpg" alt="페트리 접시에 담긴 제주 용암해수와 현무암" loading="lazy" decoding="async"></figure>
-        <figure><img src="assets/img/products/vita-c-plus.jpg" alt="라바섬 Vita-C Plus Ampoule 제품 이미지" loading="lazy" decoding="async"></figure>
-        <figure><img src="assets/img/jeju/jeju-03-lab.jpg" alt="제주 유래 원료를 담은 실험 기구 선반" loading="lazy" decoding="async"></figure>
+    <div class="bhero__photo" aria-hidden="true">
+      <img src="assets/img/brand/brand-hero.jpg" alt="" loading="eager" decoding="async">
+    </div>
+    <div class="bhero__scrim" aria-hidden="true"></div>
+
+    <div class="shell bhero__inner">
+      <div class="bhero__copy">
+        <p class="eyebrow reveal">Brand Story</p>
+        <h1 class="reveal" data-delay="1">제주 자연이 주는 쉼,<br>피부가 다시 숨쉬는 시간</h1>
+        <p class="bhero__en reveal" data-delay="2">
+          Rest from Jeju Nature,<br>Let Your Skin Breathe Again
+        </p>
+        <p class="bhero__sig reveal" data-delay="3">Beauty from Jeju,<br>Value for All.</p>
       </div>
+
+      <aside class="bhero__aside reveal" data-delay="2">
+        <p>자연의 본질은 그대로,<br>피부에는 더 깊이.</p>
+        <span>LAVASOME</span>
+      </aside>
     </div>
   </section>
 
-  <!-- ══ 02 철학 ══ -->
-  <section class="section section--film">
+  <!-- ══ 브랜드 소개 ══ 리플렛 본문 그대로 -->
+  <section class="section section--film" id="about">
     <div class="shell">
-      <p class="eyebrow reveal">Nature, Proven by Science</p>
-      <h2 class="section__title reveal" data-delay="1">
-        좋은 성분을 고르는 일에서<br>멈추지 않습니다
-      </h2>
-      <div class="phil">
-        <p class="reveal">같은 성분도 조건이 다르면 다르게 작동합니다. 농도가 유지되는 조건,
-          피부가 견디는 조건, 성분끼리 서로를 방해하지 않는 조건 —
-          라바섬은 그 조건을 먼저 맞춥니다.</p>
-        <p class="reveal" data-delay="1">함량, pH, 안정화, 성분 간의 균형과 사용 환경까지 설계에
-          포함합니다. 성분표가 아니라 설계도에서 시작한다는 뜻입니다.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ══ 대표 메시지 ══
-       ⚠️ 본문은 여전히 교체용 초안입니다. 대표 본인의 문장으로 바꿔주세요.
-       성함(임희경)은 확인된 값입니다.
-       ⚠️ 사진은 생성 이미지입니다. 실명 옆에 놓이면 본인의 사진으로
-       읽히므로, 공개 전에 실제 촬영본으로 교체하는 편이 안전합니다.
-       역광 실루엣 누끼 PNG — 배경 없이 지면 위에 그대로 선다. -->
-  <section class="section section--panel section--figure" id="founder">
-    <div class="shell">
-      <p class="eyebrow reveal">Founder&rsquo;s Note</p>
-      <h2 class="section__title reveal" data-delay="1">대표 인사말</h2>
-
-      <div class="founder">
-        <figure class="founder__shot reveal">
-          <img src="assets/img/brand/founder.png" alt="라바섬 임희경 대표"
-               width="452" height="1002" loading="lazy" decoding="async">
-        </figure>
-
-        <div class="founder__msg reveal" data-delay="1">
-          <p>좋은 원료를 찾는 일보다, 그 원료가 끝까지 제 역할을 하게
-            만드는 일이 훨씬 어려웠습니다.</p>
-          <p>제주에서 자란 것들을 오래 들여다봤습니다. 현무암층을 지나온 물,
-            건조와 자외선을 견디며 자란 식물. 이미 좋은 것들이었지만,
-            그대로 병에 담는다고 피부에서 같은 힘을 내지는 않았습니다.
-            농도를 올리면 자극이 따라왔고, 자극을 줄이면 효과가 흐려졌습니다.</p>
-          <p>그래서 순서를 바꿨습니다. 무엇을 넣을지 정하기 전에,
-            그것이 버틸 수 있는 조건을 먼저 설계하기로 했습니다.
-            라바섬의 모든 처방은 그 순서로 만들어집니다.</p>
-          <p class="founder__sign">
-            <b>임희경</b><em>Founder &middot; LAVASOME</em>
-          </p>
+      <div class="intro">
+        <div>
+          <p class="eyebrow reveal">About LAVASOME</p>
+          <h2 class="section__title reveal" data-delay="1">제주 자연을<br>과학으로 완성하다</h2>
+        </div>
+        <div class="intro__body">
+          <p class="reveal" data-delay="1">라바섬은 제주가 품은 자연의 가치를 발견하고,
+            피부 과학과 정교한 포뮬러를 통해 피부에 필요한 가치로 완성합니다.</p>
+          <p class="intro__note reveal" data-delay="2">자연의 본질은 그대로, 피부에는 더 깊이.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ 03 연구 — 이 페이지의 중심 ══ -->
-  <section class="section" id="research">
+  <!-- ══ 01 JEJU ORIGIN ══
+       기존 "Jeju-Origin Research" 를 연구 자료가 아니라 브랜드 이야기로
+       다시 짰다. 숫자 카드와 공정 3단은 걷어냈다. (피드백 03) -->
+  <section class="section" id="origin">
     <div class="shell">
       <div class="chap reveal">
         <div><div class="chap__n">01</div></div>
         <div>
-          <div class="chap__l">Jeju-Origin Research</div>
-          <h2>제주는 라바섬의 배경이 아니라,<br>포뮬러의 출발점입니다</h2>
-          <!-- 주장 대신 질문을 단다 -->
-          <p class="qlead">제주에서 자란 원료가 실제 처방 안에서 작동하려면,
-            무엇을 확인해야 할까요?</p>
+          <div class="chap__l">Jeju Origin</div>
+          <h2>제주 자연에서 시작해,<br>과학으로 완성하다</h2>
+          <p class="chap__en">From Jeju Nature, Into the Science of Skin</p>
+          <p class="chap__lead">라바섬은 제주가 품은 청정한 자연의 가치를 발견하고,
+            피부 과학과 정교한 연구를 통해 자연의 본질은 그대로,
+            피부에는 더 깊이 전합니다.</p>
         </div>
       </div>
 
-      <!-- ⚠️ 숫자는 검증된 값이 들어오기 전까지 대시로 둔다.
-           data-count 에 실제 값을 넣으면 스크롤 진입 시 0부터 올라간다. -->
-      <dl class="figs reveal">
-        <div>
-          <b><span class="cu" data-count="0">&mdash;</span><i>종</i></b>
-          <p>검토한 제주 자생 원료<em>Ingredients Screened</em></p>
-        </div>
-        <div>
-          <b><span class="cu" data-count="0">&mdash;</span><i>건</i></b>
-          <p>공동 연구 과제<em>Joint Research</em></p>
-        </div>
-        <div>
-          <b><span class="cu" data-count="0">&mdash;</span></b>
-          <p>연구 협력 시작<em>Since</em></p>
-        </div>
-      </dl>
+      <!-- ⚠️ 이 사진은 제주테크노파크 생물종다양성연구소 · 미생물산업화지원센터
+           건물입니다(간판이 그대로 보입니다). 라바섬 소유 시설이 아니므로
+           리플렛처럼 "LAVASOME BIO RESEARCH CENTER" 로 표기하면 자사 연구소로
+           읽힙니다. 아래 캡션은 협력 기관으로 적어 두었습니다 —
+           공식 명칭과 협력 범위를 확인한 뒤 확정해주세요. -->
+      <figure class="origin__shot reveal">
+        <img src="assets/img/brand/research-center.jpg"
+             alt="제주 생물종다양성연구소 전경" loading="lazy" decoding="async">
+        <figcaption>제주 생물종다양성연구소 &middot; 미생물산업화지원센터
+          <em>협력 연구 기관</em></figcaption>
+      </figure>
 
-      <div class="proc">
-        <figure class="reveal">
-          <img src="assets/img/jeju/jeju-01-seawater.jpg" alt="페트리 접시에 담긴 제주 용암해수와 현무암" loading="lazy" decoding="async">
-          <figcaption><b>채취</b>현무암층을 통과한 물과 자생 식물</figcaption>
-        </figure>
-        <!-- 없는 사진은 숨기지 않고 "준비 중" 상태로 설계해 노출한다 -->
-        <figure class="reveal" data-delay="1">
-          <div class="soon">
-            <span class="soon__badge">준비 중</span>
-            <b>분석 · 안정성 시험</b>
-            <span>성분 정량과 안정성 확인 과정</span>
+      <div class="origin">
+        <article class="origin__item reveal">
+          <div class="origin__img">
+            <img src="assets/img/brand/origin-01.jpg" alt="샬레에 담긴 물과 제주 현무암" loading="lazy" decoding="async">
           </div>
-        </figure>
-        <figure class="reveal" data-delay="2">
-          <img src="assets/img/jeju/jeju-03-lab.jpg" alt="제주 유래 원료를 담은 실험 기구 선반" loading="lazy" decoding="async">
-          <figcaption><b>처방 적용</b>조건이 맞는 원료만 포뮬러로</figcaption>
-        </figure>
+          <h3>제주 생물종 다양성 연구소</h3>
+          <p>제주 생물종 특허 원료 개발</p>
+        </article>
+        <article class="origin__item reveal" data-delay="1">
+          <div class="origin__img">
+            <img src="assets/img/brand/origin-02.jpg" alt="샬레 위로 떨어지는 스포이드 물방울" loading="lazy" decoding="async">
+          </div>
+          <h3>인체 적용 시험</h3>
+          <p>제품의 효능과 안정성</p>
+        </article>
+        <article class="origin__item reveal" data-delay="2">
+          <div class="origin__img">
+            <img src="assets/img/brand/origin-03.jpg" alt="네 개의 시험관에 담긴 식물과 해조류 표본" loading="lazy" decoding="async">
+          </div>
+          <h3>체계적인 품질 관리 시스템</h3>
+          <p>원료부터 완제품까지</p>
+        </article>
       </div>
-    </div>
-  </section>
 
-  <!-- ══ 연구 담당자 인용 — 성함·직함·소속은 확인 후 기재 ══ -->
-  <section class="section section--film section--figure">
-    <div class="shell">
-      <div class="quote reveal">
-        <figure class="quote__shot">
+      <!-- 연구 담당자 한마디. 피드백 문서에는 없는 요소지만, 연구 이야기를
+           자료가 아니라 사람의 말로 받게 해서 남겨 두었습니다.
+           ⚠️ 성함·직함·소속은 확인 후 기재. -->
+      <div class="oquote reveal">
+        <figure class="oquote__shot">
           <img src="assets/img/brand/researcher.png" alt="샬레를 살피는 연구 담당자"
                width="900" height="1344" loading="lazy" decoding="async">
         </figure>
-        <div class="quote__body">
+        <div class="oquote__body">
           <blockquote>&ldquo;제주 원료를 쓰는 일과, 그 원료가 처방 안에서
             끝까지 버티게 만드는 일은 다른 문제였습니다.&rdquo;</blockquote>
-          <p class="quote__who"><b>연구 담당자 성함</b><em>직함 · 소속 — 확인 후 기재</em></p>
+          <p class="oquote__who"><b>연구 담당자 성함</b><em>직함 · 소속 — 확인 후 기재</em></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ 04 설계 원칙 ══ -->
-  <section class="section" id="principles">
+  <!-- ══ 02 INGREDIENTS — 상세 ══
+       홈에 있던 상세 원료 정보를 이쪽으로 옮겼다. 홈은 Preview 만 남긴다.
+       (피드백 04) 표의 문구·성분 구성은 전달받은 리플렛 표 그대로. -->
+  <section class="section" id="ingredients" data-shader-bg>
     <div class="shell">
-      <div class="chap reveal">
-        <div><div class="chap__n">02</div></div>
+      <div class="ihead">
         <div>
-          <div class="chap__l">Our Formulation Principles</div>
-          <h2>균형 위에 설계합니다</h2>
-          <p class="qlead">좋은 성분을 넣는 것과, 그 성분이 끝까지 작동하게
-            만드는 것 사이에는 무엇이 있을까요?</p>
+          <p class="eyebrow reveal">Jeju-Inspired Skin Science</p>
+          <h2 class="section__title reveal" data-delay="1">
+            제주의 자연을 담은,<br>피부를 위한 과학적 포뮬러
+          </h2>
+          <p class="section__lead reveal" data-delay="2">
+            제주의 자연이 선사하는 특별한 원료를, 피부를 위한 과학으로 완성합니다.
+          </p>
         </div>
+        <p class="ihead__note reveal" data-delay="2">
+          각 원료는 독립적으로 작용하지 않고, 서로의 장점을 더해
+          최적의 피부 컨디션을 만들어냅니다.
+        </p>
       </div>
-      <div class="method">
-        <div class="method__row reveal">
-          <div class="method__n">01</div><h3>Active</h3>
-          <p>필요한 기능을 위한 핵심 성분</p>
-        </div>
-        <div class="method__row reveal" data-delay="1">
-          <div class="method__n">02</div><h3>Condition</h3>
-          <p>성분이 안정적으로 작동하기 위한 pH와 환경</p>
-        </div>
-        <div class="method__row reveal" data-delay="2">
-          <div class="method__n">03</div><h3>Balance</h3>
-          <p>피부 부담과 기능 사이의 균형</p>
-        </div>
+
+      <div class="specimens__head reveal" aria-hidden="true">
+        <span>원료</span>
+        <span>주요 특징</span>
+        <span>기대 효과 / 원산지</span>
       </div>
+
+      <ul class="specimens" role="list">
+        <li class="spec reveal">
+          <figure class="spec__dish"><img src="assets/img/chalet/chalet-vitc.jpg" alt="샬레에 담긴 비타민C 앰플액" loading="lazy"></figure>
+          <h3>순수 비타민 C</h3>
+          <p class="spec__en">아스코빅애씨드</p>
+          <p class="spec__d">맑고 투명한 피부를 위한 안정화된 순수 비타민 C</p>
+          <p class="spec__n">13.5%<em>고함량</em></p>
+        </li>
+        <li class="spec reveal" data-delay="1">
+          <figure class="spec__dish"><img src="assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암석과 물" loading="lazy"></figure>
+          <h3>제주 용암해수</h3>
+          <p class="spec__en">라바 씨워터</p>
+          <p class="spec__d">풍부한 미네랄이 피부 컨디션을 건강하게 유지하는 데 도움</p>
+          <p class="spec__n">미네랄<em>제주 유래</em></p>
+        </li>
+        <li class="spec reveal" data-delay="2">
+          <figure class="spec__dish"><img src="assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초 열매" loading="lazy"></figure>
+          <h3>제주 백년초</h3>
+          <p class="spec__en">선인장추출물</p>
+          <p class="spec__d">수분을 지켜주고 건조한 환경에서도 피부를 편안하게 유지하는 다당체</p>
+          <p class="spec__n">제주 유래</p>
+        </li>
+        <li class="spec reveal">
+          <figure class="spec__dish"><img src="assets/img/chalet/chalet-peptide.jpg" alt="샬레에 담긴 기포가 인 젤" loading="lazy"></figure>
+          <h3>펩타이드</h3>
+          <p class="spec__en">펩타이드</p>
+          <p class="spec__d">탄력 있는 피부를 위한 피부 컨디션 케어 성분</p>
+          <p class="spec__n">복합 성분</p>
+        </li>
+        <li class="spec reveal" data-delay="1">
+          <figure class="spec__dish"><img src="assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 맑은 젤" loading="lazy"></figure>
+          <h3>글루타치온</h3>
+          <p class="spec__en">글루타치온</p>
+          <p class="spec__d">맑고 균일한 피부 톤을 위한 항산화 성분</p>
+          <p class="spec__n">고함량</p>
+        </li>
+        <li class="spec reveal" data-delay="2">
+          <figure class="spec__dish"><img src="assets/img/chalet/chalet-betaglucan.jpg" alt="샬레에 담긴 곡물" loading="lazy"></figure>
+          <h3>베타글루칸</h3>
+          <p class="spec__en">베타글루칸</p>
+          <p class="spec__d">피부 장벽을 강화하고 수분을 지켜주는 자연 유래 보습 성분</p>
+          <p class="spec__n">자연 유래</p>
+        </li>
+        <li class="spec reveal">
+          <figure class="spec__dish"><img src="assets/img/chalet/chalet-probiotics.jpg" alt="샬레에 담긴 유산균 발효 성분" loading="lazy"></figure>
+          <h3>프로바이오틱스</h3>
+          <p class="spec__en">유산균발효성분</p>
+          <p class="spec__d">건강한 피부 마이크로바이옴 균형을 유지하고 피부 환경을 건강하게 케어</p>
+          <p class="spec__n">마이크로바이옴<br>케어</p>
+        </li>
+      </ul>
     </div>
   </section>
 
-  <!-- ══ 선언 — 세 원칙을 받는 한 문장 ══
-       메인 04 섹션에 있던 브랜드 철학을 옮겨왔다. 제품 페이지에서는
-       사용감·추천 대상 사이에 끼어 있어 성격이 섞였는데,
-       설계 원칙 뒤에 놓으니 결론으로 읽힌다. -->
-  <section class="bstate section--panel">
+  <!-- ══ 03 FORMULATION PRINCIPLES ══
+       전달되는 정보량에 비해 영역이 컸다는 피드백(05)에 맞춰,
+       설명 문단을 걷어내고 한 줄씩으로 압축했다. -->
+  <section class="section section--film" id="principles">
     <div class="shell">
-      <h2 class="reveal">피부에 가장 부드럽게<br>스며드는 제주</h2>
-      <p class="reveal" data-delay="1">강함이 아니라 균형입니다.
-        고농도를 견디게 만드는 것은 농도가 아니라 조건입니다.</p>
-    </div>
-  </section>
-
-  <!-- ══ 05 원료 스트립 — 상세는 메인 성분 섹션으로 ══ -->
-  <section class="section section--film" id="ingredients">
-    <div class="shell">
-      <div class="chap reveal">
-        <div><div class="chap__n">03</div></div>
-        <div>
-          <div class="chap__l">From Jeju, Into the Formula</div>
-          <h2>제주에서 발견해<br>포뮬러로 옮깁니다</h2>
+      <div class="prin">
+        <div class="prin__head">
+          <div class="chap__l reveal">03 &nbsp;|&nbsp; Formulation Principles</div>
+          <h2 class="reveal" data-delay="1">균형 위에 설계합니다</h2>
+          <p class="prin__en reveal" data-delay="1">Designed with Balance</p>
+          <p class="prin__lead reveal" data-delay="2">좋은 성분을 단순히 더하는 것이 아니라,
+            성분이 피부에 가장 이상적인 균형으로 작용하도록 설계합니다.</p>
         </div>
+        <aside class="prin__aside reveal" data-delay="2">
+          <span>Nature<br>Meets<br>Science</span>
+          <p>자연의 순수함과<br>피부 과학이 만나는<br>균형의 포뮬러.</p>
+        </aside>
       </div>
-      <div class="strip">
-        <a class="reveal" href="index.html#ingredients"><figure><img src="assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암해수" loading="lazy" decoding="async"></figure><div class="strip__nm">제주 용암해수</div><div class="strip__en">Mineral Base</div></a>
-        <a class="reveal" href="index.html#ingredients"><figure><img src="assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초" loading="lazy" decoding="async"></figure><div class="strip__nm">백년초</div><div class="strip__en">Botanical Calm</div></a>
-        <a class="reveal" href="index.html#ingredients"><figure><img src="assets/img/chalet/chalet-spare-centella.jpg" alt="샬레에 담긴 병풀 추출물" loading="lazy" decoding="async"></figure><div class="strip__nm">병풀</div><div class="strip__en">Calming Support</div></a>
-        <a class="reveal" href="index.html#ingredients"><figure><img src="assets/img/chalet/chalet-peptide.jpg" alt="샬레에 담긴 펩타이드 젤" loading="lazy" decoding="async"></figure><div class="strip__nm">펩타이드</div><div class="strip__en">Elasticity</div></a>
-        <a class="reveal" href="index.html#ingredients"><figure><img src="assets/img/chalet/chalet-vitc.jpg" alt="샬레에 담긴 비타민C 앰플액" loading="lazy" decoding="async"></figure><div class="strip__nm">비타민C</div><div class="strip__en">Tone Care</div></a>
-        <a class="reveal" href="index.html#ingredients"><figure><img src="assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 글루타티온 용액" loading="lazy" decoding="async"></figure><div class="strip__nm">글루타티온</div><div class="strip__en">Radiance</div></a>
-      </div>
-      <p class="more"><a href="index.html#ingredients">각 원료가 어떻게 쓰이는지 보기 →</a></p>
+
+      <ol class="prin__list" role="list">
+        <li class="reveal">
+          <b>01</b><span>Active</span>
+          <h3>핵심 성분</h3>
+          <p>피부 고민에 맞춘 핵심 성분을 선택합니다.</p>
+        </li>
+        <li class="reveal" data-delay="1">
+          <b>02</b><span>Condition</span>
+          <h3>적절한 환경</h3>
+          <p>성분이 안정적으로 작용할 수 있는 조건과 환경을 고려합니다.</p>
+        </li>
+        <li class="reveal" data-delay="2">
+          <b>03</b><span>Balance</span>
+          <h3>피부와의 균형</h3>
+          <p>기능과 피부 부담 사이의 균형을 고려합니다.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
-  <!-- ══ 근거 ══ -->
-  <section class="section">
+  <!-- ══ 04 THE LAVASOME JOURNEY ══ 페이지 후반부 History (피드백 06) -->
+  <section class="section" id="journey">
     <div class="shell">
-      <p class="eyebrow reveal">Evidence</p>
-      <h2 class="section__title reveal" data-delay="1">이 페이지의 근거</h2>
-      <div class="meth__row reveal">
-        <div><b>&mdash;</b><p>공동 연구 기관</p></div>
-        <div><b>&mdash;</b><p>원료 시험 항목</p></div>
-        <div><b>&mdash;</b><p>기능성 심사 완료 제품</p></div>
+      <div class="jhead">
+        <p class="chap__l reveal">The LAVASOME Journey</p>
+        <h2 class="reveal" data-delay="1">제주에서 시작해, 더 넓은 세상으로</h2>
+        <p class="reveal" data-delay="2">라바섬의 여정은 자연에 대한 믿음과
+          고객에 대한 진심으로 이어져 왔습니다.</p>
       </div>
-      <p class="meth__note">공동 연구 기관의 공식 명칭과 연구 범위, 원료 시험 항목,
-        기능성화장품 심사·보고 필증 확인 결과를 이 자리에 기재합니다.
-        미백·주름개선 등 기능성 표시는 심사 근거가 확인된 제품에만 노출합니다.</p>
+
+      <!-- ⚠️ 카드 사진 4장은 전달받은 리플렛 지면에서 잘라낸 것이라
+           가로 390px 짜리입니다. 원본 파일을 주시면 교체하겠습니다. -->
+      <ol class="jrn" role="list">
+        <li class="jrn__it reveal">
+          <span class="jrn__yr">2021</span>
+          <figure><img src="assets/img/brand/journey-01.jpg" alt="제주 해안의 현무암과 바다" loading="lazy" decoding="async"></figure>
+          <b>01</b><h3>Brand Beginning</h3>
+          <p>제주의 자연에서 영감을 받아 라바섬이 시작되었습니다.</p>
+        </li>
+        <li class="jrn__it reveal" data-delay="1">
+          <span class="jrn__yr">2024</span>
+          <figure><img src="assets/img/brand/journey-02.jpg" alt="2025 서울어워드 트로피" loading="lazy" decoding="async"></figure>
+          <b>02</b><h3>Seoul Awards</h3>
+          <p>비타C 앰플이 서울어워드에 선정되며 브랜드 경쟁력을 인정받았습니다.</p>
+        </li>
+        <li class="jrn__it reveal" data-delay="2">
+          <span class="jrn__yr">2025</span>
+          <figure><img src="assets/img/brand/journey-03.jpg" alt="면세점 화장품 매장" loading="lazy" decoding="async"></figure>
+          <b>03</b><h3>Global Growth</h3>
+          <p>면세점 입점과 함께 해외 시장으로 확장하며 더 많은 고객과 만나고 있습니다.</p>
+        </li>
+        <li class="jrn__it reveal" data-delay="3">
+          <span class="jrn__yr">Now</span>
+          <figure><img src="assets/img/brand/journey-04.jpg" alt="라바섬 제품 라인업" loading="lazy" decoding="async"></figure>
+          <b>04</b><h3>Next Chapter</h3>
+          <p>제주에서 시작한 피부 과학의 가치를 더 깊고, 더 넓게 이어갑니다.</p>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- ══ 클로징 ══ -->
   <section class="bclose section--panel">
     <div class="shell">
-      <h2 class="reveal">Rooted in Jeju.<br>Designed for Skin.</h2>
-      <p class="reveal" data-delay="1">제주에서 발견하고,<br>피부를 위해 설계합니다.</p>
+      <h2 class="reveal">Beauty from Jeju,<br>Value for All.</h2>
+      <p class="reveal" data-delay="1">제주의 자연에서 시작한 아름다움이<br>피부를 넘어 더 좋은 가치로 이어집니다.</p>
       <div class="cta-row cta-row--center reveal" data-delay="2">
         <a class="btn btn--solid" href="index.html#formulas">제품 보기</a>
       </div>
@@ -272,8 +333,9 @@
       <div>
         <h3>BRAND</h3>
         <a href="brand.html">브랜드 소개</a>
-        <a href="brand.html#research">Jeju-Origin Research</a>
-        <a href="index.html#jeju">Jeju Origin</a>
+        <a href="brand.html#ingredients">원료 상세</a>
+        <a href="brand.html#journey">Brand Journey</a>
+        <a href="news.html">브랜드 소식</a>
       </div>
     </nav>
   </div>
@@ -284,4 +346,4 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
-<script src="assets/js/brand.js"></script>
+<script src="assets/js/shader-bg.js"></script>

@@ -28,6 +28,7 @@
     </a>
     <nav class="site-nav" aria-label="주요">
       <a href="brand.html">BRAND</a>
+      <a href="news.html">NEWS</a>
       <a href="#formulas">SHOP</a>
     </nav>
   </div>
@@ -262,7 +263,7 @@
         <p class="section__lead reveal" data-delay="2">
           제주를 이미지로 쓰지 않습니다. 처방이 안정적으로 작동하는 조건을
           제주의 물과 식물에서 찾았습니다.
-          <a class="lead-link" href="brand.html#research">연구 과정 보기 →</a>
+          <a class="lead-link" href="brand.html#origin">브랜드 이야기 보기 →</a>
         </p>
       </div>
 
@@ -296,86 +297,61 @@
        추천 대상 한 줄은 01 제품 그리드 아래로, 철학 문장은 앞서
        brand.html 로 옮겼다. -->
 
-  <!-- ══ S5 — Ingredient & Formula Cards ══ -->
-  <section class="section" id="ingredients" data-shader-bg>
-    <!-- liquid glass 굴절 필터. 카드 뒤 backdrop 을 일렁이게 만든다.
-         이 섹션 안에 두었으므로 섹션을 지우면 필터도 같이 사라진다. -->
-    <svg class="glass-defs" aria-hidden="true" focusable="false">
-      <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%"
-              filterUnits="objectBoundingBox">
-        <feTurbulence type="fractalNoise" baseFrequency="0.008 0.012"
-                      numOctaves="2" seed="17" result="turbulence"/>
-        <feGaussianBlur in="turbulence" stdDeviation="2" result="softMap"/>
-        <feDisplacementMap in="SourceGraphic" in2="softMap" scale="34"
-                           xChannelSelector="R" yChannelSelector="G"/>
-      </filter>
-    </svg>
+  <!-- ══ S5 — 원료 Preview ══
+       홈은 짧게 훑고, 상세는 Brand Story 에서 본다.
+       (피드백 04 · 상세 원료 정보는 brand.html#ingredients 로 이동)
+       물 배경은 그대로 둔다 — 이 브랜드에서 유일하게 지면이 뒤집히는
+       자리라 홈에서도 한 번은 나와야 한다. -->
+  <section class="section section--preview" id="ingredients" data-shader-bg>
     <div class="shell">
       <div class="section__head">
         <span class="section__num">04</span>
         <div>
-          <p class="eyebrow reveal">Multi-Active Brightening Formula</p>
+          <p class="eyebrow reveal">Jeju-Inspired Skin Science</p>
           <h2 class="section__title reveal" data-delay="1">
-            여섯 가지가<br>하나의 조건 위에서 움직입니다
+            일곱 가지가<br>하나의 조건 위에서 움직입니다
           </h2>
         </div>
         <p class="section__lead reveal" data-delay="2">
-          각각이 따로 작동하지 않도록, 서로의 조건을 방해하지 않는 조합만 남겼습니다.
+          각 원료는 독립적으로 작용하지 않고, 서로의 장점을 더해
+          최적의 피부 컨디션을 만들어냅니다.
         </p>
       </div>
 
-      <!-- 인덱스 머리 — 표처럼 읽히게 열 이름만 얹는다. 스크린리더는
-           아래 목록을 그대로 읽으면 되므로 장식으로 감춘다. -->
-      <div class="specimens__head reveal" aria-hidden="true">
-        <span>표본 <em>Specimen</em></span>
-        <span>역할 <em>Role</em></span>
-        <span>기준 <em>Reference</em></span>
-      </div>
-
-      <ul class="specimens" role="list">
-        <li class="spec reveal">
-          <figure class="spec__dish"><img src="assets/img/chalet/chalet-vitc.jpg" alt="샬레에 담긴 비타민C 앰플액" loading="lazy"></figure>
-          <h3>순수 비타민C</h3>
-          <p class="spec__en">Ascorbic Acid</p>
-          <p class="spec__n">13.5%</p>
-          <p class="spec__d">전환 과정 없이 그대로 작동하는 형태로.</p>
+      <ul class="ingprev" role="list">
+        <li class="reveal">
+          <figure><img src="assets/img/chalet/chalet-vitc.jpg" alt="샬레에 담긴 비타민C 앰플액" loading="lazy" decoding="async"></figure>
+          <h3>순수 비타민 C</h3><p>아스코빅애씨드</p>
         </li>
-        <li class="spec reveal" data-delay="1">
-          <figure class="spec__dish"><img src="assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암석과 물" loading="lazy"></figure>
-          <h3>제주 용암해수</h3>
-          <p class="spec__en">Lava Seawater</p>
-          <p class="spec__n">미네랄</p>
-          <p class="spec__d">처방의 기준을 잡는 물.</p>
+        <li class="reveal" data-delay="1">
+          <figure><img src="assets/img/chalet/chalet-seawater.jpg" alt="샬레에 담긴 제주 용암석과 물" loading="lazy" decoding="async"></figure>
+          <h3>제주 용암해수</h3><p>라바 씨워터</p>
         </li>
-        <li class="spec reveal" data-delay="2">
-          <figure class="spec__dish"><img src="assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초 열매" loading="lazy"></figure>
-          <h3>백년초</h3>
-          <p class="spec__en">Opuntia</p>
-          <p class="spec__n">제주 유래</p>
-          <p class="spec__d">건조를 견디며 축적한 다당체.</p>
+        <li class="reveal" data-delay="2">
+          <figure><img src="assets/img/chalet/chalet-opuntia.jpg" alt="샬레에 담긴 백년초 열매" loading="lazy" decoding="async"></figure>
+          <h3>제주 백년초</h3><p>선인장추출물</p>
         </li>
-        <li class="spec reveal">
-          <figure class="spec__dish"><img src="assets/img/chalet/chalet-peptide.jpg" alt="샬레에 담긴 기포가 인 젤" loading="lazy"></figure>
-          <h3>펩타이드</h3>
-          <p class="spec__en">Peptide</p>
-          <p class="spec__n">복합</p>
-          <p class="spec__d">탄력의 조건을 보조합니다.</p>
+        <li class="reveal" data-delay="3">
+          <figure><img src="assets/img/chalet/chalet-peptide.jpg" alt="샬레에 담긴 기포가 인 젤" loading="lazy" decoding="async"></figure>
+          <h3>펩타이드</h3><p>펩타이드</p>
         </li>
-        <li class="spec reveal" data-delay="1">
-          <figure class="spec__dish"><img src="assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 맑은 젤" loading="lazy"></figure>
-          <h3>글루타치온</h3>
-          <p class="spec__en">Glutathione</p>
-          <p class="spec__n">고함량</p>
-          <p class="spec__d">맑기의 기준을 올리는 항산화 축.</p>
+        <li class="reveal">
+          <figure><img src="assets/img/chalet/chalet-glutathione.jpg" alt="샬레에 담긴 맑은 젤" loading="lazy" decoding="async"></figure>
+          <h3>글루타치온</h3><p>글루타치온</p>
         </li>
-        <li class="spec reveal" data-delay="2">
-          <figure class="spec__dish"><img src="assets/img/chalet/chalet-betaglucan.jpg" alt="샬레에 담긴 곡물" loading="lazy"></figure>
-          <h3>베타글루칸</h3>
-          <p class="spec__en">Beta-Glucan</p>
-          <p class="spec__n">진정</p>
-          <p class="spec__d">고농도를 견디게 하는 완충.</p>
+        <li class="reveal" data-delay="1">
+          <figure><img src="assets/img/chalet/chalet-betaglucan.jpg" alt="샬레에 담긴 곡물" loading="lazy" decoding="async"></figure>
+          <h3>베타글루칸</h3><p>베타글루칸</p>
+        </li>
+        <li class="reveal" data-delay="2">
+          <figure><img src="assets/img/chalet/chalet-probiotics.jpg" alt="샬레에 담긴 유산균 발효 성분" loading="lazy" decoding="async"></figure>
+          <h3>프로바이오틱스</h3><p>유산균발효성분</p>
         </li>
       </ul>
+
+      <p class="ingprev__more reveal">
+        <a href="brand.html#ingredients">원료 자세히 보기 &rarr;</a>
+      </p>
     </div>
   </section>
 
@@ -446,8 +422,9 @@
       <div>
         <h3>BRAND</h3>
         <a href="brand.html">브랜드 소개</a>
-        <a href="brand.html#research">Jeju-Origin Research</a>
-        <a href="#jeju">Jeju Origin</a>
+        <a href="brand.html#ingredients">원료 상세</a>
+        <a href="brand.html#journey">Brand Journey</a>
+        <a href="news.html">브랜드 소식</a>
       </div>
     </nav>
   </div>
