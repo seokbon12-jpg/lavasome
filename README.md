@@ -28,9 +28,8 @@ assets/img/       hero/ · box/ · products/ · jeju/ · chalet/ · brand/ · ho
 **헤더** — 로고 / 브랜드 · 제품 · 고객지원(하위 메뉴) / KR·EN · 마이페이지 ·
 장바구니. 두 안 중 로고 왼쪽(Option 1)을 택했습니다.
 
-**푸터** — 모든 페이지 동일. 상단 웨이브 + 사업자 정보 + 약관 + FOLLOW US +
-고객센터. 웨이브는 곡선 아래만 채우므로 바로 위 섹션 색을 클래스로 지정합니다
-(`.footwave--cream` / `.footwave--panel`).
+**푸터** — 모든 페이지 동일. 사업자 정보 + 약관 + FOLLOW US + 고객센터.
+시안에 있던 상단 웨이브는 요청으로 걷어냈습니다.
 
 **Brand Story(brand.html)** — 슬로건 히어로 · 브랜드 소개 · 01 Jeju Origin ·
 02 Ingredients(상세 7종) · 03 Formulation Principles · 04 Brand Journey · 클로징.

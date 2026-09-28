@@ -516,14 +516,8 @@ em, i { font-style: normal; }
    옅은 청회색으로 낮췄다(원 시안은 연보라). 높이·곡률을 바꾸려면
    index.html 의 SVG path 하나만 고치면 된다. */
 .site-footer { position: relative; background: var(--dark); color: var(--paper); }
-/* 웨이브 띠 — 곡선 아래만 연보라로 채우고, 곡선 위는 이 블록의 배경이
-   그대로 보인다. 그래서 바로 위 섹션과 같은 색을 클래스로 지정한다.
-   안 주면 지면 기본색(--paper)이다. */
-.footwave { line-height: 0; background: var(--paper); color: #DCE2EE; }
-.footwave--cream { background: #F6F1E7; }
-.footwave--panel { background: var(--panel); }
-.footwave svg { display: block; width: 100%; height: clamp(46px, 6vw, 92px); }
-
+/* 시안에 있던 상단 웨이브는 요청에 따라 걷어냈다. 이제 위 섹션에서
+   바로 어두운 지면으로 떨어진다. */
 .foot {
   display: grid;
   grid-template-columns: minmax(0, 1.55fr) minmax(0, .95fr) minmax(0, .7fr);

@@ -32,11 +32,13 @@
 
 /* 슬라이드 1 — 제주 브랜드컷 */
 .mv__slide--brand { background: #DDE3E6; }
+/* 사진이 이미 옅어서 예전만큼 덮을 필요가 없다. 왼쪽만 살짝 눌러
+   카피를 앉히고, 안개와 수면은 그대로 보이게 둔다. */
 .mv__slide--brand .mv__scrim {
   position: absolute; inset: 0; z-index: 1; pointer-events: none;
   background: linear-gradient(98deg,
-    rgba(250, 250, 248, .93) 0%, rgba(250, 250, 248, .78) 30%,
-    rgba(250, 250, 248, .16) 60%, rgba(250, 250, 248, 0) 78%);
+    rgba(250, 250, 248, .82) 0%, rgba(250, 250, 248, .58) 32%,
+    rgba(250, 250, 248, .10) 62%, rgba(250, 250, 248, 0) 78%);
 }
 .mv__inner--brand {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
