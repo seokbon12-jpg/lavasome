@@ -39,7 +39,7 @@ jobs:
           mkdir -p _site/assets
           cp -r assets/css assets/js assets/vendor _site/assets/
           # 사진은 웹용만. original/ 은 원본 보관본이라 배포에서 제외한다
-          for d in hero jeju products chalet brand home; do
+          for d in hero jeju products chalet brand home campaign; do
             mkdir -p "_site/assets/img/$d"
             find "assets/img/$d" -maxdepth 1 -type f -exec cp {} "_site/assets/img/$d/" \;
           done

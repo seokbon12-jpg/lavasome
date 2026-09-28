@@ -71,63 +71,90 @@
 
 <main id="main" tabindex="-1">
 
-  <!-- ══ ① 메인 비주얼 / 제주 & 제품 슬라이더 ══
-       제주 브랜드컷 한 장으로 끝내지 않고 제품 캠페인컷까지 한 자리에서
-       넘겨 본다. 제품 캠페인 슬라이드는 단색 필드 위에 제품 사진을
-       곱하기로 얹어 만들었다 — 별도 캠페인 촬영본이 오면 그대로 교체하면
-       된다(.mv__shot img 의 mix-blend-mode 만 떼면 됨). -->
-  <section class="mv" data-mv aria-roledescription="캐러셀" aria-label="메인 비주얼">
+  <!-- ══ ① 히어로 — 제주 브랜드컷 ══
+       배경 사진 위에 작은 사진 세 장이 겹친다. 스크롤할 때 각 층이
+       서로 다른 속도로 움직인다 — data-parallax 값이 속도다
+       (양수면 스크롤을 느리게 따라와 뒤로 물러난다). main.js 참고.
+       prefers-reduced-motion 이면 움직이지 않는다. -->
+  <section class="hero" id="top">
+    <div class="hero__bg" data-parallax="0.28" aria-hidden="true">
+      <img src="assets/img/hero/hero-bg.jpg" alt="" fetchpriority="high">
+    </div>
+    <div class="hero__scrim" aria-hidden="true"></div>
+
+    <div class="hero__inner">
+      <div class="hero__copy">
+        <p class="eyebrow reveal">Jeju Nature, Skin Science</p>
+        <h1 class="hero__title reveal" data-delay="1">Beauty from Jeju,<br>Value for All</h1>
+        <p class="hero__sub reveal" data-delay="2">
+          제주의 자연에서 시작한 아름다움이<br>피부를 넘어 더 좋은 가치로 이어집니다.
+        </p>
+        <div class="cta-row reveal" data-delay="3">
+          <a class="btn btn--solid" href="#products">제품 보기</a>
+          <a class="btn btn--pill" href="brand.html">브랜드 스토리</a>
+        </div>
+      </div>
+
+      <div class="hero__collage">
+        <figure class="hero__shot hero__shot--a" data-parallax="-0.10">
+          <img src="assets/img/hero/hero-01.jpg" alt="라바섬을 사용하는 모델">
+        </figure>
+        <figure class="hero__shot hero__shot--b" data-parallax="0.12">
+          <img src="assets/img/hero/hero-02.jpg" alt="제주 현무암">
+        </figure>
+        <figure class="hero__shot hero__shot--c" data-parallax="-0.18">
+          <img src="assets/img/hero/hero-03.jpg" alt="제주 용암석 표면">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ ② 제품 캠페인 캐러셀 ══
+       히어로 바로 아래에 붙는다. 슬라이드 한 장이 곧 한 장의 사진이다 —
+       배경 필드와 제품 사진을 따로 얹던 방식을 버리고, 제품이 세트 안에
+       들어간 장면을 통째로 깔았다. 카피는 사진 왼쪽 빈 자리에 앉는다.
+       좌우 이동 · 점 · 6초 자동 넘김(호버·포커스 시 정지) · 스와이프. -->
+  <section class="mv" data-mv aria-roledescription="캐러셀" aria-label="제품 캠페인">
     <div class="mv__view">
       <ul class="mv__track" role="list">
 
-        <li class="mv__slide mv__slide--brand" aria-label="1/4 브랜드">
-          <div class="mv__bg" aria-hidden="true"><img src="assets/img/hero/hero-bg.jpg" alt="" fetchpriority="high"></div>
-          <div class="mv__scrim" aria-hidden="true"></div>
-          <div class="shell mv__inner mv__inner--brand">
-            <div>
-              <h2 class="mv__en">Beauty from Jeju,<br>Value for All</h2>
-              <p class="mv__kr">제주 자연과 피부 과학의 조화, LAVASOME</p>
-              <p class="mv__body">제주의 자연에서 시작한 아름다움이<br>피부를 넘어 더 좋은 가치로 이어집니다.</p>
-              <p class="mv__cta"><a class="btn btn--pill" href="brand.html">브랜드 스토리 &rarr;</a></p>
-            </div>
-            <div class="mv__collage" aria-hidden="true">
-              <figure class="c-a"><img src="assets/img/hero/hero-01.jpg" alt=""></figure>
-              <figure class="c-b"><img src="assets/img/hero/hero-02.jpg" alt=""></figure>
-              <figure class="c-c"><img src="assets/img/hero/hero-03.jpg" alt=""></figure>
-            </div>
+        <li class="mv__slide" aria-label="1/4 Vita-C Plus Ampoule">
+          <div class="mv__bg" aria-hidden="true"><img src="assets/img/campaign/vita-c.jpg" alt=""></div>
+          <div class="mv__veil" aria-hidden="true"></div>
+          <div class="shell mv__inner">
+            <p class="mv__tag">Vita-C Plus Ampoule</p>
+            <h2 class="mv__h">제주의 아침을 담은<br>순수 비타민 C 앰플</h2>
+            <p class="mv__cta"><a class="btn btn--pill" href="formulation.html">제품 보기 &rarr;</a></p>
           </div>
         </li>
 
-        <li class="mv__slide mv__slide--sand" aria-label="2/4 Vita-C Plus Ampoule">
-          <div class="shell mv__inner mv__inner--prod">
-            <div>
-              <p class="mv__tag">Vita-C Plus Ampoule</p>
-              <h2 class="mv__h">제주의 아침을 담은<br>순수 비타민 C 앰플</h2>
-              <p class="mv__cta"><a class="btn btn--pill" href="formulation.html">제품 보기 &rarr;</a></p>
-            </div>
-            <figure class="mv__shot"><img src="assets/img/products/vita-c-plus.jpg" alt="라바섬 Vita-C Plus Ampoule 제품 이미지" loading="lazy" decoding="async"></figure>
+        <li class="mv__slide" aria-label="2/4 퓨어 선스크린">
+          <div class="mv__bg" aria-hidden="true"><img src="assets/img/campaign/sunscreen.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="mv__veil" aria-hidden="true"></div>
+          <div class="shell mv__inner">
+            <p class="mv__tag">Pure Sun Screen</p>
+            <h2 class="mv__h">불편함 없는<br>자외선 케어</h2>
+            <p class="mv__cta"><a class="btn btn--pill" href="#products">제품 보기 &rarr;</a></p>
           </div>
         </li>
 
-        <li class="mv__slide mv__slide--mist" aria-label="3/4 퓨어 선스크린">
-          <div class="shell mv__inner mv__inner--prod">
-            <div>
-              <p class="mv__tag">Pure Sun Screen</p>
-              <h2 class="mv__h">불편함 없는<br>자외선 케어</h2>
-              <p class="mv__cta"><a class="btn btn--pill" href="#products">제품 보기 &rarr;</a></p>
-            </div>
-            <figure class="mv__shot"><img src="assets/img/products/sunscreen.jpg" alt="라바섬 선스크린 제품 이미지" loading="lazy" decoding="async"></figure>
+        <li class="mv__slide" aria-label="3/4 HA 90">
+          <div class="mv__bg" aria-hidden="true"><img src="assets/img/campaign/ha90.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="mv__veil" aria-hidden="true"></div>
+          <div class="shell mv__inner">
+            <p class="mv__tag">Ampoule HA 90</p>
+            <h2 class="mv__h">메마른 피부에,<br>깊이 차오르는 수분</h2>
+            <p class="mv__cta"><a class="btn btn--pill" href="#products">제품 보기 &rarr;</a></p>
           </div>
         </li>
 
-        <li class="mv__slide mv__slide--aqua" aria-label="4/4 HA 90">
-          <div class="shell mv__inner mv__inner--prod">
-            <div>
-              <p class="mv__tag">Ampoule HA 90</p>
-              <h2 class="mv__h">메마른 피부에,<br>깊이 차오르는 수분</h2>
-              <p class="mv__cta"><a class="btn btn--pill" href="#products">제품 보기 &rarr;</a></p>
-            </div>
-            <figure class="mv__shot"><img src="assets/img/products/ha90.jpg" alt="라바섬 HA90 제품 이미지" loading="lazy" decoding="async"></figure>
+        <li class="mv__slide" aria-label="4/4 Calming 50">
+          <div class="mv__bg" aria-hidden="true"><img src="assets/img/campaign/calming.jpg" alt="" loading="lazy" decoding="async"></div>
+          <div class="mv__veil" aria-hidden="true"></div>
+          <div class="shell mv__inner">
+            <p class="mv__tag">Calming 50</p>
+            <h2 class="mv__h">하루의 시작과 끝,<br>피부를 위한 작은 의식</h2>
+            <p class="mv__cta"><a class="btn btn--pill" href="#products">제품 보기 &rarr;</a></p>
           </div>
         </li>
       </ul>

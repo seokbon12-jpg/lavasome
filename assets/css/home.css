@@ -11,9 +11,10 @@
    각 영역의 "더보기"가 상세 페이지로 넘긴다.
    ═══════════════════════════════════════════════════════════════════ */
 
-/* ══ ① 메인 비주얼 슬라이더 ════════════════════════════════════
-   좌우로 넘기는 가로 트랙. 슬라이드는 전부 같은 높이를 쓰고,
-   각자 배경(사진 또는 단색 필드)을 제 안에 갖는다. */
+/* ══ ② 제품 캠페인 캐러셀 ══════════════════════════════════════
+   히어로 바로 아래. 슬라이드 한 장 = 사진 한 장이다. 배경 필드와 제품
+   사진을 따로 얹던 방식(mix-blend-mode)은 걷어냈다 — 제품이 세트 안에
+   들어간 장면을 통째로 깔고, 카피는 사진 왼쪽 빈 자리에 앉힌다. */
 .mv { position: relative; background: var(--paper-2); overflow: hidden; }
 .mv__view { overflow: hidden; }
 .mv__track {
@@ -23,79 +24,31 @@
 }
 .mv__slide {
   flex: 0 0 100%; position: relative;
-  min-height: min(76vh, 720px);
+  min-height: min(62vh, 580px);
   display: flex; align-items: center;
 }
-.mv__bg { position: absolute; inset: 0; z-index: 0; }
+.mv__bg { position: absolute; inset: 0; z-index: 0; background: var(--paper-2); }
 .mv__bg img { width: 100%; height: 100%; object-fit: cover; }
+/* 사진마다 왼쪽 밝기가 달라서 카피 쪽만 얇게 눌러 둔다.
+   사진 자체를 가리지 않을 만큼만. */
+.mv__veil {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(96deg,
+    rgba(252, 252, 250, .62) 0%, rgba(252, 252, 250, .34) 34%,
+    rgba(252, 252, 250, 0) 58%);
+}
 .mv__inner { position: relative; z-index: 2; width: 100%; }
 
-/* 슬라이드 1 — 제주 브랜드컷 */
-.mv__slide--brand { background: #DDE3E6; }
-/* 사진이 이미 옅어서 예전만큼 덮을 필요가 없다. 왼쪽만 살짝 눌러
-   카피를 앉히고, 안개와 수면은 그대로 보이게 둔다. */
-.mv__slide--brand .mv__scrim {
-  position: absolute; inset: 0; z-index: 1; pointer-events: none;
-  background: linear-gradient(98deg,
-    rgba(250, 250, 248, .82) 0%, rgba(250, 250, 248, .58) 32%,
-    rgba(250, 250, 248, .10) 62%, rgba(250, 250, 248, 0) 78%);
-}
-.mv__inner--brand {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px);
-  gap: 40px; align-items: center;
-}
-.mv__en {
-  font-family: var(--font-title); font-weight: var(--w-title);
-  font-size: clamp(30px, 3.9vw, 56px); line-height: 1.1;
-  letter-spacing: .005em;
-}
-.mv__kr {
-  margin-top: 16px;
-  font-family: var(--font-kr-head); font-size: clamp(15px, 1.5vw, 18px);
-  color: var(--ink);
-}
-.mv__body {
-  margin-top: 20px; max-width: 40ch;
-  font-size: 15px; line-height: 1.85; color: var(--ink-70);
-}
-.mv__cta { margin-top: 32px; }
-
-/* 겹치는 3컷 콜라주 — 브랜드컷에서만 쓴다 */
-.mv__collage { position: relative; aspect-ratio: 1018 / 1010; width: 100%; }
-.mv__collage figure {
-  position: absolute; margin: 0; overflow: hidden;
-  background: linear-gradient(155deg, #E8E6E1, #B9B5AC 68%, #7E7A72);
-}
-.mv__collage img { width: 100%; height: 100%; object-fit: cover; }
-.mv__collage .c-a { left: 38%; top: 2%;  width: 34%; aspect-ratio: 372 / 600; z-index: 3; }
-.mv__collage .c-b { left: 56%; top: 20%; width: 42%; aspect-ratio: 784 / 1000; z-index: 2; }
-.mv__collage .c-c { left: 30%; top: 58%; width: 44%; aspect-ratio: 815 / 477; z-index: 4; }
-
-/* 슬라이드 2~ — 제품 캠페인. 카피 왼쪽, 제품 오른쪽. */
-.mv__inner--prod {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 46%);
-  gap: 48px; align-items: center;
-}
 .mv__tag {
   font-family: var(--font-label); font-size: 10.5px; letter-spacing: .16em;
-  text-transform: uppercase; color: var(--accent-t);
+  text-transform: uppercase; color: var(--accent-d);
 }
 .mv__h {
-  margin-top: 14px;
+  margin-top: 14px; max-width: 18ch;
   font-family: var(--font-kr-head); font-size: clamp(24px, 3vw, 40px);
   line-height: 1.34; letter-spacing: -.02em; text-wrap: balance;
 }
-.mv__shot { margin: 0; }
-.mv__shot img {
-  width: 100%; height: auto; display: block;
-  aspect-ratio: 4 / 5; object-fit: contain;
-  /* 제품 사진 원본이 단색 배경이라 슬라이드 필드 위에 곱하기로 얹는다 */
-  mix-blend-mode: multiply;
-}
-.mv__slide--sand  { background: #EFE7DA; }
-.mv__slide--mist  { background: #E6E8EC; }
-.mv__slide--aqua  { background: #DDEAEC; }
-.mv__slide--moss  { background: #E1E5DD; }
+.mv__cta { margin-top: 30px; }
 
 /* 컨트롤 */
 .mv__nav {
@@ -111,7 +64,6 @@
 .mv__nav--prev { left: 26px; }
 .mv__nav--next { right: 26px; }
 
-/* 슬라이드 1 은 사진 위라 점만 두면 묻힌다. 옅은 판을 깔아 준다. */
 .mv__dots {
   position: absolute; left: 50%; bottom: 24px; translate: -50% 0; z-index: 4;
   display: flex; align-items: center; gap: 9px;
@@ -284,7 +236,7 @@
 }
 .bpre__more a:hover { border-bottom-color: #1E3A52; }
 
-/* ══ ④ 한정 이벤트 & 프로모션 ═══════════════════════════════════ */
+/* ══ ⑤ 한정 이벤트 & 프로모션 ═══════════════════════════════════ */
 .evt { padding: 92px 0 104px; background: #F6F1E7; }
 .evt__head {
   display: flex; align-items: baseline; justify-content: space-between;
@@ -346,22 +298,23 @@
   .bpre__ing  { grid-column: 1; grid-row: 4; }
 }
 @media (max-width: 900px) {
-  .mv__inner--brand { grid-template-columns: 1fr; gap: 32px; }
-  .mv__collage { max-width: 420px; margin-left: auto; }
-  .mv__inner--prod { grid-template-columns: 1fr minmax(0, 40%); gap: 24px; }
+  .mv__slide { min-height: min(52vh, 440px); }
   .bpre__ing { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 18px; }
   .evt__row { grid-template-columns: 1fr; gap: 12px; }
   .evt__it { aspect-ratio: 21 / 9; }
 }
 @media (max-width: 760px) {
-  .mv__slide { min-height: 0; padding: 104px 0 76px; }
+  .mv__slide { min-height: 0; padding: 72px 0 92px; }
+  /* 좁으면 사진 왼쪽 빈 자리가 사라져 카피가 피사체 위로 온다.
+     가로 그라디언트를 세로로 바꿔 위쪽만 눌러 준다. */
+  .mv__veil { background: linear-gradient(180deg,
+      rgba(252, 252, 250, .86) 0%, rgba(252, 252, 250, .62) 44%,
+      rgba(252, 252, 250, .05) 82%); }
+  .mv__h { max-width: none; }
   .mv__nav { width: 38px; height: 38px; }
   .mv__nav--prev { left: 10px; }
   .mv__nav--next { right: 10px; }
   .mv__dots { bottom: 18px; }
-  .mv__collage { max-width: none; margin-left: 0; }
-  .mv__inner--prod { grid-template-columns: 1fr; gap: 26px; }
-  .mv__shot { max-width: 260px; margin-left: auto; }
 
   .plist { padding: 76px 0 84px; }
   .plist__head { flex-direction: column; align-items: flex-start; gap: 14px; }
@@ -409,7 +362,8 @@
   display: block; margin-top: 14px; padding-top: 14px;
   border-top: 1px solid var(--line);
   font-family: var(--font-label); font-size: 11.5px; letter-spacing: .08em;
-  color: var(--ink-45);
+  /* --ink-45 는 2.88:1 로 AA 미달이었다 */
+  color: rgba(26, 25, 23, .6);
 }
 @media (max-width: 760px) {
   .evlist { grid-template-columns: 1fr; gap: 44px; }

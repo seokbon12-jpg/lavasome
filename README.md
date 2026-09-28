@@ -20,10 +20,13 @@ assets/img/       hero/ · box/ · products/ · jeju/ · chalet/ · brand/ · ho
 **홈(index.html)** — 클라이언트 피드백 문서(라바섬 상세페이지 수정 방향)의
 4개 영역 구성입니다. 글보다 그림이 먼저 오고, 홈에서 설명을 끝내지 않습니다.
 
-  ① 메인 비주얼 슬라이더 — 제주 브랜드컷 + 제품 캠페인 3장, 좌우 이동
-  ② 제품 캐러셀 — 한 화면에 3개, 좌우 이동
-  ③ Brand Story / Jeju & Ingredients / Skin Science + 주요 성분 6종
-  ④ 한정 이벤트 & 프로모션
+  ① 히어로 — 제주 배경 사진 + 작은 사진 3장. 스크롤 시 층별 시차 이동
+     (data-parallax, main.js). prefers-reduced-motion 이면 정지.
+  ② 제품 캠페인 캐러셀 — 히어로 바로 아래. 슬라이드 한 장 = 사진 한 장.
+     제품이 세트 안에 들어간 장면을 통째로 깔고 카피는 왼쪽 빈 자리에.
+  ③ 제품 리스트 캐러셀 — 한 화면에 3개, 좌우 이동
+  ④ Brand Story / Jeju & Ingredients / Skin Science + 주요 성분 6종
+  ⑤ 한정 이벤트 & 프로모션
 
 **헤더** — 로고 / 브랜드 · 제품 · 고객지원(하위 메뉴) / KR·EN · 마이페이지 ·
 장바구니. 두 안 중 로고 왼쪽(Option 1)을 택했습니다.

@@ -318,7 +318,8 @@ em, i { font-style: normal; }
   text-wrap: balance;
 }
 .hero__sub {
-  max-width: 30ch; margin-bottom: 34px;
+  /* 30ch 였을 땐 마크업의 <br> 과 겹쳐 네 줄로 쪼개졌다 */
+  max-width: 40ch; margin-bottom: 34px;
   font-family: var(--font-kr-head);
   font-size: clamp(16px, 1.5vw, 19px);
   color: var(--ink-70);
