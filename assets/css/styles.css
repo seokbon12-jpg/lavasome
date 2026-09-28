@@ -303,18 +303,22 @@ em, i { font-style: normal; }
 }
 .hero__inner {
   position: relative; z-index: 2;
-  /* 좌우 여백을 줄여 글자는 왼쪽으로, 콜라주는 오른쪽으로 밀어낸다.
-     .shell 의 1240px / 40px 대신 히어로에서만 넓게 쓴다. */
-  max-width: min(1660px, 96vw);
-  padding-inline: 30px;
+  /* 다른 섹션과 같은 격자 위에 앉힌다 — .shell 과 같은 폭·여백.
+     예전에는 히어로만 96vw / 30px 로 넓게 써서, 1920px 에서 카피가
+     아래 섹션들보다 310px 이나 왼쪽에서 시작했다. */
+  max-width: var(--shell);
+  padding-inline: var(--pad);
+  margin-inline: auto;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 580px);
-  gap: 40px; align-items: center; width: 100%;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 500px);
+  gap: 56px; align-items: center; width: 100%;
 }
 .hero__title {
   margin: 20px 0 22px;
-  font-size: clamp(44px, 5.4vw, 78px);
-  line-height: 1.04; letter-spacing: -.018em;
+  /* 폭이 좁아진 만큼 한 급 내렸다 — 예전 78px 은 넓은 지면 기준이라
+     shell 안에서는 "Beauty from Jeju," 가 한 줄에 안 들어간다. */
+  font-size: clamp(38px, 4.4vw, 62px);
+  line-height: 1.06; letter-spacing: -.018em;
   text-wrap: balance;
 }
 .hero__sub {
@@ -594,6 +598,13 @@ em, i { font-style: normal; }
 .reveal.is-in { opacity: 1; translate: 0 0; }
 
 /* ── 반응형 ───────────────────────────────────────────────── */
+/* 2단을 유지하면 타이틀 열이 좁아져 "Beauty from Jeju," 가 세 줄로
+   쪼개진다. 760px 을 기다리지 않고 여기서 먼저 1단으로 내린다. */
+@media (max-width: 960px) {
+  .hero__inner { grid-template-columns: minmax(0, 1fr); gap: 40px; }
+  .hero__collage { max-width: 460px; margin-left: auto; }
+}
+
 @media (max-width: 1080px) {
   .cards { grid-template-columns: repeat(2, 1fr); }
   .ings, .jeju { grid-template-columns: repeat(2, 1fr); }
@@ -607,10 +618,11 @@ em, i { font-style: normal; }
   .section__lead { font-size: 15px; }
 
   .hero { min-height: auto; padding: 104px 0 72px; }
-  .hero__inner { grid-template-columns: 1fr; gap: 40px; }
-  .hero__sub { max-width: 24ch; }
-  .hero__inner { max-width: 100%; padding-inline: 18px; }
-  .hero__collage { aspect-ratio: 1018 / 1192; }
+  /* 여기서 max-width/padding 을 덮어쓰면 히어로만 다른 격자에 앉는다.
+     --pad 가 20px 로 줄어드는 것만으로 충분하다. */
+  /* 폰에서는 shell 폭이 이미 좁다. ch 로 한 번 더 조이면 마크업의
+     <br> 과 겹쳐 세 줄로 쪼개진다. */
+  .hero__sub { max-width: none; }
   .cta-row .btn { flex: 1 1 auto; }
 
   .cards, .ings { grid-template-columns: 1fr; }
