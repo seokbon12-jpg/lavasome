@@ -73,7 +73,9 @@
 
 /* ── 리셋 ─────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth;
+       /* #앵커로 넘어올 때 고정 헤더 아래로 숨지 않게 */
+       scroll-padding-top: var(--hdr-h, 68px); }
 body {
   margin: 0;
   background: var(--paper);
