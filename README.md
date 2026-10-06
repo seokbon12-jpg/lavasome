@@ -5,12 +5,14 @@ CDN 없이 `assets/vendor/` 에 넣어 씁니다. 스펙 원본은 [`docs/handof
 
 ```
 index.html        홈
-brand.html        Brand Story
-news.html         브랜드 소식 (대표 인사말)
-formulation.html  Skin Science (처방 설계)
+brand.html        Brand Story (About · Jeju Origin · Ingredients · Skin Science · Principles · Journey)
+news.html         브랜드 소식 (Founder's Note + Brand News)
+products.html     전체 제품 (피부 고민 필터)
+faq.html          FAQ (제품 사용법 · 배송·교환 · 주문·결제)
 event.html        Event & Promotion
+formulation.html  옛 주소 → brand.html#science 로 넘기는 안내 페이지
 assets/css/       styles.css · home.css · brand.css · shader-bg.css · box-scrub.css
-assets/js/        main.js · slider.js · shader-bg.js · box-scrub.js
+assets/js/        main.js · slider.js · filter.js · shader-bg.js · box-scrub.js
 assets/vendor/    gsap.min.js · ScrollTrigger.min.js
 assets/img/       hero/ · box/ · products/ · jeju/ · chalet/ · brand/ · home/
 ```
@@ -20,28 +22,28 @@ assets/img/       hero/ · box/ · products/ · jeju/ · chalet/ · brand/ · ho
 **홈(index.html)** — 클라이언트 피드백 문서(라바섬 상세페이지 수정 방향)의
 4개 영역 구성입니다. 글보다 그림이 먼저 오고, 홈에서 설명을 끝내지 않습니다.
 
-  ① 히어로 — 제주 배경 사진 + 작은 사진 3장. 스크롤 시 층별 시차 이동
-     (data-parallax, main.js). prefers-reduced-motion 이면 정지.
-  ② 제품 캠페인 캐러셀 — 히어로 바로 아래. 슬라이드 한 장 = 사진 한 장.
-     제품이 세트 안에 들어간 장면을 통째로 깔고 카피는 왼쪽 빈 자리에.
-     폰 폭에서는 왼쪽 빈 자리가 잘려 나가므로 [사진] → [카피] 로 쌓고,
-     object-position 을 오른쪽으로 밀어 제품이 화면에 남게 한다.
-  ③ 제품 리스트 캐러셀 — 한 화면에 3개, 좌우 이동
-  ④ Brand Story / Jeju & Ingredients / Skin Science + 주요 성분 6종
-  ⑤ 한정 이벤트 & 프로모션
+  ① 메인 롤링 배너 — 브랜드 메인 비주얼과 제품 캠페인을 한 영역으로 합쳤다.
+     1번 = 제주 배경 + 작은 사진 3장 시차(data-parallax, main.js),
+     2~5번 = 제품 캠페인컷. 하단에 01 / 05 카운터 + 칸별 진행 막대(6.5초),
+     호버·포커스 시 멈춤. 폰 폭에서는 [사진] → [카피] 로 쌓는다.
+  ② 제품 리스트 캐러셀 — 한 화면에 3개. "전체 제품 보기" → products.html
+  ③ Brand Story / Jeju & Ingredients / Skin Science 카드(→ brand.html 각 앵커)
+     + 주요 성분 6종
+  ④ Event · Brand News · FAQ 3카드 → event.html · news.html#news · faq.html
 
-**헤더** — 로고 / 브랜드 · 제품 · 고객지원(하위 메뉴) / KR·EN · 마이페이지 ·
+CTA 문구는 세 가지로만 씁니다: **제품 보기 / 자세히 보기 / 전체 제품 보기**.
+
+**헤더** — 로고 / 브랜드(브랜드 스토리 · 브랜드 소식) · 제품(전체 제품 ·
+이벤트) · 고객지원(FAQ · 공지사항 준비 중) / KR·EN · 마이페이지 ·
 장바구니. 두 안 중 로고 왼쪽(Option 1)을 택했습니다.
 
 **푸터** — 모든 페이지 동일. 사업자 정보 + 약관 + FOLLOW US + 고객센터.
 시안에 있던 상단 웨이브는 요청으로 걷어냈습니다.
 
-**Brand Story(brand.html)** — 슬로건 히어로 · 브랜드 소개 · 01 Jeju Origin ·
-02 Ingredients(상세 7종) · 03 Formulation Principles · 04 Brand Journey · 클로징.
-
-**Skin Science(formulation.html)** — 홈 구성이 바뀌면서 갈 곳이 필요해진
-처방 설계 콘텐츠를 받습니다. 박스가 열리는 스크롤 장면 + 2중 레이어 +
-사용감, 제주 기능성 베이스 3종.
+**Brand Story(brand.html)** — 히어로 · About LAVASOME(브랜드 소개 + 가치 나눔) ·
+01 Jeju Origin · 02 Ingredients · 03 Skin Science(박스 스크롤 장면, 옛
+formulation.html 내용) · 04 Formulation Principles · 05 Journey · 클로징.
+제주 자연 → 핵심 원료 → 피부 과학 순서로 이어진다. 별도 Skin Science 메뉴는 없앴다.
 
 원료는 홈에서 아이콘 6종으로 훑고, Brand Story 에서 상세 표(7종)로 봅니다.
 ⚠️ 두 목록의 구성이 다릅니다 — 어느 쪽을 기준으로 맞출지 확인이 필요합니다.

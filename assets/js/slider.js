@@ -2,7 +2,8 @@
    가로 슬라이더 두 개 — 메인 비주얼([data-mv])과 제품 캐러셀([data-pcar])
 
    외부 라이브러리 없이 transform 만 움직인다.
-   · 메인 비주얼: 한 번에 한 장, 순환, 6초 자동 넘김(호버·포커스 중지)
+   · 메인 롤링 배너: 한 번에 한 장, 순환, 6.5초 자동 넘김(호버·포커스 중지).
+     하단에 01 / 05 카운터와 칸별 진행 막대
    · 제품 캐러셀: 한 화면에 보이는 개수를 실제 아이템 폭에서 재서
      그만큼씩 민다. 순환하지 않고 양 끝에서 버튼이 죽는다.
 
@@ -13,7 +14,11 @@
 
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  /* ── ① 메인 비주얼 ──────────────────────────────────────── */
+  /* ── ① 메인 롤링 배너 ──────────────────────────────────────
+     하단 막대가 지금 위치(01 / 05)와 자동 넘김 진행을 함께 보여준다.
+     진행 막대는 CSS 애니메이션 하나로 채우고(--mv-dur), 멈추면
+     animation-play-state 만 바꾼다 — 타이머와 막대가 어긋나지 않게
+     넘김 자체도 막대의 animationend 에 묶었다. */
   (function mainVisual() {
     var host = document.querySelector('[data-mv]');
     if (!host) return;
@@ -21,24 +26,30 @@
     var slides = track ? track.children : null;
     if (!slides || slides.length < 2) return;
 
-    var dots = host.querySelector('[data-mv-dots]');
+    var DUR = 6500;
+    host.style.setProperty('--mv-dur', DUR + 'ms');
+
+    var bar = host.querySelector('[data-mv-dots]');
+    var cur = host.querySelector('[data-mv-cur]');
+    var tot = host.querySelector('[data-mv-total]');
     var total = slides.length;
     var i = 0;
-    var timer = null;
+    var paused = false;
+    var pad = function (n) { return (n < 10 ? '0' : '') + n; };
+    if (tot) tot.textContent = pad(total);
 
-    // 점은 슬라이드 수만큼 만들어 붙인다 — 마크업에 손대지 않기 위해서
-    var buttons = [];
-    if (dots) {
+    var segs = [];
+    if (bar) {
       for (var n = 0; n < total; n++) {
         var b = document.createElement('button');
         b.type = 'button';
+        b.className = 'mv__seg';
         b.setAttribute('role', 'tab');
         b.setAttribute('aria-label', (n + 1) + '번 슬라이드');
-        b.addEventListener('click', (function (k) {
-          return function () { go(k); restart(); };
-        })(n));
-        dots.appendChild(b);
-        buttons.push(b);
+        b.innerHTML = '<i></i>';
+        b.addEventListener('click', (function (k) { return function () { go(k); }; })(n));
+        bar.appendChild(b);
+        segs.push(b);
       }
     }
 
@@ -46,36 +57,44 @@
       i = (k + total) % total;
       track.style.transform = 'translate3d(' + (-i * 100) + '%,0,0)';
       for (var n = 0; n < total; n++) {
-        // 화면 밖 슬라이드는 탭 순서에서 빼 둔다
-        slides[n].inert = (n !== i);
-        if (buttons[n]) buttons[n].setAttribute('aria-current', n === i ? 'true' : 'false');
+        var on = n === i;
+        slides[n].classList.toggle('is-active', on);
+        slides[n].inert = !on;                  // 화면 밖 슬라이드는 탭 순서에서 뺀다
+        if (segs[n]) {
+          segs[n].setAttribute('aria-selected', on ? 'true' : 'false');
+          segs[n].classList.toggle('is-done', n < i);
+          segs[n].classList.remove('is-on');
+        }
       }
+      if (cur) cur.textContent = pad(i + 1);
+      // 진행 막대를 처음부터 다시 — 클래스를 뗐다 붙여 애니메이션을 재시작한다
+      if (segs[i]) { void segs[i].offsetWidth; segs[i].classList.add('is-on'); }
     }
 
-    function restart() {
-      if (reduced) return;
-      clearInterval(timer);
-      timer = setInterval(function () { go(i + 1); }, 6000);
+    // 막대가 다 차면 다음 장으로
+    if (!reduced) {
+      host.addEventListener('animationend', function (e) {
+        if (e.target.parentNode && e.target.parentNode.classList.contains('is-on')) go(i + 1);
+      });
+    } else {
+      host.classList.add('is-static');
     }
+
+    function pause(v) { paused = v; host.classList.toggle('is-paused', v); }
+    host.addEventListener('mouseenter', function () { pause(true); });
+    host.addEventListener('mouseleave', function () { pause(false); });
+    host.addEventListener('focusin', function () { pause(true); });
+    host.addEventListener('focusout', function () { pause(false); });
+    document.addEventListener('visibilitychange', function () { pause(document.hidden); });
 
     var prev = host.querySelector('[data-mv-prev]');
     var next = host.querySelector('[data-mv-next]');
-    if (prev) prev.addEventListener('click', function () { go(i - 1); restart(); });
-    if (next) next.addEventListener('click', function () { go(i + 1); restart(); });
+    if (prev) prev.addEventListener('click', function () { go(i - 1); });
+    if (next) next.addEventListener('click', function () { go(i + 1); });
+    swipe(host, function (dir) { go(i + dir); });
 
-    host.addEventListener('mouseenter', function () { clearInterval(timer); });
-    host.addEventListener('mouseleave', restart);
-    host.addEventListener('focusin', function () { clearInterval(timer); });
-    host.addEventListener('focusout', restart);
-    // 탭이 가려져 있는 동안 타이머를 돌릴 이유가 없다
-    document.addEventListener('visibilitychange', function () {
-      if (document.hidden) clearInterval(timer); else restart();
-    });
-
-    swipe(host, function (dir) { go(i + dir); restart(); });
-
+    host.classList.add('is-ready');   // 카피 등장 효과는 JS 가 돌 때만
     go(0);
-    restart();
   })();
 
   /* ── ② 제품 캐러셀 ──────────────────────────────────────── */

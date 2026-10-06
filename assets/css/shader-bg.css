@@ -100,7 +100,7 @@
 
 .specimens__head {
   padding-bottom: 14px;
-  font-family: var(--font-label); font-size: 11px; letter-spacing: .12em;
+  font-family: var(--font-label); font-size: 12px; letter-spacing: .12em;
   /* 물이 가장 밝아지는 순간을 기준으로 잰 값이다. .72 는 3.67:1 로
      AA 미달이었다 (측정: 1440×900 렌더 픽셀). */
   text-transform: uppercase; color: rgba(226, 248, 255, .92);
@@ -150,11 +150,11 @@
   grid-column: 2; grid-row: 2; align-self: start;
   /* 리플렛 표기가 국문(아스코빅애씨드)이라 모노 대문자를 쓸 수 없다.
      #9FE3F8 은 밝은 물 위에서 3.77:1 로 AA 미달이라 한 단계 올렸다 */
-  font-size: 12.5px; line-height: 1.4; letter-spacing: 0; color: #F2FCFF;
+  font-size: 13.5px; line-height: 1.4; letter-spacing: 0; color: #F2FCFF;
 }
 .spec__d {
   grid-column: 3; grid-row: 1 / 3;
-  font-size: 14.5px; line-height: 1.7; color: #FFFFFF;
+  font-size: 15.5px; line-height: 1.7; color: #FFFFFF;
   margin: 0;
 }
 .spec__n {
@@ -166,7 +166,7 @@
 /* 괄호로 달려 있던 보조값(고함량 · 제주 유래 …)을 아랫줄로 내린다 */
 .spec__n em {
   display: block; margin-top: 5px;
-  font-family: var(--font-label); font-size: 10.5px; letter-spacing: .1em;
+  font-family: var(--font-label); font-size: 12px; letter-spacing: .1em;
   text-transform: uppercase; color: #E4F7FF;
 }
 
@@ -230,12 +230,12 @@
 @media (hover: hover) { .ingprev li:hover figure { transform: translateY(-6px); } }
 
 .ingprev h3 {
-  font-family: var(--font-kr-head); font-size: 15.5px; line-height: 1.4;
+  font-family: var(--font-kr-head); font-size: 16.5px; line-height: 1.4;
   color: #FFFFFF; margin: 0;
 }
 .ingprev p {
   /* #E4F7FF 은 물이 밝아지는 순간 4.47:1 로 AA 문턱 아래였다 */
-  margin-top: 6px; font-size: 12px; line-height: 1.4; color: #F4FCFF;
+  margin-top: 6px; font-size: 13px; line-height: 1.4; color: #F4FCFF;
 }
 
 .ingprev__more { margin-top: 58px; text-align: center; }
@@ -245,7 +245,7 @@
 .ingprev__more a {
   display: inline-block; border-radius: 999px;
   padding: 13px 26px;
-  font-family: var(--font-label); font-size: 12px; letter-spacing: .12em;
+  font-family: var(--font-label); font-size: 13px; letter-spacing: .12em;
   color: #FFFFFF;
   background: rgba(3, 26, 38, .78);
   border: 1px solid rgba(255, 255, 255, .34);
@@ -262,7 +262,7 @@
   .section--preview { padding: 76px 0 84px; }
   .ingprev { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 18px; }
   .ingprev figure { max-width: 84px; margin-bottom: 12px; }
-  .ingprev h3 { font-size: 14px; }
-  .ingprev p { font-size: 11px; }
+  .ingprev h3 { font-size: 15px; }
+  .ingprev p { font-size: 12px; }
   .ingprev__more { margin-top: 44px; }
 }

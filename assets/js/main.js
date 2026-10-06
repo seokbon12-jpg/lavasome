@@ -56,7 +56,8 @@
      배경과 사진 세 장이 서로 다른 비율로 움직여 층이 갈린다.
      data-parallax 값: 양수면 스크롤을 느리게 따라오고(뒤로 물러남),
      음수면 페이지보다 빨리 올라간다(앞으로 다가옴). */
-  var hero = document.querySelector('.hero');
+  // 히어로가 롤링 배너 1장으로 들어가면서 기준점이 그 슬라이드가 됐다.
+  var hero = document.querySelector('[data-parallax-root]') || document.querySelector('.hero');
   if (hero && !reduced) {
     var layers = [].slice.call(hero.querySelectorAll('[data-parallax]')).map(function (el) {
       return { el: el, rate: parseFloat(el.getAttribute('data-parallax')) || 0 };
@@ -83,7 +84,7 @@
   }
 
   /* 사진이 아직 없으면 깨진 이미지 대신 자리표시 배경만 남긴다 */
-  [].forEach.call(document.querySelectorAll('.hero img'), function (img) {
+  [].forEach.call(document.querySelectorAll('.hero img, [data-parallax-root] img'), function (img) {
     img.addEventListener('error', function () { img.remove(); });
     if (img.complete && img.naturalWidth === 0) img.remove();
   });

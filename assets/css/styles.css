@@ -62,6 +62,13 @@
   --shell: 1240px;
   --pad: 40px;
   --ease: cubic-bezier(.22, .61, .36, 1);
+
+  /* 라운드 — 사진·카드에만. 버튼은 pill(999px), 선·표는 각지게 둔다.
+     예전엔 사진마다 3px 로 거의 각져 있었는데, 지금 스킨케어 쪽 웹은
+     사진 모서리를 눈에 띄게 굴려 부드럽게 받는 쪽으로 가 있다. */
+  --r-s: 8px;
+  --r-m: 14px;
+  --r-l: 22px;
 }
 
 /* ── 리셋 ─────────────────────────────────────────────────── */
@@ -165,7 +172,7 @@ em, i { font-style: normal; }
 .gnb__item { position: relative; }
 .gnb__item > a {
   display: block; padding: 24px 18px;
-  font-family: var(--font-kr-head); font-size: 15px; letter-spacing: -.01em;
+  font-family: var(--font-kr-head); font-size: 16px; letter-spacing: -.01em;
   transition: color .3s var(--ease);
 }
 .gnb__item > a:hover { color: var(--accent-d); }
@@ -185,7 +192,7 @@ em, i { font-style: normal; }
 }
 .gnb__sub a, .gnb__soon {
   display: block; padding: 9px 20px; white-space: nowrap;
-  font-size: 14px; color: var(--ink-70);
+  font-size: 15px; color: var(--ink-70);
   transition: color .25s var(--ease), background-color .25s var(--ease);
 }
 .gnb__sub a:hover { color: var(--ink); background: var(--film); }
@@ -193,7 +200,7 @@ em, i { font-style: normal; }
    --ink-45 는 1.3~2.9:1 로 읽히지 않아 한 단계 올렸다(측정값). */
 .gnb__soon { color: rgba(26, 25, 23, .62); cursor: default; }
 .gnb__soon em {
-  font-family: var(--font-label); font-size: 9.5px; letter-spacing: .1em;
+  font-family: var(--font-label); font-size: 11px; letter-spacing: .1em;
   text-transform: uppercase; margin-left: 8px; color: rgba(26, 25, 23, .62);
 }
 
@@ -201,7 +208,7 @@ em, i { font-style: normal; }
 .util { display: flex; align-items: center; gap: 16px; }
 .util__lang {
   display: flex; align-items: center; gap: 7px;
-  font-family: var(--font-label); font-size: 11.5px; letter-spacing: .1em;
+  font-family: var(--font-label); font-size: 12.5px; letter-spacing: .1em;
 }
 .util__lang a { color: var(--ink-45); transition: color .3s var(--ease); }
 .util__lang a[aria-current="true"] { color: var(--ink); }
@@ -217,7 +224,7 @@ em, i { font-style: normal; }
 .util__ico svg { width: 21px; height: 21px; }
 
 @media (max-width: 1080px) {
-  .gnb__item > a { padding: 22px 12px; font-size: 14px; }
+  .gnb__item > a { padding: 22px 12px; font-size: 15px; }
   .util { gap: 10px; }
 }
 @media (max-width: 760px) {
@@ -233,13 +240,13 @@ em, i { font-style: normal; }
 
 /* ── 공통 파츠 ─────────────────────────────────────────────── */
 .eyebrow {
-  font-size: 11.5px; letter-spacing: .13em; text-transform: uppercase;
+  font-size: 12.5px; letter-spacing: .13em; text-transform: uppercase;
   color: var(--accent-t);
 }
 .btn {
   display: inline-flex; align-items: center; justify-content: center;
   height: 50px; padding: 0 30px; border-radius: 4px;
-  font-family: var(--font-kr-body); font-size: 15px; font-weight: 400;
+  font-family: var(--font-kr-body); font-size: 16px; font-weight: 400;
   letter-spacing: .02em; transition: background-color .3s var(--ease),
   color .3s var(--ease), border-color .3s var(--ease);
 }
@@ -255,7 +262,7 @@ em, i { font-style: normal; }
 
 .section { padding: 132px 0; }
 .section__num {
-  display: block; font-size: 11.5px; letter-spacing: .12em;
+  display: block; font-size: 12.5px; letter-spacing: .12em;
   color: var(--accent-t); margin-bottom: 26px;
 }
 .section__head {
@@ -273,7 +280,7 @@ em, i { font-style: normal; }
 /* 브랜드 페이지로 넘기는 인라인 링크 */
 .lead-link {
   display: inline-block; margin-top: 14px;
-  font-family: var(--font-label); font-size: 12px; letter-spacing: .1em;
+  font-family: var(--font-label); font-size: 13px; letter-spacing: .1em;
   color: var(--ink); border-bottom: 1px solid var(--line); padding-bottom: 3px;
   transition: border-color .3s var(--ease);
 }
@@ -362,7 +369,7 @@ em, i { font-style: normal; }
 .card__tag {
   position: absolute; top: 0; left: 0;
   background: var(--ink); color: var(--paper);
-  font-size: 10.5px; letter-spacing: .1em; padding: 4px 10px;
+  font-size: 12px; letter-spacing: .1em; padding: 4px 10px;
   text-transform: uppercase;
 }
 /* 제품컷 — 원본 3:4. 기존 플레이스홀더의 비율·여백·라운드를 그대로 둔다.
@@ -388,23 +395,23 @@ em, i { font-style: normal; }
 .card--sand   { --accent-c: var(--p-6); }
 .card__name { font-family: var(--font-kr-head); font-size: 20px; }
 .card__benefit {
-  margin: 8px 0 12px; font-size: 14px; color: var(--ink-70);
+  margin: 8px 0 12px; font-size: 15px; color: var(--ink-70);
 }
 .card__benefit em {
-  font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
   color: var(--accent-t); margin-left: 6px;
 }
-.card__desc { font-size: 14px; color: var(--ink-70); line-height: 1.7; }
+.card__desc { font-size: 15px; color: var(--ink-70); line-height: 1.7; }
 .card__figure {
   margin: 18px 0 20px; color: var(--ink);
-  font-size: 15px; letter-spacing: .02em;
+  font-size: 16px; letter-spacing: .02em;
 }
 .card__figure b { font-size: 26px; font-weight: 500; }
-.card__figure span { font-size: 13px; letter-spacing: .08em; color: var(--accent-t); }
+.card__figure span { font-size: 14px; letter-spacing: .08em; color: var(--accent-t); }
 .card__figure i { color: var(--ink-45); margin: 0 4px; }
 .card__link {
   margin-top: auto; align-self: start;
-  font-size: 14px; padding-bottom: 3px;
+  font-size: 15px; padding-bottom: 3px;
   border-bottom: 1px solid var(--line);
   transition: border-color .3s var(--ease);
 }
@@ -421,13 +428,13 @@ em, i { font-style: normal; }
 }
 .jeju__img img { width: 100%; height: 100%; object-fit: cover; }
 .jeju__item h3 { font-family: var(--font-kr-head); font-size: 21px; margin-bottom: 12px; }
-.jeju__item p { color: var(--ink-70); font-size: 15px; }
+.jeju__item p { color: var(--ink-70); font-size: 16px; }
 
 /* ── 추천 대상 한 줄 ──────────────────────────────────────────
    원래 S5(사용감) 끝에 있던 줄. S5 가 박스 장면 오른쪽 단으로
    들어가면서 01 제품 그리드 아래로 내려왔다. */
 .recommend {
-  max-width: 62ch; margin: 88px 0 0; color: var(--ink-70); font-size: 15px;
+  max-width: 62ch; margin: 88px 0 0; color: var(--ink-70); font-size: 16px;
 }
 .recommend .eyebrow { display: block; margin-bottom: 14px; }
 
@@ -437,16 +444,16 @@ em, i { font-style: normal; }
   background: var(--line); border: 1px solid var(--line);
 }
 .ing { background: var(--paper); padding: 34px 30px 38px; }
-.ing__i { font-size: 11.5px; letter-spacing: .12em; color: var(--accent-t); }
+.ing__i { font-size: 12.5px; letter-spacing: .12em; color: var(--accent-t); }
 .ing h3 { font-family: var(--font-kr-head); font-size: 20px; margin: 16px 0 10px; }
 .ing h3 em {
-  display: block; font-size: 11px; letter-spacing: .1em;
+  display: block; font-size: 12px; letter-spacing: .1em;
   text-transform: uppercase; color: var(--accent-t); margin-top: 4px;
 }
 .ing__n {
   font-size: 24px; font-weight: 500; color: var(--ink); margin-bottom: 12px;
 }
-.ing p:last-child { color: var(--ink-70); font-size: 14.5px; }
+.ing p:last-child { color: var(--ink-70); font-size: 15.5px; }
 
 /* ── S7 스토리 스크롤러 — 좌→우 자동 흐름(마퀴) ─────────────
    shader-bg.js 처럼 격리되진 않았지만, 움직임은 전부 main.js 의
@@ -490,7 +497,7 @@ em, i { font-style: normal; }
   justify-content: space-between; min-height: 240px;
 }
 .tile__q { font-family: var(--font-kr-head); font-size: 17px; line-height: 1.65; }
-.tile__by { margin-top: 12px; font-size: 13px; color: var(--ink-45); }
+.tile__by { margin-top: 12px; font-size: 14px; color: var(--ink-45); }
 .tile__play, .tile__ext {
   position: absolute; top: 14px; right: 14px;
   width: 40px; height: 40px; border-radius: 50%;
@@ -530,25 +537,25 @@ em, i { font-style: normal; }
 }
 .foot__logo { height: 26px; width: auto; }
 .foot__line {
-  margin-top: 16px; font-size: 14.5px; color: rgba(250, 250, 248, .72);
+  margin-top: 16px; font-size: 15.5px; color: rgba(250, 250, 248, .72);
 }
 
 /* 사업자 정보 — 라벨 열을 고정해 값이 세로로 정렬되게 한다 */
 .biz { margin-top: 30px; display: grid; gap: 7px; }
 .biz > div { display: grid; grid-template-columns: 116px minmax(0, 1fr); gap: 14px; }
-.biz dt { font-size: 12.5px; color: rgba(250, 250, 248, .52); }
-.biz dd { margin: 0; font-size: 12.5px; color: rgba(250, 250, 248, .82); }
+.biz dt { font-size: 13.5px; color: rgba(250, 250, 248, .52); }
+.biz dd { margin: 0; font-size: 13.5px; color: rgba(250, 250, 248, .82); }
 .biz a { border-bottom: 1px solid rgba(250, 250, 248, .3); }
 .biz a:hover { border-bottom-color: #FFFFFF; color: #FFFFFF; }
 
 .foot__policy { display: grid; gap: 10px; margin-bottom: 38px; }
-.foot__policy span { font-size: 13.5px; color: rgba(250, 250, 248, .66); }
+.foot__policy span { font-size: 14.5px; color: rgba(250, 250, 248, .66); }
 .foot__policy b { font-weight: 400; color: rgba(250, 250, 248, .92); }
 /* 아직 페이지가 없는 항목은 링크로 만들지 않는다 */
 .foot__soon { cursor: default; }
 
 .foot__sns h3, .foot__cs h3 {
-  font-family: var(--font-label); font-size: 11px; letter-spacing: .16em;
+  font-family: var(--font-label); font-size: 12px; letter-spacing: .16em;
   text-transform: uppercase; color: rgba(250, 250, 248, .58); margin-bottom: 16px;
 }
 .foot__ico { display: flex; gap: 12px; }
@@ -567,13 +574,13 @@ em, i { font-style: normal; }
   border-bottom: 1px solid rgba(250, 250, 248, .18);
 }
 .foot__cs ul { display: grid; gap: 6px; }
-.foot__cs li { font-size: 13px; color: rgba(250, 250, 248, .72); }
+.foot__cs li { font-size: 14px; color: rgba(250, 250, 248, .72); }
 
 .foot__legal {
   border-top: 1px solid rgba(250, 250, 248, .16); padding-top: 26px;
   padding-bottom: 38px;
   display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap;
-  font-size: 12.5px; color: rgba(250, 250, 248, .58); line-height: 1.7;
+  font-size: 13.5px; color: rgba(250, 250, 248, .58); line-height: 1.7;
 }
 .foot__legal p:first-child { max-width: 68ch; }
 
@@ -615,7 +622,7 @@ em, i { font-style: normal; }
   body { font-size: 16px; }
   .section { padding: 84px 0; }
   .section__head { grid-template-columns: 1fr; gap: 18px; margin-bottom: 48px; }
-  .section__lead { font-size: 15px; }
+  .section__lead { font-size: 16px; }
 
   .hero { min-height: auto; padding: 104px 0 72px; }
   /* 여기서 max-width/padding 을 덮어쓰면 히어로만 다른 격자에 앉는다.

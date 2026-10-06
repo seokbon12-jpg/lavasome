@@ -1,0 +1,214 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>전체 제품 — LAVASOME</title>
+<meta name="description" content="라바섬의 전체 제품. 피부 고민에 맞춰 고르는 제주 자연 기반 스킨케어.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Courier+Prime:wght@400;700&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.typekit.net/zhv7ywn.css">
+
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="stylesheet" href="assets/css/brand.css">
+<link rel="stylesheet" href="assets/css/home.css">
+
+<a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+<header class="site-header" data-header>
+  <div class="shell site-header__inner">
+    <a class="wordmark" href="index.html">
+      <img src="assets/img/brand/lavasome-logo.png" alt="LAVASOME" width="340" height="67">
+    </a>
+    <nav class="gnb" aria-label="주요">
+      <div class="gnb__item">
+        <a href="brand.html">브랜드</a>
+        <div class="gnb__sub">
+          <a href="brand.html">브랜드 스토리</a>
+          <a href="news.html">브랜드 소식</a>
+        </div>
+      </div>
+      <div class="gnb__item">
+        <a href="products.html">제품</a>
+        <div class="gnb__sub">
+          <a href="products.html">전체 제품</a>
+          <a href="event.html">이벤트 &middot; 프로모션</a>
+        </div>
+      </div>
+      <div class="gnb__item">
+        <a href="faq.html">고객지원</a>
+        <div class="gnb__sub">
+          <a href="faq.html">FAQ</a>
+          <span class="gnb__soon">공지사항<em>준비 중</em></span>
+        </div>
+      </div>
+    </nav>
+    <div class="util">
+      <p class="util__lang">
+        <a href="index.html" aria-current="true">KR</a><span aria-hidden="true">|</span><span class="util__soon" title="준비 중">EN</span>
+      </p>
+      <span class="util__ico" title="마이페이지 — 카페24 연동 예정" aria-label="마이페이지 (준비 중)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4 0-7 2.2-7 5v1h14v-1c0-2.8-3-5-7-5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </span>
+      <span class="util__ico" title="장바구니 — 카페24 연동 예정" aria-label="장바구니 (준비 중)">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1 12H7L6 8Zm3 0V6a3 3 0 0 1 6 0v2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ══ 전체 제품 ══
+     홈의 "전체 제품 보기"와 메뉴 "제품 > 전체 제품"이 여기로 온다.
+     각 카드의 id 는 홈 캐러셀·메인 배너의 "제품 보기" 링크(#vita-c-plus 등)와 맞춘다.
+     ⚠️ 제품 사진은 임시 연출컷입니다. 구글 드라이브의 최종 누끼컷/연출컷으로
+        assets/img/products/<id>.jpg 를 교체하면 홈과 이 페이지가 함께 바뀝니다.
+     ⚠️ 글루타티온 20K 는 드라이브에 누끼컷이 있지만 제품 정보가 없어 빠져 있습니다.
+     상세 페이지는 카페24 상품 상세로 연결할 예정 — 주소가 나오면 각 카드를
+     <a href="..."> 로 감싸고 "상세 페이지 준비 중"을 "제품 보기"로 바꿉니다. -->
+<main id="main" class="brand" tabindex="-1">
+
+  <section class="nhero">
+    <div class="shell">
+      <p class="eyebrow reveal">All Products</p>
+      <h1 class="reveal" data-delay="1">전체 제품</h1>
+      <p class="nhero__sub reveal" data-delay="2">피부 고민에 맞춰 고르는 라바섬의 제품입니다.<br>
+        제주에서 찾은 원료를 피부 과학으로 완성했습니다.</p>
+    </div>
+  </section>
+
+  <section class="section prods" data-filter-root>
+    <div class="shell">
+      <div class="chips" role="group" aria-label="피부 고민으로 고르기">
+        <button class="chip" type="button" data-filter="all" aria-pressed="true">전체</button>
+        <button class="chip" type="button" data-filter="brightening" aria-pressed="false">미백</button>
+        <button class="chip" type="button" data-filter="soothing" aria-pressed="false">진정</button>
+        <button class="chip" type="button" data-filter="firming" aria-pressed="false">탄력</button>
+        <button class="chip" type="button" data-filter="wrinkle" aria-pressed="false">주름개선</button>
+        <button class="chip" type="button" data-filter="hydration" aria-pressed="false">수분</button>
+        <button class="chip" type="button" data-filter="shield" aria-pressed="false">자외선 차단</button>
+      </div>
+      <p class="prods__count" aria-live="polite"><b data-filter-count>6</b>개 제품</p>
+      <ul class="prod-grid" role="list">
+        <li class="prod reveal" id="vita-c-plus" data-cat="brightening">
+          <figure class="prod__shot"><span class="pcar__tag">Best</span><img src="assets/img/products/vita-c-plus.jpg" alt="라바섬 Vita-C Plus Ampoule 제품 이미지" loading="lazy" decoding="async"></figure>
+          <div class="prod__body">
+            <p class="pcar__ben">미백 <em>Brightening</em></p>
+            <h2>Vita-C Plus Ampoule</h2>
+            <p class="pcar__desc">순수 비타민C를 무수 처방으로 안정화한 고농도 앰플.</p>
+            <p class="pcar__fig">13.5<span>%</span> <i>·</i> 135,000<span>ppm</span></p>
+            <span class="prod__soon">상세 페이지 준비 중</span>
+          </div>
+        </li>
+        <li class="prod reveal" id="calming-50" data-cat="soothing" data-delay="1">
+          <figure class="prod__shot"><img src="assets/img/products/calming-50.jpg" alt="라바섬 Calming 50 제품 이미지" loading="lazy" decoding="async"></figure>
+          <div class="prod__body">
+            <p class="pcar__ben">진정 <em>Soothing</em></p>
+            <h2>Calming 50</h2>
+            <p class="pcar__desc">자극 요인을 덜어내는 데 초점을 맞춘 진정 라인.</p>
+            <p class="pcar__fig">50<span>%</span></p>
+            <span class="prod__soon">상세 페이지 준비 중</span>
+          </div>
+        </li>
+        <li class="prod reveal" id="pdrn-1k" data-cat="firming" data-delay="2">
+          <figure class="prod__shot"><img src="assets/img/products/pdrn-1k.jpg" alt="라바섬 PDRN 1K 제품 이미지" loading="lazy" decoding="async"></figure>
+          <div class="prod__body">
+            <p class="pcar__ben">탄력 <em>Firming</em></p>
+            <h2>PDRN 1K</h2>
+            <p class="pcar__desc">밀도와 탄력의 조건을 다루는 집중 케어.</p>
+            <p class="pcar__fig">1,000<span>ppm</span></p>
+            <span class="prod__soon">상세 페이지 준비 중</span>
+          </div>
+        </li>
+        <li class="prod reveal" id="bakuchiol-5k" data-cat="wrinkle">
+          <figure class="prod__shot"><img src="assets/img/products/bakuchiol-5k.jpg" alt="라바섬 바쿠치올 5K 제품 이미지" loading="lazy" decoding="async"></figure>
+          <div class="prod__body">
+            <p class="pcar__ben">주름개선 <em>Anti-Wrinkle</em></p>
+            <h2>바쿠치올 5K</h2>
+            <p class="pcar__desc">자극은 낮추고 탄력의 결을 다잡는 저자극 설계.</p>
+            <p class="pcar__fig">50,000<span>ppm</span></p>
+            <span class="prod__soon">상세 페이지 준비 중</span>
+          </div>
+        </li>
+        <li class="prod reveal" id="ha90" data-cat="hydration" data-delay="1">
+          <figure class="prod__shot"><img src="assets/img/products/ha90.jpg" alt="라바섬 HA90 제품 이미지" loading="lazy" decoding="async"></figure>
+          <div class="prod__body">
+            <p class="pcar__ben">수분 <em>Hydration</em></p>
+            <h2>HA 90</h2>
+            <p class="pcar__desc">수분 보유력을 유지하며 결을 정리합니다.</p>
+            <p class="pcar__fig">90<span>%</span></p>
+            <span class="prod__soon">상세 페이지 준비 중</span>
+          </div>
+        </li>
+        <li class="prod reveal" id="sunscreen" data-cat="shield" data-delay="2">
+          <figure class="prod__shot"><img src="assets/img/products/sunscreen.jpg" alt="라바섬 퓨어 선스크린 제품 이미지" loading="lazy" decoding="async"></figure>
+          <div class="prod__body">
+            <p class="pcar__ben">일상 보호 <em>Daily Shield</em></p>
+            <h2>퓨어 선스크린</h2>
+            <p class="pcar__desc">매일 쓰기 위한 가벼운 마무리.</p>
+            <p class="pcar__fig">SPF<span>50+ / PA++++</span></p>
+            <span class="prod__soon">상세 페이지 준비 중</span>
+          </div>
+        </li>
+      </ul>
+
+      <div class="prods__foot reveal">
+        <p>제품 원료와 처방 이야기가 궁금하다면</p>
+        <a class="link-arrow" href="brand.html#ingredients">자세히 보기 &rarr;</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="shell foot">
+    <div class="foot__brand">
+      <img class="foot__logo" src="assets/img/brand/lavasome-logo-white.png" alt="LAVASOME" width="340" height="67">
+      <p class="foot__line">제주의 자연에서 시작된 과학적 스킨케어</p>
+      <dl class="biz">
+        <div><dt>상호</dt><dd>주식회사 라바섬</dd></div>
+        <div><dt>대표</dt><dd>임희경</dd></div>
+        <div><dt>사업자등록번호</dt><dd>356-81-02119</dd></div>
+        <div><dt>통신판매업 신고</dt><dd>제 2021-서울성북-0827호</dd></div>
+        <div><dt>주소</dt><dd>서울특별시 성북구 한천로 553 (석관동) 4층</dd></div>
+        <div><dt>전화</dt><dd><a href="tel:15446743">1544-6743</a></dd></div>
+        <div><dt>개인정보보호책임자</dt><dd>선영원 <a href="mailto:lavasome_korea@naver.com">(lavasome_korea@naver.com)</a></dd></div>
+      </dl>
+    </div>
+    <div class="foot__mid">
+      <nav class="foot__policy" aria-label="약관">
+        <span class="foot__soon">이용약관</span>
+        <span class="foot__soon">이용안내</span>
+        <span class="foot__soon"><b>개인정보처리방침</b></span>
+      </nav>
+      <div class="foot__sns">
+        <h3>Follow us</h3>
+        <div class="foot__ico">
+          <span title="인스타그램 — 주소 확인 후 연결" aria-label="인스타그램 (준비 중)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/></svg>
+          </span>
+          <span title="카카오채널 — 주소 확인 후 연결" aria-label="카카오채널 (준비 중)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4C7 4 3 7.1 3 10.9c0 2.4 1.7 4.6 4.2 5.8L6.4 20l3.5-2.1c.7.1 1.4.2 2.1.2 5 0 9-3.1 9-6.9S17 4 12 4Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          </span>
+          <span title="유튜브 — 주소 확인 후 연결" aria-label="유튜브 (준비 중)">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M11 9.6v4.8l4-2.4-4-2.4Z" fill="currentColor"/></svg>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="foot__cs" id="customer">
+      <h3>고객센터</h3>
+      <p class="foot__tel"><a href="tel:15446743">1544-6743</a></p>
+      <ul role="list">
+        <li>평일 09:00 &ndash; 18:00</li>
+        <li>점심시간 12:00 &ndash; 13:00</li>
+        <li>토 / 일 / 공휴일 휴무</li>
+      </ul>
+    </div>
+  </div>
+  <div class="shell foot__legal">
+    <p>화장품법상 표시·광고 범위 내에서 표기합니다.</p>
+    <p>© <span data-year>2026</span> LAVASOME</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/filter.js"></script>

@@ -12,6 +12,7 @@
 <!-- 성분 섹션의 물 배경. 메인과 같은 셰이더를 쓴다 -->
 <link rel="stylesheet" href="assets/css/shader-bg.css">
 <link rel="stylesheet" href="assets/css/brand.css">
+<link rel="stylesheet" href="assets/css/box-scrub.css">
 
 <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
@@ -22,23 +23,23 @@
     </a>
     <nav class="gnb" aria-label="주요">
       <div class="gnb__item">
-        <a href="brand.html" aria-current="page">브랜드</a>
+        <a href="brand.html">브랜드</a>
         <div class="gnb__sub">
           <a href="brand.html">브랜드 스토리</a>
           <a href="news.html">브랜드 소식</a>
         </div>
       </div>
       <div class="gnb__item">
-        <a href="index.html#products">제품</a>
+        <a href="products.html">제품</a>
         <div class="gnb__sub">
-          <a href="index.html#products">전체 제품</a>
-          <a href="formulation.html">스킨 사이언스</a>
+          <a href="products.html">전체 제품</a>
+          <a href="event.html">이벤트 &middot; 프로모션</a>
         </div>
       </div>
       <div class="gnb__item">
-        <a href="#customer">고객지원</a>
+        <a href="faq.html">고객지원</a>
         <div class="gnb__sub">
-          <span class="gnb__soon">FAQ<em>준비 중</em></span>
+          <a href="faq.html">FAQ</a>
           <span class="gnb__soon">공지사항<em>준비 중</em></span>
         </div>
       </div>
@@ -60,9 +61,9 @@
 <main id="main" class="brand" tabindex="-1">
 
   <!-- ══ 히어로 — 브랜드 슬로건 ══
-       리플렛의 슬로건과 서명 문구를 그대로 쓴다. 대표이사 인사말로
-       시작하던 구성을 걷어내고 브랜드 자체에서 시작하도록 바꿨다.
-       (피드백 02 · 대표이사 인사말은 news.html 로 이동) -->
+       사진은 리플렛의 현무암 컷(클라이언트 제공 자료). 예전에는 자리표시
+       그라디언트만 깔려 오른쪽이 비어 보였다 — 피드백 "오른쪽 여백" 은
+       문구를 더하지 않고 제주 비주얼로 채웠다. -->
   <section class="bhero">
     <div class="bhero__photo" aria-hidden="true">
       <img src="assets/img/brand/brand-hero.jpg" alt="" loading="eager" decoding="async">
@@ -76,7 +77,6 @@
         <p class="bhero__en reveal" data-delay="2">
           Rest from Jeju Nature,<br>Let Your Skin Breathe Again
         </p>
-        <p class="bhero__sig reveal" data-delay="3">Beauty from Jeju,<br>Value for All.</p>
       </div>
 
       <aside class="bhero__aside reveal" data-delay="2">
@@ -86,57 +86,88 @@
     </div>
   </section>
 
-  <!-- ══ 브랜드 소개 ══ 리플렛 본문 그대로 -->
+  <!-- ══ About LAVASOME — 라바섬이 어떤 브랜드인가 ══
+       피드백: About 과 Jeju Origin 이 "제주 자연 → 피부 과학" 을 반복했다.
+       About 은 브랜드가 지향하는 가치(리플렛 "아름다움을 넘어, 더 나은 가치
+       나눔")로, 제주→과학 이야기는 Jeju Origin 한 곳에만 둔다. -->
   <section class="section section--film" id="about">
     <div class="shell">
-      <div class="intro">
-        <div>
+      <div class="about">
+        <div class="about__head">
           <p class="eyebrow reveal">About LAVASOME</p>
-          <h2 class="section__title reveal" data-delay="1">제주 자연을<br>과학으로 완성하다</h2>
+          <h2 class="about__title reveal" data-delay="1">Beauty from Jeju,<br>Value for All</h2>
+          <p class="about__lead reveal" data-delay="2">제주의 자연에서 시작한 아름다움이
+            피부를 넘어 더 좋은 가치로 이어지도록.
+            라바섬은 제품을 만드는 일과 함께 나누는 일을 이어갑니다.</p>
         </div>
-        <div class="intro__body">
-          <p class="reveal" data-delay="1">라바섬은 제주가 품은 자연의 가치를 발견하고,
-            피부 과학과 정교한 포뮬러를 통해 피부에 필요한 가치로 완성합니다.</p>
-          <p class="intro__note reveal" data-delay="2">자연의 본질은 그대로, 피부에는 더 깊이.</p>
+
+        <div class="about__give">
+          <h3 class="reveal">아름다움을 넘어, 더 나은 가치 나눔</h3>
+          <ul class="give" role="list">
+            <li class="reveal">
+              <span class="give__ico" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="M9 14c-2-2-2-6 1-7 2-.6 3 1 3 3m10 4c2-2 2-6-1-7-2-.6-3 1-3 3M10 17c0 6 3 9 6 9s6-3 6-9c0-3-3-5-6-5s-6 2-6 5Z" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M14 18v.1m4-.1v.1M15 21.5c.6.4 1.4.4 2 0" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" fill="none"/></svg>
+              </span>
+              <b>유기견 후원</b>
+              <p>작은 생명을 위한 따뜻한 나눔</p>
+            </li>
+            <li class="reveal" data-delay="1">
+              <span class="give__ico" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 13h19M6.5 19h19M16 6c-3 3-4 6.5-4 10s1 7 4 10m0-20c3 3 4 6.5 4 10s-1 7-4 10" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+              </span>
+              <b>동물보호 실천</b>
+              <p>생명과 자연을 존중하는 아름다움</p>
+            </li>
+            <li class="reveal" data-delay="2">
+              <span class="give__ico" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="M5 17l5-5 4 2 4-3 4 2 5 4M10 12l-3 9m19-4-3 4m-9-3 3 3 3-1m-9 1 3 3m2-6 3 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <b>굿윌스토어 협업</b>
+              <p>함께 만드는 일자리와 지속가능한 나눔</p>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ 01 JEJU ORIGIN ══
-       기존 "Jeju-Origin Research" 를 연구 자료가 아니라 브랜드 이야기로
-       다시 짰다. 숫자 카드와 공정 3단은 걷어냈다. (피드백 03) -->
-  <section class="section section--figure" id="origin">
+  <!-- ══ 01 JEJU ORIGIN — 제주 자연 → 원료 → 피부 과학 ══
+       브랜드의 핵심 이야기를 여기 한 곳에 둔다. 연구 담당자 인물 영역은
+       피드백에 따라 뺐다 — 특정 인물이 아니라 자연·원료·과학이 주인공.
+       연구소 사진을 헤드 옆으로 올려 오른쪽 빈 자리를 비주얼로 채웠다. -->
+  <section class="section" id="origin">
     <div class="shell">
-      <div class="chap reveal">
-        <div><div class="chap__n">01</div></div>
-        <div>
-          <div class="chap__l">Jeju Origin</div>
-          <h2>제주 자연에서 시작해,<br>과학으로 완성하다</h2>
-          <p class="chap__en">From Jeju Nature, Into the Science of Skin</p>
-          <p class="chap__lead">라바섬은 제주가 품은 청정한 자연의 가치를 발견하고,
-            피부 과학과 정교한 연구를 통해 자연의 본질은 그대로,
-            피부에는 더 깊이 전합니다.</p>
+      <div class="ohead">
+        <div class="chap reveal">
+          <div><div class="chap__n">01</div></div>
+          <div>
+            <div class="chap__l">Jeju Origin</div>
+            <h2>제주 자연에서 시작해,<br>과학으로 완성하다</h2>
+            <p class="chap__en">From Jeju Nature, Into the Science of Skin</p>
+            <p class="chap__lead">라바섬의 처방은 제주에서 시작합니다. 제주 생물종에서
+              원료를 찾고, 인체 적용 시험과 품질 관리를 거쳐 피부에 닿는
+              과학으로 완성합니다.</p>
+          </div>
         </div>
-      </div>
 
-      <!-- ⚠️ 이 사진은 제주테크노파크 생물종다양성연구소 · 미생물산업화지원센터
-           건물입니다(간판이 그대로 보입니다). 라바섬 소유 시설이 아니므로
-           리플렛처럼 "LAVASOME BIO RESEARCH CENTER" 로 표기하면 자사 연구소로
-           읽힙니다. 아래 캡션은 협력 기관으로 적어 두었습니다 —
-           공식 명칭과 협력 범위를 확인한 뒤 확정해주세요. -->
-      <figure class="origin__shot reveal">
-        <img src="assets/img/brand/research-center.jpg"
-             alt="제주 생물종다양성연구소 전경" loading="lazy" decoding="async">
-        <figcaption>제주 생물종다양성연구소 &middot; 미생물산업화지원센터
-          <em>협력 연구 기관</em></figcaption>
-      </figure>
+        <!-- ⚠️ 이 사진은 제주테크노파크 생물종다양성연구소 · 미생물산업화지원센터
+             건물입니다(간판이 그대로 보입니다). 라바섬 소유 시설이 아니므로
+             "LAVASOME BIO RESEARCH CENTER" 로 표기하면 자사 연구소로 읽힙니다.
+             공식 명칭과 협력 범위를 확인한 뒤 확정해주세요. -->
+        <figure class="origin__shot reveal" data-delay="1">
+          <img src="assets/img/brand/research-center.jpg"
+               alt="제주 생물종다양성연구소 전경" loading="lazy" decoding="async">
+          <figcaption>제주 생물종다양성연구소 &middot; 미생물산업화지원센터
+            <em>협력 연구 기관</em></figcaption>
+        </figure>
+      </div>
 
       <div class="origin">
         <article class="origin__item reveal">
           <div class="origin__img">
             <img src="assets/img/brand/origin-01.jpg" alt="샬레에 담긴 물과 제주 현무암" loading="lazy" decoding="async">
           </div>
+          <span class="origin__step">제주 자연</span>
           <h3>제주 생물종 다양성 연구소</h3>
           <p>제주 생물종 특허 원료 개발</p>
         </article>
@@ -144,6 +175,7 @@
           <div class="origin__img">
             <img src="assets/img/brand/origin-02.jpg" alt="샬레 위로 떨어지는 스포이드 물방울" loading="lazy" decoding="async">
           </div>
+          <span class="origin__step">검증</span>
           <h3>인체 적용 시험</h3>
           <p>제품의 효능과 안정성</p>
         </article>
@@ -151,24 +183,10 @@
           <div class="origin__img">
             <img src="assets/img/brand/origin-03.jpg" alt="네 개의 시험관에 담긴 식물과 해조류 표본" loading="lazy" decoding="async">
           </div>
+          <span class="origin__step">품질</span>
           <h3>체계적인 품질 관리 시스템</h3>
           <p>원료부터 완제품까지</p>
         </article>
-      </div>
-
-      <!-- 연구 담당자 한마디. 피드백 문서에는 없는 요소지만, 연구 이야기를
-           자료가 아니라 사람의 말로 받게 해서 남겨 두었습니다.
-           ⚠️ 성함·직함·소속은 확인 후 기재. -->
-      <div class="oquote reveal">
-        <figure class="oquote__shot">
-          <img src="assets/img/brand/researcher.png" alt="샬레를 살피는 연구 담당자"
-               width="900" height="1344" loading="lazy" decoding="async">
-        </figure>
-        <div class="oquote__body">
-          <blockquote>&ldquo;제주 원료를 쓰는 일과, 그 원료가 처방 안에서
-            끝까지 버티게 만드는 일은 다른 문제였습니다.&rdquo;</blockquote>
-          <p class="oquote__who"><b>연구 담당자 성함</b><em>직함 · 소속 — 확인 후 기재</em></p>
-        </div>
       </div>
     </div>
   </section>
@@ -180,7 +198,7 @@
     <div class="shell">
       <div class="ihead">
         <div>
-          <p class="eyebrow reveal">Jeju-Inspired Skin Science</p>
+          <p class="eyebrow reveal"><span class="ihead__n">02</span> Ingredients</p>
           <h2 class="section__title reveal" data-delay="1">
             제주의 자연을 담은,<br>피부를 위한 과학적 포뮬러
           </h2>
@@ -254,14 +272,76 @@
     </div>
   </section>
 
-  <!-- ══ 03 FORMULATION PRINCIPLES ══
+  <!-- ══ 03 SKIN SCIENCE — 피부 과학 ══
+       옛 formulation.html 의 핵심 콘텐츠. 피드백에 따라 별도 메뉴·페이지를
+       없애고 원료 다음에 이어 붙였다: 제주 자연 → 핵심 원료 → 피부 과학 →
+       Formulation Principles. 스크롤하면 박스가 열리며 카피가 차례로 켜진다. -->
+  <section class="boxopen" data-box-scrub id="science" aria-labelledby="mech-title">
+    <div class="boxopen__inner">
+
+      <div class="boxopen__side">
+        <div class="boxopen__stage">
+          <canvas class="boxopen__canvas"
+                  aria-label="Vita-C Plus 앰플 패키지가 열리는 장면" role="img"></canvas>
+        </div>
+        <p class="boxopen__label">Scroll to open</p>
+      </div>
+
+      <div class="boxopen__copy">
+        <p class="bcopy__meta" data-step data-at=".03">
+          <span class="section__num">03</span><span class="eyebrow">Skin Science</span>
+        </p>
+
+        <h2 class="bcopy__title" id="mech-title" data-step data-at=".06">
+          농도를 올리는 일보다<br>농도를 지키는 일이 어렵습니다
+        </h2>
+
+        <p class="bcopy__lead" data-step data-at=".18">
+          순수 비타민C는 물과 만나는 순간부터 무너집니다.
+          라바섬은 물을 빼는 쪽을 택했습니다.
+        </p>
+
+        <div class="blayers">
+          <div class="blayer" data-step data-at=".30">
+            <span class="blayer__tag">외층 <em>Outer</em></span>
+            <p>수분을 차단하는 무수 베이스가 순수 비타민C를 감쌉니다.
+               개봉 전까지 산화가 시작되지 않습니다.</p>
+          </div>
+          <div class="blayer" data-step data-at=".42">
+            <span class="blayer__tag">내층 <em>Inner</em></span>
+            <p>피부에 닿는 순간 유효 성분이 풀립니다.
+               농도가 아니라 도달이 목적입니다.</p>
+          </div>
+        </div>
+
+        <dl class="bspec" data-step data-at=".54">
+          <div><dt>13.5<span>%</span></dt><dd>순수 비타민C</dd></div>
+          <div><dt>135,000<span>ppm</span></dt><dd>함량</dd></div>
+          <div><dt>pH 3.5</dt><dd>흡수 조건</dd></div>
+          <div><dt>2중</dt><dd>레이어 구조</dd></div>
+        </dl>
+
+        <div class="bsense" data-step data-at=".68">
+          <p class="bsense__meta"><span class="eyebrow">Gentle Efficacy</span></p>
+          <h3>고농도인데 사용감은 순합니다</h3>
+          <dl>
+            <div><dt>흡수감 <em>Texture</em></dt><dd>얇게 퍼지고 빠르게 정리됩니다</dd></div>
+            <div><dt>향 <em>Scent</em></dt><dd>인위적인 향을 더하지 않았습니다</dd></div>
+            <div><dt>색감 <em>Tone</em></dt><dd>실제 제형 그대로의 옅은 크림빛입니다</dd></div>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ 04 FORMULATION PRINCIPLES ══
        전달되는 정보량에 비해 영역이 컸다는 피드백(05)에 맞춰,
        설명 문단을 걷어내고 한 줄씩으로 압축했다. -->
   <section class="section section--film" id="principles">
     <div class="shell">
       <div class="prin">
         <div class="prin__head">
-          <div class="chap__l reveal">03 &nbsp;|&nbsp; Formulation Principles</div>
+          <div class="chap__l reveal">04 &nbsp;|&nbsp; Formulation Principles</div>
           <h2 class="reveal" data-delay="1">균형 위에 설계합니다</h2>
           <p class="prin__en reveal" data-delay="1">Designed with Balance</p>
           <p class="prin__lead reveal" data-delay="2">좋은 성분을 단순히 더하는 것이 아니라,
@@ -293,13 +373,15 @@
     </div>
   </section>
 
-  <!-- ══ 04 THE LAVASOME JOURNEY ══ 페이지 후반부 History (피드백 06) -->
+  <!-- ══ 05 THE LAVASOME JOURNEY ══ 페이지 후반부 History -->
   <section class="section" id="journey">
     <div class="shell">
       <div class="jhead">
-        <p class="chap__l reveal">The LAVASOME Journey</p>
-        <h2 class="reveal" data-delay="1">제주에서 시작해, 더 넓은 세상으로</h2>
-        <p class="reveal" data-delay="2">라바섬의 여정은 자연에 대한 믿음과
+        <div>
+          <p class="chap__l reveal">05 &nbsp;|&nbsp; The LAVASOME Journey</p>
+          <h2 class="reveal" data-delay="1">제주에서 시작해,<br>더 넓은 세상으로</h2>
+        </div>
+        <p class="jhead__lead reveal" data-delay="2">라바섬의 여정은 자연에 대한 믿음과
           고객에 대한 진심으로 이어져 왔습니다.</p>
       </div>
 
@@ -337,10 +419,9 @@
   <!-- ══ 클로징 ══ -->
   <section class="bclose section--panel">
     <div class="shell">
-      <h2 class="reveal">Beauty from Jeju,<br>Value for All.</h2>
-      <p class="reveal" data-delay="1">제주의 자연에서 시작한 아름다움이<br>피부를 넘어 더 좋은 가치로 이어집니다.</p>
-      <div class="cta-row cta-row--center reveal" data-delay="2">
-        <a class="btn btn--solid" href="index.html#products">제품 보기</a>
+      <h2 class="bclose__kr reveal">자연에서 찾고,<br>피부 과학으로 완성합니다.</h2>
+      <div class="cta-row cta-row--center reveal" data-delay="1">
+        <a class="btn btn--solid" href="products.html">전체 제품 보기</a>
       </div>
     </div>
   </section>
@@ -398,5 +479,8 @@
   </div>
 </footer>
 
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/shader-bg.js"></script>
+<script src="assets/js/box-scrub.js"></script>
