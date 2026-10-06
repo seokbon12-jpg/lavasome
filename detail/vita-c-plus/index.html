@@ -2,330 +2,392 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=860">
-<title>Filler Vita-C⁺ Ampoule — 상세페이지</title>
-<meta name="robots" content="noindex">
-<!-- 라바섬 사이트와 연결하지 않은 단독 작업본. 메뉴·링크 없음.
-     ⚠️ 표시한 자리(노란 바탕 data-placeholder)는 확정 정보로 바꿔야 합니다. -->
-<!-- 글꼴: 이 페이지에 쓰인 글자만 담은 Google Fonts 조각을 함께 둔다(fonts/).
-     오프라인·GIF 추출에서도 같은 글꼴로 보이게 하려는 것. 문구를 크게 바꾸면
-     tools/pickfonts.py 로 다시 뽑는다. -->
-<link rel="stylesheet" href="fonts/fonts.css">
-<link rel="stylesheet" href="style.css">
-<script>if (/[?&]still\b/.test(location.search)) document.documentElement.classList.add('still');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 이 파일은 page.html 을 감싼 것. 수정은 page.html 에서 하고 tools/build.py 로 다시 만든다. -->
 </head>
 <body>
+<title>Filler Vita-C⁺ Ampoule</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@200;300;400&family=IBM+Plex+Mono:wght@400&family=IBM+Plex+Sans+KR:wght@400;500&display=swap">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+/* 시험 성적서와 바이알 라벨의 세계 — 현무암 회색 지면, 왼쪽 정렬의 비대칭 격자,
+   사진이 먼저 말하고 글은 좁은 단으로 비켜 선다. 색은 제형 사진과 산화 데이터에서만 쓴다. */
+:root {
+  --ground: #E9EAE6;      /* 석회 회색 — 크림이 아니라 광물 쪽 */
+  --paper: #F4F4F1;
+  --ink: #1D1E1C;         /* 현무암 */
+  --mute: #5F615C;        /* 보조 글자, ground 위 5.6:1 */
+  --rule: #C3C5BF;
+  --basalt: #262725;
+  --basalt-ink: #E4E4DF;
+  --basalt-mute: #A5A7A1;
+  --serum: #E5BD7F;       /* 실제 제형색 — 제품 사진에서 뽑음 */
+  --ox-1: #D9A255; --ox-2: #C47A2C; --ox-3: #8E4A1B; --ox-4: #5A2A12;
+  --display: "Hahmlet", "Noto Serif KR", serif;
+  --text: "IBM Plex Sans KR", "Noto Sans KR", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --T: 6s;                /* 모든 움직임의 주기 — GIF 한 바퀴 */
+  --g: clamp(16px, 4.6vw, 40px);
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: #D9DAD5; color: var(--ink); font: 400 16px/1.8 var(--text); letter-spacing: -.005em; word-break: keep-all; -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; }
+h1, h2, h3, p, ol, ul, dl, dd, figure, table { margin: 0; padding: 0; }
+ol, ul { list-style: none; }
+
+.page { max-width: 860px; margin: 0 auto; background: var(--ground); overflow: hidden; }
+.sec { padding: clamp(64px, 12vw, 112px) var(--g); position: relative; }
+.grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 20px; }
+
+.tag { font: 400 11.5px/1.5 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.h2 { font: 300 clamp(26px, 4.4vw, 36px)/1.38 var(--display); letter-spacing: -.03em; text-wrap: balance; }
+.body { font-size: 15.5px; line-height: 1.85; color: #3B3D39; max-width: 30em; }
+.foot { font-size: 12.5px; line-height: 1.7; color: var(--mute); }
+[data-ph] { background: rgba(229, 189, 127, .38); padding: 0 3px; }
+
+/* ── 01 첫 화면: 큰 바이알 + 작은 피부 컷 ───────────────────── */
+.hero { padding-top: clamp(28px, 6vw, 44px); }
+.hero__bar { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+.hero__grid { margin-top: clamp(36px, 7vw, 64px); align-items: start; }
+.hero__copy { grid-column: 1 / 6; padding-top: 8px; }
+.hero h1 { font: 300 clamp(30px, 5vw, 40px)/1.32 var(--display); letter-spacing: -.035em; white-space: nowrap; }
+.hero__lede { margin-top: 26px; font-size: 15.5px; line-height: 1.85; color: #3B3D39; max-width: 19em; }
+.hero__vial { grid-column: 6 / 13; position: relative; aspect-ratio: 4 / 5.2; overflow: hidden; background: #EEDCCB; }
+.hero__vial img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 78%; }
+.sheen { position: absolute; left: 34%; top: 40%; width: 32%; height: 48%; overflow: hidden; mix-blend-mode: soft-light; pointer-events: none; }
+.sheen::after { content: ""; position: absolute; top: -10%; bottom: -10%; width: 34%; left: -50%; transform: skewX(-14deg);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .9), transparent);
+  animation: sheen var(--T) cubic-bezier(.4, 0, .2, 1) infinite; animation-delay: calc(var(--T) * -.75); }
+@keyframes sheen { 0%, 20% { left: -50% } 55%, 100% { left: 125% } }
+.hero__skin { grid-column: 4 / 7; margin-top: clamp(-240px, -27vw, -60px); position: relative; z-index: 1; aspect-ratio: 372 / 520; overflow: hidden; }
+.hero__skin img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+.hero__skin + .tag { grid-column: 4 / 8; margin-top: 10px; }
+.hero__spec { grid-column: 1 / 13; margin-top: 34px; padding-top: 14px; border-top: 1px solid var(--rule); display: flex; flex-wrap: wrap; gap: 4px 18px; }
+
+/* ── 02 13.5 ───────────────────────────────────────────────── */
+.dose { align-items: end; }
+.dose__n { grid-column: 1 / 9; font: 200 clamp(110px, 25vw, 214px)/.82 var(--display); letter-spacing: -.06em; font-variant-numeric: lining-nums;
+  animation: wipe var(--T) cubic-bezier(.6, 0, .2, 1) infinite; animation-delay: calc(var(--T) * -.6); }
+.dose__n small { font-size: .3em; letter-spacing: 0; margin-left: .08em; }
+@keyframes wipe { 0% { clip-path: inset(0 100% 0 0) } 28%, 92% { clip-path: inset(0 0 0 0) } 100% { clip-path: inset(0 0 0 100%) } }
+.dose__txt { grid-column: 9 / 13; padding-bottom: 10px; }
+.dose__txt .body { margin-top: 12px; font-size: 14.5px; }
+
+/* ── 03 무수 처방 + 산화 색 기록 ────────────────────────────── */
+.anhy__head { grid-column: 1 / 8; }
+.anhy__head .body { margin-top: 20px; }
+.anhy__ph { grid-column: 9 / 13; align-self: end; }
+.ruler { position: relative; height: 34px; margin-top: 10px; border-bottom: 1px solid var(--ink);
+  background: repeating-linear-gradient(90deg, var(--ink) 0 1px, transparent 1px calc(100% / 13)) bottom / 100% 8px no-repeat; }
+.ruler__needle { position: absolute; bottom: 0; width: 1px; height: 30px; background: var(--ink); left: calc(2.5 / 13 * 100%);
+  animation: needle var(--T) cubic-bezier(.3, .8, .2, 1) infinite; animation-delay: calc(var(--T) * -.6); }
+.ruler__needle::after { content: "3.5"; position: absolute; left: 6px; top: -4px; font: 400 11.5px var(--mono); }
+@keyframes needle { 0% { left: calc(6 / 13 * 100%) } 30%, 100% { left: calc(2.5 / 13 * 100%) } }
+.ruler__scale { display: flex; justify-content: space-between; margin-top: 6px; font: 400 11px var(--mono); color: var(--mute); }
+.anhy__ph .foot { margin-top: 10px; }
+
+.ox { grid-column: 1 / 13; margin-top: clamp(48px, 8vw, 72px); }
+.ox__cap { display: flex; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--ink); }
+.ox__table { position: relative; display: grid; grid-template-columns: 9.5em repeat(5, minmax(0, 1fr)); gap: 10px 8px; margin-top: 18px; align-items: center; }
+.ox__table .tag { color: var(--ink); }
+.ox__w { text-align: left; }
+.ox__row { font-size: 14px; line-height: 1.4; }
+.ox__row small { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font: 400 11px var(--mono); color: var(--mute); letter-spacing: .04em; }
+.chip { height: clamp(46px, 9vw, 72px); background: var(--serum); }
+/* 기록 커서 — 지나간 주차부터 일반 제형 칸이 산화된 색으로 바뀐다 */
+.ox__cursor { position: absolute; top: -6px; bottom: -6px; width: 1px; background: var(--ink); left: calc(9.5em + 8px);
+  animation: cursor var(--T) linear infinite; animation-delay: calc(var(--T) * -.7); }
+@keyframes cursor { 0%, 6% { left: calc(9.5em + 8px); opacity: 0 } 10% { opacity: 1 } 70% { left: 100%; opacity: 1 } 78%, 100% { left: 100%; opacity: 0 } }
+.c-1 { animation: c1 var(--T) linear infinite; } .c-2 { animation: c2 var(--T) linear infinite; }
+.c-3 { animation: c3 var(--T) linear infinite; } .c-4 { animation: c4 var(--T) linear infinite; }
+.c-1, .c-2, .c-3, .c-4 { animation-delay: calc(var(--T) * -.7); }
+@keyframes c1 { 0%, 22% { background: var(--serum) } 26%, 94% { background: var(--ox-1) } 100% { background: var(--serum) } }
+@keyframes c2 { 0%, 34% { background: var(--serum) } 38%, 94% { background: var(--ox-2) } 100% { background: var(--serum) } }
+@keyframes c3 { 0%, 46% { background: var(--serum) } 50%, 94% { background: var(--ox-3) } 100% { background: var(--serum) } }
+@keyframes c4 { 0%, 58% { background: var(--serum) } 62%, 94% { background: var(--ox-4) } 100% { background: var(--serum) } }
+.ox .foot { margin-top: 18px; }
+.ox__title { font-size: 14px; font-weight: 500; }
+.ox__w { font-family: var(--text) !important; letter-spacing: 0 !important; font-size: 12.5px !important; }
+
+/* ── 04 제주 (어두운 면) ──────────────────────────────────── */
+.jeju { background: var(--basalt); color: var(--basalt-ink); }
+.jeju .tag { color: var(--basalt-mute); }
+.jeju__rock { grid-column: 1 / 7; grid-row: 1 / 3; aspect-ratio: 784 / 1200; overflow: hidden; }
+.jeju__rock img { width: 100%; height: 100%; object-fit: cover; }
+.jeju__head { grid-column: 8 / 13; align-self: start; }
+.jeju__head .h2 { margin-top: 14px; }
+.jeju__list { grid-column: 8 / 13; align-self: end; display: grid; gap: 34px; margin-top: 40px; }
+.jeju__list figure { display: grid; grid-template-columns: 76px 1fr; gap: 16px; align-items: start; }
+.jeju__list img { width: 76px; height: 76px; object-fit: cover; border-radius: 50%; }
+.jeju__list h3 { font: 400 17px/1.4 var(--text); }
+.jeju__list p { margin-top: 4px; font-size: 14px; line-height: 1.7; color: var(--basalt-mute); }
+
+/* ── 05 성분 표 ───────────────────────────────────────────── */
+.inci__head { grid-column: 1 / 7; }
+.inci__note { grid-column: 8 / 13; align-self: end; }
+.inci { grid-column: 1 / 13; margin-top: 44px; width: 100%; border-collapse: collapse; }
+.inci th { text-align: left; font: 400 12px/1 var(--text); color: var(--mute); padding: 0 0 12px; border-bottom: 1px solid var(--ink); }
+.inci td { padding: 12px 0; border-bottom: 1px solid var(--rule); vertical-align: middle; font-size: 15px; }
+.inci td:first-child { width: 64px; }
+.inci td img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; }
+.inci .lat { font: 400 11.5px var(--mono); letter-spacing: .05em; color: var(--mute); text-transform: uppercase; }
+.inci .amt { font-variant-numeric: tabular-nums; text-align: right; padding-right: 2px; }
+
+/* ── 06 임상 ──────────────────────────────────────────────── */
+.clin__img { grid-column: 1 / 7; aspect-ratio: 4 / 5; overflow: hidden; background: #E3E3DF; }
+.clin__img img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; }
+.clin__txt { grid-column: 8 / 13; align-self: center; }
+.clin__txt .h2 { margin-top: 14px; }
+.stat { margin-top: 30px; padding-top: 14px; border-top: 1px solid var(--ink); display: grid; grid-template-columns: auto 1fr; gap: 6px 18px; align-items: end; }
+.stat b { font: 200 clamp(56px, 10vw, 84px)/.9 var(--display); letter-spacing: -.05em; font-variant-numeric: lining-nums;
+  animation: wipe var(--T) cubic-bezier(.6, 0, .2, 1) infinite; animation-delay: calc(var(--T) * -.6); }
+.stat + .stat b { animation-delay: calc(var(--T) * -.55); }
+.stat b small { font-size: .4em; }
+.stat span { font-size: 14.5px; padding-bottom: 8px; }
+.clin__txt .foot { margin-top: 22px; }
+
+/* ── 07 제형 ──────────────────────────────────────────────── */
+.tex { padding: 0; }
+.tex .grid { column-gap: 0; }
+.tex__img { grid-column: 1 / 8; min-height: 420px; position: relative; }
+.tex__img img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 40% 40%; }
+.tex__txt { grid-column: 8 / 13; padding: clamp(56px, 10vw, 96px) var(--g) clamp(56px, 10vw, 96px) 34px; }
+.tex dl { margin-top: 30px; }
+.tex dl div { padding: 14px 0; border-top: 1px solid var(--rule); }
+.tex dt { font: 400 11px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.tex dd { margin-top: 4px; font-size: 15px; }
+
+/* ── 08 구성 · 사용법 ─────────────────────────────────────── */
+.use__img { grid-column: 1 / 8; }
+.use__txt { grid-column: 8 / 13; align-self: end; }
+.use__txt .h2 { margin-top: 14px; }
+.steps { margin-top: 28px; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 30px 1fr; gap: 10px; padding: 13px 0; border-top: 1px solid var(--rule); font-size: 14.5px; line-height: 1.7; }
+.steps li::before { content: counter(s, decimal-leading-zero); font: 400 11.5px/2.1 var(--mono); color: var(--mute); }
+.use__txt .foot { margin-top: 16px; }
+
+/* ── 09 이런 날 ───────────────────────────────────────────── */
+.days__lines { grid-column: 3 / 13; margin-top: 30px; }
+.days__lines p { font: 300 clamp(20px, 3.4vw, 27px)/1.6 var(--display); letter-spacing: -.025em; }
+.days__lines p + p { margin-top: 6px; }
+.days__lines p:nth-child(even) { padding-left: clamp(0px, 8vw, 72px); }
+.route { grid-column: 3 / 13; margin-top: 56px; display: flex; flex-wrap: wrap; gap: 6px 12px; align-items: center; font-size: 13.5px; color: var(--mute); }
+.route b { color: var(--ink); font-weight: 400; background: rgba(229, 189, 127, .45); padding: 0 4px; }
+
+/* ── 10 제품 정보 ─────────────────────────────────────────── */
+.info { background: var(--paper); }
+.info table { margin-top: 30px; width: 100%; border-collapse: collapse; font-size: 14px; }
+.info th, .info td { text-align: left; vertical-align: top; padding: 12px 0; border-bottom: 1px solid var(--rule); }
+.info tr:first-child > * { border-top: 1px solid var(--ink); }
+.info th { width: 9.5em; font: 400 13px/1.75 var(--text); color: var(--mute); }
+.info ol { list-style: decimal; padding-left: 1.2em; }
+.colophon { display: flex; justify-content: space-between; gap: 12px; margin-top: 56px; }
+
+/* ── 좁은 화면 ─────────────────────────────────────────────── */
+@media (max-width: 640px) {
+  .grid > * { grid-column: 1 / -1 !important; grid-row: auto !important; }
+  .hero__vial { margin-top: 30px; }
+  .hero__skin { width: 52%; margin-top: -90px; margin-left: 6%; }
+  .ox__row small { display: none; }
+  .dose__txt { margin-top: 18px; }
+  .anhy__ph { margin-top: 36px; }
+  .ox__table { grid-template-columns: 6.4em repeat(5, minmax(0, 1fr)); gap: 8px 4px; }
+  .ox__cursor { left: calc(6.4em + 4px); animation-name: cursor-s; }
+  @keyframes cursor-s { 0%, 6% { left: calc(6.4em + 4px); opacity: 0 } 10% { opacity: 1 } 70% { left: 100%; opacity: 1 } 78%, 100% { left: 100%; opacity: 0 } }
+  .jeju__list { margin-top: 36px; }
+  .jeju__head { margin-top: 36px; }
+  .clin__txt, .use__txt { margin-top: 34px; }
+  .tex__img { min-height: 300px; }
+  .tex__txt { padding: 48px var(--g); }
+  .days__lines p:nth-child(even) { padding-left: 0; }
+  .info th { width: 7.5em; }
+}
+
+/* 정지 화면(#still) — 모든 움직임을 주기의 70% 에서 멈춘다(다 된 상태) */
+html.still *, html.still *::before, html.still *::after { animation-delay: calc(var(--T) * -.7) !important; animation-play-state: paused !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-delay: calc(var(--T) * -.7) !important; animation-play-state: paused !important; }
+}
+</style>
+<script>if (location.hash === '#still' || /[?&]still\b/.test(location.search)) document.documentElement.classList.add('still');</script>
+
 <main class="page">
 
-  <!-- 01 ─ 히어로 -->
-  <section class="s hero" id="s01" data-gif>
-    <div class="hero__photo"><img src="img/hero.jpg" alt="필러 비타씨 플러스 앰플"></div>
-    <div class="hero__sheen" aria-hidden="true"></div>
-    <div class="hero__copy">
-      <span class="lab">Filler Vita-C⁺ Ampoule</span>
-      <h1>제주의 아침을 담은<br>순수 비타민 C 앰플</h1>
-      <p>고함량 비타민 C를 무수 처방으로 지켜,<br>맑고 생기 있는 피부로.</p>
-      <ul class="tags"><li>#미백</li><li>#주름 개선</li><li>#항산화 케어</li></ul>
-    </div>
-    <p class="hero__name">LAVASOME<span>필러 비타씨 플러스 앰플</span></p>
-  </section>
-
-  <!-- 02 ─ 핵심 수치 -->
-  <section class="s" id="s02" data-gif>
-    <div class="key">
-      <div>
-        <span class="lab">Key Ingredient</span>
-        <p class="key__fig"><span class="count"></span>,000<small>ppm</small></p>
-        <div class="key__bar"><i></i></div>
-        <p class="key__sub">순수 비타민 C <b>13.5%</b></p>
-        <p class="lead">고함량 비타민 C가 칙칙한 피부 톤을 맑게 밝히고,<br>생기 있는 피부로 가꿔 줍니다.</p>
+  <!-- 01 -->
+  <section class="sec hero" id="s01" data-gif>
+    <div class="hero__bar"><span class="tag">Filler Vita-C⁺ Ampoule</span><span class="tag">Lavasome · Jeju</span></div>
+    <div class="grid hero__grid">
+      <div class="hero__copy">
+        <h1>제주의 아침을<br>담은 순수<br>비타민 C 앰플</h1>
+        <p class="hero__lede">순수 비타민 C 13.5%를 물 없는 베이스에 담았습니다. 칙칙해진 피부 톤과 잔주름을 함께 돌봅니다.</p>
       </div>
-      <figure class="key__img"><img src="img/mood-sq.jpg" alt=""></figure>
+      <figure class="hero__vial"><img src="img/hero.jpg" alt="필러 비타씨 플러스 앰플 바이알"><span class="sheen" aria-hidden="true"></span></figure>
+      <figure class="hero__skin"><img src="img/skin.jpg" alt=""></figure>
+      <p class="tag">Morning light, Jeju</p>
+      <p class="hero__spec"><span class="tag">L-Ascorbic Acid 13.5%</span><span class="tag">135,000 ppm</span><span class="tag">pH 3.5</span><span class="tag">Anhydrous</span></p>
     </div>
   </section>
 
-  <!-- 03 ─ 제주 베이스 (박스 표기: Jeju-Origin Functional Base) -->
-  <section class="s s--dark jeju" id="s03" data-gif>
-    <div class="jeju__top">
-      <img src="img/jeju-rock.jpg" alt="">
-      <div>
-        <span class="lab">Jeju-Origin Functional Base</span>
-        <h2 class="h">제주에서 온<br>두 가지 베이스</h2>
-      </div>
-    </div>
-    <div class="jeju__list">
-      <div class="jeju__it">
-        <div class="ring"><img src="img/ing-seawater.jpg" alt="제주 용암해수"></div>
-        <h3><em>Jeju Lava Seawater</em>제주 용암해수</h3>
-        <p>현무암층을 지나며 미네랄을 머금은 물.<br>피부에 촉촉한 수분감을 더합니다.</p>
-      </div>
-      <div class="jeju__it">
-        <div class="ring"><img src="img/ing-opuntia.jpg" alt="백년초"></div>
-        <h3><em>Opuntia Ficus-Indica</em>백년초</h3>
-        <p>제주 손바닥선인장의 열매.<br>거칠어진 피부결을 매끄럽게 정돈합니다.</p>
+  <!-- 02 -->
+  <section class="sec" id="s02" data-gif>
+    <div class="grid dose">
+      <p class="dose__n" aria-label="13.5%">13.5<small>%</small></p>
+      <div class="dose__txt">
+        <p class="tag">Pure Vitamin C</p>
+        <p class="body">순수 비타민 C 135,000ppm. 칙칙해진 피부 톤을 맑게 가꿉니다.</p>
       </div>
     </div>
   </section>
 
-  <!-- 04 ─ 5가지 솔루션 -->
-  <section class="s" id="s04" data-gif>
-    <span class="lab">5 Solutions</span>
-    <h2 class="h">피부 본연의 빛을 살리는<br>다섯 가지 솔루션</h2>
-    <ol class="sol">
-      <li style="--i:0"><span class="sol__n">01</span><div><h3>미백<b>순수 비타민 C 13.5%</b></h3><p>칙칙한 피부 톤을 맑고 환하게</p></div><figure><img src="img/ing-vitc.jpg" alt=""></figure></li>
-      <li style="--i:1"><span class="sol__n">02</span><div><h3>수분<b>제주 용암해수 · 베타글루칸</b></h3><p>촉촉한 수분감을 오래 유지</p></div><figure><img src="img/ing-seawater.jpg" alt=""></figure></li>
-      <li style="--i:2"><span class="sol__n">03</span><div><h3>주름 개선<b>펩타이드</b></h3><p>탄력 있는 피부결로</p></div><figure><img src="img/ing-peptide.jpg" alt=""></figure></li>
-      <li style="--i:3"><span class="sol__n">04</span><div><h3>항산화<b>글루타치온</b></h3><p>지친 피부에 생기를</p></div><figure><img src="img/ing-glutathione.jpg" alt=""></figure></li>
-      <li style="--i:4"><span class="sol__n">05</span><div><h3>피부결 개선<b>백년초</b></h3><p>거칠어진 결을 매끄럽게</p></div><figure><img src="img/ing-opuntia.jpg" alt=""></figure></li>
-    </ol>
-  </section>
-
-  <!-- 05 ─ 처방 설계: 함량보다 구조 -->
-  <section class="s s--cream" id="s05" data-gif>
-    <div class="center">
-      <span class="lab">Formulation</span>
-      <p class="quote" style="margin-top:22px">비타민 C, 함량이 높다고 좋은 것이 아닙니다.<br><em>피부가 제대로 받아들이는 구조</em>가 중요합니다.</p>
-    </div>
-    <ul class="trio">
-      <li><span class="lab">01 Potency</span><b>13.5<small>%</small></b><h3>고함량</h3><p>순수 비타민 C<br>135,000ppm</p></li>
-      <li><span class="lab">02 Condition</span><b>pH 3.5</b><h3>흡수 조건</h3><p>비타민 C가 잘 작용하는<br>약산성 설계</p></li>
-      <li><span class="lab">03 Stability</span><b>무수</b><h3>안정화</h3><p>물을 빼 산화를 늦추는<br>무수 베이스</p></li>
-    </ul>
-    <div class="ph" aria-label="pH 눈금 — 3.5 표시">
-      <div class="ph__scale"><span class="ph__zone"></span><span class="ph__mark"><span>pH 3.5</span></span></div>
-      <div class="ph__ticks"><span style="--v:1">1</span><span style="--v:4">4</span><span style="--v:7">7</span><span style="--v:10">10</span><span style="--v:14">14</span></div>
-      <div class="ph__cap"><span>산성</span><span>중성</span><span>알칼리</span></div>
-    </div>
-    <p class="note center">pH 4를 넘지 않는 약산성 조건에서 비타민 C가 피부에 가장 잘 흡수됩니다.</p>
-  </section>
-
-  <!-- 06 ─ 2중 레이어 -->
-  <section class="s" id="s06" data-gif>
-    <span class="lab">Double Layer</span>
-    <h2 class="h">밖에서는 지키고,<br>닿는 순간 전합니다</h2>
-    <div class="layer">
-      <div class="orb" aria-hidden="true">
-        <svg viewBox="0 0 330 330">
-          <g class="orb__outer"><circle cx="165" cy="165" r="150" fill="none" stroke="#B98632" stroke-width="1.5" pathLength="240" stroke-dasharray="6 4"/></g>
-          <circle cx="165" cy="165" r="126" fill="#F4EDE1"/>
-          <g class="orb__core"><circle cx="165" cy="165" r="78" fill="#E5BD7F"/><circle cx="165" cy="165" r="78" fill="url(#gl)"/></g>
-          <circle class="orb__dot" cx="165" cy="44" r="5" fill="#B98632"/>
-          <circle class="orb__dot" cx="286" cy="165" r="5" fill="#B98632"/>
-          <circle class="orb__dot" cx="165" cy="286" r="5" fill="#B98632"/>
-          <circle class="orb__dot" cx="44" cy="165" r="5" fill="#B98632"/>
-          <defs><radialGradient id="gl" cx=".35" cy=".3" r=".8"><stop offset="0" stop-color="#fff" stop-opacity=".7"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/></radialGradient></defs>
-          <text x="165" y="171" text-anchor="middle" font-family="Courier Prime, monospace" font-size="13" letter-spacing="2" fill="#5B4214">VITAMIN C</text>
-        </svg>
+  <!-- 03 — ⚠️ 색 기록은 기존 상세 시안의 비교 이미지를 옮긴 것. 원 시험 자료로 확인 필요 -->
+  <section class="sec" id="s03" data-gif style="padding-top:0">
+    <div class="grid">
+      <div class="anhy__head">
+        <p class="tag">Anhydrous Base</p>
+        <h2 class="h2" style="margin-top:14px">물을 빼고 담았습니다</h2>
+        <p class="body">비타민 C는 물속에서 쉽게 산화되고, 산화되면 갈색으로 변합니다. 그래서 물 대신 무수 베이스를 썼습니다. 높은 온도에 오래 두어도 처음의 옅은 크림빛이 그대로입니다.</p>
       </div>
-      <dl>
-        <div><dt>외층<em>Outer</em></dt><dd>수분을 차단하는 무수 베이스가 순수 비타민 C를 감쌉니다. 개봉 전까지 산화가 시작되지 않습니다.</dd></div>
-        <div><dt>내층<em>Inner</em></dt><dd>피부에 닿는 순간 유효 성분이 풀립니다. 농도가 아니라 도달이 목적입니다.</dd></div>
-      </dl>
-    </div>
-  </section>
+      <div class="anhy__ph">
+        <p class="tag">pH Scale</p>
+        <div class="ruler" aria-label="pH 3.5"><span class="ruler__needle"></span></div>
+        <div class="ruler__scale"><span>1</span><span>7</span><span>14</span></div>
+        <p class="foot">비타민 C가 피부에 잘 스며드는 pH 4 이하로 맞췄습니다.</p>
+      </div>
 
-  <!-- 07 ─ 고온 안정성 (색으로 증명하는 차이)
-       ⚠️ 시험 조건·비교 대상은 기존 상세 시안 기준입니다. 원 시험 자료로 확인 필요. -->
-  <section class="s s--stone" id="s07" data-gif>
-    <div class="center">
-      <span class="lab">Stability Test</span>
-      <h2 class="h">색으로 증명하는 차이</h2>
-      <p class="lead">비타민 C는 산화되면 색이 변합니다.<br>라바섬은 가혹한 조건에서도 처음의 크림빛을 지킵니다.</p>
-    </div>
-    <div class="stab__head"><p class="stab__cond"><small>고온 가혹 조건</small><b>45°C · 16주</b></p></div>
-    <div class="stab__track"><i></i></div>
-    <div class="stab__wk"><span>0주</span><span>4주</span><span>8주</span><span>12주</span><span>16주</span></div>
-    <div class="stab__grid">
-      <div class="vcard vcard--ours">
-        <h3>라바섬 필러 비타씨 플러스</h3>
-        <p>16주 후에도 크림빛 유지</p>
-        <div class="vials">
-          <div class="vial"><svg viewBox="0 0 64 150"><rect x="16" y="2" width="32" height="16" rx="3" fill="#C9C7C2"/><rect x="21" y="18" width="22" height="10" fill="#E9E6E0"/><rect x="4" y="28" width="56" height="118" rx="12" fill="#FBFAF7" stroke="#D8D3C9"/><rect x="8" y="54" width="48" height="88" rx="9" fill="#E5BD7F" class=""/></svg><span>0주</span></div><div class="vial"><svg viewBox="0 0 64 150"><rect x="16" y="2" width="32" height="16" rx="3" fill="#C9C7C2"/><rect x="21" y="18" width="22" height="10" fill="#E9E6E0"/><rect x="4" y="28" width="56" height="118" rx="12" fill="#FBFAF7" stroke="#D8D3C9"/><rect x="8" y="54" width="48" height="88" rx="9" fill="#E5BD7F" class="liq-keep-8"/></svg><span>8주</span></div><div class="vial"><svg viewBox="0 0 64 150"><rect x="16" y="2" width="32" height="16" rx="3" fill="#C9C7C2"/><rect x="21" y="18" width="22" height="10" fill="#E9E6E0"/><rect x="4" y="28" width="56" height="118" rx="12" fill="#FBFAF7" stroke="#D8D3C9"/><rect x="8" y="54" width="48" height="88" rx="9" fill="#E5BD7F" class="liq-keep-16"/></svg><span>16주</span></div>
+      <div class="ox">
+        <div class="ox__cap"><span class="ox__title">45°C 보관 · 색 변화 기록</span><span class="tag">16 weeks</span></div>
+        <div class="ox__table" role="table" aria-label="45도 보관 16주 색 변화">
+          <span class="ox__cursor" aria-hidden="true"></span>
+          <span></span><span class="tag ox__w">0주</span><span class="tag ox__w">4주</span><span class="tag ox__w">8주</span><span class="tag ox__w">12주</span><span class="tag ox__w">16주</span>
+          <p class="ox__row">라바섬<small>Filler Vita-C⁺</small></p><i class="chip"></i><i class="chip"></i><i class="chip"></i><i class="chip"></i><i class="chip"></i>
+          <p class="ox__row">일반 제형<small>Aqueous Vitamin C</small></p><i class="chip"></i><i class="chip c-1"></i><i class="chip c-2"></i><i class="chip c-3"></i><i class="chip c-4"></i>
         </div>
-      </div>
-      <div class="vcard">
-        <h3>일반 비타민 C 제형</h3>
-        <p>시간이 지나며 산화 · 갈변</p>
-        <div class="vials">
-          <div class="vial"><svg viewBox="0 0 64 150"><rect x="16" y="2" width="32" height="16" rx="3" fill="#C9C7C2"/><rect x="21" y="18" width="22" height="10" fill="#E9E6E0"/><rect x="4" y="28" width="56" height="118" rx="12" fill="#FBFAF7" stroke="#D8D3C9"/><rect x="8" y="54" width="48" height="88" rx="9" fill="#E5BD7F" class=""/></svg><span>0주</span></div><div class="vial"><svg viewBox="0 0 64 150"><rect x="16" y="2" width="32" height="16" rx="3" fill="#C9C7C2"/><rect x="21" y="18" width="22" height="10" fill="#E9E6E0"/><rect x="4" y="28" width="56" height="118" rx="12" fill="#FBFAF7" stroke="#D8D3C9"/><rect x="8" y="54" width="48" height="88" rx="9" fill="#E5BD7F" class="liq-8"/></svg><span>8주</span></div><div class="vial"><svg viewBox="0 0 64 150"><rect x="16" y="2" width="32" height="16" rx="3" fill="#C9C7C2"/><rect x="21" y="18" width="22" height="10" fill="#E9E6E0"/><rect x="4" y="28" width="56" height="118" rx="12" fill="#FBFAF7" stroke="#D8D3C9"/><rect x="8" y="54" width="48" height="88" rx="9" fill="#E5BD7F" class="liq-16"/></svg><span>16주</span></div>
-        </div>
+        <p class="foot">*<span data-ph>자사 비교 시험 · 시험 조건과 비교 제형 정보 기재</span></p>
       </div>
     </div>
-    <p class="note center">*<span data-placeholder>자사 비교 시험 · 시험 조건과 비교 제형 정보 기재</span></p>
   </section>
 
-  <!-- 08 ─ 임상
-       ⚠️ 수치는 박스 표기(38% Improvement in Wrinkles, 12% Reduction in Pigmentation)와
-       기존 상세 시안 기준입니다. 시험기관·기간·인원은 원 시험 성적서로 채워 주세요.
-       사용 전후 사진은 실제 시험 사진이 있을 때만 넣습니다(임의 연출 금지). -->
-  <section class="s s--dark" id="s08" data-gif>
-    <div class="center">
-      <span class="lab">Clinical Result</span>
-      <h2 class="h">자연이 전하고,<br>임상이 증명한 변화</h2>
-    </div>
-    <div class="stats">
-      <div class="stat">
-        <h3>피부 톤 밝기 개선</h3>
-        <p class="stat__n"><i>+</i><span class="pc pc--12"></span><small>%</small></p>
+  <!-- 04 -->
+  <section class="sec jeju" id="s04">
+    <div class="grid">
+      <figure class="jeju__rock"><img src="img/basalt.jpg" alt="제주 현무암"></figure>
+      <div class="jeju__head">
+        <p class="tag">Jeju-Origin Base</p>
+        <h2 class="h2">현무암을 지나온 물과<br>제주 백년초</h2>
       </div>
-      <div class="stat">
-        <h3>주름 개선</h3>
-        <p class="stat__n"><i>+</i><span class="pc pc--38"></span><small>%</small></p>
+      <div class="jeju__list">
+        <figure><img src="img/ing-seawater.jpg" alt=""><figcaption><h3>제주 용암해수</h3><p>현무암층을 지나며 미네랄을 머금은 물. 피부에 촉촉함을 더합니다.</p><p class="tag" style="margin-top:8px">Jeju Lava Seawater</p></figcaption></figure>
+        <figure><img src="img/ing-opuntia.jpg" alt=""><figcaption><h3>백년초</h3><p>제주 손바닥선인장의 열매. 거칠어진 피부결을 정돈합니다.</p><p class="tag" style="margin-top:8px">Opuntia Ficus-Indica</p></figcaption></figure>
       </div>
     </div>
-    <div class="badges">
-      <div class="badge">
-        <svg viewBox="0 0 46 46" fill="none" stroke="#F2D29A" stroke-width="1.4"><circle cx="23" cy="23" r="21"/><circle cx="23" cy="23" r="16" stroke-dasharray="2 3"/><path d="M15 23.5l5.5 5.5L32 17.5"/></svg>
-        <div><b>피부 자극 테스트 완료</b><span data-placeholder>판정 결과 기재</span></div>
+  </section>
+
+  <!-- 05 -->
+  <section class="sec" id="s05">
+    <div class="grid">
+      <div class="inci__head"><p class="tag">Formula</p><h2 class="h2" style="margin-top:14px">함께 담은 여섯 가지</h2></div>
+      <p class="inci__note body" style="font-size:14px">비타민 C 하나에 기대지 않고, 수분과 결과 탄력을 맡을 성분을 나눠 담았습니다.</p>
+      <table class="inci">
+        <thead><tr><th></th><th>성분</th><th>Ingredient</th><th>역할</th><th style="text-align:right">함량</th></tr></thead>
+        <tbody>
+          <tr><td><img src="img/ing-vitc.jpg" alt=""></td><td>순수 비타민 C</td><td class="lat">L-Ascorbic Acid</td><td>맑은 톤</td><td class="amt">13.5%</td></tr>
+          <tr><td><img src="img/ing-seawater.jpg" alt=""></td><td>제주 용암해수</td><td class="lat">Lava Seawater</td><td>수분</td><td class="amt"></td></tr>
+          <tr><td><img src="img/ing-opuntia.jpg" alt=""></td><td>백년초 추출물</td><td class="lat">Opuntia Ficus-Indica</td><td>피부결</td><td class="amt"></td></tr>
+          <tr><td><img src="img/ing-glutathione.jpg" alt=""></td><td>글루타치온</td><td class="lat">Glutathione</td><td>생기</td><td class="amt"></td></tr>
+          <tr><td><img src="img/ing-betaglucan.jpg" alt=""></td><td>베타글루칸</td><td class="lat">Beta-Glucan</td><td>보습</td><td class="amt"></td></tr>
+          <tr><td><img src="img/ing-peptide.jpg" alt=""></td><td>펩타이드</td><td class="lat">Peptide</td><td>탄력</td><td class="amt"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- 06 — ⚠️ 시험기관·기간·인원은 성적서로 채울 것 -->
+  <section class="sec" id="s06" data-gif style="padding-top:0">
+    <div class="grid">
+      <figure class="clin__img"><img src="img/box-closed.jpg" alt="필러 비타씨 플러스 앰플 상자"></figure>
+      <div class="clin__txt">
+        <p class="tag">Clinical</p>
+        <h2 class="h2">인체적용시험으로<br>확인한 변화</h2>
+        <div class="stat"><b>38<small>%</small></b><span>주름 개선</span></div>
+        <div class="stat"><b>12<small>%</small></b><span>피부 톤 밝기 개선</span></div>
+        <p class="foot">*시험기관 <span data-ph>○○○</span> · 기간 <span data-ph>20○○.○○–○○</span> · 대상 <span data-ph>○○명</span><br>*피부 자극 테스트 완료 <span data-ph>판정 결과</span><br>*개인에 따라 차이가 있을 수 있습니다.</p>
       </div>
-      <div class="badge">
-        <svg viewBox="0 0 46 46" fill="none" stroke="#F2D29A" stroke-width="1.4"><rect x="6" y="8" width="24" height="30" rx="3"/><path d="M11 17h14M11 23h14M11 29h8"/><path d="M33 20v8l-5 10h14l-5-10v-8M32 20h6"/></svg>
-        <div><b>인체적용시험 완료</b><span>미백 · 주름 개선</span></div>
+    </div>
+  </section>
+
+  <!-- 07 -->
+  <section class="sec tex" id="s07" style="background:var(--paper)">
+    <div class="grid">
+      <figure class="tex__img"><img src="img/dropper.jpg" alt=""></figure>
+      <div class="tex__txt">
+        <p class="tag">Texture</p>
+        <h2 class="h2" style="margin-top:14px">고함량이어도<br>순하게 스밉니다</h2>
+        <dl>
+          <div><dt>Feel</dt><dd>얇게 펴지고 금세 스며듭니다.</dd></div>
+          <div><dt>Scent</dt><dd>인위적인 향을 더하지 않았습니다.</dd></div>
+          <div><dt>Colour</dt><dd>제형 그대로의 옅은 크림빛입니다.</dd></div>
+        </dl>
       </div>
     </div>
-    <p class="note">*인체적용시험 결과 · 시험기관 <span data-placeholder>○○○</span> · 시험기간 <span data-placeholder>20○○.○○.○○–○○.○○</span> · 대상 <span data-placeholder>성인 ○○명</span><br>*개인에 따라 차이가 있을 수 있습니다.</p>
   </section>
 
-  <!-- 09 ─ 사용감 (정지 섹션) -->
-  <section class="s tex" id="s09">
-    <div class="tex__img"><img src="img/dropper.jpg" alt=""></div>
-    <div class="tex__txt">
-      <span class="lab">Gentle Efficacy</span>
-      <h2 class="h" style="font-size:32px">고농도인데<br>사용감은 순합니다</h2>
-      <dl>
-        <div><dt>흡수감<em>Texture</em></dt><dd>얇게 퍼지고 빠르게 정리됩니다</dd></div>
-        <div><dt>향<em>Scent</em></dt><dd>인위적인 향을 더하지 않았습니다</dd></div>
-        <div><dt>색감<em>Tone</em></dt><dd>실제 제형 그대로의 옅은 크림빛입니다</dd></div>
-      </dl>
+  <!-- 08 — ⚠️ 단계 설명은 기존 시안을 정리한 것. 실제 사용법과 대조 필요 -->
+  <section class="sec" id="s08">
+    <div class="grid">
+      <figure class="use__img"><img src="img/box-open.jpg" alt="상자 안에 놓인 바이알과 전용 캡, 오프너"></figure>
+      <div class="use__txt">
+        <p class="tag">How to Open</p>
+        <h2 class="h2">쓰기 직전에 엽니다</h2>
+        <ol class="steps">
+          <li>오프너 끝을 실링 캡 가장자리 홈에 끼웁니다.</li>
+          <li>바이알을 잡고 오프너를 들어 올려 캡을 떼어 냅니다.</li>
+          <li>안쪽 마개를 빼고 전용 캡을 끝까지 눌러 끼웁니다.</li>
+          <li>가볍게 흔든 뒤 적당량을 덜어 얼굴에 펴 바릅니다.</li>
+        </ol>
+        <p class="foot">아침에 쓸 때는 자외선 차단제를 함께 발라 주세요.</p>
+      </div>
     </div>
   </section>
 
-  <!-- 10 ─ 구성 (정지 섹션) -->
-  <section class="s s--cream" id="s10">
-    <div class="center">
-      <span class="lab">In the Box</span>
-      <h2 class="h">비타민 C의 신선함을 담은<br>특별한 구성</h2>
-    </div>
-    <ul class="kit">
-      <li>
-        <svg viewBox="0 0 80 150" fill="none" stroke="#1B1A17" stroke-width="1.3"><rect x="14" y="40" width="52" height="34" rx="6" fill="#DAD7D1"/><rect x="18" y="74" width="44" height="10" fill="#EEECE7"/><path d="M14 52h52" stroke-opacity=".4"/></svg>
-        <h3>실링 캡</h3><p>개봉 전까지<br>공기를 막아 줍니다</p>
-      </li>
-      <li>
-        <svg viewBox="0 0 80 150" fill="none" stroke="#1B1A17" stroke-width="1.3"><rect x="20" y="10" width="40" height="18" rx="3" fill="#DAD7D1"/><rect x="25" y="28" width="30" height="10" fill="#EEECE7"/><rect x="8" y="38" width="64" height="108" rx="13" fill="#FBFAF7"/><rect x="13" y="62" width="54" height="79" rx="9" fill="#E5BD7F" stroke="none"/></svg>
-        <h3>투명 유리 바이알</h3><p>제형의 색을<br>그대로 확인합니다</p>
-      </li>
-      <li>
-        <svg viewBox="0 0 80 150" fill="none" stroke="#1B1A17" stroke-width="1.3"><path d="M30 6h20v20H30z" fill="#DAD7D1"/><path d="M24 26h32v10H24z" fill="#EEECE7"/><path d="M34 36h12v84l-6 18-6-18z" fill="#FBFAF7"/></svg>
-        <h3>앰플 전용 캡</h3><p>필요한 만큼<br>위생적으로 덜어 냅니다</p>
-      </li>
-      <li>
-        <svg viewBox="0 0 80 150" fill="none" stroke="#1B1A17" stroke-width="1.3"><g transform="rotate(-24 40 80)"><rect x="32" y="20" width="16" height="120" rx="5" fill="#DAD7D1"/><path d="M36 20v-8h8v8" fill="#EEECE7"/><circle cx="40" cy="120" r="4"/></g></svg>
-        <h3>전용 오프너</h3><p>실링 캡을<br>손쉽게 엽니다</p>
-      </li>
-    </ul>
-    <p class="note center">*<span data-placeholder>실제 구성품 명칭·형태 확인 필요</span></p>
-  </section>
-
-  <!-- 11 ─ 사용 방법
-       ⚠️ 단계 설명은 기존 상세 시안을 정리한 것입니다. 실제 사용법과 대조해 주세요. -->
-  <section class="s" id="s11" data-gif>
-    <div class="center">
-      <span class="lab">How to Use</span>
-      <h2 class="h">사용 방법</h2>
-    </div>
-    <ol class="steps">
-      <li class="step">
-        <div class="step__art"><svg viewBox="0 0 120 200" fill="none" stroke="#1B1A17" stroke-width="1.3">
-          <rect x="30" y="22" width="60" height="26" rx="4" fill="#DAD7D1"/><rect x="38" y="48" width="44" height="12" fill="#EEECE7"/><rect x="18" y="60" width="84" height="132" rx="16" fill="#FBFAF7"/><rect x="24" y="92" width="72" height="94" rx="11" fill="#E5BD7F" stroke="none"/>
-          <g class="a-pry"><rect x="58" y="32" width="10" height="92" rx="4" fill="#C9C5BD" transform="rotate(-30 60 40)"/></g>
-        </svg></div>
-        <span class="lab">Step 01</span><h3>오프너 끼우기</h3>
-        <p>전용 오프너 끝을 실링 캡 가장자리 홈에 끼워 주세요.</p>
-      </li>
-      <li class="step">
-        <div class="step__art"><svg viewBox="0 0 120 200" fill="none" stroke="#1B1A17" stroke-width="1.3">
-          <rect x="38" y="60" width="44" height="12" fill="#EEECE7"/><rect x="18" y="72" width="84" height="122" rx="16" fill="#FBFAF7"/><rect x="24" y="100" width="72" height="88" rx="11" fill="#E5BD7F" stroke="none"/>
-          <g class="a-lift"><rect x="30" y="34" width="60" height="26" rx="4" fill="#DAD7D1"/></g>
-          <g class="a-arrow" stroke="#B98632" stroke-width="1.6"><path d="M104 46V18M97 25l7-7 7 7"/></g>
-        </svg></div>
-        <span class="lab">Step 02</span><h3>캡 들어 올리기</h3>
-        <p>바이알을 잡고 오프너를 천천히 들어 올려 실링 캡을 떼어 냅니다.</p>
-      </li>
-      <li class="step">
-        <div class="step__art"><svg viewBox="0 0 120 200" fill="none" stroke="#1B1A17" stroke-width="1.3">
-          <rect x="18" y="88" width="84" height="106" rx="16" fill="#FBFAF7"/><rect x="24" y="112" width="72" height="76" rx="11" fill="#E5BD7F" stroke="none"/><rect x="38" y="76" width="44" height="12" fill="#EEECE7"/>
-          <g class="a-drop"><path d="M50 22h20v20H50z" fill="#DAD7D1"/><path d="M44 42h32v12H44z" fill="#EEECE7"/><path d="M55 54h10v40l-5 10-5-10z" fill="#FBFAF7"/></g>
-        </svg></div>
-        <span class="lab">Step 03</span><h3>전용 캡 끼우기</h3>
-        <p>안쪽 마개를 뺀 뒤 앰플 전용 캡을 끝까지 눌러 끼워 주세요.</p>
-      </li>
-      <li class="step">
-        <div class="step__art"><svg viewBox="0 0 120 200" fill="none" stroke="#1B1A17" stroke-width="1.3">
-          <g class="a-shake"><rect x="18" y="20" width="84" height="120" rx="16" fill="#FBFAF7"/><rect x="24" y="50" width="72" height="84" rx="11" fill="#E5BD7F" stroke="none"/><rect x="38" y="140" width="44" height="12" fill="#EEECE7"/><path d="M50 152h20v14H50z" fill="#DAD7D1"/><path d="M56 166h8v14l-4 8-4-8z" fill="#FBFAF7"/></g>
-          <g stroke="#B98632" stroke-width="1.5" class="a-arrow"><path d="M8 60c-6 16-6 34 0 50M112 60c6 16 6 34 0 50"/></g>
-        </svg></div>
-        <span class="lab">Step 04</span><h3>흔들어 사용하기</h3>
-        <p>가볍게 흔든 뒤 적당량을 덜어 얼굴 전체에 부드럽게 펴 바릅니다.</p>
-      </li>
-    </ol>
-  </section>
-
-  <!-- 12 ─ 루틴 -->
-  <section class="s s--cream" id="s12" data-gif>
-    <div class="center">
-      <span class="lab">Daily Routine</span>
-      <h2 class="h">라바섬 데일리 스킨케어 루틴</h2>
-      <p class="lead">비타씨 플러스로 피부 톤을 정돈한 뒤,<br>고민에 맞는 앰플을 더해 보세요.</p>
-    </div>
-    <div class="route" role="list">
-      <span class="route__dot" aria-hidden="true"></span>
-      <div class="route__it" role="listitem"><span class="route__n">01</span><div class="route__img"><svg viewBox="0 0 40 40" fill="none" stroke="#1B1A17" stroke-width="1.3"><path d="M20 6c6 8 10 13 10 19a10 10 0 0 1-20 0c0-6 4-11 10-19z"/></svg></div><h3>클렌징</h3><p>세안 후 결 정돈</p></div>
-      <div class="route__it is-key" role="listitem"><span class="route__n">02</span><div class="route__img"><img src="img/bottle-sq.jpg" alt=""></div><h3>필러 비타씨<br>플러스 앰플</h3><p>아침 · 저녁</p></div>
-      <div class="route__it" role="listitem"><span class="route__n">03</span><div class="route__img"><img src="img/p-pdrn-1k.jpg" alt=""></div><h3>고민별 앰플</h3><p>Calming 50 · PDRN 1K<br>HA 90 · 바쿠치올 5K</p></div>
-      <div class="route__it" role="listitem"><span class="route__n">04</span><div class="route__img"><svg viewBox="0 0 40 40" fill="none" stroke="#1B1A17" stroke-width="1.3"><rect x="8" y="16" width="24" height="16" rx="4"/><rect x="10" y="10" width="20" height="6" rx="2"/></svg></div><h3>크림</h3><p>수분 마무리</p></div>
-      <div class="route__it" role="listitem"><span class="route__n">05</span><div class="route__img"><img src="img/p-sunscreen.jpg" alt=""></div><h3>퓨어 선스크린</h3><p>아침 마지막 단계</p></div>
-    </div>
-    <p class="note center">*비타민 C 제품을 아침에 사용할 때는 자외선 차단제를 함께 사용해 주세요.</p>
-  </section>
-
-  <!-- 13 ─ 추천 -->
-  <section class="s" id="s13" data-gif>
-    <span class="lab">Recommended For</span>
-    <h2 class="h">이런 피부에 추천합니다</h2>
-    <div class="recom">
-      <ul class="checks">
-        <li style="--i:0"><svg viewBox="0 0 26 26" fill="none" stroke="#B98632" stroke-width="1.8"><path d="M5 13.5l5 5L21 7.5"/></svg><span><b>칙칙하고 생기 없는 피부</b>가 고민인 분</span></li>
-        <li style="--i:1"><svg viewBox="0 0 26 26" fill="none" stroke="#B98632" stroke-width="1.8"><path d="M5 13.5l5 5L21 7.5"/></svg><span><b>기미 · 잡티 케어</b>가 필요한 분</span></li>
-        <li style="--i:2"><svg viewBox="0 0 26 26" fill="none" stroke="#B98632" stroke-width="1.8"><path d="M5 13.5l5 5L21 7.5"/></svg><span><b>탄력 저하 · 잔주름</b>이 신경 쓰이는 분</span></li>
-        <li style="--i:3"><svg viewBox="0 0 26 26" fill="none" stroke="#B98632" stroke-width="1.8"><path d="M5 13.5l5 5L21 7.5"/></svg><span><b>순하면서도 효과적인</b> 비타민 C 앰플을 찾는 분</span></li>
-      </ul>
-      <figure class="recom__img"><img src="img/bottle-sq.jpg" alt=""></figure>
+  <!-- 09 -->
+  <section class="sec" id="s09">
+    <div class="grid">
+      <p class="tag" style="grid-column:1 / 13">When to Reach for It</p>
+      <div class="days__lines">
+        <p>아침 피부가 유난히 칙칙해 보일 때</p>
+        <p>기미와 잡티가 눈에 들어오기 시작할 때</p>
+        <p>잔주름과 탄력이 함께 신경 쓰일 때</p>
+        <p>고함량 비타민 C를 순하게 쓰고 싶을 때</p>
+      </div>
+      <p class="route"><span>세안</span><span>→</span><b>필러 비타씨 플러스</b><span>→</span><span>고민별 앰플</span><span>→</span><span>크림</span><span>→</span><span>선케어</span></p>
     </div>
   </section>
 
-  <!-- 14 ─ 제품 정보 (정지 섹션)
-       ⚠️ 용량·사용기한·전성분 등은 확정 정보로 채워 주세요. 주의사항은 화장품 공통 표기. -->
-  <section class="s s--stone info" id="s14">
-    <span class="lab">Product Information</span>
-    <h2 class="h" style="font-size:30px">제품 정보</h2>
+  <!-- 10 — ⚠️ 용량·사용기한·전성분 등 확정 정보로 채울 것 -->
+  <section class="sec info" id="s10">
+    <p class="tag">Product Information</p>
     <table>
-      <tr><th>제품명</th><td>필러 비타씨 플러스 앰플 (Filler Vita-C⁺ Ampoule)</td></tr>
-      <tr><th>용량</th><td><span data-placeholder>○○ml × ○개</span></td></tr>
-      <tr><th>사용기한</th><td><span data-placeholder>제조일로부터 ○○개월 / 개봉 후 ○개월</span></td></tr>
+      <tr><th>제품명</th><td>필러 비타씨 플러스 앰플<br>Filler Vita-C⁺ Ampoule</td></tr>
+      <tr><th>용량 · 구성</th><td><span data-ph>○○ml × ○병</span>, 전용 캡, 오프너</td></tr>
+      <tr><th>사용기한</th><td><span data-ph>제조일로부터 ○○개월 · 개봉 후 ○개월</span></td></tr>
       <tr><th>주요 성분</th><td>순수 비타민 C 13.5% (135,000ppm), 제주 용암해수, 백년초 추출물, 글루타치온, 베타글루칸, 펩타이드</td></tr>
-      <tr><th>전성분</th><td><span data-placeholder>전성분 표기</span></td></tr>
-      <tr><th>기능성</th><td><span data-placeholder>미백 · 주름 개선 기능성 심사(보고) 여부 기재</span></td></tr>
-      <tr><th>제조업자 / 책임판매업자</th><td><span data-placeholder>제조업자</span> / 주식회사 라바섬</td></tr>
-      <tr><th>고객센터</th><td>1544-6743 (평일 09:00–18:00)</td></tr>
-      <tr><th>사용 시 주의사항</th><td><ol>
+      <tr><th>전성분</th><td><span data-ph>전성분 표기</span></td></tr>
+      <tr><th>기능성</th><td><span data-ph>미백 · 주름 개선 기능성 심사(보고) 여부</span></td></tr>
+      <tr><th>제조 · 책임판매</th><td><span data-ph>제조업자</span> / 주식회사 라바섬</td></tr>
+      <tr><th>고객센터</th><td>1544-6743 · 평일 09:00–18:00</td></tr>
+      <tr><th>주의사항</th><td><ol>
         <li>화장품 사용 시 또는 사용 후 직사광선에 의하여 사용 부위가 붉은 반점, 부어오름 또는 가려움증 등의 이상 증상이나 부작용이 있는 경우 전문의 등과 상담할 것</li>
         <li>상처가 있는 부위 등에는 사용을 자제할 것</li>
         <li>보관 및 취급 시 주의사항: 어린이의 손이 닿지 않는 곳에 보관할 것, 직사광선을 피해서 보관할 것</li>
       </ol></td></tr>
     </table>
+    <div class="colophon"><span class="tag">Lavasome</span><span class="tag">Beauty from Jeju</span></div>
   </section>
 
 </main>
+
 </body>
 </html>

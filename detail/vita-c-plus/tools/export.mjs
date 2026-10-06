@@ -39,7 +39,7 @@ const ctx = await browser.newContext({ viewport: { width: 860, height: 1200 }, d
 // ① 정지 JPG
 {
   const p = await ctx.newPage();
-  await p.goto(page + '?still', { waitUntil: 'load' });
+  await p.goto(page + '#still', { waitUntil: 'load' });
   await p.evaluate(() => document.fonts.ready);
   await p.waitForTimeout(400);
   for (const id of await p.$$eval('section[id]', s => s.map(x => x.id))) {
