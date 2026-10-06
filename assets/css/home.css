@@ -26,7 +26,7 @@
   flex: 0 0 100%; position: relative; overflow: hidden;
   min-height: min(88vh, 820px);
   display: flex; align-items: center;
-  padding: 72px 0 132px;
+  padding: calc(72px + var(--hdr-h, 68px)) 0 132px;
 }
 .mv__bg { position: absolute; inset: 0; z-index: 0; background: var(--paper-2); }
 .mv__bg img { width: 100%; height: 100%; object-fit: cover; }
@@ -172,8 +172,18 @@
   .pcar__card:hover .pcar__link { border-bottom-color: var(--ink); gap: 10px; }
 }
 
-/* 이전/다음은 카드 위에 걸치지 않고 목록 아래 오른쪽에 모은다 */
-.pcar__ctrl { display: flex; justify-content: flex-end; gap: 10px; margin-top: 36px; }
+/* 이전/다음은 카드 위에 걸치지 않고 목록 아래에 모은다.
+   왼쪽 진행 막대가 전체 중 지금 보이는 구간을 보여준다. */
+.pcar__ctrl { display: flex; align-items: center; gap: 10px; margin-top: 40px; }
+.pcar__bar {
+  position: relative; flex: 1; height: 2px; margin-right: 22px;
+  background: rgba(26, 25, 23, .12); border-radius: 2px; overflow: hidden;
+}
+.pcar__bar i {
+  position: absolute; top: 0; bottom: 0; left: 0; width: 50%;
+  background: var(--ink); border-radius: 2px;
+  transition: left .7s var(--ease), width .7s var(--ease);
+}
 .pcar__nav {
   width: 48px; height: 48px; border-radius: 50%;
   display: grid; place-items: center;
@@ -190,32 +200,36 @@
   padding: 116px 0 110px;
   background: linear-gradient(178deg, #F4F8FA 0%, #EAF1F5 58%, #F6F9FA 100%);
 }
+.bpre__head h2 { color: #14283A; }
 .bpre__grid {
   display: grid;
   grid-template-columns: minmax(0, .82fr) minmax(0, 1.72fr);
-  gap: 64px; align-items: start;
+  gap: 40px 48px; align-items: stretch;
 }
-.bpre__art { grid-column: 1; grid-row: 1; margin: 0; }
+/* 왼쪽 큰 사진은 카드 줄 높이에 맞춰 늘어난다 */
+.bpre__art { grid-column: 1; grid-row: 1; margin: 0; min-height: 100%; }
 .bpre__art img {
-  width: 100%; height: auto; display: block; border-radius: var(--r-l);
-  background: #EDF3F6;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  border-radius: var(--r-l); background: #EDF3F6;
 }
 
 .bpre__cards {
   grid-column: 2; grid-row: 1;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
 }
 .bpre__card { display: block; color: inherit; }
 .bpre__card figure {
-  margin: 0 0 20px; aspect-ratio: 4 / 3.3; overflow: hidden;
+  margin: 0 0 22px; aspect-ratio: 4 / 4.4; overflow: hidden;
   border-radius: var(--r-m); background: #E2EAEE;
 }
 .bpre__card img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
 .bpre__card h3 {
+  display: flex; align-items: baseline; gap: 10px;
   font-family: var(--font-label); font-weight: 400;
   font-size: 16.5px; letter-spacing: .04em; text-transform: uppercase;
   color: #1E3A52;
 }
+.bpre__n { font-size: 13px; color: #4F7391; letter-spacing: .08em; }
 .bpre__card p { margin-top: 10px; font-size: 16px; line-height: 1.7; color: var(--ink-70); }
 .bpre__go {
   display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
@@ -228,19 +242,24 @@
   .bpre__card:hover .bpre__go { border-bottom-color: #1E3A52; }
 }
 
-.bpre__lead { grid-column: 1; grid-row: 2; align-self: center; padding-top: 18px; }
-.bpre__lead h2 {
-  font-family: var(--font-kr-head); font-size: clamp(21px, 2.1vw, 28px);
-  line-height: 1.5; color: #14283A; letter-spacing: -.02em;
+/* 원료 줄은 흰 패널 하나로 묶는다 — 왼쪽 라벨, 오른쪽 아이콘 6개 */
+.bpre__lead, .bpre__ing { background: #F9FBFC; }
+.bpre__lead {
+  grid-column: 1; grid-row: 2; align-self: stretch;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 34px 0 34px 38px; border-radius: var(--r-l) 0 0 var(--r-l);
+  margin-right: -48px;     /* 열 간격을 메워 패널을 하나로 잇는다 */
 }
-.bpre__lead span {
-  display: block; width: 34px; height: 1px; margin-top: 22px; background: #7FA8C4;
+.bpre__lead .eyebrow { display: block; margin-bottom: 12px; }
+.bpre__lead p {
+  font-family: var(--font-kr-head); font-size: clamp(18px, 1.7vw, 21px);
+  line-height: 1.55; color: #14283A;
 }
-
 .bpre__ing {
   grid-column: 2; grid-row: 2;
   display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 22px;
-  margin: 0; padding: 0; list-style: none; align-self: center;
+  margin: 0; padding: 34px 38px 30px 48px; list-style: none; align-self: stretch;
+  border-radius: 0 var(--r-l) var(--r-l) 0;
 }
 .bpre__ing li { text-align: center; }
 .bpre__ing figure {
@@ -259,7 +278,9 @@
 }
 .bpre__ing span { display: block; margin-top: 6px; font-size: 14px; color: var(--ink-70); }
 
-.bpre__more { margin-top: 52px; text-align: right; }
+.bpre__more { margin-top: 28px; text-align: right; }
+.bpre__more .link-arrow { border-color: transparent; padding-inline: 0 4px; }
+.bpre__more .link-arrow:hover { background: none; color: #1E3A52; text-decoration: underline; text-underline-offset: 5px; }
 
 /* ══ ④ 이벤트 · 브랜드 소식 · FAQ ════════════════════════════════
    카드 3장 그대로, 목적만 바뀌었다. 카드 전체가 링크다. */
@@ -320,14 +341,17 @@
 @media (max-width: 1180px) {
   .pcar__it { flex: 0 0 calc((100% - 28px) / 2); }
   .bpre__grid { grid-template-columns: 1fr; gap: 44px; }
-  .bpre__art  { grid-column: 1; grid-row: 1; max-width: 420px; }
+  .bpre__art  { grid-column: 1; grid-row: 1; }
   .bpre__cards{ grid-column: 1; grid-row: 2; }
-  .bpre__lead { grid-column: 1; grid-row: 3; padding-top: 0; }
-  .bpre__ing  { grid-column: 1; grid-row: 4; }
+  .bpre__art img { aspect-ratio: 16 / 9; height: auto; }
+  .bpre__lead { grid-column: 1; grid-row: 3; margin-right: 0; padding: 30px 30px 0;
+                border-radius: var(--r-l) var(--r-l) 0 0; }
+  .bpre__ing  { grid-column: 1; grid-row: 4; margin-top: -40px; padding: 26px 30px 30px;
+                border-radius: 0 0 var(--r-l) var(--r-l); }
 }
 @media (max-width: 960px) {
   /* 히어로 1단: 콜라주는 카피 아래로 내려가니 슬라이드 높이를 풀어 준다 */
-  .mv__slide--brand { padding-top: 56px; }
+  .mv__slide--brand { padding-top: calc(56px + var(--hdr-h, 68px)); }
 }
 @media (max-width: 900px) {
   .bpre__ing { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 30px 18px; }
@@ -338,7 +362,8 @@
   /* 폰 폭에서는 사진 왼쪽 빈 자리가 잘려 카피가 피사체 위로 온다.
      겹치기를 포기하고 [사진] → [카피] 로 쌓는다. */
   .mv__slide { min-height: 0; padding: 0 0 92px; display: block; }
-  .mv__bg { position: relative; inset: auto; aspect-ratio: 4 / 3; }
+  /* 헤더가 사진 위에 겹치므로 그만큼 사진을 키워 보이는 면적을 지킨다 */
+  .mv__bg { position: relative; inset: auto; height: calc(var(--hdr-h, 100px) + 64vw); }
   .mv__bg img { object-position: 64% 50%; }
   .mv__veil { display: none; }
   .mv__inner { padding-top: 30px; }
@@ -361,8 +386,18 @@
   .pcar__ctrl { margin-top: 26px; }
 
   .bpre { padding: 76px 0 82px; }
-  .bpre__cards { grid-template-columns: 1fr; gap: 36px; }
+  /* 카드 세 장을 세로로 쌓으면 화면 세 개 분량이 된다 — 옆으로 밀어 보게 한다 */
+  .bpre__cards {
+    display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory;
+    margin-inline: calc(var(--pad) * -1); padding: 0 var(--pad) 6px;
+    scroll-padding-inline: var(--pad); scrollbar-width: none;
+  }
+  .bpre__cards::-webkit-scrollbar { display: none; }
+  .bpre__card { flex: 0 0 76%; scroll-snap-align: start; }
+  .bpre__card figure { aspect-ratio: 4 / 3.6; }
   .bpre__art { max-width: none; }
+  .bpre__ing { gap: 26px 14px; padding: 22px 20px 26px; }
+  .bpre__lead { padding: 26px 20px 0; }
   .bpre__more { text-align: left; }
 
   .evt { padding: 72px 0 80px; }

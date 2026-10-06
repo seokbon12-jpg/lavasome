@@ -13,6 +13,14 @@
     };
     onStuck();
     addEventListener('scroll', onStuck, { passive: true });
+
+    // 첫 화면 위로 헤더를 겹칠 때(.site-header--overlay) 쓸 실제 높이.
+    // 폰에서는 메뉴가 두 줄이라 고정값으로 두면 어긋난다.
+    var setH = function () {
+      document.documentElement.style.setProperty('--hdr-h', header.offsetHeight + 'px');
+    };
+    setH();
+    addEventListener('resize', setH, { passive: true });
   }
 
   /* ── 스크롤 리빌 ─────────────────────────────────────────── */

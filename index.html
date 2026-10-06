@@ -25,7 +25,7 @@
      작은 자리에서 브랜드를 알아볼 표식이 없어진다.
      ⚠️ KR/EN, 마이페이지, 장바구니는 자리만 잡아 둔 상태다.
      다국어와 회원·장바구니는 카페24 연동 때 실제로 붙는다. -->
-<header class="site-header" data-header>
+<header class="site-header site-header--overlay" data-header>
   <div class="shell site-header__inner">
     <a class="wordmark" href="index.html">
       <img src="assets/img/brand/lavasome-logo.png" alt="LAVASOME" width="340" height="67">
@@ -247,6 +247,7 @@
           </ul>
         </div>
         <div class="pcar__ctrl">
+          <div class="pcar__bar" aria-hidden="true"><i data-pcar-bar></i></div>
           <button class="pcar__nav" type="button" data-pcar-prev aria-label="이전 제품"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
           <button class="pcar__nav" type="button" data-pcar-next aria-label="다음 제품"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 4l8 8-8 8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
         </div>
@@ -259,6 +260,14 @@
        페이지 안의 해당 콘텐츠로 연결한다(별도 Skin Science 페이지 없음). -->
   <section class="bpre" id="story">
     <div class="shell">
+      <div class="plist__head bpre__head reveal">
+        <div>
+          <span class="eyebrow">Brand Story</span>
+          <h2>자연에서 찾고,<br>피부 과학으로 완성합니다.</h2>
+        </div>
+        <a class="link-arrow" href="brand.html" aria-label="브랜드 스토리 자세히 보기">자세히 보기 &rarr;</a>
+      </div>
+
       <div class="bpre__grid">
         <figure class="bpre__art reveal">
           <img src="assets/img/home/ripple.jpg" alt="수면 위로 떨어지는 물방울" loading="lazy" decoding="async">
@@ -267,27 +276,27 @@
         <div class="bpre__cards">
           <a class="bpre__card reveal" href="brand.html#about">
             <figure><img src="assets/img/jeju/jeju-01-seawater.jpg" alt="샬레에 담긴 물과 현무암" loading="lazy" decoding="async"></figure>
-            <h3>Brand Story</h3>
+            <h3><span class="bpre__n">01</span>Brand Story</h3>
             <p>제주에서 시작된<br>라바섬의 철학</p>
             <span class="bpre__go">자세히 보기 &rarr;</span>
           </a>
           <a class="bpre__card reveal" data-delay="1" href="brand.html#origin">
             <figure><img src="assets/img/home/leaf.jpg" alt="물방울이 맺힌 잎" loading="lazy" decoding="async"></figure>
-            <h3>Jeju &amp; Ingredients</h3>
+            <h3><span class="bpre__n">02</span>Jeju &amp; Ingredients</h3>
             <p>제주 자연에서<br>찾은 원료</p>
             <span class="bpre__go">자세히 보기 &rarr;</span>
           </a>
           <a class="bpre__card reveal" data-delay="2" href="brand.html#science">
             <figure><img src="assets/img/jeju/jeju-03-lab.jpg" alt="실험 기구가 놓인 선반" loading="lazy" decoding="async"></figure>
-            <h3>Skin Science</h3>
+            <h3><span class="bpre__n">03</span>Skin Science</h3>
             <p>자연을 피부 과학으로<br>완성하다</p>
             <span class="bpre__go">자세히 보기 &rarr;</span>
           </a>
         </div>
 
         <div class="bpre__lead reveal">
-          <h2>자연에서 찾고,<br>피부 과학으로 완성합니다.</h2>
-          <span aria-hidden="true"></span>
+          <span class="eyebrow">Key Ingredients</span>
+          <p>제주 자연과 피부 과학이<br>함께 고른 핵심 원료</p>
         </div>
 
         <!-- ⚠️ 이 6종은 홈 시안의 아이콘 행 그대로입니다. 브랜드 스토리의

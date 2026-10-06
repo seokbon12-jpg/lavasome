@@ -6,6 +6,7 @@
      하단에 01 / 05 카운터와 칸별 진행 막대
    · 제품 캐러셀: 한 화면에 보이는 개수를 실제 아이템 폭에서 재서
      그만큼씩 민다. 순환하지 않고 양 끝에서 버튼이 죽는다.
+     아래 진행 막대가 지금 보이는 구간을 보여준다.
 
    prefers-reduced-motion 이면 자동 넘김을 켜지 않는다.
    ═══════════════════════════════════════════════════════════════════ */
@@ -108,6 +109,7 @@
 
     var prev = host.querySelector('[data-pcar-prev]');
     var next = host.querySelector('[data-pcar-next]');
+    var bar = host.querySelector('[data-pcar-bar]');
     var at = 0;
 
     function step() {
@@ -127,6 +129,12 @@
       track.style.transform = 'translate3d(' + (-at * step()) + 'px,0,0)';
       if (prev) prev.disabled = at <= 0;
       if (next) next.disabled = at >= maxAt();
+      // 진행 막대: 보이는 구간의 폭과 위치를 그대로 옮긴다
+      if (bar) {
+        var n = items.length, pv = Math.min(perView(), n);
+        bar.style.width = (pv / n * 100) + '%';
+        bar.style.left = (at / n * 100) + '%';
+      }
     }
 
     if (prev) prev.addEventListener('click', function () { at -= 1; if (at < 0) at = 0; apply(); });

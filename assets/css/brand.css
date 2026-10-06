@@ -51,7 +51,7 @@
   position: relative; overflow: hidden;
   min-height: min(86vh, 820px);
   display: flex; align-items: center;
-  padding: 140px 0 120px;
+  padding: calc(96px + var(--hdr-h, 68px)) 0 120px;
   background: var(--paper-2);
 }
 .bhero__photo { position: absolute; inset: 0; z-index: 0; }
@@ -294,7 +294,7 @@
   position: relative; overflow: hidden;
   min-height: min(92vh, 880px);
   display: flex; align-items: center;
-  padding: 150px 0 120px;
+  padding: calc(100px + var(--hdr-h, 68px)) 0 120px;
   background: var(--paper-2);
 }
 .fnote__bg { position: absolute; inset: 0; z-index: 0; }
@@ -409,7 +409,7 @@
   .bnews__head { border-right: 0; padding-right: 0; }
 }
 @media (max-width: 760px) {
-  .bhero { min-height: 0; padding: 116px 0 84px; }
+  .bhero { min-height: 0; padding: calc(56px + var(--hdr-h, 100px)) 0 84px; }
   .chap { grid-template-columns: 1fr; gap: 8px; }
   .give { grid-template-columns: 1fr; }
   .give li { display: grid; grid-template-columns: 56px 1fr; gap: 4px 18px;
@@ -425,7 +425,7 @@
   .prin__list li:first-child { border-top: 0; padding-top: 22px; }
   .jrn { grid-template-columns: 1fr; gap: 44px; }
   .jrn__it::before { right: 0; }
-  .fnote { min-height: 0; padding: 116px 0 80px; }
+  .fnote { min-height: 0; padding: calc(56px + var(--hdr-h, 100px)) 0 80px; }
   /* 폰에서는 사진이 글 뒤로 깔리면 읽기 어렵다 — 거의 다 덮는다 */
   .fnote__scrim { background: linear-gradient(180deg,
       rgba(248, 246, 241, .94) 0%, rgba(248, 246, 241, .90) 70%, rgba(248, 246, 241, .72) 100%); }

@@ -150,6 +150,11 @@ em, i { font-style: normal; }
   backdrop-filter: saturate(1.1) blur(10px);
   border-bottom-color: var(--line);
 }
+/* 첫 화면이 사진으로 꽉 차는 페이지(홈 · 브랜드 · 브랜드 소식)는 헤더를
+   사진 위에 겹친다. 아래 흐름을 헤더 높이만큼 끌어올리고, 각 첫 섹션이
+   위 여백에 --hdr-h 를 더해 카피 자리를 지킨다. 스크롤하면 .is-stuck 으로
+   반투명 바탕이 깔린다. */
+.site-header--overlay { margin-bottom: calc(var(--hdr-h, 68px) * -1); }
 .site-header__inner {
   display: flex; align-items: center; justify-content: space-between;
   height: 68px;
@@ -216,7 +221,7 @@ em, i { font-style: normal; }
 /* 가운데 막대만. 선택자를 span 으로 두면 아래 .util__soon 보다 우선순위가
    높아 EN 까지 --line(1.3:1)으로 칠해졌다. */
 .util__lang span[aria-hidden="true"] { color: var(--line); }
-.util__soon { color: rgba(26, 25, 23, .62); cursor: default; }
+.util__soon { color: rgba(26, 25, 23, .7); cursor: default; }  /* 사진 위에서도 4.5:1 */
 .util__ico {
   display: grid; place-items: center; width: 30px; height: 30px;
   color: var(--ink-70); cursor: default;

@@ -31,6 +31,9 @@ assets/img/       hero/ · box/ · products/ · jeju/ · chalet/ · brand/ · ho
      + 주요 성분 6종
   ④ Event · Brand News · FAQ 3카드 → event.html · news.html#news · faq.html
 
+홈 · 브랜드 · 브랜드 소식은 첫 화면 사진 위로 헤더를 겹칩니다
+(`.site-header--overlay`, 높이는 main.js 가 `--hdr-h` 로 넘김).
+
 CTA 문구는 세 가지로만 씁니다: **제품 보기 / 자세히 보기 / 전체 제품 보기**.
 
 **헤더** — 로고 / 브랜드(브랜드 스토리 · 브랜드 소식) · 제품(전체 제품 ·
