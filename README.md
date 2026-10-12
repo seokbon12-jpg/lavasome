@@ -269,3 +269,16 @@ assets/vendor/gsap.min.js · ScrollTrigger.min.js   (Apache 2.0, LICENSE 동봉)
 - 리뷰 띠는 좌→우 자동 흐름(마퀴). 마우스오버·포커스 시 정지, 화면 밖·탭 숨김 시 멈춤,
   `prefers-reduced-motion` 이면 흐름을 끄고 직접 스크롤로 전환. 속도는 `main.js` 의 `speed`(px/초)
 - `prefers-reduced-motion` 에서 리빌·360° 회전 정지
+
+## 2026.10 리뉴얼 수정 피드백 반영
+- 메인 배너: 브랜드 · 10월 세일(이벤트) · Vita-C(메인 제품) · 세계한상대회(캠페인) 4장
+- Product Line Up 이동 버튼을 목록 양쪽 가운데로, 녹차잎 앰플 클렌저 추가(7종)
+- Brand Story 반복 "자세히 보기" 정리(우측 상단 1개)
+- Event · News · FAQ 카드에 실제 이미지(10월 세일, 세계한상대회 부스, 패키지)
+- Brand: Jeju Origin / Ingredients / Skin Science / Principles 역할 분리,
+  Skin Science 는 설계 방식 4단계 + Vita-C 사례로
+- Journey 서울어워드 연도 2024–2025
+- Brand News: 폭 넓은 그리드 + 분류 칩 + 9개 넘으면 "소식 더 보기"
+- 전체 제품 분류: 앰플 · 클렌저 · 선케어
+- Event: 진행 중 / 종료된 이벤트, 비었을 때 안내 문구
+- FAQ: 쇼핑몰 배송·교환 공지 기준으로 실제 정책 반영

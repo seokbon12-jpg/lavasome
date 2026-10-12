@@ -58,59 +58,41 @@
 
 <!-- ══ Event & Promotion ══
      홈 ④ 영역의 EVENT 카드와 메뉴 "제품 > 이벤트 · 프로모션"이 여기로 온다.
-
-     ⚠️ 아래 카드는 전부 자리표시입니다. 실제 진행 중인 이벤트의
-     제목 · 기간 · 혜택 · 링크로 교체하기 전에는 배포하지 마세요.
-     할인율 · 증정 · 기간 표기는 전자상거래법과 표시광고법 확인이 필요합니다.
-     페이지네이션·탭(진행중/종료된)은 카페24 게시판으로 붙이는 편이
-     자연스러워 여기서는 구조만 잡아 두었습니다. -->
+     피드백(2026.10 · 14): 임시 문구를 걷어내고, 이벤트가 쌓여도 "지금 참여할 수
+     있는지"가 먼저 보이도록 진행 중 / 종료된 이벤트로 나눈다(filter.js 재사용).
+     진행 중이 하나도 없으면 .evlist__empty 문구가 대신 보인다.
+     ⚠️ 10월 세일의 기간·혜택 문구는 확정되면 채울 것 — 지금은 이미지와 제목만. -->
 <main id="main" class="brand" tabindex="-1">
 
   <section class="nhero">
     <div class="shell">
       <p class="eyebrow reveal">Event &amp; Promotion</p>
-      <h1 class="reveal" data-delay="1">한정 이벤트 &amp; 프로모션</h1>
-      <p class="nhero__sub reveal" data-delay="2">라바섬이 준비한 특별한 혜택을 만나보세요.<br>
-        Discover special offers from LAVASOME.</p>
+      <h1 class="reveal" data-delay="1">이벤트 &amp; 프로모션</h1>
+      <p class="nhero__sub reveal" data-delay="2">라바섬이 준비한 혜택을 확인하세요.</p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section evpage" data-filter-root>
     <div class="shell">
+      <div class="chips" role="group" aria-label="이벤트 상태">
+        <button class="chip" type="button" data-filter="on" aria-pressed="true">진행 중</button>
+        <button class="chip" type="button" data-filter="off" aria-pressed="false">종료된 이벤트</button>
+      </div>
+      <p class="prods__count" aria-live="polite"><b data-filter-count>1</b>개 이벤트</p>
+
       <ul class="evlist" role="list">
-        <li class="evlist__it evlist__it--wide reveal">
-          <figure><img src="assets/img/jeju/jeju-01-seawater.jpg" alt="" loading="lazy" decoding="async"></figure>
+        <li class="evlist__it evlist__it--wide" data-cat="on">
+          <figure class="evlist__fig"><img src="assets/img/event/october-sale.jpg" alt="10월 세일 — 라바섬 쇼핑백을 든 사람" loading="lazy" decoding="async"></figure>
           <div>
-            <b data-placeholder="이벤트 분류">Season Promotion</b>
-            <h2 data-placeholder="이벤트 제목">시즌 기획전 제목 자리</h2>
-            <p data-placeholder="이벤트 설명">설명 한 줄이 들어갈 자리입니다.</p>
-            <time data-placeholder="진행 기간">기간 미정</time>
-          </div>
-        </li>
-        <li class="evlist__it reveal">
-          <figure><img src="assets/img/jeju/jeju-02-opuntia.jpg" alt="" loading="lazy" decoding="async"></figure>
-          <div>
-            <b data-placeholder="이벤트 분류">Event</b>
-            <h2 data-placeholder="이벤트 제목">이벤트 제목 자리</h2>
-            <p data-placeholder="이벤트 설명">설명 한 줄이 들어갈 자리입니다.</p>
-            <time data-placeholder="진행 기간">기간 미정</time>
-          </div>
-        </li>
-        <li class="evlist__it reveal" data-delay="1">
-          <figure><img src="assets/img/jeju/jeju-03-lab.jpg" alt="" loading="lazy" decoding="async"></figure>
-          <div>
-            <b data-placeholder="이벤트 분류">Promotion</b>
-            <h2 data-placeholder="프로모션 제목">프로모션 제목 자리</h2>
-            <p data-placeholder="프로모션 설명">설명 한 줄이 들어갈 자리입니다.</p>
-            <time data-placeholder="진행 기간">기간 미정</time>
+            <b><span class="evlist__state">진행 중</span> October Sale</b>
+            <h2>10월, 라바섬 시즌 세일</h2>
+            <p>10월 한 달 동안 준비한 혜택을 만나보세요.</p>
+            <time>2026. 10 &middot; <span data-placeholder>기간 확정 후 기재</span></time>
           </div>
         </li>
       </ul>
-
-      <p class="nsoon" style="margin-top:56px">진행 중인 이벤트 내용을 주시면 이 자리에 채워 넣겠습니다.</p>
-      <div class="cta-row cta-row--center reveal">
-        <a class="btn btn--solid" href="products.html">전체 제품 보기</a>
-      </div>
+      <p class="evlist__empty" data-empty-for="off" hidden>종료된 이벤트가 아직 없습니다.</p>
+      <p class="evlist__empty" data-empty-for="on" hidden>현재 진행 중인 이벤트가 없습니다.<br>새 이벤트가 열리면 이곳에서 알려 드릴게요.</p>
     </div>
   </section>
 </main>
@@ -168,3 +150,4 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
+<script src="assets/js/filter.js"></script>

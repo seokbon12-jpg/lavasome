@@ -70,25 +70,24 @@
     <div class="shell">
       <p class="eyebrow reveal">All Products</p>
       <h1 class="reveal" data-delay="1">전체 제품</h1>
-      <p class="nhero__sub reveal" data-delay="2">피부 고민에 맞춰 고르는 라바섬의 제품입니다.<br>
+      <p class="nhero__sub reveal" data-delay="2">앰플부터 클렌저, 선케어까지 라바섬의 제품입니다.<br>
         제주에서 찾은 원료를 피부 과학으로 완성했습니다.</p>
     </div>
   </section>
 
   <section class="section prods" data-filter-root>
     <div class="shell">
-      <div class="chips" role="group" aria-label="피부 고민으로 고르기">
+      <!-- 피드백(2026.10 · 10): 제품 수에 비해 분류가 잘게 나뉘어 있었다.
+           지금은 제품 종류 셋으로만 나누고, 라인업이 늘면 그때 세분한다. -->
+      <div class="chips" role="group" aria-label="제품 종류로 고르기">
         <button class="chip" type="button" data-filter="all" aria-pressed="true">전체</button>
-        <button class="chip" type="button" data-filter="brightening" aria-pressed="false">미백</button>
-        <button class="chip" type="button" data-filter="soothing" aria-pressed="false">진정</button>
-        <button class="chip" type="button" data-filter="firming" aria-pressed="false">탄력</button>
-        <button class="chip" type="button" data-filter="wrinkle" aria-pressed="false">주름개선</button>
-        <button class="chip" type="button" data-filter="hydration" aria-pressed="false">수분</button>
-        <button class="chip" type="button" data-filter="shield" aria-pressed="false">자외선 차단</button>
+        <button class="chip" type="button" data-filter="ampoule" aria-pressed="false">앰플</button>
+        <button class="chip" type="button" data-filter="cleanser" aria-pressed="false">클렌저</button>
+        <button class="chip" type="button" data-filter="sun" aria-pressed="false">선케어</button>
       </div>
-      <p class="prods__count" aria-live="polite"><b data-filter-count>6</b>개 제품</p>
+      <p class="prods__count" aria-live="polite"><b data-filter-count>7</b>개 제품</p>
       <ul class="prod-grid" role="list">
-        <li class="prod reveal" id="vita-c-plus" data-cat="brightening">
+        <li class="prod reveal" id="vita-c-plus" data-cat="ampoule">
           <figure class="prod__shot"><span class="pcar__tag">Best</span><img src="assets/img/products/vita-c-plus.jpg" alt="라바섬 Vita-C Plus Ampoule 제품 이미지" loading="lazy" decoding="async"></figure>
           <div class="prod__body">
             <p class="pcar__ben">미백 <em>Brightening</em></p>
@@ -98,7 +97,7 @@
             <span class="prod__soon">상세 페이지 준비 중</span>
           </div>
         </li>
-        <li class="prod reveal" id="calming-50" data-cat="soothing" data-delay="1">
+        <li class="prod reveal" id="calming-50" data-cat="ampoule" data-delay="1">
           <figure class="prod__shot"><img src="assets/img/products/calming-50.jpg" alt="라바섬 Calming 50 제품 이미지" loading="lazy" decoding="async"></figure>
           <div class="prod__body">
             <p class="pcar__ben">진정 <em>Soothing</em></p>
@@ -108,7 +107,7 @@
             <span class="prod__soon">상세 페이지 준비 중</span>
           </div>
         </li>
-        <li class="prod reveal" id="pdrn-1k" data-cat="firming" data-delay="2">
+        <li class="prod reveal" id="pdrn-1k" data-cat="ampoule" data-delay="2">
           <figure class="prod__shot"><img src="assets/img/products/pdrn-1k.jpg" alt="라바섬 PDRN 1K 제품 이미지" loading="lazy" decoding="async"></figure>
           <div class="prod__body">
             <p class="pcar__ben">탄력 <em>Firming</em></p>
@@ -118,7 +117,7 @@
             <span class="prod__soon">상세 페이지 준비 중</span>
           </div>
         </li>
-        <li class="prod reveal" id="bakuchiol-5k" data-cat="wrinkle">
+        <li class="prod reveal" id="bakuchiol-5k" data-cat="ampoule">
           <figure class="prod__shot"><img src="assets/img/products/bakuchiol-5k.jpg" alt="라바섬 바쿠치올 5K 제품 이미지" loading="lazy" decoding="async"></figure>
           <div class="prod__body">
             <p class="pcar__ben">주름개선 <em>Anti-Wrinkle</em></p>
@@ -128,7 +127,7 @@
             <span class="prod__soon">상세 페이지 준비 중</span>
           </div>
         </li>
-        <li class="prod reveal" id="ha90" data-cat="hydration" data-delay="1">
+        <li class="prod reveal" id="ha90" data-cat="ampoule" data-delay="1">
           <figure class="prod__shot"><img src="assets/img/products/ha90.jpg" alt="라바섬 HA90 제품 이미지" loading="lazy" decoding="async"></figure>
           <div class="prod__body">
             <p class="pcar__ben">수분 <em>Hydration</em></p>
@@ -138,13 +137,26 @@
             <span class="prod__soon">상세 페이지 준비 중</span>
           </div>
         </li>
-        <li class="prod reveal" id="sunscreen" data-cat="shield" data-delay="2">
+        <li class="prod reveal" id="sunscreen" data-cat="sun" data-delay="2">
           <figure class="prod__shot"><img src="assets/img/products/sunscreen.jpg" alt="라바섬 퓨어 선스크린 제품 이미지" loading="lazy" decoding="async"></figure>
           <div class="prod__body">
             <p class="pcar__ben">일상 보호 <em>Daily Shield</em></p>
             <h2>퓨어 선스크린</h2>
             <p class="pcar__desc">매일 쓰기 위한 가벼운 마무리.</p>
             <p class="pcar__fig">SPF<span>50+ / PA++++</span></p>
+            <span class="prod__soon">상세 페이지 준비 중</span>
+          </div>
+        </li>
+        <!-- ⚠️ 클렌저 사진은 자리표시입니다. 드라이브 누끼컷 또는 생성 이미지를
+             assets/img/products/green-tea-cleanser.jpg 로 올리면 바뀝니다.
+             pH 4.0–5.0 은 세계한상대회 부스 사인 표기 기준 — 확인 필요 -->
+        <li class="prod reveal" id="green-tea-cleanser" data-cat="cleanser">
+          <figure class="prod__shot"><img src="assets/img/products/green-tea-cleanser.jpg" alt="라바섬 녹차잎 앰플 클렌저 제품 이미지" loading="lazy" decoding="async"><span class="shot-soon">사진 준비 중</span></figure>
+          <div class="prod__body">
+            <p class="pcar__ben">클렌징 <em>Cleansing</em></p>
+            <h2>녹차잎 앰플 클렌저</h2>
+            <p class="pcar__desc">자극은 덜고 노폐물은 깨끗하게 덜어내는 약산성 클렌저.</p>
+            <p class="pcar__fig">pH<span>4.0–5.0</span></p>
             <span class="prod__soon">상세 페이지 준비 중</span>
           </div>
         </li>

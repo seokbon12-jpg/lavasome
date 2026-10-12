@@ -185,3 +185,9 @@
   .boxopen [data-step] { opacity: 1 !important; transform: none !important; transition: none; }
   .boxopen__label { display: none; }
 }
+
+/* 적용 사례 — 설계 방식 아래 한 줄짜리 각주처럼 */
+.bcase { margin-top: 2em; padding: 1.2em 1.3em; border-radius: var(--r-m, 14px); background: rgba(255, 255, 255, .6); border: 1px solid var(--line); }
+.bcase__txt { margin-top: .5em; font-size: .95em; line-height: 1.72; color: var(--ink-70); }
+.bcase__go { display: inline-block; margin-top: .7em; font-size: .9em; border-bottom: 1px solid var(--line); padding-bottom: 2px; }
+.bcase__go:hover { border-bottom-color: var(--ink); }

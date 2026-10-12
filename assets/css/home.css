@@ -41,6 +41,13 @@
 }
 .mv__inner { position: relative; z-index: 2; width: 100%; }
 
+/* 이벤트 · 캠페인 슬라이드 — 세로로 찍은 실제 사진이라 화면을 반으로 나눈다.
+   왼쪽은 지면색 위 카피, 오른쪽 절반에 사진. 사진 위에 글을 얹지 않는다. */
+.mv__slide--split { background: var(--paper-2); }
+.mv__slide--split .mv__bg { left: 50%; top: var(--hdr-h, 68px); }
+.mv__slide--split .mv__copy { max-width: calc(50% - 40px); }
+.mv__p { margin-top: 14px; font-size: 16px; color: var(--ink-70); }
+
 /* 카피는 장이 바뀔 때마다 아래에서 살짝 올라온다 */
 .mv.is-ready .mv__copy > * {
   opacity: 0; translate: 0 22px;
@@ -123,7 +130,7 @@
 }
 .plist__head .eyebrow { display: block; margin-bottom: 12px; }
 
-.pcar { position: relative; }
+.pcar { position: relative; container-type: inline-size; }
 .pcar__view { overflow: hidden; }
 .pcar__track {
   display: flex; gap: 28px; margin: 0; padding: 0; list-style: none;
@@ -174,9 +181,9 @@
 
 /* 이전/다음은 카드 위에 걸치지 않고 목록 아래에 모은다.
    왼쪽 진행 막대가 전체 중 지금 보이는 구간을 보여준다. */
-.pcar__ctrl { display: flex; align-items: center; gap: 10px; margin-top: 40px; }
+.pcar__ctrl { display: flex; align-items: center; margin-top: 40px; }
 .pcar__bar {
-  position: relative; flex: 1; height: 2px; margin-right: 22px;
+  position: relative; flex: 1; height: 2px;
   background: rgba(26, 25, 23, .12); border-radius: 2px; overflow: hidden;
 }
 .pcar__bar i {
@@ -184,16 +191,22 @@
   background: var(--ink); border-radius: 2px;
   transition: left .7s var(--ease), width .7s var(--ease);
 }
+/* 양쪽 가운데 — 사진(4:5) 높이의 절반에 맞춘다. 카드 폭은 컨테이너 폭에서 계산 */
 .pcar__nav {
-  width: 48px; height: 48px; border-radius: 50%;
+  --card: calc((100cqw - 56px) / 3);
+  position: absolute; z-index: 3; top: calc(var(--card) * 1.25 / 2); translate: 0 -50%;
+  width: 52px; height: 52px; border-radius: 50%;
   display: grid; place-items: center;
-  background: transparent; color: var(--ink);
-  border: 1px solid rgba(26, 25, 23, .2);
+  background: rgba(250, 250, 248, .94); color: var(--ink);
+  border: 1px solid rgba(26, 25, 23, .14);
+  box-shadow: 0 6px 18px rgba(26, 25, 23, .08);
   transition: background-color .3s var(--ease), color .3s var(--ease), opacity .3s var(--ease);
 }
 .pcar__nav:hover { background: var(--ink); color: var(--paper); }
 .pcar__nav[disabled] { opacity: .3; pointer-events: none; }
 .pcar__nav svg { width: 16px; height: 16px; }
+.pcar__nav--prev { left: -26px; }
+.pcar__nav--next { right: -26px; }
 
 /* ══ ③ Brand Story / Jeju & Ingredients / Skin Science ═════════ */
 .bpre {
@@ -340,6 +353,9 @@
 /* ══ 반응형 ═══════════════════════════════════════════════════ */
 @media (max-width: 1180px) {
   .pcar__it { flex: 0 0 calc((100% - 28px) / 2); }
+  .pcar__nav { --card: calc((100cqw - 28px) / 2); }
+  .pcar__nav--prev { left: -14px; }
+  .pcar__nav--next { right: -14px; }
   .bpre__grid { grid-template-columns: 1fr; gap: 44px; }
   .bpre__art  { grid-column: 1; grid-row: 1; }
   .bpre__cards{ grid-column: 1; grid-row: 2; }
@@ -367,6 +383,10 @@
   .mv__bg img { object-position: 64% 50%; }
   .mv__veil { display: none; }
   .mv__inner { padding-top: 30px; }
+  .mv__slide--split { padding-top: var(--hdr-h, 100px); }
+  .mv__slide--split .mv__bg { left: auto; top: auto; height: 78vw; }
+  .mv__slide--split .mv__bg img { object-position: 50% 30%; }
+  .mv__slide--split .mv__copy { max-width: none; }
   .mv__h { max-width: none; }
 
   /* 브랜드 슬라이드도 같은 틀로 — 사진 위 시차와 콜라주는 끈다 */
@@ -383,6 +403,9 @@
   .plist { padding: 76px 0 84px; }
   .plist__head { flex-direction: column; align-items: flex-start; gap: 18px; }
   .pcar__it { flex: 0 0 78%; }
+  .pcar__nav { --card: 78cqw; width: 42px; height: 42px; }
+  .pcar__nav--prev { left: -6px; }
+  .pcar__nav--next { right: -6px; }
   .pcar__ctrl { margin-top: 26px; }
 
   .bpre { padding: 76px 0 82px; }
@@ -423,6 +446,13 @@
   border-radius: 4px; background: var(--panel);
 }
 .evlist__it--wide figure { aspect-ratio: 24 / 9; }
+.evpage { padding-top: 0; }
+.evpage .evlist { margin-top: 8px; }
+/* 세로로 찍은 실제 이벤트 이미지 — 잘라내지 않도록 왼쪽 세로 칸에 통째로 */
+.evpage .evlist__it--wide { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 48px; align-items: center; }
+.evpage .evlist__it--wide figure { aspect-ratio: 4 / 5; margin: 0; }
+.evlist__state { display: inline-block; margin-right: 8px; padding: 3px 9px; border-radius: 999px; background: var(--ink); color: var(--paper); font-size: 11px; letter-spacing: .06em; }
+.evlist__empty { padding: 70px 0; text-align: center; font-size: 16px; line-height: 1.8; color: rgba(26, 25, 23, .62); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .evlist__it img { width: 100%; height: 100%; object-fit: cover; }
 .evlist__it b {
   font-family: var(--font-label); font-weight: 400;
@@ -444,6 +474,8 @@
 @media (max-width: 760px) {
   .evlist { grid-template-columns: 1fr; gap: 44px; }
   .evlist__it--wide figure { aspect-ratio: 16 / 9; }
+  .evpage .evlist__it--wide { grid-template-columns: 1fr; gap: 20px; }
+  .evpage .evlist__it--wide figure { aspect-ratio: 4 / 5; }
 }
 
 /* ══ 분류 칩 (products.html · faq.html) ═════════════════════════ */
@@ -556,4 +588,10 @@
   .qa summary i { grid-column: 2; grid-row: 1 / 3; }
   .qa__a { padding: 0 2px 26px; }
   .qa__a p { font-size: 16px; }
+}
+
+/* 사진이 아직 없는 제품 — 같은 지면색 위에 작은 표시 */
+.shot-soon {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%;
+  font-size: 13px; color: rgba(26, 25, 23, .62); letter-spacing: .02em;
 }

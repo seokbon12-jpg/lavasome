@@ -24,10 +24,31 @@
         c.setAttribute('aria-pressed', c.getAttribute('data-filter') === key ? 'true' : 'false');
       });
       if (count) count.textContent = n;
+      // 해당 분류가 비었을 때 보여 줄 문구(있으면)
+      [].forEach.call(root.querySelectorAll('[data-empty-for]'), function (el) {
+        el.hidden = !(n === 0 && el.getAttribute('data-empty-for') === key);
+      });
     }
 
     [].forEach.call(chips, function (c) {
       c.addEventListener('click', function () { apply(c.getAttribute('data-filter')); });
     });
+    // 처음 눌려 있는 칩 기준으로 한 번 적용 — "전체"가 없는 목록(이벤트)도 있다
+    var on = root.querySelector('.chip[aria-pressed="true"]');
+    if (on) apply(on.getAttribute('data-filter'));
+  });
+
+  /* ── "더 보기" — [data-more-list] 의 카드가 PAGE 개를 넘으면 나머지를 접어 둔다 ── */
+  [].forEach.call(document.querySelectorAll('[data-more-list]'), function (list) {
+    var PAGE = 9;
+    var btn = list.parentNode.querySelector('[data-more]');
+    var items = list.children;
+    var shown = PAGE;
+    function fold() {
+      for (var i = 0; i < items.length; i++) items[i].classList.toggle('is-folded', i >= shown);
+      if (btn) btn.hidden = items.length <= shown;
+    }
+    if (btn) btn.addEventListener('click', function () { shown += PAGE; fold(); });
+    fold();
   });
 })();
