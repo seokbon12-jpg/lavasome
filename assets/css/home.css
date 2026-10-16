@@ -525,6 +525,7 @@
 
 /* ══ FAQ (faq.html) ═════════════════════════════════════════════ */
 .faq { padding-top: 0; }
+.faq__main { min-width: 0; }
 .faq__grid {
   display: grid; grid-template-columns: minmax(0, 1fr) 320px;
   gap: 64px; align-items: start;
@@ -549,6 +550,7 @@
 .qa summary:hover .qa__q { color: var(--accent-d); }
 .qa__a { padding: 0 44px 30px 144px; }
 .qa__a p { font-size: 16.5px; line-height: 1.85; color: var(--ink-70); }
+.qa__a p + p { margin-top: 12px; }
 
 .faq__cs {
   position: sticky; top: 96px;
@@ -594,4 +596,16 @@
 .shot-soon {
   position: absolute; left: 50%; top: 50%; translate: -50% -50%;
   font-size: 13px; color: rgba(26, 25, 23, .62); letter-spacing: .02em;
+}
+
+/* 공지사항 — 사진 없는 글은 한 줄 목록으로 */
+.nrow { display: grid; grid-template-columns: 9em minmax(0, 1fr) auto; gap: 24px; padding: 30px 0; border-top: 1px solid var(--line); }
+.evlist .nrow { grid-column: 1 / -1; }
+.nrow__cat { font-size: 14px; color: var(--accent-t); padding-top: 4px; }
+.nrow h2 { font-family: var(--font-kr-head); font-size: clamp(18px, 1.8vw, 22px); line-height: 1.45; }
+.nrow p { margin-top: 8px; font-size: 16px; line-height: 1.75; color: var(--ink-70); }
+.nrow time { font-size: 13.5px; color: rgba(26, 25, 23, .6); padding-top: 4px; white-space: nowrap; }
+.evlist__go { margin-top: 18px !important; }
+@media (max-width: 760px) {
+  .nrow { grid-template-columns: 1fr; gap: 8px; }
 }
