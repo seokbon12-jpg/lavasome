@@ -45,6 +45,10 @@ jobs:
           done
           mkdir -p _site/assets/img/box
           cp -r assets/img/box/desktop assets/img/box/mobile _site/assets/img/box/
+          # 메인 v2 시안 — /v2/ 로 확인. 캡처·문서는 빼고 페이지가 쓰는 파일만
+          mkdir -p _site/v2
+          cp v2/index.html _site/v2/
+          cp -r v2/css v2/js v2/img v2/fonts _site/v2/
           echo "배포 용량: $(du -sh _site | cut -f1)"
 
       # Pages 자체를 켜는 건 이 워크플로가 못 한다. GITHUB_TOKEN 에는

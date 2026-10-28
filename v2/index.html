@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>라바섬 LAVASOME</title>
+<meta name="description" content="정직한 성분, 자연스러운 변화. 라바섬은 제주의 과학과 자연의 균형을 선사합니다.">
+<script>
+  /* ?static 또는 '동작 줄이기' 설정이면 모든 모션을 최종 상태로 */
+  (function (d) {
+    var s = /[?&]static\b/.test(location.search) || matchMedia('(prefers-reduced-motion: reduce)').matches;
+    d.className += ' js' + (s ? ' is-static' : '');
+  })(document.documentElement);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+KR:wght@300;400&display=swap">
+<link rel="preload" href="fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="img/hero-01.jpg" as="image">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/sections.css">
+<link rel="stylesheet" href="css/mobile.css">
+<script src="js/data.js" defer></script>
+<script src="js/main.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">본문 바로가기</a>
+
+<!-- 0. 띠 배너 + GNB ─────────────────────────────── -->
+<div class="band" id="band">
+  <a class="band__txt" data-bind="band"></a>
+  <button class="band__x" type="button" aria-label="띠 배너 닫기"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8"/></svg></button>
+</div>
+<span class="top-sentinel" aria-hidden="true"></span>
+<header class="hd" id="hd">
+  <a class="hd__logo" href="./" aria-label="라바섬 홈"><img src="img/logo.png" alt="LAVASOME" width="160" height="31"></a>
+  <nav class="hd__nav" id="gnb" aria-label="주 메뉴"><ul role="list" data-list="nav"></ul></nav>
+  <div class="hd__ico">
+    <a href="https://lavasome.co.kr/product/search.html" aria-label="검색"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 20 20"/></svg></a>
+    <a href="https://lavasome.co.kr/myshop/index.html" aria-label="마이페이지"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.5" r="4"/><path d="M4.5 20c.9-3.6 3.9-5.5 7.5-5.5s6.6 1.9 7.5 5.5"/></svg></a>
+    <a href="https://lavasome.co.kr/order/basket.html" aria-label="장바구니"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z"/><path d="M9 10V7a3 3 0 0 1 6 0v3"/></svg></a>
+    <button class="hd__menu" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="gnb"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- 1. 히어로 3장 ─────────────────────────────────── -->
+<section class="hero" id="hero" aria-roledescription="carousel" aria-label="대표 제품">
+  <div class="hero__stage" data-list="slides"></div>
+  <div class="hero__ctl">
+    <p class="hero__count mono"><span data-bind="slideNow">01</span> / <span data-bind="slideAll">03</span></p>
+    <div class="hero__bars" data-list="bars"></div>
+    <div class="hero__arrows">
+      <button type="button" class="arr" data-go="-1" aria-label="이전 슬라이드"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button type="button" class="arr" data-go="1" aria-label="다음 슬라이드"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- 1b. 라인 배너 (정지형) ─────────────────────────── -->
+<a class="line" href="#signature" data-line></a>
+
+<!-- 2. 피부 고민 → 제품 ───────────────────────────── -->
+<section class="sec" id="concern" data-reveal aria-labelledby="concern-t">
+  <div class="sec__rule" aria-hidden="true"><i></i><i></i></div>
+  <div class="sec__grid">
+    <div class="sec__side">
+      <div class="sec__stick">
+        <p class="lbl"><span class="lbl__dot"></span>SKIN CONCERN</p>
+        <div class="chips" role="group" aria-label="피부 고민으로 고르기" data-list="concerns"></div>
+      </div>
+    </div>
+    <div class="sec__body">
+      <div class="sec__head">
+        <h2 class="disp mask" id="concern-t"><span>당신의 피부 고민은 무엇인가요</span></h2>
+        <a class="more mono rise" href="https://lavasome.co.kr/product/list.html">View all <span class="more__a" aria-hidden="true">→</span></a>
+      </div>
+      <p class="sr-only" aria-live="polite" data-bind="filterMsg"></p>
+      <ul class="grid-p" role="list" data-list="products"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 시그니처 — 비타C ────────────────────────────── -->
+<section class="sec sec--lab" id="signature" data-reveal aria-labelledby="sig-t">
+  <div class="sec__rule" aria-hidden="true"><i></i><i></i></div>
+  <div class="sec__grid">
+    <div class="sec__side">
+      <div class="sec__stick">
+        <p class="lbl"><span class="lbl__dot"></span>SIGNATURE FORMULA</p>
+        <ol class="idx mono" role="list">
+          <li><a href="#act-formula" data-act="formula">01 Formula</a></li>
+          <li><a href="#act-design" data-act="design">02 Design</a></li>
+          <li><a href="#ritual" data-act="ritual">03 Ritual</a></li>
+        </ol>
+      </div>
+    </div>
+    <div class="sec__body">
+      <!-- 01 선언 -->
+      <div class="act act--formula" id="act-formula" data-act-id="formula">
+        <p class="sig__eyebrow rise" data-bind="sigEyebrow"></p>
+        <h2 class="disp disp--xl mask" id="sig-t"><span data-bind="sigTitle"></span></h2>
+        <p class="sig__mono mono rise"><span data-bind="sigMono"></span><b class="badge" data-bind="sigBadge"></b></p>
+        <p class="sig__lines rise" data-bind="sigLines"></p>
+      </div>
+      <!-- 02 설계: 패키지는 고정, 성분이 하나씩 도착 -->
+      <div class="act act--design" id="act-design" data-act-id="design">
+        <figure class="stage">
+          <div class="stage__img"><img src="img/sig-package.jpg" alt="비타C 플러스 앰플 단상자 — 용암석 위 바이알 4개와 성분 설계 안내" width="1000" height="1250" loading="lazy"></div>
+          <figcaption class="cap mono">Fig. 1 — Vita-C Plus Ampoule</figcaption>
+        </figure>
+        <ol class="formula" role="list" data-list="formula"></ol>
+      </div>
+      <!-- 03 사용법 -->
+      <div class="act act--ritual" id="ritual" data-act-id="ritual" data-reveal>
+        <p class="lbl lbl--inline"><span class="lbl__dot"></span>HOW TO USE</p>
+        <div class="ritual">
+          <figure class="ritual__img">
+            <img class="crop" src="img/ritual-steps.jpg" alt="키트 안쪽 사용 방법 안내 — 4단계 그림" width="1080" height="720" loading="lazy">
+            <figcaption class="cap mono">Fig. 2 — 키트 안내서</figcaption>
+          </figure>
+          <ol class="steps" role="list" data-list="ritual"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 브랜드 한 줄 ───────────────────────────────── -->
+<section class="sec sec--note" id="brand-note" data-reveal aria-labelledby="note-t">
+  <div class="sec__rule" aria-hidden="true"><i></i><i></i></div>
+  <div class="sec__grid">
+    <div class="sec__side"><div class="sec__stick"><p class="lbl"><span class="lbl__dot"></span>BRAND NOTE</p></div></div>
+    <div class="sec__body">
+      <h2 class="note__line ink" id="note-t" data-ink data-bind="brandLine"></h2>
+      <p class="note__sub ink" data-ink data-bind="brandSub"></p>
+      <a class="more mono rise" data-bind="brandLink"></a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 인스타그램 ─────────────────────────────────── -->
+<section class="sec sec--ig" id="instagram" data-reveal aria-labelledby="ig-t">
+  <div class="sec__rule" aria-hidden="true"><i></i><i></i></div>
+  <div class="sec__grid">
+    <div class="sec__side"><div class="sec__stick"><p class="lbl"><span class="lbl__dot"></span><span data-bind="igLabel"></span></p></div></div>
+    <div class="sec__body">
+      <div class="sec__head">
+        <h2 class="disp mask" id="ig-t"><span data-bind="igTitle"></span></h2>
+        <a class="more mono rise" data-bind="igLink"></a>
+      </div>
+      <ul class="ig" role="list" data-list="instagram"></ul>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- 6. 푸터 ──────────────────────────────────────── -->
+<footer class="ft" id="customer">
+  <div class="sec__rule" aria-hidden="true"><i></i><i></i></div>
+  <div class="ft__grid">
+    <div class="ft__brand">
+      <img src="img/logo.png" alt="LAVASOME" width="140" height="27" loading="lazy">
+      <p class="ft__tag mono" data-bind="tagline"></p>
+    </div>
+    <div class="ft__col">
+      <h3 class="ft__h mono">CS</h3>
+      <p class="ft__tel" data-bind="tel"></p>
+      <ul role="list" class="ft__list" data-list="hours"></ul>
+    </div>
+    <div class="ft__col">
+      <h3 class="ft__h mono">FOLLOW</h3>
+      <ul role="list" class="ft__list ft__links" data-list="follow"></ul>
+    </div>
+    <div class="ft__col">
+      <h3 class="ft__h mono">LINK</h3>
+      <ul role="list" class="ft__list ft__links" data-list="links"></ul>
+    </div>
+  </div>
+  <dl class="ft__biz" data-list="biz"></dl>
+</footer>
+
+<!-- 웰컴 쿠폰: 데스크톱 오른쪽 아래 카드 / 폰 하단 시트 -->
+<aside class="cp" id="coupon" aria-labelledby="cp-t" hidden>
+  <div class="cp__in">
+    <img class="cp__logo" src="img/logo.png" alt="LAVASOME" width="96" height="19">
+    <h2 class="cp__t" id="cp-t"><button type="button" class="cp__open" aria-expanded="true" aria-controls="cp-body"><span data-bind="cpTitle"></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg></button></h2>
+    <div class="cp__body" id="cp-body">
+    <ul class="cp__list" role="list" data-list="coupons"></ul>
+    <p class="cp__note" data-bind="cpNote"></p>
+    </div>
+  </div>
+  <div class="cp__foot">
+    <button type="button" class="cp__btn" data-cp="today"></button>
+    <button type="button" class="cp__btn" data-cp="close"></button>
+  </div>
+</aside>
+
+</body>
+</html>

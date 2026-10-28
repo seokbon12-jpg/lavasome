@@ -1,5 +1,7 @@
 # LAVASOME 메인 v2 — 섹션별 계획표 (7번 작업 순서 2단계 · 확인 전)
 
+> 이 문서는 2단계 확인용 초안이다. 위임받아 정한 최종 결정·결과는 `DESIGN_NOTES.md`.
+
 읽은 자료: README, PROMPT, `CURRENT_STRUCTURE.md`, `BRAND_SUMMARY.md`, `LIFTON_GRAMMAR.md`, `REFERENCES.md`
 + 캡처(데스크톱·폰·디자인 PDF 1·2쪽·브랜드 프로필·LIFTON 프레임·레퍼런스 시트), LIFTON `v21.css` 토큰,
 라이브 사이트 lavasome.co.kr (2026-10-28 텍스트 확인).

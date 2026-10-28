@@ -1,0 +1,129 @@
+/* ═══════════════════════════════════════════════════════════════════
+   LAVASOME v2 — 폰(≤760px). 리듬 48/16/40/96, 여백 20, 거터 12, 탭 44.
+   ═══════════════════════════════════════════════════════════════════ */
+@media (max-width: 1100px) and (min-width: 761px) {
+  .grid-p { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .slide__txt { grid-column: 1 / 7; }
+  .slide__fig { grid-column: 7 / 13; min-width: 0; }
+}
+
+@media (max-width: 760px) {
+  body { font-size: 15px; }
+
+  /* 띠 + GNB */
+  .band { padding: 0 44px; }
+  .band__txt { font-size: 11.5px; text-align: center; }
+  .band__x { right: 0; }
+  .hd { gap: 8px; }
+  .hd__logo img { height: 18px; }
+  .hd__ico { margin-left: auto; margin-right: -12px; }
+  .hd__ico a[aria-label="검색"] { display: none; }
+  .hd__menu { display: grid; }
+  .hd__menu span { display: block; width: 20px; height: 1px; background: currentColor; grid-area: 1 / 1; transition: transform .3s var(--ease); }
+  .hd__menu span:first-child { transform: translateY(-4px); }
+  .hd__menu span:last-child { transform: translateY(4px); }
+  .menu-open .hd__menu span:first-child { transform: rotate(45deg); }
+  .menu-open .hd__menu span:last-child { transform: rotate(-45deg); }
+  .hd__nav {
+    position: fixed; inset: var(--menu-top, var(--hd)) 0 auto; z-index: 49; margin: 0; padding: 8px var(--m) 24px;
+    background: var(--paper); border-bottom: 1px solid var(--rule-soft);
+    opacity: 0; visibility: hidden; transform: translateY(-8px); transition: opacity .3s, transform .3s var(--ease), visibility 0s .3s;
+  }
+  .menu-open .hd__nav { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+  .hd__nav ul { flex-direction: column; gap: 0; }
+  .hd__nav li + li { border-top: 1px solid var(--rule-soft); }
+  .hd__nav a { width: 100%; min-height: 52px; font-size: 15px; }
+
+  /* 히어로: 사진 먼저, 글 아래 */
+  .hero { padding-top: 12px; }
+  .slide { grid-template-columns: minmax(0, 1fr); align-items: start; }
+  .slide__fig { grid-column: 1; grid-row: 1; width: 100%; min-width: 0; justify-self: stretch; }
+  .slide__txt { grid-column: 1; grid-row: 2; padding-top: 28px; }
+  .slide__eyebrow { font-size: 16px; margin-bottom: 10px; }
+  .slide__t { font-size: 34px; }
+  .slide__t--en { font-size: 40px; }
+  .slide__mono { margin-top: 18px; font-size: 12px; }
+  .slide__lines { font-size: 11px; }
+  .slide__t + .slide__lines { margin-top: 18px; }
+  .slide .btn { margin-top: 28px; }
+  .hero__ctl { grid-template-columns: auto 1fr auto; column-gap: 16px; margin-top: 16px; }
+  .hero__count, .hero__bars, .hero__arrows { grid-column: auto; }
+
+  .line { margin-top: 48px; }
+  .line__in { flex-wrap: wrap; gap: 6px 14px; padding: 16px 0; }
+  .line__name { font-size: 22px; }
+  .line__mono { font-size: 11px; }
+
+  /* 섹션 프레임: 한 열, 선 한 줄 */
+  .sec__rule, .sec__grid { grid-template-columns: minmax(0, 1fr); column-gap: 0; }
+  .sec__rule i:first-child { grid-column: 1; }
+  .sec__rule i:last-child { display: none; }
+  .sec__side, .sec__body { grid-column: 1; }
+  .sec__stick { position: static; }
+  .sec__body { padding-top: 24px; }
+  .sec__head { flex-direction: column; gap: 8px; margin-bottom: var(--block); }
+  .sec__head .more { margin-top: 0; margin-left: -2px; }
+  .disp { font-size: 28px; }
+  .disp--xl { font-size: 34px; }
+
+  /* 필터: 옆으로 넘기기 */
+  .chips { flex-direction: row; gap: 8px; margin: 20px calc(var(--m) * -1) 0; padding: 0 var(--m) 4px; overflow-x: auto; scroll-snap-type: x proximity; scrollbar-width: none; }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip { min-height: var(--tap); scroll-snap-align: start; flex: none; }
+  html.js [data-reveal] .sec__side .chips { transform: none; }
+
+  /* 제품: 2열, 버튼은 항상 */
+  .grid-p { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px var(--gut); }
+  .pc__act { position: static; aspect-ratio: auto; padding: 12px 0 0; border-radius: 0; overflow: visible; }
+  .pc__act a { transform: none; height: var(--tap); border: 1px solid var(--rule-soft); background: transparent; font-size: 12px; }
+  .pc__sub { font-size: 12px; }
+  .pc__name { font-size: 14px; }
+  .price__sale, .price__rate { font-size: 14px; }
+  .price s { font-size: 12px; }
+
+  /* 시그니처: sticky 해제, 번호 매긴 성분 행 */
+  .idx { display: none; }
+  .sig__eyebrow { font-size: 16px; margin-bottom: 12px; }
+  .act--design, .ritual { grid-template-columns: minmax(0, 1fr); row-gap: 32px; }
+  .stage, .formula, .ritual__img, .steps { grid-column: 1; }
+  .stage { position: static; }
+  .stage__img { max-height: none; }
+  .fm { padding: 12px 0 20px; }
+  .fm__row { grid-template-columns: 64px 1fr; gap: 16px; }
+  .fm__img { width: 64px; height: 64px; }
+  .fm__ko { font-size: 18px; }
+  .lbl--inline { margin-bottom: 24px; }
+
+  .note__line { font-size: 32px; }
+  .note__sub { font-size: 18px; margin-top: 20px; }
+  .sec--note .more { margin-top: 32px; }
+
+  /* 인스타그램: 옆으로 넘기기 */
+  .ig { display: flex; gap: 4px; margin-inline: calc(var(--m) * -1); padding-inline: var(--m); border-radius: 0; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+  .ig::-webkit-scrollbar { display: none; }
+  .ig > li { flex: 0 0 62%; scroll-snap-align: start; }
+  .ig > li:first-child a { border-radius: var(--r) 0 0 var(--r); }
+  .ig > li:last-child a { border-radius: 0 var(--r) var(--r) 0; }
+  .ig__i { opacity: 1; }
+
+  /* 푸터 */
+  .ft__grid { grid-template-columns: 1fr 1fr; row-gap: 36px; column-gap: var(--gut); }
+  .ft__brand { grid-column: 1 / -1; }
+  .ft__col:nth-child(2) { grid-column: 1 / -1; }
+  .ft__col:nth-child(3), .ft__col:nth-child(4) { grid-column: auto; }
+  .ft__links a { min-height: var(--tap); }
+  .ft__biz { flex-direction: column; gap: 4px; margin-top: 48px; }
+
+  /* 쿠폰: 하단 시트 */
+  .cp { left: 0; right: 0; bottom: 0; width: auto; border-radius: var(--r) var(--r) 0 0; border-bottom: 0; padding-bottom: env(safe-area-inset-bottom); }
+  .js:not(.is-static) .cp { transform: translateY(100%); opacity: 1; transition: transform .6s var(--ease); }
+  html.js .cp.is-on { transform: none; }
+  .cp__in { padding: 20px var(--m) 16px; }
+  .cp__t { font-size: 16px; margin: 10px 0 14px; }
+  .cp__open { min-height: var(--tap); cursor: pointer; }
+  .cp__open svg { display: block; }
+  .cp.is-peek .cp__logo, .cp.is-peek .cp__body { display: none; }
+  .cp.is-peek .cp__in { padding-block: 4px; }
+  .cp.is-peek .cp__t { margin: 0; font-size: 15px; }
+  .cp:not(.is-peek) .cp__open svg { transform: rotate(180deg); }
+}
