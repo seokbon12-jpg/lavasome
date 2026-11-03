@@ -1,0 +1,43 @@
+# 작업 환경(클라우드 세션)에서 이미지 생성 서비스의 CDN 에 직접 접근할 수 없어서,
+# GitHub 러너가 대신 내려받아 incoming/ 에 커밋한다. 수동 실행 전용.
+#   list: "파일이름 URL" 쌍을 세미콜론(;)으로 구분
+#   예) ha90.png https://.../a.png;pdrn.png https://.../b.png
+# incoming/ 은 배포에 포함되지 않는다(pages.yml 은 필요한 파일만 골라 올린다).
+name: Fetch media
+
+on:
+  workflow_dispatch:
+    inputs:
+      list:
+        description: '"name url" pairs separated by ;'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download
+        env:
+          LIST: ${{ inputs.list }}
+        run: |
+          mkdir -p incoming
+          IFS=';' read -ra PAIRS <<< "$LIST"
+          for p in "${PAIRS[@]}"; do
+            name=$(echo "$p" | awk '{print $1}'); url=$(echo "$p" | awk '{print $2}')
+            case "$name" in */*|..*|"") echo "skip bad name: $name"; continue;; esac
+            case "$url" in https://*) ;; *) echo "skip non-https: $url"; continue;; esac
+            curl -fsSL --max-time 120 -o "incoming/$name" "$url"
+            ls -la "incoming/$name"
+          done
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add incoming
+          git diff --cached --quiet && exit 0
+          git commit -m "chore: fetch generated media into incoming/"
+          git push
