@@ -23,7 +23,7 @@
      메뉴가 늘어날수록 좌우 균형을 다시 잡아야 해서 유지가 어렵다.
      지구본 심볼은 남겼다. 워드마크만 쓰면 파비콘·SNS·모바일 같은
      작은 자리에서 브랜드를 알아볼 표식이 없어진다.
-     ⚠️ KR/EN, 마이페이지, 장바구니는 자리만 잡아 둔 상태다.
+     ⚠️ 언어 목록(영어), 마이페이지, 장바구니는 자리만 잡아 둔 상태다.
      다국어와 회원·장바구니는 카페24 연동 때 실제로 붙는다. -->
 <header class="site-header site-header--overlay" data-header>
   <div class="shell site-header__inner">
@@ -52,9 +52,15 @@
     </nav>
 
     <div class="util">
-      <p class="util__lang">
-        <a href="index.html" aria-current="true">KR</a><span aria-hidden="true">|</span><span class="util__soon" title="준비 중">EN</span>
-      </p>
+      <!-- (10.21 피드백 02) 설화수처럼 "나라 / 언어" 목록. 지금은 한국어만 열려 있고
+           영어는 준비 중. 나라를 늘릴 때는 아래 목록에 한 줄씩 더한다. -->
+      <details class="lang" data-lang>
+        <summary class="lang__btn" aria-label="나라 / 언어 선택, 현재 한국 / 한국어">한국/한국어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></summary>
+        <ul class="lang__list" role="list">
+          <li><a href="index.html" aria-current="true">한국 / 한국어</a></li>
+          <li><span class="lang__soon">Global / English <em>준비 중</em></span></li>
+        </ul>
+      </details>
       <span class="util__ico" title="마이페이지 — 카페24 연동 예정" aria-label="마이페이지 (준비 중)">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4 0-7 2.2-7 5v1h14v-1c0-2.8-3-5-7-5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
       </span>
@@ -72,14 +78,14 @@
        하나의 롤링 배너 안에서 차례로 보여준다(예전엔 히어로와 캐러셀이
        따로 있었다).
          1장 — 브랜드 비주얼. 배경 + 작은 사진 세 장, 스크롤 시차(data-parallax)
-         2~5장 — 제품 캠페인 컷. 제품이 세트 안에 들어간 사진 한 장
-       하단 막대: 지금 몇 번째인지(01 / 05)와 자동 넘김 진행을 보여준다.
+         2~3장 — 메인 제품 · 이벤트
+       하단 막대: 지금 몇 번째인지(01 / 03)와 자동 넘김 진행을 보여준다.
        호버·포커스 중에는 멈춘다. prefers-reduced-motion 이면 자동 넘김 없음. -->
   <section class="mv" id="top" data-mv aria-roledescription="캐러셀" aria-label="메인 배너">
     <div class="mv__view">
       <ul class="mv__track" role="list">
 
-        <li class="mv__slide mv__slide--brand" data-parallax-root aria-label="1/4 브랜드">
+        <li class="mv__slide mv__slide--brand" data-parallax-root aria-label="1/3 브랜드">
           <div class="mv__bg hero__bg" data-parallax="0.28" aria-hidden="true">
             <img src="assets/img/hero/hero-bg.jpg" alt="" fetchpriority="high">
           </div>
@@ -103,11 +109,12 @@
         </li>
 
         <!-- 피드백(2026.10.13): 순서 = 브랜드 → 메인 제품(누르면 공식몰 상품 페이지) →
-             이벤트·할인(10월 세일, 신규회원 쿠폰) → 회사 소식(세계한상대회).
-             소식이 생기면 4번 슬라이드의 사진·문구만 바꾸면 된다.
+             이벤트·할인(10월 세일, 신규회원 쿠폰).
+             (10.21) 회사 소식(세계한상대회) 슬라이드는 빼고 브랜드 소식에서 보여 준다.
+             (10.21) 2번 바이알은 실물 사진으로 바꿨다 — tools/hero-vial.py
              (이전) 롤링 배너는 이벤트 · 프로모션 · 메인 제품 · 캠페인만.
              제품을 하나씩 소개하는 일은 바로 아래 Product Line Up 이 맡는다. -->
-        <li class="mv__slide" aria-label="2/4 메인 제품">
+        <li class="mv__slide" aria-label="2/3 메인 제품">
           <div class="mv__bg" aria-hidden="true"><img src="assets/img/campaign/vita-c.jpg" alt="" loading="lazy" decoding="async"></div>
           <div class="mv__veil" aria-hidden="true"></div>
           <div class="shell mv__inner">
@@ -118,7 +125,7 @@
             </div>
           </div>
         </li>
-        <li class="mv__slide mv__slide--split" aria-label="3/4 이벤트">
+        <li class="mv__slide mv__slide--split" aria-label="3/3 이벤트">
           <div class="mv__bg" aria-hidden="true"><img src="assets/img/event/october-sale.jpg" alt="" loading="lazy" decoding="async" style="object-position:50% 30%"></div>
           <div class="shell mv__inner">
             <div class="mv__copy">
@@ -129,23 +136,13 @@
             </div>
           </div>
         </li>
-        <li class="mv__slide mv__slide--split" aria-label="4/4 캠페인">
-          <div class="mv__bg" aria-hidden="true"><img src="assets/img/news/wkbc-2026-booth.jpg" alt="" loading="lazy" decoding="async"></div>
-          <div class="shell mv__inner">
-            <div class="mv__copy">
-              <p class="mv__tag">World Korean Business Convention 2026</p>
-              <h2 class="mv__h">제24차 세계한상대회<br>기업전시회 참가</h2>
-              <p class="mv__p">2026. 9. 28 – 9. 30 · 인천 송도컨벤시아 · 부스 B10</p>
-              <p class="mv__cta"><a class="btn btn--pill" href="news.html#news">자세히 보기 &rarr;</a></p>
-            </div>
-          </div>
-        </li>
+        <!-- (10.21 피드백 04) 4번째 세계한상대회 배너는 뺐다 — 브랜드 소식(news.html)에서 본다 -->
       </ul>
     </div>
 
     <div class="mv__bar">
       <div class="shell mv__bar-in">
-        <p class="mv__count" aria-live="polite"><b data-mv-cur>01</b><span>/</span><span data-mv-total>04</span></p>
+        <p class="mv__count" aria-live="polite"><b data-mv-cur>01</b><span>/</span><span data-mv-total>03</span></p>
         <div class="mv__prog" data-mv-dots role="tablist" aria-label="슬라이드 선택"></div>
         <div class="mv__ctrl">
           <button class="mv__nav" type="button" data-mv-prev aria-label="이전 슬라이드"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 7 12l8 8" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
@@ -178,8 +175,7 @@
                   <img src="assets/img/products/vita-c-plus.jpg" alt="라바섬 Vita-C Plus Ampoule 제품 이미지"></figure>
                 <h3>Vita-C Plus Ampoule</h3>
                 <p class="pcar__ben">미백 <em>Brightening</em></p>
-                <p class="pcar__desc">순수 비타민C를 무수 처방으로 안정화한 고농도 앰플.</p>
-                <p class="pcar__fig">13.5<span>%</span> <i>·</i> 135,000<span>ppm</span></p>
+                <p class="pcar__fig">순수 비타민 C 13.5%</p>
                 <span class="pcar__link">제품 보기</span>
               </a>
             </li>
@@ -189,8 +185,7 @@
                 <h3>Calming 50</h3>
                 <!-- 피드백: "항산화 / Antioxidant" 는 성분·효능과 맞지 않았다 -->
                 <p class="pcar__ben">진정 <em>Soothing</em></p>
-                <p class="pcar__desc">자극 요인을 덜어내는 데 초점을 맞춘 진정 라인.</p>
-                <p class="pcar__fig">50<span>%</span></p>
+                <p class="pcar__fig">병풀잎수 50%</p>
                 <span class="pcar__link">제품 보기</span>
               </a>
             </li>
@@ -199,18 +194,17 @@
                 <figure class="pcar__shot"><img src="assets/img/products/pdrn-1k.jpg" alt="라바섬 PDRN 1K 제품 이미지" loading="lazy" decoding="async"></figure>
                 <h3>PDRN 1K</h3>
                 <p class="pcar__ben">탄력 <em>Firming</em></p>
-                <p class="pcar__desc">밀도와 탄력의 조건을 다루는 집중 케어.</p>
-                <p class="pcar__fig">1,000<span>ppm</span></p>
+                <p class="pcar__fig">PDRN 1,000ppm</p>
                 <span class="pcar__link">제품 보기</span>
               </a>
             </li>
             <li class="pcar__it">
-              <a class="pcar__card" href="https://lavasome.co.kr/product/%EB%B0%94%EC%BF%A0%EC%B9%98%EC%98%AC-5k-%EC%95%B0%ED%94%8C-30ml/102/" target="_blank" rel="noopener">
-                <figure class="pcar__shot"><img src="assets/img/products/bakuchiol-5k.jpg" alt="라바섬 바쿠치올 5K 제품 이미지" loading="lazy" decoding="async"></figure>
-                <h3>바쿠치올 5K</h3>
-                <p class="pcar__ben">주름개선 <em>Anti-Wrinkle</em></p>
-                <p class="pcar__desc">자극은 낮추고 탄력의 결을 다잡는 저자극 설계.</p>
-                <p class="pcar__fig">50,000<span>ppm</span></p>
+              <!-- (10.21 피드백 05) 바쿠치올 5K 미판매 → 글루타티온 20K. 공식몰 상품 주소를 받으면 href 교체 -->
+              <a class="pcar__card" href="products.html#glutathione-20k">
+                <figure class="pcar__shot"><img src="assets/img/products/glutathione-20k.jpg" alt="라바섬 글루타티온 20K 제품 이미지" loading="lazy" decoding="async"></figure>
+                <h3>글루타티온 20K</h3>
+                <p class="pcar__ben">광채 <em>Radiance</em></p>
+                <p class="pcar__fig">글루타티온 20,000ppm</p>
                 <span class="pcar__link">제품 보기</span>
               </a>
             </li>
@@ -219,8 +213,7 @@
                 <figure class="pcar__shot"><img src="assets/img/products/ha90.jpg" alt="라바섬 HA90 제품 이미지" loading="lazy" decoding="async"></figure>
                 <h3>HA 90</h3>
                 <p class="pcar__ben">수분 <em>Hydration</em></p>
-                <p class="pcar__desc">수분 보유력을 유지하며 결을 정리합니다.</p>
-                <p class="pcar__fig">90<span>%</span></p>
+                <p class="pcar__fig">히알루론산 90%</p>
                 <span class="pcar__link">제품 보기</span>
               </a>
             </li>
@@ -229,8 +222,7 @@
                 <figure class="pcar__shot"><img src="assets/img/products/sunscreen.jpg" alt="라바섬 퓨어 선스크린 제품 이미지" loading="lazy" decoding="async"></figure>
                 <h3>퓨어 선스크린</h3>
                 <p class="pcar__ben">일상 보호 <em>Daily Shield</em></p>
-                <p class="pcar__desc">매일 쓰기 위한 가벼운 마무리.</p>
-                <p class="pcar__fig">SPF<span>50+ / PA++++</span></p>
+                <p class="pcar__fig">SPF50+ PA++++</p>
                 <span class="pcar__link">제품 보기</span>
               </a>
             </li>
@@ -239,8 +231,7 @@
                 <figure class="pcar__shot"><img src="assets/img/products/green-tea-cleanser.jpg" alt="라바섬 녹차잎 앰플 클렌저 제품 이미지" loading="lazy" decoding="async"></figure>
                 <h3>녹차잎 앰플 클렌저</h3>
                 <p class="pcar__ben">클렌징 <em>Cleansing</em></p>
-                <p class="pcar__desc">자극은 덜고 노폐물은 깨끗하게 덜어내는 약산성 클렌저.</p>
-                <p class="pcar__fig">pH<span>4.0–5.0</span></p>
+                <p class="pcar__fig">pH4.5~5.0 약산성</p>
                 <span class="pcar__link">제품 보기</span>
               </a>
             </li>

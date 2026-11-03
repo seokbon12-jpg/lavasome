@@ -39,9 +39,15 @@
       </div>
     </nav>
     <div class="util">
-      <p class="util__lang">
-        <a href="index.html" aria-current="true">KR</a><span aria-hidden="true">|</span><span class="util__soon" title="준비 중">EN</span>
-      </p>
+      <!-- (10.21 피드백 02) 설화수처럼 "나라 / 언어" 목록. 지금은 한국어만 열려 있고
+           영어는 준비 중. 나라를 늘릴 때는 아래 목록에 한 줄씩 더한다. -->
+      <details class="lang" data-lang>
+        <summary class="lang__btn" aria-label="나라 / 언어 선택, 현재 한국 / 한국어">한국/한국어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></summary>
+        <ul class="lang__list" role="list">
+          <li><a href="index.html" aria-current="true">한국 / 한국어</a></li>
+          <li><span class="lang__soon">Global / English <em>준비 중</em></span></li>
+        </ul>
+      </details>
       <span class="util__ico" title="마이페이지 — 카페24 연동 예정" aria-label="마이페이지 (준비 중)">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4 0-7 2.2-7 5v1h14v-1c0-2.8-3-5-7-5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
       </span>
@@ -55,9 +61,10 @@
 <!-- ══ 전체 제품 ══
      홈의 "전체 제품 보기"와 메뉴 "제품 > 전체 제품"이 여기로 온다.
      각 카드의 id 는 홈 캐러셀·메인 배너의 "제품 보기" 링크(#vita-c-plus 등)와 맞춘다.
-     ⚠️ 제품 사진은 임시 연출컷입니다. 구글 드라이브의 최종 누끼컷/연출컷으로
+     제품 사진(10.21 피드백 05·06): 실사(라인업 컷 · 비타C 바이알 단독컷)에서 오려
+        설화수처럼 옅은 그레이 바탕 하나로 맞췄다 — tools/product-cards.py.
         assets/img/products/<id>.jpg 를 교체하면 홈과 이 페이지가 함께 바뀝니다.
-     ⚠️ 글루타티온 20K 는 드라이브에 누끼컷이 있지만 제품 정보가 없어 빠져 있습니다.
+     바쿠치올 5K 는 미판매라 글루타티온 20K 로 바꿨다.
      "공식몰에서 보기"는 라바섬 공식몰(lavasome.co.kr) 상품 상세로 연결된다. -->
 <main id="main" class="brand" tabindex="-1">
 
@@ -88,7 +95,7 @@
             <p class="pcar__ben">미백 <em>Brightening</em></p>
             <h2>Vita-C Plus Ampoule</h2>
             <p class="pcar__desc">순수 비타민C를 무수 처방으로 안정화한 고농도 앰플.</p>
-            <p class="pcar__fig">13.5<span>%</span> <i>·</i> 135,000<span>ppm</span></p>
+            <p class="pcar__fig">순수 비타민 C 13.5%</p>
             <a class="pcar__link prod__go" href="https://lavasome.co.kr/product/%EB%B9%84%ED%83%80c-%ED%94%8C%EB%9F%AC%EC%8A%A4-%EC%95%B0%ED%94%8C-5ml4ea-1box/72/" target="_blank" rel="noopener">공식몰에서 보기</a>
           </div>
         </li>
@@ -98,7 +105,7 @@
             <p class="pcar__ben">진정 <em>Soothing</em></p>
             <h2>Calming 50</h2>
             <p class="pcar__desc">자극 요인을 덜어내는 데 초점을 맞춘 진정 라인.</p>
-            <p class="pcar__fig">50<span>%</span></p>
+            <p class="pcar__fig">병풀잎수 50%</p>
             <a class="pcar__link prod__go" href="https://lavasome.co.kr/product/%EC%B9%B4%EB%B0%8D-50-%EC%95%B0%ED%94%8C-30ml/94/" target="_blank" rel="noopener">공식몰에서 보기</a>
           </div>
         </li>
@@ -108,18 +115,20 @@
             <p class="pcar__ben">탄력 <em>Firming</em></p>
             <h2>PDRN 1K</h2>
             <p class="pcar__desc">밀도와 탄력의 조건을 다루는 집중 케어.</p>
-            <p class="pcar__fig">1,000<span>ppm</span></p>
+            <p class="pcar__fig">PDRN 1,000ppm</p>
             <a class="pcar__link prod__go" href="https://lavasome.co.kr/product/pdrn-1k-%EC%95%B0%ED%94%8C-30ml/93/" target="_blank" rel="noopener">공식몰에서 보기</a>
           </div>
         </li>
-        <li class="prod reveal" id="bakuchiol-5k" data-cat="ampoule">
-          <figure class="prod__shot"><img src="assets/img/products/bakuchiol-5k.jpg" alt="라바섬 바쿠치올 5K 제품 이미지" loading="lazy" decoding="async"></figure>
+        <!-- (10.21 피드백 05) 바쿠치올 5K 미판매 → 글루타티온 20K.
+             설명은 브랜드 페이지 원료 표의 글루타치온 문구. 공식몰 상품 주소를 받으면 href 교체 -->
+        <li class="prod reveal" id="glutathione-20k" data-cat="ampoule">
+          <figure class="prod__shot"><img src="assets/img/products/glutathione-20k.jpg" alt="라바섬 글루타티온 20K 제품 이미지" loading="lazy" decoding="async"></figure>
           <div class="prod__body">
-            <p class="pcar__ben">주름개선 <em>Anti-Wrinkle</em></p>
-            <h2>바쿠치올 5K</h2>
-            <p class="pcar__desc">자극은 낮추고 탄력의 결을 다잡는 저자극 설계.</p>
-            <p class="pcar__fig">50,000<span>ppm</span></p>
-            <a class="pcar__link prod__go" href="https://lavasome.co.kr/product/%EB%B0%94%EC%BF%A0%EC%B9%98%EC%98%AC-5k-%EC%95%B0%ED%94%8C-30ml/102/" target="_blank" rel="noopener">공식몰에서 보기</a>
+            <p class="pcar__ben">광채 <em>Radiance</em></p>
+            <h2>글루타티온 20K</h2>
+            <p class="pcar__desc">맑고 균일한 피부 톤을 위한 항산화 성분.</p>
+            <p class="pcar__fig">글루타티온 20,000ppm</p>
+            <a class="pcar__link prod__go" href="https://lavasome.co.kr/product/search.html?keyword=%EA%B8%80%EB%A3%A8%ED%83%80%ED%8B%B0%EC%98%A8" target="_blank" rel="noopener">공식몰에서 보기</a>
           </div>
         </li>
         <li class="prod reveal" id="ha90" data-cat="ampoule" data-delay="1">
@@ -128,7 +137,7 @@
             <p class="pcar__ben">수분 <em>Hydration</em></p>
             <h2>HA 90</h2>
             <p class="pcar__desc">수분 보유력을 유지하며 결을 정리합니다.</p>
-            <p class="pcar__fig">90<span>%</span></p>
+            <p class="pcar__fig">히알루론산 90%</p>
             <a class="pcar__link prod__go" href="https://lavasome.co.kr/product/%EC%97%90%EC%9D%B4%EC%B9%98%EC%97%90%EC%9D%B4-90-%EC%95%B0%ED%94%8C-30ml/97/" target="_blank" rel="noopener">공식몰에서 보기</a>
           </div>
         </li>
@@ -138,19 +147,18 @@
             <p class="pcar__ben">일상 보호 <em>Daily Shield</em></p>
             <h2>퓨어 선스크린</h2>
             <p class="pcar__desc">매일 쓰기 위한 가벼운 마무리.</p>
-            <p class="pcar__fig">SPF<span>50+ / PA++++</span></p>
+            <p class="pcar__fig">SPF50+ PA++++</p>
             <a class="pcar__link prod__go" href="https://lavasome.co.kr/product/%ED%93%A8%EC%96%B4-%EC%84%A0%EC%8A%A4%ED%81%AC%EB%A6%B0-35ml/55/" target="_blank" rel="noopener">공식몰에서 보기</a>
           </div>
         </li>
-        <!-- 클렌저 사진은 전달받은 라인업 컷(라바섬 상품사진컷)에서 병만 떼어 낸 것.
-             pH 4.0–5.0 은 병 라벨 표기 기준 -->
+        <!-- pH 4.5~5.0 약산성 — 10.21 피드백 06 표기 -->
         <li class="prod reveal" id="green-tea-cleanser" data-cat="cleanser">
           <figure class="prod__shot"><img src="assets/img/products/green-tea-cleanser.jpg" alt="라바섬 녹차잎 앰플 클렌저 제품 이미지" loading="lazy" decoding="async"></figure>
           <div class="prod__body">
             <p class="pcar__ben">클렌징 <em>Cleansing</em></p>
             <h2>녹차잎 앰플 클렌저</h2>
             <p class="pcar__desc">자극은 덜고 노폐물은 깨끗하게 덜어내는 약산성 클렌저.</p>
-            <p class="pcar__fig">pH<span>4.0–5.0</span></p>
+            <p class="pcar__fig">pH4.5~5.0 약산성</p>
             <a class="pcar__link prod__go" href="https://lavasome.co.kr/product/%EB%85%B9%EC%B0%A8%EC%9E%8E-%EC%95%B0%ED%94%8C-%ED%81%B4%EB%A0%8C%EC%A0%80-295ml/92/" target="_blank" rel="noopener">공식몰에서 보기</a>
           </div>
         </li>

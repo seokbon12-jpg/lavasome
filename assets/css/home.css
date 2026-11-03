@@ -142,7 +142,8 @@
 .pcar__shot {
   position: relative; margin: 0 0 22px;
   aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-m);
-  background: #F0EAE0;
+  /* (10.21 피드백 05) 설화수처럼 옅은 그레이 — 사진 바탕(tools/product-cards.py BG)과 같은 값 */
+  background: #EFEFED;
 }
 .pcar__shot img {
   width: 100%; height: 100%; object-fit: cover;
@@ -163,11 +164,10 @@
 }
 .pcar__desc { margin-top: 10px; font-size: 16px; line-height: 1.75; color: var(--ink-70); }
 .pcar__fig {
-  margin-top: 16px; font-family: var(--font-display); font-size: 23px;
-  font-weight: 500; letter-spacing: -.01em; font-variant-numeric: tabular-nums;
+  /* (10.21 피드백 05·06) "원료 + 함량"을 한 줄, 같은 크기로 (예: 병풀잎수 50%) */
+  margin-top: 14px; font-family: var(--font-kr-head); font-size: 18px;
+  line-height: 1.4; letter-spacing: -.01em; font-variant-numeric: tabular-nums;
 }
-.pcar__fig span { font-size: .58em; color: var(--accent-t); margin-left: 2px; }
-.pcar__fig i { color: var(--ink-45); margin: 0 6px; font-size: .7em; }
 .pcar__link {
   display: inline-flex; align-items: center; gap: 6px; margin-top: 18px;
   font-size: 15px; padding-bottom: 3px; border-bottom: 1px solid var(--line);
@@ -505,7 +505,7 @@
 .prod { scroll-margin-top: 28px; }
 .prod__shot {
   position: relative; margin: 0 0 22px; aspect-ratio: 4 / 5;
-  overflow: hidden; border-radius: var(--r-m); background: #F0EAE0;
+  overflow: hidden; border-radius: var(--r-m); background: #EFEFED;
 }
 .prod__shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
 @media (hover: hover) { .prod:hover .prod__shot img { transform: scale(1.04); } }

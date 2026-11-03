@@ -23,6 +23,17 @@
     addEventListener('resize', setH, { passive: true });
   }
 
+  /* ── 나라 / 언어 목록: 바깥을 누르거나 Esc 면 닫는다 ─────── */
+  var lang = document.querySelector('[data-lang]');
+  if (lang) {
+    document.addEventListener('click', function (e) {
+      if (lang.open && !lang.contains(e.target)) lang.open = false;
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lang.open) { lang.open = false; lang.querySelector('summary').focus(); }
+    });
+  }
+
   /* ── 스크롤 리빌 ─────────────────────────────────────────── */
   var reveals = document.querySelectorAll('.reveal');
   reveals.forEach(function (el) {

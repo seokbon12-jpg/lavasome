@@ -39,9 +39,15 @@
       </div>
     </nav>
     <div class="util">
-      <p class="util__lang">
-        <a href="index.html" aria-current="true">KR</a><span aria-hidden="true">|</span><span class="util__soon" title="준비 중">EN</span>
-      </p>
+      <!-- (10.21 피드백 02) 설화수처럼 "나라 / 언어" 목록. 지금은 한국어만 열려 있고
+           영어는 준비 중. 나라를 늘릴 때는 아래 목록에 한 줄씩 더한다. -->
+      <details class="lang" data-lang>
+        <summary class="lang__btn" aria-label="나라 / 언어 선택, 현재 한국 / 한국어">한국/한국어<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></summary>
+        <ul class="lang__list" role="list">
+          <li><a href="index.html" aria-current="true">한국 / 한국어</a></li>
+          <li><span class="lang__soon">Global / English <em>준비 중</em></span></li>
+        </ul>
+      </details>
       <span class="util__ico" title="마이페이지 — 카페24 연동 예정" aria-label="마이페이지 (준비 중)">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm0 2c-4 0-7 2.2-7 5v1h14v-1c0-2.8-3-5-7-5Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
       </span>
