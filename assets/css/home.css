@@ -142,8 +142,8 @@
 .pcar__shot {
   position: relative; margin: 0 0 22px;
   aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--r-m);
-  /* (10.21 피드백 05) 설화수처럼 옅은 그레이 — 사진 바탕(tools/product-cards.py BG)과 같은 값 */
-  background: #EFEFED;
+  /* (10.21 피드백 05) 설화수처럼 옅은 그레이 — 제품 사진 바탕과 같은 값 */
+  background: #EEEDEC;
 }
 .pcar__shot img {
   width: 100%; height: 100%; object-fit: cover;
@@ -505,7 +505,7 @@
 .prod { scroll-margin-top: 28px; }
 .prod__shot {
   position: relative; margin: 0 0 22px; aspect-ratio: 4 / 5;
-  overflow: hidden; border-radius: var(--r-m); background: #EFEFED;
+  overflow: hidden; border-radius: var(--r-m); background: #EEEDEC;
 }
 .prod__shot img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s var(--ease); }
 @media (hover: hover) { .prod:hover .prod__shot img { transform: scale(1.04); } }
